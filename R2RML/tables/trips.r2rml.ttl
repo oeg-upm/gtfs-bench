@@ -1,0 +1,89 @@
+
+<TriplesMapTrip>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "TRIPS"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:template "http://linkedgtfs.com/CITY/trips/{TRIP_ID}";
+    rr:termType rr:IRI;
+    rr:class gtfs:Trip;
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:route;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapRoute>;
+      rr:joinCondition [
+        rr:child "ROUTE_ID";
+        rr:parent "ROUTE_ID";
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:service;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapService>;
+      rr:joinCondition [
+        rr:child "SERVICE_ID";
+        rr:parent "SERVICE_ID";
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:shape;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapShape>;
+      rr:joinCondition [
+        rr:child "SHAPE_ID";
+        rr:parent "SHAPE_ID";
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:headsign;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "TRIP_HEADSIGN"
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:shortName;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "TRIP_SHORT_NAME"
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:direction;
+    rr:objectMap [
+      rr:datatype xsd:boolean;
+      rr:column "DIRECTION_ID"
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:block;
+    rr:objectMap [
+      rr:datatype xsd:nonNegativeInteger;
+      rr:column "BLOCK_ID"
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:wheelchairAccessible;
+    rr:objectMap [
+      rr:datatype gtfs:WheelchairBoardingStatus;
+      rr:column "WHEELCHAIR_ACCESSIBLE"
+    ]
+  ];
+
+.

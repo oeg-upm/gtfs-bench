@@ -1,0 +1,64 @@
+<TriplesMapFeed>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "FEED_INFO"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:constant "http://linkedgtfs.com/CITY/feed";
+    rr:termType rr:IRI;
+    rr:class gtfs:Feed;
+  ];
+
+
+  rr:predicateObjectMap[
+    rr:predicate dct:publisher;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "FEED_PUBLISHER_NAME";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate foaf:page;
+    rr:objectMap [
+      rr:datatype foaf:Document;
+      rr:column "FEED_PUBLISHER_URL";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate dct:language;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "FEED_LANG";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate schema:startDate;
+    rr:objectMap [
+      rr:datatype dct:date;
+      rr:column "FEED_START_DATE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate schema:endDate;
+    rr:objectMap [
+      rr:datatype dct:date;
+      rr:column "FEED_END_DATE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate schema:version;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "FEED_VERSION";
+    ];
+  ];
+
+. 

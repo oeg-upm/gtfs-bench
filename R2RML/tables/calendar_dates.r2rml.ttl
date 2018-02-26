@@ -1,0 +1,41 @@
+<TriplesMapServiceDates>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "CALENDAR_DATES"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:template "http://linkedgtfs.com/CITY/servicedates/{SERVICE_ID}-{DATE}";
+    rr:termType rr:IRI;
+    rr:class gtfs:ServiceDates;
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:service;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapService>;
+      rr:joinCondition [
+        rr:child "SERVICE_ID";
+        rr:parent "SERVICE_ID";
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate dct:date;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "DATE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:dateAddition;
+    rr:objectMap [
+      rr:datatype xsd:boolean;
+      rr:column "EXCEPTION_TYPE";
+    ];
+  ];
+. 

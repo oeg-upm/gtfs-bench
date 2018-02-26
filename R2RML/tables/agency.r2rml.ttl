@@ -1,0 +1,64 @@
+
+<TriplesMapAgency>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "AGENCY"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:template "http://linkedgtfs.com/CITY/agency/{AGENCY_ID}";
+    rr:termType rr:IRI;
+    rr:class gtfs:Agency;
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate foaf:page;
+    rr:objectMap [
+      rr:datatype foaf:Document;
+      rr:column "AGENCY_URL";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate foaf:name;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "AGENCY_NAME";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:timeZone;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "AGENCY_TIMEZONE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate dct:language;
+    rr:objectMap [
+      rr:datatype dct:LiguisticSystem;
+      rr:column "AGENCY_LANG";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate foaf:phone;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "AGENCY_PHONE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:fareUrl;
+    rr:objectMap [
+      rr:termType rr:IRI;
+      rr:column "AGENCY_FARE_URL";
+    ];
+  ];
+
+.

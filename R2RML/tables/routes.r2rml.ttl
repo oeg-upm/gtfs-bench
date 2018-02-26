@@ -1,0 +1,81 @@
+
+<TriplesMapRoute>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "ROUTES"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:template "http://linkedgtfs.com/CITY/routes/{ROUTE_ID}";
+    rr:termType rr:IRI;
+    rr:class gtfs:Route;
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:agency;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapAgency>;
+      rr:joinCondition [
+        rr:child "AGENCY_ID";
+        rr:parent "AGENCY_ID";
+      ]
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:shortName;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "ROUTE_SHORT_NAME";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:longName;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "ROUTE_LONG_NAME";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate dct:description;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "ROUTE_DESC";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:routeType;
+    rr:objectMap [
+      rr:template "http://vocab.gtfs.org/terms#RouteType={ROUTE_TYPE}";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:routeUrl;
+    rr:objectMap [
+      rr:datatype foaf:Document;
+      rr:column "ROUTE_URL";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:color;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "ROUTE_COLOR";
+    ]
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:textColor;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "ROUTE_TEXT_COLOR";
+    ]
+  ];
+.

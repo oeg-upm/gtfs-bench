@@ -1,0 +1,54 @@
+
+<TriplesMapFare>
+  # a rr:TriplesMap;
+
+  rr:logicalTable [
+      rr:tableName "FARE_ATTRIBUTES"
+  ];
+
+  rr:subjectMap [
+    a rr:Subject;
+    rr:template "http://linkedgtfs.com/CITY/fare/{FARE_ID}";
+    rr:termType rr:IRI;
+    rr:class gtfs:Fare;
+  ];
+
+
+  rr:predicateObjectMap[
+    rr:predicate schema:price;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "PRICE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate schema:priceCurrency;
+    rr:objectMap [
+      rr:datatype xsd:string;
+      rr:column "CURRENCY_TYPE";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:paymentMethod;
+    rr:objectMap [
+      rr:template "http://vocab.gtfs.org/terms#PaymentMethod={PAYMENT_METHOD}";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:transfers;
+    rr:objectMap [
+      rr:template "http://vocab.gtfs.org/terms#Transfers={TRANSFERS}";
+    ];
+  ];
+
+  rr:predicateObjectMap[
+    rr:predicate gtfs:transferExpiryTime;
+    rr:objectMap [
+      rr:datatype xsd:duration;
+      rr:column "TRANSFER_DURATION";
+    ];
+  ];
+.
