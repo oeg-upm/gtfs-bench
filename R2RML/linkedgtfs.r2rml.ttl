@@ -16,7 +16,21 @@
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "STOP_TIMES"
+      rr:sqlQuery """
+
+        SELECT STOP_TIMES.*, (CASE PICKUP_TYPE
+            WHEN 0 THEN 'Regular'
+            WHEN 1 THEN 'notAvailable'
+            WHEN 2 THEN 'MustPhone'
+            WHEN 3 THEN 'MustCoordinateWithDriver'
+        END) PICKUP, (CASE DROP_OFF_TYPE
+            WHEN 0 THEN 'Regular'
+            WHEN 1 THEN 'notAvailable'
+            WHEN 2 THEN 'MustPhone'
+            WHEN 3 THEN 'MustCoordinateWithDriver'
+        END) DROPOFF FROM STOP_TIMES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -83,14 +97,14 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:pickupType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#PickupType={PICKUP_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{PICKUP}";
     ];
   ];
 
   rr:predicateObjectMap[
     rr:predicate gtfs:dropOffType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#DropOffType={DROP_OFF_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{DROPOFF}";
     ];
   ];
 
@@ -197,7 +211,19 @@
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "ROUTES"
+      rr:sqlQuery """
+        SELECT ROUTES.*, (CASE ROUTE_TYPE
+            WHEN 0 THEN 'LightRail'
+            WHEN 1 THEN 'Subway'
+            WHEN 2 THEN 'Rail'
+            WHEN 3 THEN 'Bus'
+            WHEN 4 THEN 'Ferry'
+            WHEN 5 THEN 'CableCar'
+            WHEN 6 THEN 'Gondola'
+            WHEN 7 THEN 'Funicular'
+        END) ROUTETYPE FROM ROUTES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -245,7 +271,7 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:routeType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#RouteType={ROUTE_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{ROUTETYPE}";
     ]
   ];
 
@@ -490,7 +516,18 @@
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "FARE_ATTRIBUTES"
+    rr:sqlQuery """
+        SELECT FARE_ATTRIBUTES.*, (CASE PAYMENT_METHOD
+            WHEN 0 THEN 'OnBoard'
+            WHEN 1 THEN 'BeforeBoarding'
+        END) PAY, (CASE TRANSFERS
+            WHEN 0 THEN 'NoTransfersAllowed'
+            WHEN 1 THEN 'OneTransfersAllowed'
+            WHEN 2 THEN 'TwoTransfersAllowed'
+            ELSE 'UnlimitedTransfersAllowed'
+        END) TRANS FROM FARE_ATTRIBUTES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -520,14 +557,14 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:paymentMethod;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#PaymentMethod={PAYMENT_METHOD}";
+      rr:template "http://vocab.gtfs.org/terms#{PAY}";
     ];
   ];
 
   rr:predicateObjectMap[
     rr:predicate gtfs:transfers;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#Transfers={TRANSFERS}";
+      rr:template "http://vocab.gtfs.org/terms#{TRANS}";
     ];
   ];
 

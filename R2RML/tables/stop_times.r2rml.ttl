@@ -2,7 +2,21 @@
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "STOP_TIMES"
+      rr:sqlQuery """
+
+        SELECT STOP_TIMES.*, (CASE PICKUP_TYPE
+            WHEN 0 THEN 'Regular'
+            WHEN 1 THEN 'notAvailable'
+            WHEN 2 THEN 'MustPhone'
+            WHEN 3 THEN 'MustCoordinateWithDriver'
+        END) PICKUP, (CASE DROP_OFF_TYPE
+            WHEN 0 THEN 'Regular'
+            WHEN 1 THEN 'notAvailable'
+            WHEN 2 THEN 'MustPhone'
+            WHEN 3 THEN 'MustCoordinateWithDriver'
+        END) DROPOFF FROM STOP_TIMES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -69,14 +83,14 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:pickupType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#PickupType={PICKUP_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{PICKUP}";
     ];
   ];
 
   rr:predicateObjectMap[
     rr:predicate gtfs:dropOffType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#DropOffType={DROP_OFF_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{DROPOFF}";
     ];
   ];
 
@@ -87,4 +101,4 @@
       rr:column "SHAPE_DIST_TRAVELED";
     ];
   ];
-.  
+. 

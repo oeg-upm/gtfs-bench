@@ -1,9 +1,20 @@
-
 <TriplesMapRoute>
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "ROUTES"
+      rr:sqlQuery """
+        SELECT ROUTES.*, (CASE ROUTE_TYPE
+            WHEN 0 THEN 'LightRail'
+            WHEN 1 THEN 'Subway'
+            WHEN 2 THEN 'Rail'
+            WHEN 3 THEN 'Bus'
+            WHEN 4 THEN 'Ferry'
+            WHEN 5 THEN 'CableCar'
+            WHEN 6 THEN 'Gondola'
+            WHEN 7 THEN 'Funicular'
+        END) ROUTETYPE FROM ROUTES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -51,7 +62,7 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:routeType;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#RouteType={ROUTE_TYPE}";
+      rr:template "http://vocab.gtfs.org/terms#{ROUTETYPE}";
     ]
   ];
 

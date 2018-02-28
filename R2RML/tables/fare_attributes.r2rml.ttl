@@ -1,9 +1,19 @@
-
 <TriplesMapFare>
   # a rr:TriplesMap;
 
   rr:logicalTable [
-      rr:tableName "FARE_ATTRIBUTES"
+    rr:sqlQuery """
+        SELECT FARE_ATTRIBUTES.*, (CASE PAYMENT_METHOD
+            WHEN 0 THEN 'OnBoard'
+            WHEN 1 THEN 'BeforeBoarding'
+        END) PAY, (CASE TRANSFERS
+            WHEN 0 THEN 'NoTransfersAllowed'
+            WHEN 1 THEN 'OneTransfersAllowed'
+            WHEN 2 THEN 'TwoTransfersAllowed'
+            ELSE 'UnlimitedTransfersAllowed'
+        END) TRANS FROM FARE_ATTRIBUTES
+
+        """ 
   ];
 
   rr:subjectMap [
@@ -33,14 +43,14 @@
   rr:predicateObjectMap[
     rr:predicate gtfs:paymentMethod;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#PaymentMethod={PAYMENT_METHOD}";
+      rr:template "http://vocab.gtfs.org/terms#{PAY}";
     ];
   ];
 
   rr:predicateObjectMap[
     rr:predicate gtfs:transfers;
     rr:objectMap [
-      rr:template "http://vocab.gtfs.org/terms#Transfers={TRANSFERS}";
+      rr:template "http://vocab.gtfs.org/terms#{TRANS}";
     ];
   ];
 
