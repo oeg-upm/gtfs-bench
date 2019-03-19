@@ -1,0 +1,1 @@
+<http://linkedgtfs.com/CITY/stops/{STOP_ID}> a gtfs:Stop ; gtfs:zone {ZONE_ID} ; foaf:page {STOP_URL} ; dct:description {STOP_DESC}^^xsd:string ; gtfs:parentStation {PARENT_STATION} ; foaf:name {STOP_NAME}^^xsd:string . 
