@@ -1,0 +1,9 @@
+SELECT FARE_ATTRIBUTES.*, (CASE PAYMENT_METHOD
+            WHEN 0 THEN 'OnBoard'
+            WHEN 1 THEN 'BeforeBoarding'
+        END) PAY, (CASE TRANSFERS
+            WHEN 0 THEN 'NoTransfersAllowed'
+            WHEN 1 THEN 'OneTransfersAllowed'
+            WHEN 2 THEN 'TwoTransfersAllowed'
+            ELSE 'UnlimitedTransfersAllowed'
+        END) TRANS FROM FARE_ATTRIBUTES
