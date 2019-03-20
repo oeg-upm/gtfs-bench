@@ -1,1 +1,0 @@
-<http://linkedgtfs.com/CITY/shape/{SHAPE_ID}> a gtfs:Shape ; gtfs:distanceTraveled {SHAPE_DIST_TRAVELED}^^xsd:decimal ; gtfs:pointSequence {SHAPE_PT_SEQUENCE}^^xsd:nonNegativeInteger ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {SHAPE_PT_LON}^^xsd:decimal ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {SHAPE_PT_LAT}^^xsd:decimal . 
