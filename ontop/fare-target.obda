@@ -1,1 +1,0 @@
-<http://linkedgtfs.com/CITY/fare/{FARE_ID}> a gtfs:Fare ; schema:price {PRICE}^^xsd:string ; gtfs:transferExpiryTime {TRANSFER_DURATION} ; schema:priceCurrency {CURRENCY_TYPE}^^xsd:string ; gtfs:paymentMethod gtfs:{PAY} ; gtfs:transfers gtfs:{TRANS} . 
