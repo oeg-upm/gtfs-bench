@@ -675,7 +675,7 @@
 
   rr:subjectMap [
     a rr:Subject;
-    rr:constant "http://linkedgtfs.com/CITY/feed";
+    rr:template "http://linkedgtfs.com/CITY/feed/{FEED_PUBLISHER_NAME}";
     rr:termType rr:IRI;
     rr:class gtfs:Feed;
   ];
