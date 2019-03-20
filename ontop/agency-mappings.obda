@@ -1,1 +1,0 @@
-<http://linkedgtfs.com/CITY/agency/{AGENCY_ID}> a gtfs:Agency ; foaf:phone {AGENCY_PHONE}^^xsd:string ; foaf:page {AGENCY_URL} ; foaf:name {AGENCY_NAME}^^xsd:string ; gtfs:fareUrl <{AGENCY_FARE_URL}> . 
