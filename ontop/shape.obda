@@ -1,0 +1,31 @@
+[PrefixDeclaration]
+:		http://vocab.gtfs.org/terms#
+cc:		http://creativecommons.org/ns#
+dct:		http://purl.org/dc/terms/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+dcat:		http://www.w3.org/ns/dcat#
+foaf:		http://xmlns.com/foaf/0.1/
+gtfs:		http://vocab.gtfs.org/terms#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+skos:		http://www.w3.org/2004/02/skos/core#
+vann:		http://purl.org/vocab/vann/
+schema:		http://schema.org/
+status:		http://www.w3.org/2003/06/sw-vocab-status/ns#
+transit:		http://vocab.org/transit/terms/
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:h2:tcp://localhost/./d1
+username	sa
+password	
+driverClass	org.h2.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	urn:mapping--shape
+target		<http://linkedgtfs.com/CITY/shape/{SHAPE_ID}> a gtfs:Shape ; gtfs:distanceTraveled {SHAPE_DIST_TRAVELED}^^xsd:decimal ; gtfs:pointSequence {SHAPE_PT_SEQUENCE}^^xsd:nonNegativeInteger ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {SHAPE_PT_LON}^^xsd:decimal ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {SHAPE_PT_LAT}^^xsd:decimal .  
+source		SELECT * FROM SHAPES
+]]
+
