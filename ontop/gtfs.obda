@@ -17,11 +17,12 @@ status:		http://www.w3.org/2003/06/sw-vocab-status/ns#
 transit:		http://vocab.org/transit/terms/
 
 [SourceDeclaration]
-sourceUri	datasource1
-connectionUrl	jdbc:h2:tcp://localhost/./d1
-username	sa
-password	
-driverClass	org.h2.Driver
+sourceUri       x
+connectionUrl   jdbc:mysql://localhost:3306/gtfs
+username        dchaves
+password        oeg2018
+driverClass     com.mysql.jdbc.Driver
+
 
 [MappingDeclaration] @collection [[
 mappingId	urn:mapping--557369682
