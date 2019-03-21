@@ -53,7 +53,6 @@ source		SELECT STOP_TIMES.*, (CASE PICKUP_TYPE
 mappingId	urn:mapping-join--1423973478
 target		<http://linkedgtfs.com/CITY/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}> gtfs:stop <http://linkedgtfs.com/CITY/stops/{STOP_ID}> . 
 source		SELECT * FROM (
-			
 			        SELECT STOP_TIMES.*, (CASE PICKUP_TYPE
 			            WHEN 0 THEN 'Regular'
 			            WHEN 1 THEN 'notAvailable'
