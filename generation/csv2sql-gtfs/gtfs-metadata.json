@@ -494,6 +494,7 @@
         ], 
         "@id": "https://iisg.amsterdam/stop_times.txt/column/pickup_type", 
         "name": "pickup_type", 
+        "default": 0,
         "dc:description": "pickup_type"
        }
       ]
