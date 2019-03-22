@@ -1,48 +1,48 @@
 prefixes:
-	rr: http://www.w3.org/ns/r2rml#
-	foaf: http://xmlns.com/foaf/0.1/
-	ex: http://example.com/
-	xsd: http://www.w3.org/2001/XMLSchema#
-	rdfs: http://www.w3.org/2000/01/rdf-schema#
-	dc: http://purl.org/dc/elements/1.1/
-	rev: http://purl.org/stuff/rev#
-	gtfs: http://vocab.gtfs.org/terms#
-	geo: http://www.w3.org/2003/01/geo/wgs84_pos#
-	schema: http://schema.org/
-	dct: http://purl.org/dc/terms/
-	rml: http://semweb.mmlab.be/ns/rml#
-	ql: http://semweb.mmlab.be/ns/ql#
+  rr: http://www.w3.org/ns/r2rml#
+  foaf: http://xmlns.com/foaf/0.1/
+  ex: http://example.com/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dc: http://purl.org/dc/elements/1.1/
+  rev: http://purl.org/stuff/rev#
+  gtfs: http://vocab.gtfs.org/terms#
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  schema: http://schema.org/
+  dct: http://purl.org/dc/terms/
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
 
 mappings:
-	stoptimes:
-		sources:
-			- [emt-gtfs/stop_times.csv~csv]
-		s: http://linkedgtfs.com/CITY/stoptimes/$(trip_id)-$(stop_id)-$(arrival_time)
-		po:
-			- [a, gtfs:StopTime]
-			- [gtfs:arrivalTime, $(arrival_time)]
-			- [gtfs:departureTime, $(departure_time)]
-			- [gtfs:stopSequence, $(stop_sequence)]
-			- [gtfs:headsign, $(stop_headsign)]
-			- [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)~iri]
-			- [gtfs:dropOffType, http://vocab.gtfs.org/terms#DropOffType=$(drop_off_type)~iri]
-			- [gtfs:distanceTraveled, $(shape_dist_traveled)]
-			- p: gtfs:trip
-			  o:
-			  	- mapping: trips
-			  	  condition:
-			  		 function: equal
-			  		 parameters:
-			  		   	- [str1, $(trip_id)]
-			  			  - [str2, $(trip_id)]
-			- p: gtfs:stop
-			  o:
-			  	- mapping: stops
-			  	  condition:
-			  		 function: equal
-			  		 parameters:
-			  			  - [str1, $(stop_id)]
-			  			  - [str2, $(stop_id)]
+  stoptimes:
+      sources:
+          - [emt-gtfs/stop_times.csv~csv]
+      s: http://linkedgtfs.com/CITY/stoptimes/$(trip_id)-$(stop_id)-$(arrival_time)
+      po:
+          - [a, gtfs:StopTime]
+          - [gtfs:arrivalTime, $(arrival_time)]
+          - [gtfs:departureTime, $(departure_time)]
+          - [gtfs:stopSequence, $(stop_sequence)]
+          - [gtfs:headsign, $(stop_headsign)]
+          - [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)]
+          - [gtfs:dropOffType, http://vocab.gtfs.org/terms#DropOffType=$(drop_off_type)]
+          - [gtfs:distanceTraveled, $(shape_dist_traveled)]
+          - p: gtfs:trip
+            o:
+              - mapping: trips
+                condition:
+                   function: equal
+                   parameters:
+                      - [str1, $(trip_id)]
+                      - [str2, $(trip_id)]
+          - p: gtfs:stop
+            o:
+              - mapping: stops
+                condition:
+                   function: equal
+                   parameters:
+                        - [str1, $(stop_id)]
+                        - [str2, $(stop_id)]
   trips:
     sources:
       - [emt-gtfs/trips.csv~csv]
@@ -151,7 +151,7 @@ mappings:
       - [a, gtfs:Fare]
       - [schema:price, $(price)]
       - [schema:priceCurrency,$(currency_type)]
-      - [gtfs:paymentMethod,http://vocab.gtfs.org/terms#PaymentMethod=$(payment_method)~iri]
+      - [gtfs:paymentMethod,http://vocab.gtfs.org/terms#PaymentMethod=$(payment_method)]
       - [gtfs:transfers,http://vocab.gtfs.org/terms#Transfers=$(transfers)]
       - [gtfs:transferExpiryTime,$(transfer_duration)]
   services:
@@ -235,10 +235,10 @@ mappings:
   transfers:
     sources:
       - [emt-gtfs/transfers.csv~csv]
-    s: http://linkedgtfs.com/CITY/transfer/$(from_stop_id)-$(to_stop_id)-$(transfer_type
+    s: http://linkedgtfs.com/CITY/transfer/$(from_stop_id)-$(to_stop_id)-$(transfer_type)
     po:
       - [a,gtfs:TransferRule]
-      - [gtfs:transferType,http://vocab.gtfs.org/terms#TransferType=$(transfer_type)~iri]
+      - [gtfs:transferType,http://vocab.gtfs.org/terms#TransferType=$(transfer_type)]
       - [gtfs:minimumTransferTime,$(min_transfer_time)]
       - p: gtfs:originStop
         o:
@@ -254,5 +254,5 @@ mappings:
             condition:
              function: equal
              parameters:
-                - [str1, $(tp_stop_id)]
+                - [str1, $(to_stop_id)]
                 - [str2, $(stop_id)]
