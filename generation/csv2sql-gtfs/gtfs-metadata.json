@@ -377,7 +377,7 @@
     }
   },
   {
-    "url": "gtfs/shapes",
+    "url": "gtfs/shapes.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "shape_id", 
