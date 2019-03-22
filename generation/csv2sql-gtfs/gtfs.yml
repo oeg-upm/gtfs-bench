@@ -173,7 +173,7 @@ mappings:
   shapes:    
     sources:
       - [gtfs/shapes.csv~csv]
-    s: http://linkedgtfs.com/CITY/shape/$(shape_id)
+    s: http://linkedgtfs.com/CITY/shape/$(shape_id)$(shape_pt_sequence)
     po:
       - [geo:lat,$(shape_pt_lat)]
       - [geo:long,$(shape_pt_lon)]
