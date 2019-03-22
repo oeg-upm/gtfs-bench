@@ -18,7 +18,7 @@
 
 :map_stoptimes_0 rml:logicalSource :source_0.
 :source_0 a rml:LogicalSource;
-    rml:source "emt-gtfs/stop_times.xml";
+    rml:source "gtfs/stop_times.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_stoptimes_0 a rr:TriplesMap;
@@ -112,7 +112,7 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rml:source "emt-gtfs/trips.xml";
+    rml:source "gtfs/trips.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_trips_0 a rr:TriplesMap;
@@ -194,7 +194,7 @@
 :pom_18 rr:objectMap :om_19.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rml:source "emt-gtfs/routes.xml";
+    rml:source "gtfs/routes.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_routes_0 a rr:TriplesMap;
@@ -282,7 +282,7 @@
 :pom_27 rr:objectMap :om_28.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rml:source "emt-gtfs/agency.xml";
+    rml:source "gtfs/agency.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_agency_0 a rr:TriplesMap;
@@ -355,7 +355,7 @@
     rr:termType rr:Literal.
 :map_stops_0 rml:logicalSource :source_4.
 :source_4 a rml:LogicalSource;
-    rml:source "emt-gtfs/stops.xml";
+    rml:source "gtfs/stops.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_stops_0 a rr:TriplesMap;
@@ -473,7 +473,7 @@
     rr:termType rr:Literal.
 :map_services_dates_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rml:source "emt-gtfs/calendar_dates.xml";
+    rml:source "gtfs/calendar_dates.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_services_dates_0 a rr:TriplesMap;
@@ -519,7 +519,7 @@
     rr:termType rr:Literal.
 :map_fares_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rml:source "emt-gtfs/fare_attributes.xml";
+    rml:source "gtfs/fare_attributes.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_fares_0 a rr:TriplesMap;
@@ -583,7 +583,7 @@
     rr:termType rr:Literal.
 :map_services_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rml:source "emt-gtfs/calendar.xml";
+    rml:source "gtfs/calendar.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_services_0 a rr:TriplesMap;
@@ -683,7 +683,7 @@
     rr:termType rr:Literal.
 :map_feed_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rml:source "emt-gtfs/feed_info.xml";
+    rml:source "gtfs/feed_info.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_feed_0 a rr:TriplesMap;
@@ -747,7 +747,7 @@
     rr:termType rr:Literal.
 :map_shapes_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rml:source "emt-gtfs/shapes.xml";
+    rml:source "gtfs/shapes.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_shapes_0 a rr:TriplesMap;
@@ -793,7 +793,7 @@
     rr:termType rr:Literal.
 :map_farerules_0 rml:logicalSource :source_10.
 :source_10 a rml:LogicalSource;
-    rml:source "emt-gtfs/fare_rules.xml";
+    rml:source "gtfs/fare_rules.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_farerules_0 a rr:TriplesMap;
@@ -851,7 +851,7 @@
 :pom_82 rr:objectMap :om_83.
 :map_frequencies_0 rml:logicalSource :source_11.
 :source_11 a rml:LogicalSource;
-    rml:source "emt-gtfs/frequencies.xml";
+    rml:source "gtfs/frequencies.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_frequencies_0 a rr:TriplesMap;
@@ -912,7 +912,7 @@
 :pom_88 rr:objectMap :om_89.
 :map_transfers_0 rml:logicalSource :source_12.
 :source_12 a rml:LogicalSource;
-    rml:source "emt-gtfs/transfers.xml";
+    rml:source "gtfs/transfers.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_transfers_0 a rr:TriplesMap;

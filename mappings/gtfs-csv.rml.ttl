@@ -18,7 +18,7 @@
 
 :map_stoptimes_0 rml:logicalSource :source_0.
 :source_0 a rml:LogicalSource;
-    rml:source "emt-gtfs/stop_times.csv";
+    rml:source "gtfs/stop_times.csv";
     rml:referenceFormulation ql:CSV.
 :map_stoptimes_0 a rr:TriplesMap;
     rdfs:label "stoptimes".
@@ -111,7 +111,7 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rml:source "emt-gtfs/trips.csv";
+    rml:source "gtfs/trips.csv";
     rml:referenceFormulation ql:CSV.
 :map_trips_0 a rr:TriplesMap;
     rdfs:label "trips".
@@ -192,7 +192,7 @@
 :pom_18 rr:objectMap :om_19.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rml:source "emt-gtfs/routes.csv";
+    rml:source "gtfs/routes.csv";
     rml:referenceFormulation ql:CSV.
 :map_routes_0 a rr:TriplesMap;
     rdfs:label "routes".
@@ -279,7 +279,7 @@
 :pom_27 rr:objectMap :om_28.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rml:source "emt-gtfs/agency.csv";
+    rml:source "gtfs/agency.csv";
     rml:referenceFormulation ql:CSV.
 :map_agency_0 a rr:TriplesMap;
     rdfs:label "agency".
@@ -351,7 +351,7 @@
     rr:termType rr:Literal.
 :map_stops_0 rml:logicalSource :source_4.
 :source_4 a rml:LogicalSource;
-    rml:source "emt-gtfs/stops.csv";
+    rml:source "gtfs/stops.csv";
     rml:referenceFormulation ql:CSV.
 :map_stops_0 a rr:TriplesMap;
     rdfs:label "stops".
@@ -468,7 +468,7 @@
     rr:termType rr:Literal.
 :map_services_dates_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rml:source "emt-gtfs/calendar_dates.csv";
+    rml:source "gtfs/calendar_dates.csv";
     rml:referenceFormulation ql:CSV.
 :map_services_dates_0 a rr:TriplesMap;
     rdfs:label "services_dates".
@@ -513,7 +513,7 @@
     rr:termType rr:Literal.
 :map_fares_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rml:source "emt-gtfs/fare_attributes.csv";
+    rml:source "gtfs/fare_attributes.csv";
     rml:referenceFormulation ql:CSV.
 :map_fares_0 a rr:TriplesMap;
     rdfs:label "fares".
@@ -576,7 +576,7 @@
     rr:termType rr:Literal.
 :map_services_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rml:source "emt-gtfs/calendar.csv";
+    rml:source "gtfs/calendar.csv";
     rml:referenceFormulation ql:CSV.
 :map_services_0 a rr:TriplesMap;
     rdfs:label "services".
@@ -675,7 +675,7 @@
     rr:termType rr:Literal.
 :map_feed_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rml:source "emt-gtfs/feed_info.csv";
+    rml:source "gtfs/feed_info.csv";
     rml:referenceFormulation ql:CSV.
 :map_feed_0 a rr:TriplesMap;
     rdfs:label "feed".
@@ -738,7 +738,7 @@
     rr:termType rr:Literal.
 :map_shapes_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rml:source "emt-gtfs/shapes.csv";
+    rml:source "gtfs/shapes.csv";
     rml:referenceFormulation ql:CSV.
 :map_shapes_0 a rr:TriplesMap;
     rdfs:label "shapes".
@@ -783,7 +783,7 @@
     rr:termType rr:Literal.
 :map_farerules_0 rml:logicalSource :source_10.
 :source_10 a rml:LogicalSource;
-    rml:source "emt-gtfs/fare_rules.csv";
+    rml:source "gtfs/fare_rules.csv";
     rml:referenceFormulation ql:CSV.
 :map_farerules_0 a rr:TriplesMap;
     rdfs:label "farerules".
@@ -840,7 +840,7 @@
 :pom_82 rr:objectMap :om_83.
 :map_frequencies_0 rml:logicalSource :source_11.
 :source_11 a rml:LogicalSource;
-    rml:source "emt-gtfs/frequencies.csv";
+    rml:source "gtfs/frequencies.csv";
     rml:referenceFormulation ql:CSV.
 :map_frequencies_0 a rr:TriplesMap;
     rdfs:label "frequencies".
@@ -900,7 +900,7 @@
 :pom_88 rr:objectMap :om_89.
 :map_transfers_0 rml:logicalSource :source_12.
 :source_12 a rml:LogicalSource;
-    rml:source "emt-gtfs/transfers.csv";
+    rml:source "gtfs/transfers.csv";
     rml:referenceFormulation ql:CSV.
 :map_transfers_0 a rr:TriplesMap;
     rdfs:label "transfers".
