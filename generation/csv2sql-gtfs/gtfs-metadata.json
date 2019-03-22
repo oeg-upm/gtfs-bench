@@ -426,7 +426,7 @@
     }
   },
   {
-    "url": "gtfs/stop_times",
+    "url": "gtfs/stop_times.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "trip_id", 
