@@ -150,7 +150,7 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "start_date"
@@ -163,7 +163,7 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "end_date"
@@ -195,7 +195,7 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "date"
