@@ -55,7 +55,7 @@ mappings:
       - [gtfs:direction, $(direction_id)]
       - [gtfs:block, $(block_id)]
       - [gtfs:wheelchairAccessible, $(wheelchair_accessible)]
-      - [gtfs:shape, http://linkedgtfs.com/CITY/shape/$(shape_id)~iri] 
+      - [gtfs:shape, http://linkedgtfs.com/CITY/shape/$(shape_id)] 
       - p: gtfs:service
         o:
           - mapping: services
