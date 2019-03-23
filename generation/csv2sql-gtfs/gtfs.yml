@@ -54,16 +54,11 @@ mappings:
       - [gtfs:shortName, $(trip_short_name)]
       - [gtfs:direction, $(direction_id)]
       - [gtfs:block, $(block_id)]
-      - [gtfs:wheelchairAccessible, $(wheelchair_accesible)]
+      - [gtfs:wheelchairAccessible, $(wheelchair_accessible)]
+      - [gtfs:shape, http://linkedgtfs.com/CITY/shape/$(shape_id)~iri] 
       - p: gtfs:service
         o:
           - mapping: services
-            condition:
-              function: equal
-              parameters:
-                - [str1, $(service_id)]
-                - [str2, $(service_id)]
-          - mapping: services_dates
             condition:
               function: equal
               parameters:
@@ -77,14 +72,6 @@ mappings:
               parameters:
                 - [str1, $(route_id)]
                 - [str2, $(route_id)]
-      - p: gtfs:shape
-        o:
-          - mapping: shapes
-            condition:
-              function: equal
-              parameters:
-                - [str1, $(shape_id)]
-                - [str2, $(shape_id)]
   routes:
     sources:
       - [gtfs/routes.csv~csv]
@@ -97,7 +84,7 @@ mappings:
       - [gtfs:routeType, http://vocab.gtfs.org/terms#RouteType=$(route_type)]
       - [gtfs:routeUrl, $(route_url)]
       - [gtfs:color, $(route_color)]
-      - [gtfs:textColor, $(gtfs:textColor)]
+      - [gtfs:textColor, $(route_text_color)]
       - p: gtfs:agency
         o:
           - mapping: agency
@@ -128,7 +115,7 @@ mappings:
       - [foaf:name,$(stop_name)]
       - [dct:description,$(stop_desc)]
       - [geo:lat,$(stop_lat)]
-      - [geo:long,$(stop_long)]
+      - [geo:long,$(stop_lon)]
       - [gtfs:zone,$(zone_id)]
       - [foaf:page,$(stop_url)]
       - [gtfs:locationType,$(location_type)]
@@ -141,9 +128,16 @@ mappings:
     s: http://linkedgtfs.com/CITY/services_dates/$(service_id)-$(date)
     po:
       - [a, gtfs:ServiceDates]
-      - [gtfs:service, $(service_id)]
       - [dct:date, $(date)]
-      - [gtfs:dateAddition, $(exeception_type)]
+      - [gtfs:dateAddition, $(exception_type)]
+      - p: gtfs:service
+        o:
+          - mapping: services
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(service_id)]
+                - [str2, $(service_id)]
   services:
     sources:
       - [gtfs/calendar.csv~csv]
@@ -165,20 +159,11 @@ mappings:
     s: http://linkedgtfs.com/CITY/feed/$(feed_publisher_name)
     po:
       - [dct:publisher,$(feed_publisher_name)]
-      - [foaf:page,$(feed_published_url)]
+      - [foaf:page,$(feed_publisher_url)]
       - [dct:language,$(feed_lang)]
       - [schema:startDate,$(feed_start_date)]
       - [schema:endDate,$(feed_end_date)]
       - [schema:version,$(feed_version)]
-  shapes:    
-    sources:
-      - [gtfs/shapes.csv~csv]
-    s: http://linkedgtfs.com/CITY/shape/$(shape_id)$(shape_pt_sequence)
-    po:
-      - [geo:lat,$(shape_pt_lat)]
-      - [geo:long,$(shape_pt_lon)]
-      - [gtfs:pointSequence,$(shape_pt_sequence)]
-      - [gtfs:distanceTraveled,$(shape_dist_traveled)]
   frequencies:
     sources:
       - [gtfs/frequencies.csv~csv]
@@ -197,3 +182,12 @@ mappings:
               parameters:
                 - [str1, $(trip_id)]
                 - [str2, $(trip_id)]
+  shapes:    
+    sources:
+      - [gtfs/shapes.csv~csv]
+    s: http://linkedgtfs.com/CITY/shape/$(shape_id)$(shape_pt_sequence)
+    po:
+      - [geo:lat,$(shape_pt_lat)]
+      - [geo:long,$(shape_pt_lon)]
+      - [gtfs:pointSequence,$(shape_pt_sequence)]
+      - [gtfs:distanceTraveled,$(shape_dist)]
