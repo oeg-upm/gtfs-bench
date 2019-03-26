@@ -1,0 +1,102 @@
+[PrefixDeclaration]
+:		http://vocab.gtfs.org/terms#
+cc:		http://creativecommons.org/ns#
+dct:		http://purl.org/dc/terms/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+dcat:		http://www.w3.org/ns/dcat#
+foaf:		http://xmlns.com/foaf/0.1/
+gtfs:		http://vocab.gtfs.org/terms#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+skos:		http://www.w3.org/2004/02/skos/core#
+vann:		http://purl.org/vocab/vann/
+schema:		http://schema.org/
+status:		http://www.w3.org/2003/06/sw-vocab-status/ns#
+transit:	http://vocab.org/transit/terms/
+
+[SourceDeclaration]
+sourceUri       x
+connectionUrl   jdbc:mysql://localhost:3306/gtfs
+username        user
+password        password
+driverClass     com.mysql.jdbc.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	urn:mapping--2008391681
+target		<http://linkedgtfs.com/CITY/agency/{AGENCY_ID}> a gtfs:Agency ; dct:language {AGENCY_LANG} . 
+source		SELECT * FROM "AGENCY"
+
+mappingId	urn:mapping-1467324930
+target		<http://linkedgtfs.com/CITY/agency/{AGENCY_ID}> a gtfs:Agency ; foaf:page {AGENCY_URL} ; foaf:name {AGENCY_NAME} ; gtfs:fareUrl {AGENCY_FARE_URL} ; dct:language {AGENCY_LANG} ; gtfs:timeZone {AGENCY_TIMEZONE} ; foaf:phone {AGENCY_PHONE} . 
+source		SELECT * FROM "AGENCY"
+
+mappingId	urn:mapping-837698136
+target		<http://linkedgtfs.com/CITY/services_dates/{SERVICE_ID}-{DATE}> a gtfs:ServiceDates ; gtfs:dateAddition {EXCEPTION_TYPE} ; dct:date {DATE} . 
+source		SELECT * FROM "CALENDAR_DATES"
+
+mappingId	urn:mapping-join-193391182
+target		<http://linkedgtfs.com/CITY/services_dates/{SERVICE_ID}-{DATE}> gtfs:service <http://linkedgtfs.com/CITY/service/{SERVICE_ID}> . 
+source		SELECT * FROM (SELECT * FROM "CALENDAR_DATES") AS child, (SELECT * FROM "CALENDAR") AS parent WHERE child.SERVICE_ID=parent.SERVICE_ID
+
+mappingId	urn:mapping--2062991828
+target		<http://linkedgtfs.com/CITY/agency/{AGENCY_ID}> a gtfs:Agency ; dct:language {AGENCY_LANG} ; gtfs:fareUrl {AGENCY_FARE_URL} ; foaf:phone {AGENCY_PHONE} ; foaf:page {AGENCY_URL} ; foaf:name {AGENCY_NAME} ; gtfs:timeZone {AGENCY_TIMEZONE} . 
+source		SELECT * FROM "AGENCY"
+
+mappingId	urn:mapping-1360712634
+target		<http://linkedgtfs.com/CITY/stops/{STOP_ID}> a gtfs:Stop ; dct:description {STOP_DESC} ; foaf:page {STOP_URL} ; gtfs:locationType {LOCATION_TYPE} ; gtfs:zone {ZONE_ID} ; gtfs:weelchairAccessible {WHEELCHAIR_BOARDING} ; foaf:name {STOP_NAME} ; gtfs:parentStation {PARENT_STATION} ; gtfs:timeZone {STOP_TIMEZONE} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {STOP_LAT} ; gtfs:code {STOP_CODE} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {STOP_LON} . 
+source		SELECT * FROM "STOPS"
+
+mappingId	urn:mapping--251641790
+target		<http://linkedgtfs.com/CITY/shape/{SHAPE_ID}{SHAPE_PT_SEQUENCE}> gtfs:distanceTraveled {SHAPE_DIST} ; gtfs:pointSequence {SHAPE_PT_SEQUENCE} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {SHAPE_PT_LAT} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {SHAPE_PT_LON} . 
+source		SELECT * FROM "SHAPES"
+
+mappingId	urn:mapping-1340462681
+target		<http://linkedgtfs.com/CITY/routes/{ROUTE_ID}> a gtfs:Route ; gtfs:longName {ROUTE_LONG_NAME} ; gtfs:routeUrl {ROUTE_URL} ; dct:description {ROUTE_DESC} ; gtfs:shortName {ROUTE_SHORT_NAME} ; gtfs:color {ROUTE_COLOR} ; gtfs:textColor {ROUTE_TEXT_COLOR} ; gtfs:routeType gtfs:RouteType={ROUTE_TYPE} . 
+source		SELECT * FROM "ROUTES"
+
+mappingId	urn:mapping-join-1446871666
+target		<http://linkedgtfs.com/CITY/routes/{ROUTE_ID}> gtfs:agency <http://linkedgtfs.com/CITY/agency/{AGENCY_ID}> . 
+source		SELECT * FROM (SELECT * FROM "ROUTES") AS child, (SELECT * FROM "AGENCY") AS parent WHERE child.AGENCY_ID=parent.AGENCY_ID
+
+mappingId	urn:mapping--1873679759
+target		<http://linkedgtfs.com/CITY/frequency/{TRIP_ID}-{START_TIME}> a gtfs:Frequency ; gtfs:exactTimes {EXACT_TIMES} ; gtfs:headwaySeconds {HEADWAY_SECS} ; gtfs:startTime {START_TIME} ; gtfs:endTime {END_TIME} . 
+source		SELECT * FROM "FREQUENCIES"
+
+mappingId	urn:mapping-join-259622264
+target		<http://linkedgtfs.com/CITY/frequency/{TRIP_ID}-{START_TIME}> gtfs:trip <http://linkedgtfs.com/CITY/trips/{TRIP_ID}> . 
+source		SELECT * FROM (SELECT * FROM "FREQUENCIES") AS child, (SELECT * FROM "TRIPS") AS parent WHERE child.TRIP_ID=parent.TRIP_ID
+
+mappingId	urn:mapping-1306431078
+target		<http://linkedgtfs.com/CITY/service/{SERVICE_ID}> a gtfs:Service ; gtfs:sunday {SUNDAY} ; gtfs:saturday {SATURDAY} ; schema:startDate {START_DATE} ; gtfs:monday {MONDAY} ; gtfs:thursday {THURSDAY} ; gtfs:friday {FRIDAY} ; schema:endDate {END_DATE} ; gtfs:tuesday {TUESDAY} ; gtfs:wednesday {WEDNESDAY} . 
+source		SELECT * FROM "CALENDAR"
+
+mappingId	urn:mapping-2124815343
+target		<http://linkedgtfs.com/CITY/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}> a gtfs:StopTime ; gtfs:headsign {STOP_HEADSIGN} ; gtfs:pickupType gtfs:PickupType={PICKUP_TYPE} ; gtfs:dropOffType gtfs:DropOffType={DROP_OFF_TYPE} ; gtfs:stopSequence {STOP_SEQUENCE} ; gtfs:distanceTraveled {SHAPE_DIST_TRAVELED} ; gtfs:departureTime {DEPARTURE_TIME} ; gtfs:arrivalTime {ARRIVAL_TIME} . 
+source		SELECT * FROM "STOP_TIMES"
+
+mappingId	urn:mapping-join--811827277
+target		<http://linkedgtfs.com/CITY/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}> gtfs:stop <http://linkedgtfs.com/CITY/stops/{STOP_ID}> . 
+source		SELECT * FROM (SELECT * FROM "STOP_TIMES") AS child, (SELECT * FROM "STOPS") AS parent WHERE child.STOP_ID=parent.STOP_ID
+
+mappingId	urn:mapping-join-699620164
+target		<http://linkedgtfs.com/CITY/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}> gtfs:trip <http://linkedgtfs.com/CITY/trips/{TRIP_ID}> . 
+source		SELECT * FROM (SELECT * FROM "STOP_TIMES") AS child, (SELECT * FROM "TRIPS") AS parent WHERE child.TRIP_ID=parent.TRIP_ID
+
+mappingId	urn:mapping-1831461571
+target		<http://linkedgtfs.com/CITY/feed/{FEED_PUBLISHER_NAME}> schema:endDate {FEED_END_DATE} ; dct:publisher {FEED_PUBLISHER_NAME} ; schema:startDate {FEED_START_DATE} ; foaf:page {FEED_PUBLISHER_URL} ; schema:version {FEED_VERSION} ; dct:language {FEED_LANG} . 
+source		SELECT * FROM "FEED_INFO"
+
+mappingId	urn:mapping-1812971195
+target		<http://linkedgtfs.com/CITY/trips/{TRIP_ID}> a gtfs:Trip ; gtfs:block {BLOCK_ID} ; gtfs:direction {DIRECTION_ID} ; gtfs:headsign {TRIP_HEADSIGN} ; gtfs:shape <http://linkedgtfs.com/CITY/shape/{SHAPE_ID}> ; gtfs:wheelchairAccessible {WHEELCHAIR_ACCESSIBLE} ; gtfs:shortName {TRIP_SHORT_NAME} . 
+source		SELECT * FROM "TRIPS"
+
+mappingId	urn:mapping-join-1731015576
+target		<http://linkedgtfs.com/CITY/trips/{TRIP_ID}> gtfs:service <http://linkedgtfs.com/CITY/service/{SERVICE_ID}> . 
+source		SELECT * FROM (SELECT * FROM "TRIPS") AS child, (SELECT * FROM "CALENDAR") AS parent WHERE child.SERVICE_ID=parent.SERVICE_ID
+
+mappingId	urn:mapping-join--120043185
+target		<http://linkedgtfs.com/CITY/trips/{TRIP_ID}> gtfs:route <http://linkedgtfs.com/CITY/routes/{ROUTE_ID}> . 
+source		SELECT * FROM (SELECT * FROM "TRIPS") AS child, (SELECT * FROM "ROUTES") AS parent WHERE child.ROUTE_ID=parent.ROUTE_ID
+]]
