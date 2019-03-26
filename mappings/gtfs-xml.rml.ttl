@@ -18,7 +18,7 @@
 
 :map_stoptimes_0 rml:logicalSource :source_0.
 :source_0 a rml:LogicalSource;
-    rml:source "gtfs/stop_times.xml";
+    rml:source "gtfs/STOP_TIMES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_stoptimes_0 a rr:TriplesMap;
@@ -112,7 +112,7 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rml:source "gtfs/trips.xml";
+    rml:source "gtfs/TRIPS.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_trips_0 a rr:TriplesMap;
@@ -194,7 +194,7 @@
 :pom_18 rr:objectMap :om_18.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rml:source "gtfs/routes.xml";
+    rml:source "gtfs/ROUTES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_routes_0 a rr:TriplesMap;
@@ -282,7 +282,7 @@
 :pom_27 rr:objectMap :om_27.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rml:source "gtfs/agency.xml";
+    rml:source "gtfs/AGENCY.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_agency_0 a rr:TriplesMap;
@@ -355,7 +355,7 @@
     rr:termType rr:Literal.
 :map_stops_0 rml:logicalSource :source_4.
 :source_4 a rml:LogicalSource;
-    rml:source "gtfs/stops.xml";
+    rml:source "gtfs/STOPS.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_stops_0 a rr:TriplesMap;
@@ -473,7 +473,7 @@
     rr:termType rr:Literal.
 :map_services_dates_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rml:source "gtfs/calendar_dates.xml";
+    rml:source "gtfs/CALENDAR_DATES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_services_dates_0 a rr:TriplesMap;
@@ -516,7 +516,7 @@
 :pom_50 rr:objectMap :om_50.
 :map_services_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rml:source "gtfs/calendar.xml";
+    rml:source "gtfs/CALENDAR.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_services_0 a rr:TriplesMap;
@@ -616,7 +616,7 @@
     rr:termType rr:Literal.
 :map_feed_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rml:source "gtfs/feed_info.xml";
+    rml:source "gtfs/FEED_INFO.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_feed_0 a rr:TriplesMap;
@@ -680,7 +680,7 @@
     rr:termType rr:Literal.
 :map_frequencies_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rml:source "gtfs/frequencies.xml";
+    rml:source "gtfs/FREQUENCIES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_frequencies_0 a rr:TriplesMap;
@@ -741,7 +741,7 @@
 :pom_72 rr:objectMap :om_72.
 :map_shapes_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rml:source "gtfs/shapes.xml";
+    rml:source "gtfs/SHAPES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 :map_shapes_0 a rr:TriplesMap;

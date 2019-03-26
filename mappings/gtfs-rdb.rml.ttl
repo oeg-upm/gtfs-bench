@@ -18,7 +18,7 @@
 
 :map_stoptimes_0 rml:logicalSource :source_0.
 :source_0 a rml:LogicalSource;
-    rr:tableName "stop_times.json";
+    rr:tableName "STOP_TIMES";
     rml:source :DB_source .
 :map_stoptimes_0 a rr:TriplesMap;
     rdfs:label "stoptimes".
@@ -111,7 +111,7 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rr:tableName "trips.json";
+    rr:tableName "TRIPS";
     rml:source :DB_source .
 :map_trips_0 a rr:TriplesMap;
     rdfs:label "trips".
@@ -192,7 +192,7 @@
 :pom_18 rr:objectMap :om_18.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rr:tableName "routes.json";
+    rr:tableName "ROUTES";
     rml:source :DB_source .
 :map_routes_0 a rr:TriplesMap;
     rdfs:label "routes".
@@ -279,9 +279,9 @@
 :pom_27 rr:objectMap :om_27.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rr:tableName "agency.json";
-rml:source :DB_source .
-	:map_agency_0 a rr:TriplesMap;
+    rr:tableName "AGENCY";
+    rml:source :DB_source .
+:map_agency_0 a rr:TriplesMap;
     rdfs:label "agency".
 :s_3 a rr:SubjectMap.
 :map_agency_0 rr:subjectMap :s_3.
@@ -351,7 +351,7 @@ rml:source :DB_source .
     rr:termType rr:Literal.
 :map_stops_0 rml:logicalSource :source_4.
 :source_4 a rml:LogicalSource;
-    rr:tableName "stops.json";
+    rr:tableName "STOPS";
     rml:source :DB_source .
 :map_stops_0 a rr:TriplesMap;
     rdfs:label "stops".
@@ -468,7 +468,7 @@ rml:source :DB_source .
     rr:termType rr:Literal.
 :map_services_dates_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rr:tableName "calendar_dates.json";
+    rr:tableName "CALENDAR_DATES";
     rml:source :DB_source .
 :map_services_dates_0 a rr:TriplesMap;
     rdfs:label "services_dates".
@@ -510,7 +510,7 @@ rml:source :DB_source .
 :pom_50 rr:objectMap :om_50.
 :map_services_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rr:tableName "calendar.json";
+    rr:tableName "CALENDAR";
     rml:source :DB_source .
 :map_services_0 a rr:TriplesMap;
     rdfs:label "services".
@@ -609,7 +609,7 @@ rml:source :DB_source .
     rr:termType rr:Literal.
 :map_feed_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rr:tableName "feed_info.json";
+    rr:tableName "FEED_INFO";
     rml:source :DB_source .
 :map_feed_0 a rr:TriplesMap;
     rdfs:label "feed".
@@ -672,7 +672,7 @@ rml:source :DB_source .
     rr:termType rr:Literal.
 :map_frequencies_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rr:tableName "frequencies.json";
+    rr:tableName "FREQUENCIES";
     rml:source :DB_source .
 :map_frequencies_0 a rr:TriplesMap;
     rdfs:label "frequencies".
@@ -732,7 +732,7 @@ rml:source :DB_source .
 :pom_72 rr:objectMap :om_72.
 :map_shapes_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rr:tableName "shapes.json";
+    rr:tableName "SHAPES";
     rml:source :DB_source .
 :map_shapes_0 a rr:TriplesMap;
     rdfs:label "shapes".
