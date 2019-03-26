@@ -180,9 +180,6 @@
 :pom_16 rr:predicateMap :pm_16.
 :pm_16 rr:constant gtfs:shape.
 :pom_16 rr:objectMap :om_16.
-:om_16 a rr:ObjectMap;
-    rr:template "http://linkedgtfs.com/CITY/shape/{shape_id}";
-    rr:termType rr:Literal.
 :pom_17 a rr:PredicateObjectMap.
 :map_trips_0 rr:predicateObjectMap :pom_17.
 :pm_17 a rr:PredicateMap.
@@ -798,28 +795,33 @@
     rr:joinCondition :jc_1.
 :jc_1 rr:child "stop_id";
     rr:parent "stop_id".
+:om_16 a rr:ObjectMap;
+    rr:parentTriplesMap :map_shapes_0;
+    rr:joinCondition :jc_2.
+:jc_2 rr:child "shape_id";
+    rr:parent "shape_id".
 :om_17 a rr:ObjectMap;
     rr:parentTriplesMap :map_services_0;
-    rr:joinCondition :jc_2.
-:jc_2 rr:child "service_id";
+    rr:joinCondition :jc_3.
+:jc_3 rr:child "service_id";
     rr:parent "service_id".
 :om_18 a rr:ObjectMap;
     rr:parentTriplesMap :map_routes_0;
-    rr:joinCondition :jc_3.
-:jc_3 rr:child "route_id";
+    rr:joinCondition :jc_4.
+:jc_4 rr:child "route_id";
     rr:parent "route_id".
 :om_27 a rr:ObjectMap;
     rr:parentTriplesMap :map_agency_0;
-    rr:joinCondition :jc_4.
-:jc_4 rr:child "agency_id";
+    rr:joinCondition :jc_5.
+:jc_5 rr:child "agency_id";
     rr:parent "agency_id".
 :om_50 a rr:ObjectMap;
     rr:parentTriplesMap :map_services_0;
-    rr:joinCondition :jc_5.
-:jc_5 rr:child "service_id";
+    rr:joinCondition :jc_6.
+:jc_6 rr:child "service_id";
     rr:parent "service_id".
 :om_72 a rr:ObjectMap;
     rr:parentTriplesMap :map_trips_0;
-    rr:joinCondition :jc_6.
-:jc_6 rr:child "trip_id";
+    rr:joinCondition :jc_7.
+:jc_7 rr:child "trip_id";
     rr:parent "trip_id".
