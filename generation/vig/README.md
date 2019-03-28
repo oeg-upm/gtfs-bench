@@ -1,4 +1,4 @@
-# GTFS Generation at scale for Evaluating KG Construction
+# GTFS Generation at scale for DiversiBench
 
 ## Using VIG (v1.8.0) to scale the GTFS dataset:
 VIG webpage: http://ontop.github.io/vig/.
