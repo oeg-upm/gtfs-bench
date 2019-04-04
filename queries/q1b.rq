@@ -1,4 +1,4 @@
-#Q3D: List all stops within certain distance from a particular position
+#Q1B: List all stops within certain distance from a particular position
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>

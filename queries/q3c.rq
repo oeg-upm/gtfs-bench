@@ -1,4 +1,4 @@
-#Q3B: Given the current time at a particular stop, list all vehicles in a particular direction in the few minutes
+#Q3B: Given a particular stop, list the comming vehicles in a particular direction
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
