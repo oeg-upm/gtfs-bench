@@ -33,4 +33,6 @@ SELECT * WHERE {
 	?stop geo:long ?stopLong . 
 	?stop gtfs:wheelchairAccessible ?stopWhelchairAccessible . 
 
+	FILTER (?stopWhelchairAccessible =  "true"^^xsd:boolean) .
+
 }
