@@ -17,5 +17,5 @@ SELECT * WHERE {
 	%STOPID dct:description ?stopDescription . 
 	%STOPID geo:lat ?stopLat . 
 	%STOPID geo:long ?stopLong . 
-	OPTIONAL { ?stop gtfs:wheelchairAccessible ?stopWhelchairAccessible .  }
+	OPTIONAL { %STOPID gtfs:wheelchairAccessible ?stopWhelchairAccessible .  }
 }
