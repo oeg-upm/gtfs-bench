@@ -1,4 +1,6 @@
-#Q3B: Given a particular stop, list the comming vehicles in a particular direction
+#Q3C: Given a particular stop, get the list of arrival times of vehicles going a particular direction
+#%HEADSIGN "OPERA"
+#%STOPID <http://linkedgtfs.com/CITY/stops/par_4_238>
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -13,19 +15,19 @@ PREFIX schema: <http://schema.org/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT * WHERE {
-	?trip a gtfs:Trip .
-	?trip gtfs:shortName ?tripShortName .
-	?trip gtfs:service ?service .
-	?trip gtfs:route ?route .
-	?trip gtfs:headsign %HEADSIGN .
 
-	?stopTime a gtfs:StopTime . 
-	?stopTime gtfs:trip ?trip . 
-	?stopTime gtfs:stop ?stop . 
-	?stopTime gtfs:arrivalTime ?arrivalTime . 
+        ?stopTime a gtfs:StopTime .
+        ?stopTime gtfs:trip ?trip .
+        ?stopTime gtfs:stop %STOPID .
+        ?stopTime gtfs:arrivalTime ?arrivalTime .
 
-	%STOPID a gtfs:Stop . 
-	%STOPID dct:description ?stopDescription . 
+        ?trip a gtfs:Trip .
+        ?trip gtfs:shortName ?tripShortName .
+        ?trip gtfs:service ?service .
+        ?trip gtfs:route ?route .
+        ?trip gtfs:headsign %HEADSIGN .
 
-	FILTER (?arrivalTime - ?arrivalTime < %D)
+        %STOPID a gtfs:Stop .
+        %STOPID dct:description ?stopDescription .
+
 }

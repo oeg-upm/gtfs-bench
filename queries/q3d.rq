@@ -1,4 +1,4 @@
-#Q3D: Count the number of services offered by a particular route in a particular interval
+#Q3D: count services offered by a particular route in a particular interval
 
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
@@ -13,7 +13,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX schema: <http://schema.org/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
-SELECT * WHERE {
+SELECT (count(distinct ?service) as ?count)  WHERE {
 	%ROUTEID a gtfs:Route .
 	%ROUTEID gtfs:shortName ?routeShortName .
 	%ROUTEID dct:description ?routeDescription .
@@ -23,10 +23,13 @@ SELECT * WHERE {
 	?trip gtfs:service ?service .
 	?trip gtfs:route %ROUTEID .
 
+	?service a gtfs:Service .
+
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
 	?stopTime gtfs:stop ?stop . 
-	?stopTime gtfs:gtfs:departureTime ?departureTime . 
+	?stopTime gtfs:departureTime ?departureTime . 
 
-	FILTER (?departureTime > %STARTDATE && ?departureTime < %ENDTIME ) .
+	FILTER (?departureTime > %STARTDATE) .
+	FILTER (?departureTime < %ENDTIME ) .
 }
