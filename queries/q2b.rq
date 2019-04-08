@@ -1,4 +1,4 @@
-#Q2B: Find which trips are served served on a Christmas day.
+#Q2B: Find which services are served on a Christmas day.
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -13,15 +13,14 @@ PREFIX schema: <http://schema.org/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT * WHERE {
-        ?trip a gtfs:Trip .
-        ?trip gtfs:shortName ?tripShortName .
-        ?trip gtfs:service ?service .
+	?serviceDates a gtfs:ServiceDates .
+	?serviceDates gtfs:service ?service .
+	?serviceDates dct:date "2017-12-25" .
+	?serviceDates gtfs:dateAddition "1" .
 
-        ?serviceDates a gtfs:ServiceDates .
-        ?serviceDates gtfs:service ?service .
-        ?serviceDates dct:date "2017-12-25" .
-        ?serviceDates gtfs:dateAddition "1" .
-
-        ?service a gtfs:Service .
+	?service a gtfs:Service .
+	?service schema:startDate ?startDate .
+	FILTER (?startDate < "2017-12-25")
 }
+
 
