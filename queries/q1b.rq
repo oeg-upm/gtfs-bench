@@ -19,6 +19,10 @@ SELECT * WHERE {
 	?stop geo:long ?stopLong . 
 	?stop gtfs:wheelchairAccessible ?stopWhelchairAccessible . 
 
-	FILTER (abs(?stopLat - %INPUTLAT) < %D) .
-	FILTER (abs(?stopLong - %INPUTLONG) < %D) .
+	FILTER (?stopLat > %INPUTLATMIN) .
+	FILTER (?stopLat < %INPUTLATMAX) .
+
+	FILTER (?stopLong > %INPUTLONGMIN) .
+	FILTER (?stopLong < %INPUTLONGMAX) .
+
 }
