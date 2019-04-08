@@ -24,7 +24,7 @@ SELECT * WHERE {
 
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
-	?stopTime gtst:stop ?stop . 
+	?stopTime gtfs:stop %STOPID . 
 
 	%STOPID a gtfs:Stop . 
 	%STOPID dct:description ?stopDescription . 
