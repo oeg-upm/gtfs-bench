@@ -21,7 +21,7 @@ SELECT * WHERE {
 	?stop dct:description ?stopDescription . 
 	?stop geo:lat ?stopLat . 
 	?stop geo:long ?stopLong . 
-	?stop gtfs:wheelchairAccessible ?stopWhelchairAccessible . 
+	?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding . 
 
 	FILTER (?stopLat > %INPUTLATMIN) .
 	FILTER (?stopLat < %INPUTLATMAX) .
