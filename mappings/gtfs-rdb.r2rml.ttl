@@ -162,7 +162,7 @@
 		];
 	];
 	rr:predicateObjectMap [ 
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#weelchairAccessible> ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
 		rr:objectMap[
 			rr:column "WHEELCHAIR_BOARDING";
 		];
