@@ -1,5 +1,5 @@
 #Q2C: Check the number of routes of a particular agency
-#%AGENCYID = <http://linkedgtfs.com/CITY/agency/CRTM>
+#%AGENCYID = CRTM
 
 PREFIX rr: <http://www.w3.org/ns/r2rml#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -12,15 +12,16 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX schema: <http://schema.org/>
 PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX gtfsagency: <http://linkedgtfs.com/CITY/agency/>
 
 SELECT (count(distinct ?route) as ?count) WHERE {
-	%AGENCYID a gtfs:Agency .
-	%AGENCYID foaf:page ?agencyPage .
-	%AGENCYID foaf:name ?agencyName .
-	%AGENCYID foaf:phone ?agencyPhone .
+	gtfsagency:%AGENCYID a gtfs:Agency .
+	gtfsagency:%AGENCYID foaf:page ?agencyPage .
+	gtfsagency:%AGENCYID foaf:name ?agencyName .
+	gtfsagency:%AGENCYID foaf:phone ?agencyPhone .
 
 	OPTIONAL {
 		?route a gtfs:Route .
-		?route gtfs:agency %AGENCYID .
+		?route gtfs:agency gtfsagency:%AGENCYID .
 	}
 }
