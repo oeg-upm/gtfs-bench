@@ -13,12 +13,13 @@ PREFIX schema: <http://schema.org/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT (count(distinct ?route) as ?count) WHERE {
+	%AGENCYID a gtfs:Agency .
 	%AGENCYID foaf:page ?agencyPage .
 	%AGENCYID foaf:name ?agencyName .
 	%AGENCYID foaf:phone ?agencyPhone .
 
 	OPTIONAL {
-		%AGENCYID a gtfs:Agency .
 		?route a gtfs:Route .
+		?route gtfs:agency %AGENCYID .
 	}
 }
