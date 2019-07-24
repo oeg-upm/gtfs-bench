@@ -1,6 +1,6 @@
 #Q3C: Given a particular stop, get the list of arrival times of vehicles going a particular direction
 #%HEADSIGN "OPERA"
-#%STOPID <http://linkedgtfs.com/CITY/stops/par_4_238>
+#%STOPID acc_4_1_1
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -9,12 +9,13 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 
 SELECT * WHERE {
 
         ?stopTime a gtfs:StopTime .
         ?stopTime gtfs:trip ?trip .
-        ?stopTime gtfs:stop %STOPID .
+        ?stopTime gtfs:stop gtfsstop:%STOPID .
         ?stopTime gtfs:arrivalTime ?arrivalTime .
 
         ?trip a gtfs:Trip .
@@ -23,7 +24,7 @@ SELECT * WHERE {
         ?trip gtfs:route ?route .
         ?trip gtfs:headsign %HEADSIGN .
 
-        %STOPID a gtfs:Stop .
-        %STOPID dct:description ?stopDescription .
+        gtfsstop:%STOPID a gtfs:Stop .
+        gtfsstop:%STOPID dct:description ?stopDescription .
 
 }
