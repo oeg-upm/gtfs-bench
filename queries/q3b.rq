@@ -1,5 +1,5 @@
 #Q3B: List all possible routes from a particular stop
-#eg: %STOPID <http://linkedgtfs.com/CITY/stops/par_4_2>
+#eg: %STOPID acc_4_1_1
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -21,9 +21,9 @@ SELECT * WHERE {
 
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
-	?stopTime gtfs:stop %STOPID . 
+	?stopTime gtfs:stop gtfsstop:%STOPID . 
 
-	%STOPID a gtfs:Stop . 
-	%STOPID dct:description ?stopDescription . 
+	gtfsstop:%STOPID a gtfs:Stop . 
+	gtfsstop:%STOPID dct:description ?stopDescription . 
 
 }
