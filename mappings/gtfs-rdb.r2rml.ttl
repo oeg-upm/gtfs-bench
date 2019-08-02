@@ -31,6 +31,7 @@
 		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/date> ];
 		rr:objectMap[
 			rr:column "DATE";
+			rr:datatype xsd:date;
 		];
 	];
 	rr:predicateObjectMap [
@@ -450,12 +451,14 @@
 		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
 		rr:objectMap[
 			rr:column "START_DATE";
+			rr:datatype xsd:date;
 		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
 		rr:objectMap[
 			rr:column "END_DATE";
+			rr:datatype xsd:date;
 		];
 	];	
 .
@@ -472,6 +475,7 @@
 		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
 		rr:objectMap[
 			rr:column "FEED_END_DATE";
+			rr:datatype xsd:date;
 		];
 	];
 	rr:predicateObjectMap [
@@ -496,6 +500,7 @@
 		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
 		rr:objectMap[
 			rr:column "FEED_START_DATE";
+			rr:datatype xsd:date;
 		];
 	];
 	rr:predicateObjectMap [
