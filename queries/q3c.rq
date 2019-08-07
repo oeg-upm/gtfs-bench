@@ -1,6 +1,8 @@
 #Q3C: Given a particular stop, get the list of arrival times of vehicles going a particular direction
-#%HEADSIGN "OPERA"
-#%STOPID acc_4_1_1
+# d1 %STOPID acc_4_1_1
+# d1 %HEADSIGN "Opera"
+# d5 %STOPID 00000000000000000007
+# d5 %HEADSIGN "00000000000000000033"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

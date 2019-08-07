@@ -1,7 +1,10 @@
 #Q3D: count services offered by a particular route in a particular interval
-#%ROUTEID 4__1___
-#%STARTDATE "2017-06-01"
-#%ENDDATE "2017-06-30"
+# d1 %ROUTEID 4__1___
+# d1 %STARTDATE "2017-06-01"
+# d1 %ENDDATE "2017-06-30"
+# d5 %ROUTEID 00000000000000000008
+# d5 %STARTDATE "2017-06-01"
+# d5 %ENDDATE "2017-06-30"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
