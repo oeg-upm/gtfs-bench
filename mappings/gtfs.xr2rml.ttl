@@ -1,0 +1,87 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ex: <http://example.com/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix rev: <http://purl.org/stuff/rev#>.
+@prefix gtfs: <http://vocab.gtfs.org/terms#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix schema: <http://schema.org/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rmlc: <http://www.ex.org/ns/rmlc#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@base <http://example.org/>.
+@prefix xrr: <http://i3s.unice.fr/xr2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+
+<agency>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Agency>
+		];
+	];
+.
+
+<agencyName>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
+		rr:objectMap[
+			xrr:reference "$.agency_name";
+		];
+	];
+.
+
+<agencyPhone>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
+		rr:objectMap[
+			xrr:reference "$.agency_phone";
+		];
+	];
+.
+
+<agencyPage>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			xrr:reference "$.agency_url";
+		];
+	];
+.
