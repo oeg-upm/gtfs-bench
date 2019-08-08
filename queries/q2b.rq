@@ -14,7 +14,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT * WHERE {
 	?serviceDates a gtfs:ServiceDates .
 	?serviceDates gtfs:service ?service .
-	?serviceDates dct:date %inputDate .
+	?serviceDates dct:date %inputDate^^xsd:date .
 	?serviceDates gtfs:dateAddition "true"^^xsd:boolean .
 	
 	?service a gtfs:Service .
