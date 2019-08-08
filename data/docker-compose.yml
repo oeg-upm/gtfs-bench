@@ -1,5 +1,6 @@
 version: '2'
 services:
+# MYSQL 5.7
   mysql_gtfs1:
     container_name: gtfs1_rdb_only_mysql
     image: mysql:5.7
@@ -59,3 +60,54 @@ services:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3311:3306"
+
+#MongoDB 3.4.22
+  mongo_gtfs1:
+    container_name: gtfs1_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27017:27017"
+
+  mongo_gtfs5:
+    container_name: gtfs5_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27018:27017"
+
+  mongo_gtfs10:
+    container_name: gtfs10_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27019:27017"
+
+  mongo_gtfs50:
+    container_name: gtfs50_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27020:27017"
+  
+  mongo_gtfs100:
+    container_name: gtfs100_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27021:27017"
+
+  mongo_gtfs500:
+    container_name: gtfs500_only_mongo
+    image: mongo:3.4.22
+    volumes:
+      - //ToDo
+    ports:
+      - "27022:27017"  
+
+  
