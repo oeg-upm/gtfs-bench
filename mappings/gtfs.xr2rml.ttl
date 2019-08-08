@@ -326,3 +326,158 @@
 		];
 	];
 .
+
+
+<routes>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Route>
+		];
+	];		
+.
+
+<routeLongName>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#longName> ];
+		rr:objectMap[
+			xrr:reference "$.route_long_name";
+		];
+	];
+.
+
+<routeURL>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeUrl> ];
+		rr:objectMap[
+			xrr:reference "$.route_url";
+		];
+	];
+.
+
+<routeTextColor>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#textColor> ];
+		rr:objectMap[
+			xrr:reference "$.route_text_color";
+		];
+	];
+.
+
+<routeShortName>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			xrr:reference "$.route_short_name";
+		];
+	];
+.
+
+<routeColor>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#color> ];
+		rr:objectMap[
+			xrr:reference "$.route_color";
+		];
+	];
+.
+
+<routeDescription>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
+		rr:objectMap[
+			xrr:reference "$.route_desc";
+		];
+	];
+.
+
+<routeType>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
+		rr:objectMap[
+			rr:template "http://vocab.gtfs.org/terms#RouteType={$.route_type}";
+		];
+	];
+.
+
+<routeAgency>
+	xrr:logicalSource [
+		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
+	];	
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
+		rr:objectMap [
+			rr:parentTriplesMap <agency>; rr:joinCondition [ rr:child "$.agency_id"; rr:parent "$.agency_id"; ];
+			# rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+.
