@@ -1,0 +1,11 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && apt-get install -y (openjdk-8-jdk/python) nano less git
+RUN mkdir /TOOL-NAME
+COPY PROGRAM (py/jar) /TOOL-NAME
+
+RUN mkdir /data
+RUN mkdir /results
+RUN mkdir /mappings
+
+CMD ["tail", "-f", "/dev/null"]
