@@ -660,3 +660,231 @@
 		];
 	];	
 .
+
+<services_dates>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
+	];			
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#ServiceDates>
+		];
+	];		
+.
+
+<services_datesDate>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
+	];			
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/date> ];
+		rr:objectMap[
+			xrr:reference "$.date";
+			rr:datatype xsd:date;
+		];
+	];
+.
+
+<services_datesService>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
+	];			
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services>; rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
+			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+		];
+	];
+.
+
+<services_datesDateAddition>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
+	];			
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dateAddition> ];
+		rr:objectMap[
+			xrr:reference "$.exception_type";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<trips>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Trip>
+		];
+	];		
+.
+
+<tripShape>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
+		rr:objectMap[
+			rr:template "http://linkedgtfs.com/CITY/shape/{$.shape_id}";
+		];
+	];
+.
+
+<tripService>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services>; rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
+			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+		];
+	];
+.
+
+<tripHeadsign>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:objectMap[
+			xrr:reference "$.trip_headsign";
+		];
+	];
+.
+
+<tripRoute>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
+		rr:objectMap [
+			rr:parentTriplesMap <routes>; rr:joinCondition [ rr:child "$.route_id"; rr:parent "$.route_id"; ];
+			# rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+		];
+	];
+.
+
+<tripBlock>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#block> ];
+		rr:objectMap[
+			xrr:reference "$.block_id";
+		];
+	];
+.
+
+<tripWheelchairAccessible>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:objectMap[
+			xrr:reference "$.wheelchair_accessible";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<tripShortName>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			xrr:reference "$.trip_short_name";
+		];
+	];
+.
+
+<tripDirection>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];				
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#direction> ];
+		rr:objectMap[
+			xrr:reference "$.direction_id";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
