@@ -481,3 +481,182 @@
 		];
 	];
 .
+
+<services>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Service>
+		];
+	];		
+.
+
+<serviceMonday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#monday> ];
+		rr:objectMap[
+			xrr:reference "$.monday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceTuesday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#tuesday> ];
+		rr:objectMap[
+			xrr:reference "$.tuesday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceWednesday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wednesday> ];
+		rr:objectMap[
+			xrr:reference "$.wednesday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceThursday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#thursday> ];
+		rr:objectMap[
+			xrr:reference "$.thursday";
+			rr:datatype xsd:boolean;
+		];
+	];	
+.
+
+<serviceFriday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#friday> ];
+		rr:objectMap[
+			xrr:reference "$.friday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceSaturday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#saturday> ];
+		rr:objectMap[
+			xrr:reference "$.saturday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceSunday>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#sunday> ];
+		rr:objectMap[
+			xrr:reference "$.sunday";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
+<serviceStartDate>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
+		rr:objectMap[
+			xrr:reference "$.start_date";
+			rr:datatype xsd:date;
+		];
+	];
+.
+
+<serviceEndDate>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];		
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
+		rr:objectMap[
+			xrr:reference "$.end_date";
+			rr:datatype xsd:date;
+		];
+	];	
+.
