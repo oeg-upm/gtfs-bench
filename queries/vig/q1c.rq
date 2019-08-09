@@ -1,5 +1,5 @@
 #Q1C: Find if a certain stop contains accessibility information
-#eg: %STOPID acc_4_107_288
+#vig.q1c.STOPID=00000000000000000005
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -10,9 +10,9 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 
 SELECT * WHERE {
-	gtfsstop:%STOPID a gtfs:Stop . 
-	gtfsstop:%STOPID dct:description ?stopDescription . 
-	gtfsstop:%STOPID geo:lat ?stopLat . 
-	gtfsstop:%STOPID geo:long ?stopLong . 
-	OPTIONAL { gtfsstop:%STOPID gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
+	gtfsstop:00000000000000000005 a gtfs:Stop . 
+	gtfsstop:00000000000000000005 dct:description ?stopDescription . 
+	gtfsstop:00000000000000000005 geo:lat ?stopLat . 
+	gtfsstop:00000000000000000005 geo:long ?stopLong . 
+	OPTIONAL { gtfsstop:00000000000000000005 gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
 }

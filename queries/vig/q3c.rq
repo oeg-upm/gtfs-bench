@@ -1,8 +1,6 @@
 #Q3C: Given a particular stop, get the list of arrival times of vehicles going a particular direction
-# d1 %STOPID acc_4_1_1
-# d1 %HEADSIGN "Opera"
-# d5 %STOPID 00000000000000000007
-# d5 %HEADSIGN "00000000000000000033"
+#vig.q3c.STOPID=00000000000000000007
+#vig.q3c.HEADSIGN="00000000000000000033"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -17,16 +15,16 @@ SELECT * WHERE {
 
         ?stopTime a gtfs:StopTime .
         ?stopTime gtfs:trip ?trip .
-        ?stopTime gtfs:stop gtfsstop:%STOPID .
+        ?stopTime gtfs:stop gtfsstop:00000000000000000007 .
         ?stopTime gtfs:arrivalTime ?arrivalTime .
 
         ?trip a gtfs:Trip .
         ?trip gtfs:shortName ?tripShortName .
         ?trip gtfs:service ?service .
         ?trip gtfs:route ?route .
-        ?trip gtfs:headsign %HEADSIGN .
+        ?trip gtfs:headsign "Opera" .
 
-        gtfsstop:%STOPID a gtfs:Stop .
-        gtfsstop:%STOPID dct:description ?stopDescription .
+        gtfsstop:00000000000000000007 a gtfs:Stop .
+        gtfsstop:00000000000000000007 dct:description ?stopDescription .
 
 }
