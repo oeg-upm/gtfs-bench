@@ -2,7 +2,7 @@
 This folder contains the Dockerfile needed to run Morph-xr2rml over the GTFS-Benchmark
 
 ## Morph-xr2rml Docker image
-The created docker image is available at: [https://hub.docker.com/r/oegdataintegration/morph-xr2rml](docker pull oegdataintegration/morph-xr2rml:4.0.0)
+The created docker image is available at: [https://hub.docker.com/r/oegdataintegration/morph-xr2rml](https://hub.docker.com/r/oegdataintegration/morph-xr2rml)
 
 ## Create your own image
 Go to Morph-xr2rml Github and a choose your version from releases, here is an example with Morph-xr2rml
