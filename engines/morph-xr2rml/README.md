@@ -1,5 +1,5 @@
 # Morph-xr2rml
-This folder contains the Dockerfile needed to run Morph-CSV:1.0.0 over the GTFS-Benchmark
+This folder contains the Dockerfile needed to run Morph-xr2rml over the GTFS-Benchmark
 
 ## Morph-xr2rml Docker image
 The created docker image is available at: [https://hub.docker.com/r/oegdataintegration/morph-xr2rml](docker pull oegdataintegration/morph-xr2rml:4.0.0)
