@@ -7,8 +7,9 @@ The created docker image is available at: [https://hub.docker.com/r/oegdatainteg
 ## Create your own image
 Go to Morph-xr2rml Github and a choose your version from releases, here is an example with Morph-xr2rml
 ```bash
-git clone https://github.com/toledoba/morph-xr2rml.git
-cd morph-xr2rml
+git clone https://github.com/oeg-upm/gtfs-bench
+cd gtfs-bench/engines/morph-xr2rml
+wget https://github.com/toledoba/morph-xr2rml/blob/master/morph-xr2rml.jar
 docker build -t morph-xr2rml .
 ```
 
