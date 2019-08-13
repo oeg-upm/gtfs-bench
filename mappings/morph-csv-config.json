@@ -1,0 +1,8 @@
+{
+  "sources":[
+    {
+      "csvw":"/mappings/gtfs-annotations.json",
+      "yarrrml": "/mappings/gtfs-csv.yml"
+    }
+  ]
+}
