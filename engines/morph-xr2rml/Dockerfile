@@ -8,7 +8,6 @@ RUN mkdir /morph-xr2rml/results
 RUN mkdir /morph-xr2rml/data
 RUN mkdir /morph-xr2rml/mappings
 RUN mkdir /morph-xr2rml/queries
-COPY ../../queries  /morph-xr2rml/queries
 
 
 CMD ["tail", "-f", "/dev/null"]
