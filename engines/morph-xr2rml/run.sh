@@ -2,7 +2,8 @@
 
 FILES=../../queries/original/*.rq
 
-echo "size, query, tiempo (date +%s.%N)">results/times-1.csv
+echo "size, query, run, time (date +%s.%N)">results/times.csv
+
 for size in 1 5
     do
     for file in $FILES
