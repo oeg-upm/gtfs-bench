@@ -1,0 +1,81 @@
+[PrefixDeclaration]
+obda:		https://w3id.org/obda/vocabulary#
+xsd:		http://www.w3.org/2001/XMLSchema#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	mapping-2105815073
+target		<http://linkedgtfs.com/CITY/services_dates/{service_id2}-{date}> a <http://vocab.gtfs.org/terms#ServiceDates> ; <http://purl.org/dc/terms/date> {date}^^xsd:date ; <http://vocab.gtfs.org/terms#dateAddition> {exception_type}^^xsd:boolean . 
+source		SELECT * FROM CALENDAR_DATES
+
+mappingId	mapping-join-600664498
+target		<http://linkedgtfs.com/CITY/services_dates/{service_id2}-{date}> <http://vocab.gtfs.org/terms#service> <http://linkedgtfs.com/CITY/service/{service_id}> . 
+source		SELECT * FROM (SELECT * FROM CALENDAR_DATES) AS child, (SELECT * FROM CALENDAR) AS parent WHERE child.service_id2=parent.service_id
+
+mappingId	mapping--213912638
+target		<http://linkedgtfs.com/CITY/agency/{agency_id}> a <http://vocab.gtfs.org/terms#Agency> ; <http://xmlns.com/foaf/0.1/page> {agency_url} ; <http://vocab.gtfs.org/terms#fareUrl> {agency_fare_url} ; <http://vocab.gtfs.org/terms#timeZone> {agency_timezone} ; <http://purl.org/dc/terms/language> {agency_lang} ; <http://xmlns.com/foaf/0.1/name> {agency_name} ; <http://xmlns.com/foaf/0.1/phone> {agency_phone} . 
+source		SELECT * FROM AGENCY
+
+mappingId	mapping-680959593
+target		<http://linkedgtfs.com/CITY/stops/{stop_id}> a <http://vocab.gtfs.org/terms#Stop> ; <http://vocab.gtfs.org/terms#timeZone> {stop_timezone} ; <http://vocab.gtfs.org/terms#parentStation> {parent_station} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {stop_lat} ; <http://xmlns.com/foaf/0.1/page> {stop_url} ; <http://vocab.gtfs.org/terms#code> {stop_code} ; <http://vocab.gtfs.org/terms#zone> {zone_id} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {stop_lon} ; <http://vocab.gtfs.org/terms#locationType> {location_type} ; <http://purl.org/dc/terms/description> {stop_desc} ; <http://xmlns.com/foaf/0.1/name> {stop_name} ; <http://vocab.gtfs.org/terms#wheelchairBoarding> {wheelchair_boarding}^^xsd:boolean . 
+source		SELECT * FROM STOPS
+
+mappingId	mapping-916821590
+target		<http://linkedgtfs.com/CITY/shape/{shape_id}{shape_pt_sequence}> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {shape_pt_lat} ; <http://vocab.gtfs.org/terms#distanceTraveled> {shape_dist} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {shape_pt_lon} ; <http://vocab.gtfs.org/terms#pointSequence> {shape_pt_sequence} . 
+source		SELECT * FROM SHAPES
+
+mappingId	mapping-533919915
+target		<http://linkedgtfs.com/CITY/routes/{route_id}> a <http://vocab.gtfs.org/terms#Route> ; <http://vocab.gtfs.org/terms#routeUrl> {route_url} ; <http://purl.org/dc/terms/description> {route_desc} ; <http://vocab.gtfs.org/terms#routeType> <http://vocab.gtfs.org/terms#RouteType={route_type}> ; <http://vocab.gtfs.org/terms#color> {route_color} ; <http://vocab.gtfs.org/terms#longName> {route_long_name} ; <http://vocab.gtfs.org/terms#shortName> {route_short_name} ; <http://vocab.gtfs.org/terms#textColor> {route_text_color} . 
+source		SELECT * FROM ROUTES
+
+mappingId	mapping-join-133111029
+target		<http://linkedgtfs.com/CITY/routes/{route_id}> <http://vocab.gtfs.org/terms#agency> <http://linkedgtfs.com/CITY/agency/{agency_id}> . 
+source		SELECT * FROM (SELECT * FROM ROUTES) AS child, (SELECT * FROM AGENCY) AS parent WHERE child.agency_id2=parent.agency_id
+
+mappingId	mapping-786605903
+target		<http://linkedgtfs.com/CITY/frequency/{trip_id2}-{start_time}> a <http://vocab.gtfs.org/terms#Frequency> ; <http://vocab.gtfs.org/terms#exactTimes> {exact_times}^^xsd:boolean ; <http://vocab.gtfs.org/terms#endTime> {end_time}^^xsd:time ; <http://vocab.gtfs.org/terms#startTime> {start_time}^^xsd:time ; <http://vocab.gtfs.org/terms#headwaySeconds> {headway_secs} . 
+source		SELECT * FROM FREQUENCIES
+
+mappingId	mapping-join-1379978928
+target		<http://linkedgtfs.com/CITY/frequency/{trip_id2}-{start_time}> <http://vocab.gtfs.org/terms#trip> <http://linkedgtfs.com/CITY/trips/{trip_id}> . 
+source		SELECT * FROM (SELECT * FROM FREQUENCIES) AS child, (SELECT * FROM TRIPS) AS parent WHERE child.trip_id2=parent.trip_id
+
+mappingId	mapping--311005795
+target		<http://linkedgtfs.com/CITY/stoptimes/{trip_id3}-{stop_id2}-{arrival_time}> a <http://vocab.gtfs.org/terms#StopTime> ; <http://vocab.gtfs.org/terms#stopSequence> {stop_sequence} ; <http://vocab.gtfs.org/terms#pickupType> <http://vocab.gtfs.org/terms#PickupType={pickup_type}> ; <http://vocab.gtfs.org/terms#headsign> {stop_headsing} ; <http://vocab.gtfs.org/terms#departureTime> {departure_time}^^xsd:time ; <http://vocab.gtfs.org/terms#dropOffType> <http://vocab.gtfs.org/terms#DropOffType={drop_off_type}> ; <http://vocab.gtfs.org/terms#arrivalTime> {arrival_time}^^xsd:time ; <http://vocab.gtfs.org/terms#distanceTraveled> {shape_dist_traveled} . 
+source		SELECT * FROM STOP_TIMES
+
+mappingId	mapping-join-794744339
+target		<http://linkedgtfs.com/CITY/stoptimes/{trip_id3}-{stop_id2}-{arrival_time}> <http://vocab.gtfs.org/terms#stop> <http://linkedgtfs.com/CITY/stops/{stop_id}> . 
+source		SELECT * FROM (SELECT * FROM STOP_TIMES) AS child, (SELECT * FROM STOPS) AS parent WHERE child.stop_id2=parent.stop_id
+
+mappingId	mapping-join--1722176873
+target		<http://linkedgtfs.com/CITY/stoptimes/{trip_id3}-{stop_id2}-{arrival_time}> <http://vocab.gtfs.org/terms#trip> <http://linkedgtfs.com/CITY/trips/{trip_id}> . 
+source		SELECT * FROM (SELECT * FROM STOP_TIMES) AS child, (SELECT * FROM TRIPS) AS parent WHERE child.trip_id3=parent.trip_id
+
+mappingId	mapping--1475735686
+target		<http://linkedgtfs.com/CITY/service/{service_id}> a <http://vocab.gtfs.org/terms#Service> ; <http://vocab.gtfs.org/terms#sunday> {sunday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#wednesday> {wednesday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#thursday> {thursday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#tuesday> {tuesday}^^xsd:boolean ; <http://schema.org/endDate> {end_date}^^xsd:date ; <http://vocab.gtfs.org/terms#saturday> {saturday}^^xsd:boolean ; <http://schema.org/startDate> {start_date}^^xsd:date ; <http://vocab.gtfs.org/terms#friday> {friday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#monday> {monday}^^xsd:boolean . 
+source		SELECT * FROM CALENDAR
+
+mappingId	mapping--1545539347
+target		<http://linkedgtfs.com/CITY/feed/{feed_publisher_name}> <http://schema.org/version> {feed_version} ; <http://schema.org/endDate> {feed_end_date}^^xsd:date ; <http://schema.org/startDate> {feed_start_date}^^xsd:date ; <http://xmlns.com/foaf/0.1/page> {feed_publisher_url} ; <http://purl.org/dc/terms/language> {feed_lang} ; <http://purl.org/dc/terms/publisher> {feed_publisher_name} . 
+source		SELECT * FROM FEED_INFO
+
+mappingId	mapping-1231674500
+target		<http://linkedgtfs.com/CITY/trips/{trip_id}> a <http://vocab.gtfs.org/terms#Trip> ; <http://vocab.gtfs.org/terms#headsign> {trip_headsign} ; <http://vocab.gtfs.org/terms#wheelchairAccessible> {wheelchair_accessible}^^xsd:boolean ; <http://vocab.gtfs.org/terms#direction> {direction_id}^^xsd:boolean ; <http://vocab.gtfs.org/terms#block> {block_id} ; <http://vocab.gtfs.org/terms#shortName> {trip_short_name} . 
+source		SELECT * FROM TRIPS
+
+mappingId	mapping-join-164740328
+target		<http://linkedgtfs.com/CITY/trips/{trip_id}> <http://vocab.gtfs.org/terms#service> <http://linkedgtfs.com/CITY/service/{service_id}> . 
+source		SELECT * FROM (SELECT * FROM TRIPS) AS child, (SELECT * FROM CALENDAR) AS parent WHERE child.service_id3=parent.service_id
+
+mappingId	mapping-join--734040692
+target		<http://linkedgtfs.com/CITY/trips/{trip_id}> <http://vocab.gtfs.org/terms#route> <http://linkedgtfs.com/CITY/routes/{route_id}> . 
+source		SELECT * FROM (SELECT * FROM TRIPS) AS child, (SELECT * FROM ROUTES) AS parent WHERE child.route_id2=parent.route_id
+
+mappingId	mapping-join--1594965839
+target		<http://linkedgtfs.com/CITY/trips/{trip_id}> <http://vocab.gtfs.org/terms#shape> <http://linkedgtfs.com/CITY/service/{service_id}> . 
+source		SELECT * FROM (SELECT * FROM TRIPS) AS child, (SELECT * FROM CALENDAR) AS parent WHERE child.shape_id2=parent.shape_id
+]]
+
