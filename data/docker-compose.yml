@@ -5,7 +5,7 @@ services:
     container_name: gtfs1_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-1:/data
+      - /rdb-data/gtfs-rdb-1:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -15,7 +15,7 @@ services:
     container_name: gtfs5_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-5:/data
+      - /rdb-data/gtfs-rdb-5:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -25,7 +25,7 @@ services:
     container_name: gtfs10_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-10:/data
+      - /rdb-data/gtfs-rdb-10:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -35,7 +35,7 @@ services:
     container_name: gtfs50_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-50:/data
+      - /rdb-data/gtfs-rdb-50:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -45,7 +45,7 @@ services:
     container_name: gtfs100_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-100:/data
+      - /rdb-data/gtfs-rdb-100:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -55,7 +55,7 @@ services:
     container_name: gtfs500_rdb_only_mysql
     image: mysql:8.0
     volumes:
-      - /home/dchaves/rdb-data/gtfs-rdb-500:/data
+      - /rdb-data/gtfs-rdb-500:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
