@@ -1,7 +1,7 @@
 # Morph-CSV
 This folder contains the Dockerfile needed to run Morph-CSV:1.0.0 over the GTFS-Benchmark
 
-## Ontop Docker image
+## Morph-CSV Docker image
 The created docker image is available at: [https://hub.docker.com/r/oegdataintegration/morph-csv](https://hub.docker.com/r/oegdataintegration/morph-csv)
 
 ## Create your own image
