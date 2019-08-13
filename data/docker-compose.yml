@@ -66,7 +66,7 @@ services:
     container_name: gtfs1_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-1:/data
     ports:
       - "27017:27017"
 
@@ -74,7 +74,7 @@ services:
     container_name: gtfs5_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-5:/data
     ports:
       - "27018:27017"
 
@@ -82,7 +82,7 @@ services:
     container_name: gtfs10_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-10:/data
     ports:
       - "27019:27017"
 
@@ -90,7 +90,7 @@ services:
     container_name: gtfs50_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-50:/data
     ports:
       - "27020:27017"
   
@@ -98,7 +98,7 @@ services:
     container_name: gtfs100_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-100:/data
     ports:
       - "27021:27017"
 
@@ -106,7 +106,7 @@ services:
     container_name: gtfs500_only_mongo
     image: mongo:3.4.22
     volumes:
-      - //ToDo
+      - /mongo-data/gtfs-500:/data
     ports:
       - "27022:27017"  
 
