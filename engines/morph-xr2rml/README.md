@@ -8,7 +8,7 @@ docker pull oegdataintegration/morph-xr2rml:4.0.0
 docker run -d --name morph-xr2rml oegdataintegration/morph-xr2rml:4.0.0
 ```
 
-## Create your own image
+## Create your own image and container
 Go to Morph-xr2rml Github and a choose your version from releases, here is an example with Morph-xr2rml
 ```bash
 git clone https://github.com/oeg-upm/gtfs-bench
