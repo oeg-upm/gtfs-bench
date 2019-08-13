@@ -8,7 +8,7 @@ The created docker image is available at: [https://hub.docker.com/r/oegdatainteg
 Go to Ontop Github and a choose your version from releases, here is an example with Ontop-3.0.0-beta:
 ```bash
 git clone https://github.com/oeg-upm/gtfs-bench
-cd engines/ontop
+cd gtfs-bench/engines/ontop
 wget https://github.com/ontop/ontop/releases/download/ontop-3.0.0-beta-3/ontop-cli-3.0.0-beta-3.zip
 unzip ontop-cli-3.0.0-beta-3.zip -d .
 docker build -t ontop .

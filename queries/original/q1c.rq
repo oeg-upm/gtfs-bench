@@ -14,5 +14,5 @@ SELECT * WHERE {
 	gtfsstop:acc_4_107_288 dct:description ?stopDescription . 
 	gtfsstop:acc_4_107_288 geo:lat ?stopLat . 
 	gtfsstop:acc_4_107_288 geo:long ?stopLong . 
-	OPTIONAL { gtfsstop:%STOPID gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
+	OPTIONAL { gtfsstop:acc_4_107_288 gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
 }
