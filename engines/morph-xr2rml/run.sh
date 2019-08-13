@@ -8,7 +8,7 @@ for size in 1 5
     do
     for file in $FILES
         do
-        #la configuracion depende de el tama–o y query
+        #la configuracion depende de el tamaï¿½o y query
         echo "query.file.path=$query">>morph.properties
         echo "output.file.path=../../results/result-gtfs1-$query.xml">>morph.properties
         echo "database.name[0]=gtfs$size">>morph.properties
@@ -24,15 +24,15 @@ for size in 1 5
 
 
         #tiempo inicio
-        start=$(date +%s)
+        start=$(date +%s.%N)
         echo "Evaluating size $size - query $query - run $i"
         #java -jar morph-xr2rml-4.0.0.jar  --configDir  data/original/
-        fin=$(date +%s)
+        fin=$(date +%s.%N)
         #tiempo fin
         # resta de tiempos
         dur=$(echo "$fin - $start" | bc)
         #guardamos el tiempo
-        echo "$size, $query, $i, $dur">>results/times-1.csv
+        echo "$size, $query, $i, $dur">>results/times.csv
 
         #Elimina la ultima linea del fichero
         #sed -i '74,76d' morph.properties
