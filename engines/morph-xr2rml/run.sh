@@ -14,9 +14,9 @@ for size in 1 5
 
         for i in 1 2 3 4 5
         do
-        query=$(echo  $file | cut -d "/" -f3)
-
-        echo "*******************query***************************"
+#query=$(echo  $file | cut -d "/" -f3)
+        query=$(basename $file)
+        echo "**********************************************"
         echo $query
         echo "**********************************************"
         #sleep 5  # Waits 5 seconds.
@@ -24,7 +24,7 @@ for size in 1 5
 
         #tiempo inicio
         start=$(date +%s)
-        echo "Running size $size query $file - $i"
+        echo "Evaluating size $size - query $query - run $i"
         #java -jar morph-xr2rml-4.0.0.jar  --configDir  data/original/
         fin=$(date +%s)
         #tiempo fin
