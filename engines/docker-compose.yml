@@ -1,32 +1,11 @@
 version: "2.3"
 services:
-  SERVICENAME:
-    container_name: CONTAINERNAME
-    image: IMAGE
+  ontop:
+    container_name: ontop
+    image: oegdataintegration/ontop:3.0.0
     env_file:
     volume:
       - ./data:/data
-      - ./results/TOOLNAME:/results
+      - ./results/ontop:/results
       - ./mappings:/mappings
-
-  SERVICENAME2:
-    container_name: CONTAINERNAME2
-    image: IMAGE2
-    env_file:
-    volume:
-      - ./data:/data
-      - ./results/TOOLNAME2:/results
-      - ./mappings:/mappings
-
-  SERVICENAME3:
-    container_name: CONTAINERNAME3
-    image: IMAGE3
-    env_file:
-    volume:
-      - ./data:/data
-      - ./results/TOOLNAME3:/results
-      - ./mappings:/mappings
-
-
-
-  
+      - ./queries:/queries  
