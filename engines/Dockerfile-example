@@ -7,5 +7,6 @@ COPY PROGRAM (py/jar) /TOOL-NAME
 RUN mkdir /data
 RUN mkdir /results
 RUN mkdir /mappings
+RUN mkdir /queries
 
 CMD ["tail", "-f", "/dev/null"]
