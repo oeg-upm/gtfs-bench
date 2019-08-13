@@ -4,7 +4,8 @@ FILES=../../queries/original/*.rq
 
 echo "query, tiempo (date +%s.%N)">results/times-1.csv
 for file in $FILES
-for $i in 1 2 3 4 5
+do
+for i in 1 2 3 4 5
 do
 query=$(echo  $file | cut -d "/" -f3)
 
@@ -30,8 +31,4 @@ echo "$query, $i, $dur">>results/times-1.csv
 #Elimina la ultima linea del fichero
 sed -i '74,75d' morph.properties
 done
-do
-
-
-
 done
