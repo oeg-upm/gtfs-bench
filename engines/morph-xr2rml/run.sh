@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=../../queries/original/*.rq
+FILES=queries/original/*.rq
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 
@@ -10,7 +10,7 @@ for size in 1 5
         do
         #la configuracion depende de el tama�o y query
         echo "query.file.path=$query">>morph.properties
-        echo "output.file.path=../../results/result-gtfs1-$query.xml">>morph.properties
+        echo "output.file.path=results/result-gtfs1-$query.xml">>morph.properties
         echo "database.name[0]=gtfs$size">>morph.properties
 
         for i in 1 2 3 4 5
