@@ -18,5 +18,5 @@ docker build -t morph-csv .
 
 ## How to run a query over
 ```bash
-docker exec -it morph-csv /morph-csv/run.sh /morph-csv/\[original\|vig\]-config.json
+docker exec -it morph-csv /morph-csv/run.sh /morph-csv/[original|vig]-config.json
 ```

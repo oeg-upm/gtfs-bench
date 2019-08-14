@@ -13,7 +13,6 @@ Go to Morph-xr2rml Github and a choose your version from releases, here is an ex
 ```bash
 git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/morph-xr2rml
-wget https://github.com/toledoba/morph-xr2rml/releases/download/v4.0.0/morph-xr2rml-4.0.0.jar
 docker build -t morph-xr2rml .
 docker run -d --name morph-xr2rml morph-xr2rml
 ```
