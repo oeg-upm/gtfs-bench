@@ -2,6 +2,7 @@
 
 FILES=queries/original/*.rq
 properties=properties/gtfs.properties
+system_name=morph-xr2rml
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
@@ -29,6 +30,7 @@ do
 
             echo "Evaluating: size $size - query $query - run $i"
             #java -jar morph-xr2rml-4.0.0.jar  --configDir  data/original/
+            sh run_$system_name.sh
           
             #tiempo fin
             fin=$(date +%s.%N)
