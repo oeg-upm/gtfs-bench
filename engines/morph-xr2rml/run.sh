@@ -4,7 +4,7 @@ FILES=queries/original/*.rq
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
 do
-    properties=properties/gtfs-$size.properties
+    properties=properties/gtfs.properties
     for file in $FILES
     do
         echo "**********************************************"
