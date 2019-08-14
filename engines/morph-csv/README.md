@@ -11,6 +11,8 @@ git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/morph-csv
 wget https://github.com/oeg-upm/morph-csv/archive/morph-csv-1.0.0.zip
 unzip morph-csv-1.0.0.zip -d .
+mvn clean compile assembly:single 
+cp target/morph-csv-1.0-jar-with-dependencies.jar morph-csv.jar
 docker build -t morph-csv .
 ```
 
