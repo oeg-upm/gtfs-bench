@@ -18,10 +18,11 @@ do
         fi
         #sleep 2
         #la configuracion depende del tamano y query
-        echo "query.file.path=$query">>$properties
-        echo "output.file.path=results/result-gtfs$size-$query.xml">>$properties
-        echo "database.name[0]=gtfs$size">>$properties
-
+        #echo "query.file.path=$query">>$properties
+        #echo "output.file.path=results/result-gtfs$size-$query.xml">>$properties
+        #echo "database.name[0]=gtfs$size">>$properties
+        sh update_config_$system_name.sh $properties $size $query
+        
         for i in 1 2 3 4 5
         do
 
@@ -29,7 +30,6 @@ do
             start=$(date +%s.%N)
 
             echo "Evaluating: size $size - query $query - run $i"
-            #java -jar morph-xr2rml-4.0.0.jar  --configDir  data/original/
             sh run_$system_name.sh
           
             #tiempo fin
