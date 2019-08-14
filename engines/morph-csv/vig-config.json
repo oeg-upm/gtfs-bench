@@ -1,0 +1,21 @@
+{
+  "sources":[
+    {
+      "csvw":"/mappings/gtfs-annotations.json",
+      "yarrrml": "/mappings/gtfs-csv.yml",
+      "db": "gtfs",
+      "query": [
+      	"/queries/vig/q1a.rq",
+  		  "/queries/vig/q1b.rq",
+  		  "/queries/vig/q1c.rq",
+  		  "/queries/vig/q2a.rq",
+  		  "/queries/vig/q2b.rq",
+  		  "/queries/vig/q2c.rq",
+  		  "/queries/vig/q3a.rq",
+  		  "/queries/vig/q3b.rq",
+  		  "/queries/vig/q3c.rq",
+  		  "/queries/vig/q3d.rq"
+      ]
+    }
+  ]
+}
