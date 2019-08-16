@@ -1,14 +1,19 @@
 #!/bin/bash
 
+#sh evaluate.sh queries/original/ properties/gtfs.properties morph-xr2rml 1
 FILES=$1
 properties=$2
 system_name=$3
 mode=$4
+echo "FILES = $FILES"
+echo "properties = $properties"
+echo "system_name = $system_name"
+echo "mode = $mode"
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
 do
-    for file in $FILES
+    for file in ls $FILES/*.rq
     do
         echo "**********************************************"
         if [ $size -eq 1 ]
