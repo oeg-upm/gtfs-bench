@@ -25,10 +25,9 @@ do
         sh update_config_$system_name.sh $properties $size $query
         
         if [ $mode -eq warm ]
-        do
             echo "Warming up the system ..."
             sh run_$system_name.sh
-        done
+        fi
 
         for i in 1 2 3 4 5
         do
@@ -49,10 +48,9 @@ do
             echo "$size, $query, $i, $dur">>results/times.csv
 
             if [ $mode -eq cold ]
-            do
                 echo "Restaring the database ..."
                 sh restart_database_$system_name.sh
-            done
+            fi
 
         done
         #Elimina las ultimas 3 lineas del fichero
