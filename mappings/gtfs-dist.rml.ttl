@@ -463,7 +463,7 @@
 :map_stops_0 rr:predicateObjectMap :pom_46.
 :pm_46 a rr:PredicateMap.
 :pom_46 rr:predicateMap :pm_46.
-:pm_46 rr:constant gtfs:weelchairAccessible.
+:pm_46 rr:constant gtfs:wheelchairBoarding.
 :pom_46 rr:objectMap :om_46.
 :om_46 a rr:ObjectMap;
     rml:reference "wheelchair_boarding";
