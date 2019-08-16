@@ -25,6 +25,7 @@ do
         sh update_config_$system_name.sh $properties $size $query
         
         if [ $mode -eq warm ]
+        then
             echo "Warming up the system ..."
             sh run_$system_name.sh
         fi
@@ -48,6 +49,7 @@ do
             echo "$size, $query, $i, $dur">>results/times.csv
 
             if [ $mode -eq cold ]
+            then 
                 echo "Restaring the database ..."
                 sh restart_database_$system_name.sh
             fi
