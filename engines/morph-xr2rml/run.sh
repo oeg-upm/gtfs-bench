@@ -3,6 +3,7 @@
 FILES=queries/original/*.rq
 properties=properties/gtfs.properties
 system_name=morph-xr2rml
+mode=warm
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
@@ -23,13 +24,19 @@ do
         #echo "database.name[0]=gtfs$size">>$properties
         sh update_config_$system_name.sh $properties $size $query
         
+        if [ $mode -eq warm ]
+        do
+            echo "Warming up the system ..."
+            sh run_$system_name.sh
+        done
+
         for i in 1 2 3 4 5
         do
 
             #tiempo inicio
             start=$(date +%s.%N)
 
-            echo "Evaluating: size $size - query $query - run $i"
+            echo "Evaluating: size $size - query $query - run $i ..."
             sh run_$system_name.sh
           
             #tiempo fin
@@ -40,6 +47,12 @@ do
 
             #guardamos el tiempo
             echo "$size, $query, $i, $dur">>results/times.csv
+
+            if [ $mode -eq cold ]
+            do
+                echo "Restaring the database ..."
+                sh restart_$system_name.sh
+            done
 
         done
         #Elimina las ultimas 3 lineas del fichero
