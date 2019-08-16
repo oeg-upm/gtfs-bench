@@ -134,7 +134,7 @@ mappings:
       - [gtfs:locationType,$(location_type)]
       - [gtfs:parentStation,$(parent_station)]
       - [gtfs:timeZone,$(stop_timezone)]
-      - [gtfs:weelchairAccessible,$(wheelchair_boarding)]
+      - [gtfs:wheelchairBoarding,$(wheelchair_boarding)]
   services_dates:
     sources:
       - [/data/calendar_dates.csv~csv]
