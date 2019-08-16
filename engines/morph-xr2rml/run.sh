@@ -3,7 +3,7 @@
 FILES=queries/original/*.rq
 properties=properties/gtfs.properties
 system_name=morph-xr2rml
-mode=warm
+mode=1
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
@@ -24,7 +24,7 @@ do
         #echo "database.name[0]=gtfs$size">>$properties
         sh update_config_$system_name.sh $properties $size $query
         
-        if [ $mode -eq warm ]
+        if [ $mode -eq 1 ]
         then
             echo "Warming up the system ..."
             sh run_$system_name.sh
@@ -48,7 +48,7 @@ do
             #guardamos el tiempo
             echo "$size, $query, $i, $dur">>results/times.csv
 
-            if [ $mode -eq cold ]
+            if [ $mode -eq 0 ]
             then 
                 echo "Restaring the database ..."
                 sh restart_database_$system_name.sh
