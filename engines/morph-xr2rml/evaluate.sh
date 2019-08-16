@@ -1,9 +1,9 @@
 #!/bin/bash
 
-FILES=queries/original/*.rq
-properties=properties/gtfs.properties
-system_name=morph-xr2rml
-mode=1
+FILES=$1
+properties=$2
+system_name=$3
+mode=$4
 
 echo "size, query, run, time (date +%s.%N)">results/times.csv
 for size in 1 5
