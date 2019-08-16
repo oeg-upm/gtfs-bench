@@ -51,7 +51,7 @@ do
             if [ $mode -eq cold ]
             do
                 echo "Restaring the database ..."
-                sh restart_$system_name.sh
+                sh restart_database_$system_name.sh
             done
 
         done
