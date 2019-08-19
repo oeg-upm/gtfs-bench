@@ -54,7 +54,7 @@ mappings:
       - [gtfs:shortName, $(trip_short_name)]
       - [gtfs:direction, $(direction_id)]
       - [gtfs:block, $(block_id)]
-      - [gtfs:wheelchairAccessible, $(wheelchair_accesible)]
+      - [gtfs:wheelchairAccessible, $(wheelchair_accesible), xsd:boolean]
       - p: gtfs:service
         o:
           - mapping: services
@@ -134,15 +134,15 @@ mappings:
       - [gtfs:locationType,$(location_type)]
       - [gtfs:parentStation,$(parent_station)]
       - [gtfs:timeZone,$(stop_timezone)]
-      - [gtfs:wheelchairBoarding,$(wheelchair_boarding)]
+      - [gtfs:wheelchairBoarding,$(wheelchair_boarding), xsd:boolean]
   services_dates:
     sources:
       - [data/calendar_dates.csv~csv]
     s: http://linkedgtfs.com/CITY/services_dates/$(service_id)-$(date)
     po:
       - [a, gtfs:ServiceDates]
-      - [dct:date, $(date)]
-      - [gtfs:dateAddition, $(exeception_type)]
+      - [dct:date, $(date), xsd:date]
+      - [gtfs:dateAddition, $(exception_type), xsd:boolean]
       - p: gtfs:service
         o:
           - mapping: services
@@ -157,15 +157,15 @@ mappings:
     s: http://linkedgtfs.com/CITY/service/$(service_id)
     po:
       - [a, gtfs:Service]
-      - [gtfs:monday, $(monday)]
-      - [gtfs:tuesday, $(tuesday)]
-      - [gtfs:wednesday, $(wednesday)]
-      - [gtfs:thursday, $(thursday)]
-      - [gtfs:friday, $(friday)]
-      - [gtfs:saturday, $(saturday)]
-      - [gtfs:sunday, $(sunday)]
-      - [schema:startDate, $(start_date)]
-      - [schema:endDate, $(end_date)]
+      - [gtfs:monday, $(monday), xsd:boolean]
+      - [gtfs:tuesday, $(tuesday), xsd:boolean]
+      - [gtfs:wednesday, $(wednesday), xsd:boolean]
+      - [gtfs:thursday, $(thursday), xsd:boolean]
+      - [gtfs:friday, $(friday), xsd:boolean]
+      - [gtfs:saturday, $(saturday), xsd:boolean]
+      - [gtfs:sunday, $(sunday), xsd:boolean]
+      - [schema:startDate, $(start_date), xsd:date]
+      - [schema:endDate, $(end_date), xsd:date]
   feed:
     sources:
       - [data/feed_info.csv~csv]
@@ -174,8 +174,8 @@ mappings:
       - [dct:publisher,$(feed_publisher_name)]
       - [foaf:page,$(feed_published_url)]
       - [dct:language,$(feed_lang)]
-      - [schema:startDate,$(feed_start_date)]
-      - [schema:endDate,$(feedend_date)]
+      - [schema:startDate,$(feed_start_date), xsd:date]
+      - [schema:endDate,$(feedend_date), xsd:date]
       - [schema:version,$(feed_version)]
   shapes:
     sources:

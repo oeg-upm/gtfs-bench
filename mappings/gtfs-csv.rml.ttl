@@ -96,7 +96,8 @@ map:om_14 a rr:ObjectMap;
     rr:termType rr:Literal.
 map:om_15 a rr:ObjectMap;
     rml:reference "wheelchair_accesible";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_16 a rr:ObjectMap;
     rr:parentTriplesMap map:map_services_0;
     rr:joinCondition map:jc_2.
@@ -203,19 +204,22 @@ map:om_46 a rr:ObjectMap;
     rr:termType rr:Literal.
 map:om_47 a rr:ObjectMap;
     rml:reference "wheelchair_boarding";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_48 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#ServiceDates";
     rr:termType rr:IRI.
 map:om_49 a rr:ObjectMap;
     rml:reference "date";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_5 a rr:ObjectMap;
     rr:template "http://vocab.gtfs.org/terms#PickupType={pickup_type}";
     rr:termType rr:Literal.
 map:om_50 a rr:ObjectMap;
-    rml:reference "exeception_type";
-    rr:termType rr:Literal.
+    rml:reference "exception_type";
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_51 a rr:ObjectMap;
     rr:parentTriplesMap map:map_services_0;
     rr:joinCondition map:jc_7.
@@ -224,34 +228,43 @@ map:om_52 a rr:ObjectMap;
     rr:termType rr:IRI.
 map:om_53 a rr:ObjectMap;
     rml:reference "monday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_54 a rr:ObjectMap;
     rml:reference "tuesday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_55 a rr:ObjectMap;
     rml:reference "wednesday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_56 a rr:ObjectMap;
     rml:reference "thursday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_57 a rr:ObjectMap;
     rml:reference "friday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_58 a rr:ObjectMap;
     rml:reference "saturday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_59 a rr:ObjectMap;
     rml:reference "sunday";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_6 a rr:ObjectMap;
     rr:template "http://vocab.gtfs.org/terms#DropOffType={drop_off_type}";
     rr:termType rr:Literal.
 map:om_60 a rr:ObjectMap;
     rml:reference "start_date";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_61 a rr:ObjectMap;
     rml:reference "end_date";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_62 a rr:ObjectMap;
     rml:reference "feed_publisher_name";
     rr:termType rr:Literal.
@@ -263,10 +276,12 @@ map:om_64 a rr:ObjectMap;
     rr:termType rr:Literal.
 map:om_65 a rr:ObjectMap;
     rml:reference "feed_start_date";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_66 a rr:ObjectMap;
     rml:reference "feedend_date";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_67 a rr:ObjectMap;
     rml:reference "feed_version";
     rr:termType rr:Literal.
