@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS `gtfs`;
 SET GLOBAL local_infile = 1;
 CREATE DATABASE IF NOT EXISTS `gtfs`;
 USE `gtfs`;
@@ -30,7 +31,15 @@ ALTER TABLE  TRIPS  ADD FOREIGN  KEY (route_id) REFERENCES ROUTES (route_id);
 ALTER TABLE  TRIPS  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_id);
 ALTER TABLE  TRIPS  ADD FOREIGN  KEY (shape_id) REFERENCES SHAPES (shape_id);
 
-LOAD DATA LOCAL INFILE 'AGENCY.csv' INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE 'AGENCY.csv' INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
+       (@agency_id, @agency_name, @agency_url, @agency_timezone, @agency_lang, @agency_phone, @agency_fare_url) 
+       SET agency_id = IF(@agency_id = '', NULL, @agency_id), 
+           agency_name = IF(@agency_name = '', NULL, @agency_name), 
+           agency_url = IF(@agency_url = '', NULL, @agency_url), 
+           agency_timezone = IF(@agency_timezone = '', NULL, @agency_timezone),
+           agency_lang = IF(@agency_lang = '', NULL, @agency_lang),
+           agency_phone = IF(@agency_phone = '', NULL, @agency_phone),
+           agency_fare_url = IF(@agency_fare_url = '', NULL, @agency_fare_url);
 LOAD DATA LOCAL INFILE 'STOPS.csv' INTO TABLE STOPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 LOAD DATA LOCAL INFILE 'SHAPES.csv' INTO TABLE SHAPES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 LOAD DATA LOCAL INFILE 'ROUTES.csv' INTO TABLE ROUTES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
