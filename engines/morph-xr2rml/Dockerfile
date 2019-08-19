@@ -5,9 +5,9 @@ RUN mkdir /morph-xr2rml
 RUN wget https://github.com/toledoba/morph-xr2rml/releases/download/v4.0.0/morph-xr2rml-4.0.0.jar -P /morph-xr2rml
 COPY . /morph-xr2rml
 
-RUN mkdir /morph-xr2rml/results
-RUN mkdir /morph-xr2rml/data
-RUN mkdir /morph-xr2rml/mappings
+RUN mkdir /results
+RUN mkdir /data
+RUN mkdir /mappings
 
 
 CMD ["tail", "-f", "/dev/null"]
