@@ -47,5 +47,13 @@ LOAD DATA LOCAL INFILE 'CALENDAR.csv' INTO TABLE CALENDAR FIELDS TERMINATED BY '
 LOAD DATA LOCAL INFILE 'FEED_INFO.csv' INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 LOAD DATA LOCAL INFILE 'TRIPS.csv' INTO TABLE TRIPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 LOAD DATA LOCAL INFILE 'FREQUENCIES.csv' INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
-LOAD DATA LOCAL INFILE 'STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE 'STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
+       (@trip_id, @arrival_time, @departure_time, @stop_id, @stop_sequence, @stop_headsign, @pickup_type, @drop_off_type, @shape_dist_traveled) 
+       SET trip_id = IF(@trip_id = '', NULL, @trip_id), 
+           arrival_time = IF(@arrival_time = '', NULL, @arrival_time), 
+           departure_time = IF(@departure_time = '', NULL, @departure_time), 
+           stop_id = IF(@stop_id = '', NULL, @stop_id),
+           stop_sequence = IF(@stop_sequence = '', NULL, @stop_sequence),
+           stop_headsign = IF(@stop_headsign = '', NULL, @stop_headsign),
+		   shape_dist_traveled = IF(@shape_dist_traveled = '', NULL, @shape_dist_traveled);
 LOAD DATA LOCAL INFILE 'CALENDAR_DATES.csv' INTO TABLE CALENDAR_DATES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
