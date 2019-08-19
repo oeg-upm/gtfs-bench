@@ -22,9 +22,9 @@ SELECT * WHERE {
         ?trip gtfs:shortName ?tripShortName .
         ?trip gtfs:service ?service .
         ?trip gtfs:route ?route .
-        ?trip gtfs:headsign "Opera" .
+        ?trip gtfs:headsign "00000000000000000033" .
 
         gtfsstop:00000000000000000007 a gtfs:Stop .
-        gtfsstop:00000000000000000007 dct:description ?stopDescription .
+        OPTIONAL { gtfsstop:00000000000000000007 dct:description ?stopDescription . }
 
 }
