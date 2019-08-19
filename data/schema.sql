@@ -19,7 +19,7 @@ CREATE TABLE CALENDAR (`service_id` VARCHAR(200),`monday` INT,`tuesday` INT,`wed
 DROP TABLE IF EXISTS STOP_TIMES;
 CREATE TABLE STOP_TIMES (`trip_id` VARCHAR(200),`arrival_time` VARCHAR(200),`departure_time` VARCHAR(200),`stop_id` VARCHAR(200),`stop_sequence` INT,`stop_headsign` VARCHAR(200),`pickup_type` INT DEFAULT 0,`drop_off_type` INT DEFAULT 0,`shape_dist_traveled` DECIMAL(18,15),PRIMARY KEY (trip_id,stop_id,arrival_time));
 DROP TABLE IF EXISTS FEED_INFO;
-CREATE TABLE FEED_INFO (`feed_publisher_name` VARCHAR(200),`feed_publisher_url` VARCHAR(200),`feed_lang` VARCHAR(200),`feed_start_date` DATE,`feed_end_date` DATE,`feed_version` VARCHAR(200),PRIMARY KEY (feed_publisher_name));
+CREATE TABLE FEED_INFO (`feed_publisher_name` VARCHAR(200),`feed_publisher_url` VARCHAR(200),`feed_lang` VARCHAR(200),`feed_start_date` DATE DEFAULT NULL,`feed_end_date` DATE DEFAULT NULL,`feed_version` VARCHAR(200),PRIMARY KEY (feed_publisher_name));
 DROP TABLE IF EXISTS TRIPS;
 CREATE TABLE TRIPS (`route_id` VARCHAR(200),`service_id` VARCHAR(200),`trip_id` VARCHAR(200),`trip_headsign` VARCHAR(200),`trip_short_name` VARCHAR(200),`direction_id` INT,`block_id` VARCHAR(200) DEFAULT NULL,`shape_id` VARCHAR(200),`wheelchair_accessible` INT,PRIMARY KEY (trip_id));
 ALTER TABLE  CALENDAR_DATES  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_id);
@@ -42,7 +42,9 @@ LOAD DATA LOCAL INFILE 'ROUTES.csv' INTO TABLE ROUTES FIELDS TERMINATED BY ',' O
        SET route_desc = IF(@route_desc = '', NULL, @route_desc);
 LOAD DATA LOCAL INFILE 'CALENDAR.csv' INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
        SET end_date = IF(@end_date = '', NULL, @end_date);
-LOAD DATA LOCAL INFILE 'FEED_INFO.csv' INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE 'FEED_INFO.csv' INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
+       SET feed_start_date = IF(@feed_start_date = '', NULL, @feed_start_date),
+		   feed_end_date = IF(@feed_end_date = '', NULL, @feed_end_date);
 LOAD DATA LOCAL INFILE 'TRIPS.csv' INTO TABLE TRIPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
        SET block_id = IF(@block_id = '', NULL, @block_id);
 LOAD DATA LOCAL INFILE 'FREQUENCIES.csv' INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
