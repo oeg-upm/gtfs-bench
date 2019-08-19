@@ -5,7 +5,7 @@ USE `gtfs`;
 DROP TABLE IF EXISTS CALENDAR_DATES;
 CREATE TABLE CALENDAR_DATES (`service_id` VARCHAR(200),`date` DATE,`exception_type` INT,PRIMARY KEY (service_id,date));
 DROP TABLE IF EXISTS AGENCY;
-CREATE TABLE AGENCY (`agency_id` VARCHAR(200),`agency_name` VARCHAR(200),`agency_url` VARCHAR(200),`agency_timezone` VARCHAR(200),`agency_lang` VARCHAR(200),`agency_phone` VARCHAR(200),`agency_fare_url` VARCHAR(200),PRIMARY KEY (agency_id));
+CREATE TABLE AGENCY (`agency_id` VARCHAR(200),`agency_name` VARCHAR(200),`agency_url` VARCHAR(200),`agency_timezone` VARCHAR(200),`agency_lang` VARCHAR(200),`agency_phone` VARCHAR(200) DEFAULT NULL,`agency_fare_url` VARCHAR(200) DEFAULT NULL,PRIMARY KEY (agency_id));
 DROP TABLE IF EXISTS STOPS;
 CREATE TABLE STOPS (`stop_id` VARCHAR(200),`stop_code` VARCHAR(200),`stop_name` VARCHAR(200),`stop_desc` VARCHAR(200),`stop_lat` DECIMAL(18,15),`stop_lon` DECIMAL(18,15),`zone_id` VARCHAR(200),`stop_url` VARCHAR(200),`location_type` INT,`parent_station` VARCHAR(200),`stop_timezone` VARCHAR(200) DEFAULT NULL,`wheelchair_boarding` INT,PRIMARY KEY (stop_id));
 DROP TABLE IF EXISTS SHAPES;
@@ -32,17 +32,11 @@ ALTER TABLE  TRIPS  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_i
 ALTER TABLE  TRIPS  ADD FOREIGN  KEY (shape_id) REFERENCES SHAPES (shape_id);
 
 LOAD DATA LOCAL INFILE 'AGENCY.csv' INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
-       (@agency_id, @agency_name, @agency_url, @agency_timezone, @agency_lang, @agency_phone, @agency_fare_url) 
-       SET agency_id = IF(@agency_id = '', NULL, @agency_id), 
-           agency_name = IF(@agency_name = '', NULL, @agency_name), 
-           agency_url = IF(@agency_url = '', NULL, @agency_url), 
-           agency_timezone = IF(@agency_timezone = '', NULL, @agency_timezone),
-           agency_lang = IF(@agency_lang = '', NULL, @agency_lang),
-           agency_phone = IF(@agency_phone = '', NULL, @agency_phone),
+       SET agency_phone = IF(@agency_phone = '', NULL, @agency_phone),
            agency_fare_url = IF(@agency_fare_url = '', NULL, @agency_fare_url);
 LOAD DATA LOCAL INFILE 'STOPS.csv' INTO TABLE STOPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
        SET zone_id = IF(@zone_id = '', NULL, @zone_id),
-		   stop_timezone = IF(@stop_timezone = '', NULL, @stop_timezone);
+		       stop_timezone = IF(@stop_timezone = '', NULL, @stop_timezone);
 LOAD DATA LOCAL INFILE 'SHAPES.csv' INTO TABLE SHAPES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 LOAD DATA LOCAL INFILE 'ROUTES.csv' INTO TABLE ROUTES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
        SET route_desc = IF(@route_desc = '', NULL, @route_desc);
