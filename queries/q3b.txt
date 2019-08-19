@@ -1,5 +1,5 @@
 #Q3B: List all possible routes from a particular stop
-#original.q3b.STOPID=acc_4_1_1
+#original.q3b.STOPID=par_4_1 
 #vig.q3b.STOPID=00000000000000000005
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -14,7 +14,7 @@ PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 SELECT * WHERE {
 	?route a gtfs:Route .
 	?route gtfs:shortName ?routeShortName .
-	?route dct:description ?routeDescription .
+	OPTIONAL { ?route dct:description ?routeDescription . }
 
 	?trip a gtfs:Trip .
 	?trip gtfs:shortName ?tripShortName .
@@ -26,6 +26,6 @@ SELECT * WHERE {
 	?stopTime gtfs:stop gtfsstop:%STOPID . 
 
 	gtfsstop:%STOPID a gtfs:Stop . 
-	gtfsstop:%STOPID dct:description ?stopDescription . 
+	OPTIONAL { gtfsstop:%STOPID dct:description ?stopDescription . } 
 
 }
