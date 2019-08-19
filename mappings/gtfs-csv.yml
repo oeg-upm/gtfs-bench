@@ -141,9 +141,16 @@ mappings:
     s: http://linkedgtfs.com/CITY/services_dates/$(service_id)-$(date)
     po:
       - [a, gtfs:ServiceDates]
-      - [gtfs:service, $(service_id)]
       - [dct:date, $(date)]
       - [gtfs:dateAddition, $(exeception_type)]
+      - p: gtfs:service
+        o:
+          - mapping: services
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(service_id)]
+                - [str2, $(service_id)]            
   services:
     sources:
       - [data/calendar.csv~csv]
