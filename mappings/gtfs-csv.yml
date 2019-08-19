@@ -127,8 +127,8 @@ mappings:
       - [gtfs:code,$(stop_code)]
       - [foaf:name,$(stop_name)]
       - [dct:description,$(stop_desc)]
-      - [geo:lat,$(stop_lat)]
-      - [geo:long,$(stop_long)]
+      - [geo:lat,$(stop_lat),xsd:double]
+      - [geo:long,$(stop_long),xsd:double]
       - [gtfs:zone,$(zone_id)]
       - [foaf:page,$(stop_url)]
       - [gtfs:locationType,$(location_type)]
@@ -175,8 +175,8 @@ mappings:
       - [/data/shapes.csv~csv]
     s: http://linkedgtfs.com/CITY/shape/$(shape_id)
     po:
-      - [geo:lat,$(shape_pt_lat)]
-      - [geo:long,$(shape_pt_lon)]
+      - [geo:lat,$(shape_pt_lat),xsd:double]
+      - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]
       - [gtfs:distanceTraveled,$(shape_dist_traveled)]
   frequencies:
