@@ -1,10 +1,10 @@
 #Q3D: count services offered by a particular route in a particular interval
 #original.q3d.ROUTEID=4__1___
-#original.q3d.STARTDATE="2017-06-01"
-#original.q3d.ENDDATE="2017-06-30"
+#original.q3d.STARTTIME="00:20:00"
+#original.q3d.ENDTIME="00:30:00"
 #vig.q3d.ROUTEID=00000000000000000008
-#vig.q3d.STARTDATE="2017-06-01"
-#vig.q3d.ENDDATE="2017-06-30"
+#vig.q3d.STARTTIME="00:20:00"
+#vig.q3d.ENDTIME="00:30:00"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -18,7 +18,7 @@ PREFIX gtfsroute: <http://linkedgtfs.com/CITY/routes/>
 SELECT (count(distinct ?service) as ?count)  WHERE {
 	gtfsroute:%ROUTEID a gtfs:Route .
 	gtfsroute:%ROUTEID gtfs:shortName ?routeShortName .
-	gtfsroute:%ROUTEID dct:description ?routeDescription .
+	OPTIONAL { gtfsroute:%ROUTEID dct:description ?routeDescription . }
 
 	?trip a gtfs:Trip .
 	?trip gtfs:shortName ?tripShortName .
@@ -32,6 +32,6 @@ SELECT (count(distinct ?service) as ?count)  WHERE {
 	?stopTime gtfs:stop ?stop . 
 	?stopTime gtfs:departureTime ?departureTime . 
 
-	FILTER (?departureTime > %STARTDATE) .
-	FILTER (?departureTime < %ENDDATE) .
+	FILTER (?departureTime > %STARTTIME) .
+	FILTER (?departureTime < %ENDTIME) .
 }
