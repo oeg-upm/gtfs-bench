@@ -13,7 +13,11 @@ Go to Ontop Github and a choose your version from releases, here is an example w
 git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/ontop
 wget https://github.com/ontop/ontop/releases/download/ontop-3.0.0-beta-3/ontop-cli-3.0.0-beta-3.zip
-unzip ontop-cli-3.0.0-beta-3.zip -d .
+unzip ontop-cli-3.0.0-beta-3.zip
+cp -R ontop/* .
+cd jdbc
+wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar
+cd ..
 docker build -t ontop .
 ```
 
