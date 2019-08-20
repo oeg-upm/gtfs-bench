@@ -9,8 +9,8 @@ services:
       - ../results/ontop:/results
       - ../mappings:/mappings
       - ../queries:/queries  
-  morph_csv:
-    container_name: morph_csv
+  morph-csv:
+    container_name: morph-csv
     image: oegdataintegration/morph-csv:1.0.0
     env_file:
     volume:
