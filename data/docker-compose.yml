@@ -2,60 +2,60 @@ version: '2'
 services:
 # MYSQL 5.7
   mysql_gtfs1:
-    container_name: gtfs1_rdb_only_mysql
+    container_name: gtfs1_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-1:/data
+      - gtfs-rdb-1:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3306:3306"
 
   mysql_gtfs5:
-    container_name: gtfs5_rdb_only_mysql
+    container_name: gtfs5_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-5:/data
+      - gtfs-rdb-5:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3307:3306"
 
   mysql_gtfs10:
-    container_name: gtfs10_rdb_only_mysql
+    container_name: gtfs10_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-10:/data
+      - gtfs-rdb-10:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3308:3306"
 
   mysql_gtfs50:
-    container_name: gtfs50_rdb_only_mysql
+    container_name: gtfs50_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-50:/data
+      - gtfs-rdb-50:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3309:3306"
 
   mysql_gtfs100:
-    container_name: gtfs100_rdb_only_mysql
+    container_name: gtfs100_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-100:/data
+      - gtfs-rdb-100:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
       - "3310:3306"
 
   mysql_gtfs500:
-    container_name: gtfs500_rdb_only_mysql
+    container_name: gtfs500_mysql
     image: mysql:5.7
     volumes:
-      - /rdb-data/gtfs-rdb-500:/data
+      - gtfs-rdb-500:/data
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
@@ -63,50 +63,50 @@ services:
 
 #MongoDB 3.4.22
   mongo_gtfs1:
-    container_name: gtfs1_only_mongo
+    container_name: gtfs1_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-1:/data
+      - gtfs-json-1:/data
     ports:
       - "27017:27017"
 
   mongo_gtfs5:
-    container_name: gtfs5_only_mongo
+    container_name: gtfs5_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-5:/data
+      - gtfs-json-5:/data
     ports:
       - "27018:27017"
 
   mongo_gtfs10:
-    container_name: gtfs10_only_mongo
+    container_name: gtfs10_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-10:/data
+      - gtfs-json-10:/data
     ports:
       - "27019:27017"
 
   mongo_gtfs50:
-    container_name: gtfs50_only_mongo
+    container_name: gtfs50_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-50:/data
+      - gtfs-json-50:/data
     ports:
       - "27020:27017"
   
   mongo_gtfs100:
-    container_name: gtfs100_only_mongo
+    container_name: gtfs100_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-100:/data
+      - gtfs-json-100:/data
     ports:
       - "27021:27017"
 
   mongo_gtfs500:
-    container_name: gtfs500_only_mongo
+    container_name: gtfs500_mongo
     image: mongo:3.4.22
     volumes:
-      - /mongo-data/gtfs-500:/data
+      - gtfs-json-500:/data
     ports:
       - "27022:27017"  
 
