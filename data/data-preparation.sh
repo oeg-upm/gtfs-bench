@@ -15,6 +15,7 @@ do
 	    wget -O gtfs-${arr[$count]}-1000.zip $gtfs1000 
 	    wget -O gtfs-${arr[$count]}-5000.zip $gtfs5000
 
+	    # because the file contains more rows (rdf and graphs)
 	    if [ $count ==  4 ]; then
 	    	break
 	    fi
