@@ -22,7 +22,6 @@ services:
   morph-xr2rml:
     container_name: morph-xr2rml
     image: oegdataintegration/morph-xr2rml:4.0.0
-    env_file:
     volume:
       - ./data:/data
       - ./results/morph-xr2rml:/results
