@@ -8,6 +8,6 @@ RUN mkdir /results
 RUN mkdir /data
 RUN mkdir /mappings
 RUN mkdir /queries
-
+RUN mkdir /morphcsv/output
 
 CMD ["tail", "-f", "/dev/null"]

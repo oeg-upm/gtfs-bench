@@ -12,8 +12,10 @@ Go to Morph-CSV Github and a choose your version from releases, here is an examp
 ```bash
 git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/morph-csv
-wget https://github.com/oeg-upm/morph-csv/archive/morph-csv-1.0.0.zip
-unzip morph-csv-1.0.0.zip -d .
+wget https://github.com/oeg-upm/morph-csv/archive/1.0.0.zip
+unzip 1.0.0.zip
+rm morph-csv-1.0.0/Dockerfile 
+cp -R morph-csv-1.0.0/* .
 mvn clean compile assembly:single 
 cp target/morph-csv-1.0-jar-with-dependencies.jar morph-csv.jar
 docker build -t morph-csv .
