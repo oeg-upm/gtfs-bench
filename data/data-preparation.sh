@@ -12,8 +12,8 @@ do
 	    wget -O gtfs-${arr[$count]}-50.zip $gtfs50 
 	    wget -O gtfs-${arr[$count]}-100.zip $gtfs100 
 	    wget -O gtfs-${arr[$count]}-500.zip $gtfs500 
-	    wget -O gtfs-${arr[$count]}-1000.zip $gtfs1000 
-	    wget -O gtfs-${arr[$count]}-5000.zip $gtfs5000
+	    #wget -O gtfs-${arr[$count]}-1000.zip $gtfs1000 
+	    #wget -O gtfs-${arr[$count]}-5000.zip $gtfs5000
 
 	    # because the file contains more rows (rdf and graphs)
 	    if [ $count ==  4 ]; then
@@ -27,7 +27,7 @@ done < data-url.csv
 #unzip de files
 for j in "${arr[@]}"
 do
-	for i in 1 5 10 50 100 500 1000 5000
+	for i in 1 5 10 50 100 500 #1000 5000
 	do
 		unzip gtfs-$j-$i.zip -d gtfs-$j-$i
 	done
@@ -42,9 +42,8 @@ docker-compose -f docker-compose-ontop.yml up -d
 #copy the schema and scripts to the corresponding sql and run the load scripts
 for i in 1 5 10 50 100 500
 do
-	cp schema.sql gtfs-sql-$i/
-	cp schema-ontop.sql gtfs-sql-$i/
-	cd gtfs-sql-$i/
+	cp schema.sql gtfs-rdb-$i/
+	cp schema-ontop.sql gtfs-rdb-$i/
 	docker exec -it mysql_gtfs$i mysql -u root -poeg gtfs -e "source schema.sql"
 	docker exec -it mysql_ontop_gtfs$i mysql -u root -poeg gtfs -e "source schema-ontop.sql"
 done
