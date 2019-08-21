@@ -44,8 +44,14 @@ for i in 1 5 10 50 100 500
 do
 	cp schema.sql gtfs-rdb-$i/
 	cp schema-ontop.sql gtfs-rdb-$i/
+	
 	docker exec -it gtfs$i_mysql mysql -u root -poeg gtfs -e "source schema.sql"
 	docker exec -it gtfs$i_ontop_mysql mysql -u root -poeg gtfs -e "source schema-ontop.sql"
 done
 
 #preparation of mongodb
+for i in 1 5 10 50 100 500
+do
+	cp mongodb-* gtfs-json-$i/
+	docker exec -it gtfs$i_mongo /data/mongodb-import-gtfs.sh
+done
