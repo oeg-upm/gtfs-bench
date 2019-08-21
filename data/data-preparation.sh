@@ -45,8 +45,9 @@ do
 	cp schema.sql gtfs-rdb-$i/
 	cp schema-ontop.sql gtfs-rdb-$i/
 	
-	docker exec -it gtfs$i_mysql mysql -u root -poeg gtfs -e "source schema.sql"
-	docker exec -it gtfs$i_ontop_mysql mysql -u root -poeg gtfs -e "source schema-ontop.sql"
+	docker exec -it -w /data/  gtfs$i_mysql mysql -u root -poeg gtfs -e 'source schema.sql'
+	docker exec -it -w /data/  gtfs$i_ontop_mysql mysql -u root -poeg gtfs -e 'source schema-ontop.sql'
+
 done
 
 #preparation of mongodb
