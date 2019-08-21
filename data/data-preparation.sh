@@ -29,7 +29,7 @@ for j in "${arr[@]}"
 do
 	for i in 1 5 10 50 100 500 1000 5000
 	do
-		unzip $j/gtfs-$j-$i.zip -d gtfs-$j-$i
+		unzip gtfs-$j-$i.zip -d gtfs-$j-$i
 	done
 done
 
