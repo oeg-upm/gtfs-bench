@@ -4,7 +4,7 @@ services:
     container_name: ontop
     image: oegdataintegration/ontop:3.0.0
     env_file:
-    volume:
+    volumes:
       - ../data:/data
       - ../results/ontop:/results
       - ../mappings:/mappings
@@ -13,7 +13,7 @@ services:
     container_name: morph-csv
     image: oegdataintegration/morph-csv:1.0.0
     env_file:
-    volume:
+    volumes:
       - ../data:/data
       - ../results/morph-csv:/results
       - ../mappings:/mappings
@@ -22,8 +22,17 @@ services:
   morph-xr2rml:
     container_name: morph-xr2rml
     image: oegdataintegration/morph-xr2rml:4.0.0
-    volume:
+    volumes:
       - ../data:/data
       - ../results/morph-xr2rml:/results
+      - ../mappings:/mappings
+      - ../queries:/queries  
+
+  morph-rdb:
+    container_name: morph-rdb
+    image: #Doing******
+    volumes:
+      - ../data:/data
+      - ../results/morph-rdb:/results
       - ../mappings:/mappings
       - ../queries:/queries  
