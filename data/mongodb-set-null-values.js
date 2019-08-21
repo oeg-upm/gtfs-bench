@@ -1,4 +1,4 @@
-use gtfs1
+use gtfs
 db.AGENCY.updateMany({"agency_phone":""}, { $set: {"agency_phone":null} } )
 db.AGENCY.updateMany({"agency_fare_url":""}, { $set: {"agency_fare_url":null} } )
 db.ROUTES.updateMany({"route_desc":""}, { $set: {"route_desc":null} } )
