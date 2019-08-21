@@ -27,3 +27,12 @@ services:
       - ../results/morph-xr2rml:/results
       - ../mappings:/mappings
       - ../queries:/queries  
+
+  morph-rdb:
+    container_name: morph-rdb
+    image: #Doing******
+    volumes:
+      - ../data:/data
+      - ../results/morph-rdb:/results
+      - ../mappings:/mappings
+      - ../queries:/queries  
