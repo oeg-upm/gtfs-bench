@@ -1,4 +1,3 @@
-use gtfs
 mongoimport --db gtfs --collection AGENCY --file AGENCY.json --jsonArray
 mongoimport --db gtfs --collection STOPS --file STOPS.json --jsonArray
 mongoimport --db gtfs --collection ROUTES --file ROUTES.json --jsonArray
