@@ -37,7 +37,7 @@ rm *.zip
 
 #create the docker images from mysql (naive and ontop)
 docker-compose -f docker-compose.yml up -d
-#docker-compose -f docker-compose-ontop.yml up -d
+docker-compose -f docker-compose-ontop.yml up -d
 sleep 60
 #copy the schema and scripts to the corresponding sql and run the load scripts
 for i in 1 5 10 50 100 500
