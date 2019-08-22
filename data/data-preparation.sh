@@ -3,7 +3,7 @@ declare -a arr=("csv" "json" "rdb" "xml" "dist")
 count=0
 
 # download from data-url
-while IFS=, read -r format gtfs gtfs5 gtfs10 gtfs50 gtfs100 gtfs500 gtfs1000 gtfs5000
+while IFS=, read -r format gtfs gtfs5 gtfs10 gtfs50 #gtfs100 gtfs500 gtfs1000 gtfs5000
 do
 	if [[ $gtfs =~ ^http.* ]]; then
 	    wget -O gtfs-${arr[$count]}-1.zip $gtfs 
@@ -27,7 +27,7 @@ done < data-url.csv
 #unzip de files
 for j in "${arr[@]}"
 do
-	for i in 1 5 10 50 100 500 #1000 5000
+	for i in 1 5 10 50 #100 500 #1000 5000
 	do
 		unzip gtfs-$j-$i.zip -d gtfs-$j-$i
 	done
@@ -40,7 +40,7 @@ docker-compose -f docker-compose.yml up -d
 docker-compose -f docker-compose-ontop.yml up -d
 
 #copy the schema and scripts to the corresponding sql and run the load scripts
-for i in 1 5 10 50 100 500
+for i in 1 5 10 50 #100 500
 do
 	cp schema.sql gtfs-rdb-$i/
 	cp schema-ontop.sql gtfs-rdb-$i/
@@ -53,7 +53,7 @@ do
 done
 
 #preparation of mongodb
-for i in 1 5 10 50 100 500
+for i in 1 5 10 50 #100 500
 do
 	cp mongodb-* gtfs-json-$i/
 	docker exec -it gtfs$(echo $i)_mongo /data/mongodb-import-gtfs.sh
