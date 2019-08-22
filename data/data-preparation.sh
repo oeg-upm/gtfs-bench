@@ -10,8 +10,8 @@ do
 	    wget -O gtfs-${arr[$count]}-5.zip $gtfs5 
 	    wget -O gtfs-${arr[$count]}-10.zip $gtfs10 
 	    wget -O gtfs-${arr[$count]}-50.zip $gtfs50 
-	    wget -O gtfs-${arr[$count]}-100.zip $gtfs100 
-	    wget -O gtfs-${arr[$count]}-500.zip $gtfs500 
+	    #wget -O gtfs-${arr[$count]}-100.zip $gtfs100 
+	    #wget -O gtfs-${arr[$count]}-500.zip $gtfs500 
 	    #wget -O gtfs-${arr[$count]}-1000.zip $gtfs1000 
 	    #wget -O gtfs-${arr[$count]}-5000.zip $gtfs5000
 
