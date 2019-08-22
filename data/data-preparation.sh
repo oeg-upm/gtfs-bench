@@ -46,7 +46,7 @@ do
 	cp schema-ontop.sql gtfs-rdb-$i/
 
 	docker exec -it -w /data/  gtfs$(echo $i)_mysql mysql -u root -poeg  -e 'source schema.sql'
-#	docker exec -it -w /data/  gtfs$(echo $i)_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
+	docker exec -it -w /data/  gtfs$(echo $i)_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 #	docker exec -it -w /data/  gtfs$i_mysql mysql -u root -poeg  -e 'source schema.sql'
 #	docker exec -it -w /data/  gtfs$i_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 
