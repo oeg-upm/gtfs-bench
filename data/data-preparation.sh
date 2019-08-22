@@ -46,7 +46,7 @@ do
 	cp schema-ontop.sql gtfs-rdb-$i/
 
 	docker exec -it -w /data/  gtfs${i}_mysql mysql -u root -poeg  -e 'source schema.sql'
-	docker exec -it -w /data/   gtfs${i}_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
+#	docker exec -it -w /data/   gtfs${i}_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 #	docker exec -it -w /data/  gtfs$i_mysql mysql -u root -poeg  -e 'source schema.sql'
 #	docker exec -it -w /data/  gtfs$i_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 
@@ -56,5 +56,5 @@ done
 for i in 1 5 10 50 #100 500
 do
 	cp mongodb-* gtfs-json-$i/
-	docker exec -it gtfs${i}_mongo /data/mongodb-import-gtfs.sh
+	docker exec -it -w /data gtfs${i}_mongo ./mongodb-import-gtfs.sh
 done
