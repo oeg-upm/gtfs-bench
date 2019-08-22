@@ -44,7 +44,9 @@ for i in 1 5 10 50 100 500
 do
 	cp schema.sql gtfs-rdb-$i/
 	cp schema-ontop.sql gtfs-rdb-$i/
-	
+	echo "**********************************"
+	echo "loading $i size"
+	echo "**********************************"
 	docker exec -it -w /data/  gtfs${i}_mysql mysql -u root -poeg  -e 'source schema.sql'
 #	docker exec -it -w /data/   gtfs${i}_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 #	docker exec -it -w /data/  gtfs$i_mysql mysql -u root -poeg  -e 'source schema.sql'
