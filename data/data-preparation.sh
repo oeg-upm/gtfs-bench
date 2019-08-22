@@ -3,7 +3,7 @@ declare -a arr=("csv" "json" "rdb" "xml" "dist")
 count=0
 
 # download from data-url
-while IFS=, read -r format gtfs gtfs5 gtfs10 gtfs50 gtfs100 gtfs500 #gtfs1000 gtfs5000
+while IFS=, read -r format gtfs gtfs5 gtfs10 gtfs50 gtfs100 gtfs500 gtfs1000 gtfs5000
 do
 	if [[ $gtfs =~ ^http.* ]]; then
 	    wget -O gtfs-${arr[$count]}-1.zip $gtfs 
