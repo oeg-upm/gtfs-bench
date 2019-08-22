@@ -58,5 +58,8 @@ done
 for i in 1 5 10 50 100 500
 do
 	cp mongodb-* gtfs-json-$i/
+	echo "**********************************"
+	echo "loading $i size"
+	echo "**********************************"
 	docker exec -it -w /data gtfs${i}_mongo ./mongodb-import-gtfs.sh
 done
