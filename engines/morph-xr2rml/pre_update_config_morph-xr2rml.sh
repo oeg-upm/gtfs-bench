@@ -4,7 +4,7 @@ properties=$1
 size=$2
 query=$3
 
-echo "updating config file"
+echo "updating config file $properties"
 
 #la configuracion depende del tamano y query
 echo "query.file.path=$query">>$properties
