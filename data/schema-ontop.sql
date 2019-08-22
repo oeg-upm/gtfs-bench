@@ -17,7 +17,7 @@ CREATE TABLE FREQUENCIES (`trip_id2` VARCHAR(200),`start_time` VARCHAR(200),`end
 DROP TABLE IF EXISTS CALENDAR;
 CREATE TABLE CALENDAR (`service_id` VARCHAR(200),`monday` INT,`tuesday` INT,`wednesday` INT,`thursday` INT,`friday` INT,`saturday` INT,`sunday` INT,`start_date` DATE,`end_date` DATE DEFAULT NULL,PRIMARY KEY (service_id));
 DROP TABLE IF EXISTS STOP_TIMES;
-CREATE TABLE STOP_TIMES (`trip_id3` VARCHAR(200),`arrival_time` VARCHAR(200),`departure_time` VARCHAR(200),`stop_id2` VARCHAR(200),`stop_sequence` INT,`stop_headsign` VARCHAR(200),`pickup_type` INT DEFAULT 0,`drop_off_type` INT DEFAULT 0,`shape_dist_traveled` DECIMAL(18,15),PRIMARY KEY (trip_id2,stop_id2,arrival_time));
+CREATE TABLE STOP_TIMES (`trip_id3` VARCHAR(200),`arrival_time` VARCHAR(200),`departure_time` VARCHAR(200),`stop_id2` VARCHAR(200),`stop_sequence` INT,`stop_headsign` VARCHAR(200),`pickup_type` INT DEFAULT 0,`drop_off_type` INT DEFAULT 0,`shape_dist_traveled` DECIMAL(18,15),PRIMARY KEY (trip_id3,stop_id2,arrival_time));
 DROP TABLE IF EXISTS FEED_INFO;
 CREATE TABLE FEED_INFO (`feed_publisher_name` VARCHAR(200),`feed_publisher_url` VARCHAR(200),`feed_lang` VARCHAR(200),`feed_start_date` DATE,`feed_end_date` DATE,`feed_version` VARCHAR(200),PRIMARY KEY (feed_publisher_name));
 DROP TABLE IF EXISTS TRIPS;
@@ -51,10 +51,10 @@ LOAD DATA LOCAL INFILE 'FREQUENCIES.csv' INTO TABLE FREQUENCIES FIELDS TERMINATE
        SET exact_times = IF(@exact_times = '', NULL, @exact_times);
 LOAD DATA LOCAL INFILE 'STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
        (@trip_id, @arrival_time, @departure_time, @stop_id, @stop_sequence, @stop_headsign, @pickup_type, @drop_off_type, @shape_dist_traveled) 
-       SET trip_id = IF(@trip_id = '', NULL, @trip_id), 
+       SET trip_id3 = IF(@trip_id3 = '', NULL, @trip_id3), 
            arrival_time = IF(@arrival_time = '', NULL, @arrival_time), 
            departure_time = IF(@departure_time = '', NULL, @departure_time), 
-           stop_id = IF(@stop_id = '', NULL, @stop_id),
+           stop_id2 = IF(@stop_id2 = '', NULL, @stop_id2),
            stop_sequence = IF(@stop_sequence = '', NULL, @stop_sequence),
            stop_headsign = IF(@stop_headsign = '', NULL, @stop_headsign),
 		   shape_dist_traveled = IF(@shape_dist_traveled = '', NULL, @shape_dist_traveled);
