@@ -1,4 +1,4 @@
-#Q2B: Find which services are served on a particular day.
+#Q2B: Find additional services are served on a particular day.
 # original.q2b.INPUTDATE="2017-12-25"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
