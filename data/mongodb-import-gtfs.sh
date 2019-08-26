@@ -10,4 +10,5 @@ mongoimport --db gtfs --collection FEED_INFO --file FEED_INFO.json --jsonArray
 mongoimport --db gtfs --collection FREQUENCIES --file FREQUENCIES.json --jsonArray
 mongoimport --db gtfs --collection SHAPES --file SHAPES.json --jsonArray
 
+
 mongo < mongodb-set-null-values.js
