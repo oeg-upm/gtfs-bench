@@ -25,6 +25,6 @@ SELECT * WHERE {
         ?trip gtfs:headsign "Opera" .
 
         gtfsstop:00000000000000000007 a gtfs:Stop .
-        gtfsstop:00000000000000000007 dct:description ?stopDescription .
+        OPTIONAL { gtfsstop:00000000000000000007 dct:description ?stopDescription . }
 
 }

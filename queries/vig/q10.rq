@@ -1,7 +1,10 @@
 #Q3D: count services offered by a particular route in a particular interval
+#original.q3d.ROUTEID=4__1___
+#original.q3d.STARTTIME="00:20:00"
+#original.q3d.ENDTIME="00:30:00"
 #vig.q3d.ROUTEID=00000000000000000008
-#vig.q3d.STARTDATE="2017-06-01"
-#vig.q3d.ENDDATE="2017-06-30"
+#vig.q3d.STARTTIME="00:20:00"
+#vig.q3d.ENDTIME="00:30:00"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -29,6 +32,6 @@ SELECT (count(distinct ?service) as ?count)  WHERE {
 	?stopTime gtfs:stop ?stop . 
 	?stopTime gtfs:departureTime ?departureTime . 
 
-	FILTER (?departureTime > "2017-06-01") .
-	FILTER (?departureTime < "2017-06-30") .
+	FILTER (?departureTime > "00:20:00") .
+	FILTER (?departureTime < "00:30:00") .
 }

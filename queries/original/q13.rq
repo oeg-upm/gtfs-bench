@@ -13,6 +13,8 @@ WHERE {
       ?stop gtfs:parentStation ?parStation .
       ?stop foaf:name ?accName .
       #BIND(IRI(concat('http://linkedgtfs.com/CITY/stops/',?parStation)) AS ?station) .
-      ?station a gtfs:Stop .
-      ?station foaf:name 'Nuevos Ministerios'
+      #?station a gtfs:Stop .
+      #?station foaf:name 'Nuevos Ministerios'
+      ?parStation a gtfs:Stop .
+      ?parStation foaf:name 'Nuevos Ministerios'      
 }
