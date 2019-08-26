@@ -11,5 +11,5 @@ SELECT * WHERE {
 	?agency a gtfs:Agency .
 	?agency foaf:page ?agencyPage .
 	?agency foaf:name ?agencyName .
-	OPTIONAL { ?agency foaf:phone ?agencyPhone . } 
+	?agency foaf:phone ?agencyPhone .
 }
