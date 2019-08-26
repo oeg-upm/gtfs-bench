@@ -6,9 +6,11 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX gtfsservice: <http://linkedgtfs.com/CITY/service/>
 
-Select * 
-FROM <http://gtfs1.linkeddata.es>
+SELECT * 
+#FROM <http://gtfs1.linkeddata.es>
 WHERE
 {
     ?stopTime a gtfs:StopTime .
@@ -17,16 +19,13 @@ WHERE
     ?stopTime gtfs:stopSequence ?sequence .
 
     ?trip a gtfs:Trip .
-    ?trip gtfs:service <http://linkedgtfs.com/CITY/service/4_I14> .
+    ?trip gtfs:service gtfsservice:4_I14 .
     ?trip gtfs:headsign 'CUATRO CAMINOS' .
     ?trip gtfs:route ?route .
     ?route gtfs:longName ?name .
 
     ?stop foaf:name ?stopName 
-    
-      
 }
     
-ORDER BY xsd:integer(?sequence)   
-
-
+#ORDER BY xsd:integer(?sequence)   
+ORDER BY ?sequence

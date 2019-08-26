@@ -7,9 +7,9 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 
-Select ?trip,  xsd:time(?arrivalTime1) - xsd:time(?arrivalTime2)
-
-FROM <http://gtfs1.linkeddata.es>
+#Select ?trip,  xsd:time(?arrivalTime1) - xsd:time(?arrivalTime2)
+SELECT ?trip,  ?arrivalTime1 - ?arrivalTime2
+#FROM <http://gtfs1.linkeddata.es>
 WHERE
 {
     ?stopTime1 a gtfs:StopTime .
@@ -30,9 +30,6 @@ WHERE
     ?trip gtfs:route ?route .
 
     ?route gtfs:longName 'Pinar de Chamartín-Valdecarros' .
-
-       
-      
 }
 
 

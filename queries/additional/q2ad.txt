@@ -8,22 +8,21 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
  
-SELECT  ?longName, count(?name) 
-FROM <http://gtfs1.linkeddata.es>
+SELECT ?longName (count(?name) as ?count)
 WHERE { 	
-  	?route a gtfs:Route .
-  	?route gtfs:longName ?longName .
+	?route a gtfs:Route .
+	?route gtfs:longName ?longName .
  
-  	?trip a gtfs:Trip .
-  	?trip gtfs:route ?route .
+	?trip a gtfs:Trip .
+	?trip gtfs:route ?route .
  
-  	?stopTime a gtfs:StopTime .
-  	?stopTime gtfs:trip ?trip .
-  	?stopTime gtfs:stop ?stop .
+	?stopTime a gtfs:StopTime .
+	?stopTime gtfs:trip ?trip .
+	?stopTime gtfs:stop ?stop .
  
  	?stop a gtfs:Stop .
  	?stop foaf:name  ?name .
  	?stop gtfs:locationType '0' .
- 	?stop gtfs:wheelchairBoarding TRUE	
+ 	?stop gtfs:wheelchairBoarding "true"^^xsd:boolean	
 }
-group by ?longName
+GROUP BY ?longName
