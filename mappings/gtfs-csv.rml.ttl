@@ -19,9 +19,11 @@ map:jc_5 rr:child "shape_id";
     rr:parent "shape_id".
 map:jc_6 rr:child "agency_id";
     rr:parent "agency_id".
-map:jc_7 rr:child "service_id";
+map:jc_7 rr:child "stop_id";
+    rr:parent "parent_station".
+map:jc_8 rr:child "service_id";
     rr:parent "service_id".
-map:jc_8 rr:child "trip_id";
+map:jc_9 rr:child "trip_id";
     rr:parent "trip_id".
 map:map_agency_0 rml:logicalSource map:source_3;
     a rr:TriplesMap;
@@ -145,7 +147,8 @@ map:om_29 a rr:ObjectMap;
     rr:termType rr:IRI.
 map:om_3 a rr:ObjectMap;
     rml:reference "stop_sequence";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#integer>.
 map:om_30 a rr:ObjectMap;
     rml:reference "agency_url";
     rr:termType rr:Literal.
@@ -197,8 +200,8 @@ map:om_44 a rr:ObjectMap;
     rml:reference "location_type";
     rr:termType rr:Literal.
 map:om_45 a rr:ObjectMap;
-    rml:reference "parent_station";
-    rr:termType rr:Literal.
+    rr:parentTriplesMap map:map_stops_0;
+    rr:joinCondition map:jc_7.
 map:om_46 a rr:ObjectMap;
     rml:reference "stop_timezone";
     rr:termType rr:Literal.
@@ -222,7 +225,7 @@ map:om_50 a rr:ObjectMap;
     rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
 map:om_51 a rr:ObjectMap;
     rr:parentTriplesMap map:map_services_0;
-    rr:joinCondition map:jc_7.
+    rr:joinCondition map:jc_8.
 map:om_52 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#Service";
     rr:termType rr:IRI.
@@ -319,7 +322,7 @@ map:om_76 a rr:ObjectMap;
     rr:termType rr:Literal.
 map:om_77 a rr:ObjectMap;
     rr:parentTriplesMap map:map_trips_0;
-    rr:joinCondition map:jc_8.
+    rr:joinCondition map:jc_9.
 map:om_8 a rr:ObjectMap;
     rr:parentTriplesMap map:map_trips_0;
     rr:joinCondition map:jc_0.

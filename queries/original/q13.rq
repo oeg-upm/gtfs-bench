@@ -8,14 +8,13 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT  *
-FROM <http://gtfs1.linkeddata.es>
 WHERE {     
       ?stop a gtfs:Stop .
       ?stop gtfs:parentStation ?parStation .
       ?stop foaf:name ?accName .
-      BIND(IRI(concat('http://linkedgtfs.com/CITY/stops/',?parStation)) AS ?station) .
-      ?station a gtfs:Stop .
-      ?station foaf:name 'Nuevos Ministerios'
+      #BIND(IRI(concat('http://linkedgtfs.com/CITY/stops/',?parStation)) AS ?station) .
+      #?station a gtfs:Stop .
+      #?station foaf:name 'Nuevos Ministerios'
+      ?parStation a gtfs:Stop .
+      ?parStation foaf:name 'Nuevos Ministerios'      
 }
-  
-

@@ -1,5 +1,6 @@
-#Q2B: Find which services are served on a particular day.
-# vig.q2b.INPUTDATE="2017-01-07"
+#Q2B: Find additional services are served on a particular day.
+#original.q2b.INPUTDATE="2017-12-25"
+#vig.q2b.INPUTDATE="2017-01-07"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -13,7 +14,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT * WHERE {
 	?serviceDates a gtfs:ServiceDates .
 	?serviceDates gtfs:service ?service .
-	?serviceDates dct:date "2017-01-07"^^xsd:date .
+	?serviceDates dct:date %INPUTDATE^^xsd:date .
 	?serviceDates gtfs:dateAddition "true"^^xsd:boolean .
 	
 	?service a gtfs:Service .

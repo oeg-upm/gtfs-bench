@@ -16,8 +16,6 @@ SELECT (count(distinct ?route) as ?nRoutes) WHERE {
 	gtfsagency:%AGENCYID foaf:name ?agencyName .
 	OPTIONAL { gtfsagency:%AGENCYID foaf:phone ?agencyPhone .}
 
-	OPTIONAL {
-		?route a gtfs:Route .
-		?route gtfs:agency gtfsagency:%AGENCYID .
-	}
+	?route a gtfs:Route .
+	?route gtfs:agency gtfsagency:%AGENCYID .
 }

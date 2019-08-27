@@ -23,7 +23,7 @@ mappings:
       - [a, gtfs:StopTime]
       - [gtfs:arrivalTime, $(arrival_time)]
       - [gtfs:departureTime, $(departure_time)]
-      - [gtfs:stopSequence, $(stop_sequence)]
+      - [gtfs:stopSequence, $(stop_sequence),xsd:integer]
       - [gtfs:headsign, $(stop_headsign)]
       - [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)]
       - [gtfs:dropOffType, http://vocab.gtfs.org/terms#DropOffType=$(drop_off_type)]
@@ -132,7 +132,14 @@ mappings:
       - [gtfs:zone,$(zone_id)]
       - [foaf:page,$(stop_url)]
       - [gtfs:locationType,$(location_type)]
-      - [gtfs:parentStation,$(parent_station)]
+      - p: gtfs:parentStation
+        o:
+          - mapping: stops
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(stop_id)]
+                - [str2, $(parent_station)]
       - [gtfs:timeZone,$(stop_timezone)]
       - [gtfs:wheelchairBoarding,$(wheelchair_boarding), xsd:boolean]
   services_dates:
