@@ -146,13 +146,13 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#Stop>
 		];
-	];		
+	];
 .
 
 <stopCode>
@@ -163,7 +163,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#code> ];
 		rr:objectMap[
@@ -180,7 +180,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
 		rr:objectMap[
@@ -197,7 +197,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
 		rr:objectMap[
@@ -214,7 +214,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
 		rr:objectMap[
@@ -231,11 +231,12 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
 		rr:objectMap[
-			xrr:reference "$.parent_station";
+			#xrr:reference "$.parent_station";
+			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "$.parent_station"; rr:parent "$.stop_id"; ];
 		];
 	];
 .
@@ -248,7 +249,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
 		rr:objectMap[
@@ -265,7 +266,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
 		rr:objectMap[
@@ -282,7 +283,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
 		rr:objectMap[
@@ -300,7 +301,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
 		rr:objectMap[
@@ -318,7 +319,7 @@
 		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];	
+	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#zone> ];
 		rr:objectMap[
@@ -331,7 +332,7 @@
 <routes>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -342,13 +343,13 @@
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#Route>
 		];
-	];		
+	];
 .
 
 <routeLongName>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -365,7 +366,7 @@
 <routeURL>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -382,7 +383,7 @@
 <routeTextColor>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -399,7 +400,7 @@
 <routeShortName>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -416,7 +417,7 @@
 <routeColor>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -433,7 +434,7 @@
 <routeDescription>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -450,7 +451,7 @@
 <routeType>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -467,7 +468,7 @@
 <routeAgency>
 	xrr:logicalSource [
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
-	];	
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -485,7 +486,7 @@
 <services>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -496,13 +497,13 @@
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#Service>
 		];
-	];		
+	];
 .
 
 <serviceMonday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -520,7 +521,7 @@
 <serviceTuesday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -538,7 +539,7 @@
 <serviceWednesday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -556,7 +557,7 @@
 <serviceThursday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -568,13 +569,13 @@
 			xrr:reference "$.thursday";
 			rr:datatype xsd:boolean;
 		];
-	];	
+	];
 .
 
 <serviceFriday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -592,7 +593,7 @@
 <serviceSaturday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -610,7 +611,7 @@
 <serviceSunday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -628,7 +629,7 @@
 <serviceStartDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -646,7 +647,7 @@
 <serviceEndDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];		
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -658,13 +659,13 @@
 			xrr:reference "$.end_date";
 			rr:datatype xsd:date;
 		];
-	];	
+	];
 .
 
 <services_dates>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];			
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -675,13 +676,13 @@
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#ServiceDates>
 		];
-	];		
+	];
 .
 
 <services_datesDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];			
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -699,7 +700,7 @@
 <services_datesService>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];			
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -709,7 +710,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
 		rr:objectMap [
 			rr:parentTriplesMap <services>; rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -717,7 +718,7 @@
 <services_datesDateAddition>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];			
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -735,7 +736,7 @@
 <trips>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -746,13 +747,13 @@
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#Trip>
 		];
-	];		
+	];
 .
 
 <tripShape>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -769,7 +770,7 @@
 <tripService>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -779,7 +780,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
 		rr:objectMap [
 			rr:parentTriplesMap <services>; rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -787,7 +788,7 @@
 <tripHeadsign>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -804,7 +805,7 @@
 <tripRoute>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -814,7 +815,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
 		rr:objectMap [
 			rr:parentTriplesMap <routes>; rr:joinCondition [ rr:child "$.route_id"; rr:parent "$.route_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+			# rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -822,7 +823,7 @@
 <tripBlock>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -839,7 +840,7 @@
 <tripWheelchairAccessible>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -857,7 +858,7 @@
 <tripShortName>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -874,7 +875,7 @@
 <tripDirection>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
-	];				
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -892,7 +893,7 @@
 <stoptimes>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -903,13 +904,13 @@
 		rr:objectMap[
 			rr:constant <http://vocab.gtfs.org/terms#StopTime>
 		];
-	];			
+	];
 .
 
 <stoptimePickupType>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -926,7 +927,7 @@
 <stoptimeDistanceTraveled>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -943,7 +944,7 @@
 <stoptimeDropOffType>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -960,7 +961,7 @@
 <stoptimeStopSequence>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -970,6 +971,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stopSequence> ];
 		rr:objectMap[
 			xrr:reference "$.stop_sequence";
+			rr:datatype xsd:integer;
 		];
 	];
 .
@@ -977,7 +979,7 @@
 <stoptimeArrivalTime>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -995,7 +997,7 @@
 <stoptimeHeadsign>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -1012,7 +1014,7 @@
 <stoptimeDepartureTime>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -1030,7 +1032,7 @@
 <stoptimeTrip>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -1040,7 +1042,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
 		rr:objectMap [
 			rr:parentTriplesMap <trips>; rr:joinCondition [ rr:child "$.trip_id"; rr:parent "$.trip_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+			# rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -1048,7 +1050,7 @@
 <stoptimeStop>
 	xrr:logicalSource [
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
-	];					
+	];
 	rr:subjectMap [
 		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
@@ -1058,7 +1060,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stop> ];
 		rr:objectMap [
 			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "$.stop_id"; rr:parent "$.stop_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;			
+			# rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
