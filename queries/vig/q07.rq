@@ -10,11 +10,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT * WHERE {
 	?route a gtfs:Route .
-	?route gtfs:shortName ?routeShortName .
+	OPTIONAL { ?route gtfs:shortName ?routeShortName . }
 	OPTIONAL { ?route dct:description ?routeDescription . }
 
 	?trip a gtfs:Trip .
-	?trip gtfs:shortName ?tripShortName .
+	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }  
 	?trip gtfs:service ?service .
 	?trip gtfs:route ?route .
 
@@ -24,10 +24,10 @@ SELECT * WHERE {
 
 	?stop a gtfs:Stop . 
 	OPTIONAL { ?stop dct:description ?stopDescription .  }
-	?stop geo:lat ?stopLat . 
-	?stop geo:long ?stopLong . 
-	?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding . 
-
+	OPTIONAL {
+		?stop geo:lat ?stopLat . 
+		?stop geo:long ?stopLong . 
+	}
+	OPTIONAL { ?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
 	FILTER (?stopWheelchairBoarding =  "true"^^xsd:boolean) .
-
 }
