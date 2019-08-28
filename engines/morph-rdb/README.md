@@ -13,6 +13,10 @@ Go to Morph-rdb Github and a choose your version from releases, here is an examp
 ```bash
 git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/morph-rdb
+wget https://github.com/oeg-upm/morph-rdb/releases/download/v3.12.0/morph-rdb-dist-3.12.0.jar
+wget https://github.com/oeg-upm/morph-rdb/releases/download/morph-RDB_v3.9.17/dependency.zip
+unzip dependency.zip
+mv morph-rdb-dist-3.12.0.jar  morph-rdb.jar
 docker build -t morph-rdb .
 docker run -d --name morph-rdb morph-rdb
 ```
