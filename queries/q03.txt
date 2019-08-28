@@ -12,8 +12,10 @@ PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 
 SELECT * WHERE {
 	gtfsstop:%STOPID a gtfs:Stop . 
-	gtfsstop:%STOPID dct:description ?stopDescription . 
-	gtfsstop:%STOPID geo:lat ?stopLat . 
-	gtfsstop:%STOPID geo:long ?stopLong . 
+	OPTIONAL { gtfsstop:%STOPID dct:description ?stopDescription . } 
+	OPTIONAL { 
+		gtfsstop:%STOPID geo:lat ?stopLat . 
+		gtfsstop:%STOPID geo:long ?stopLong .
+	}
 	OPTIONAL { gtfsstop:%STOPID gtfs:wheelchairBoarding ?stopWheelchairBoarding .  }
 }
