@@ -54,7 +54,7 @@ do
             if [ $mode -eq 0 ]
             then 
                 echo "Restaring the database ..."
-                sh restart_database_$system_name.sh
+                sh restart_database_$system_name.sh ${size}
             fi
         done
 #cp $properties $properties.$system_name.$query_file
