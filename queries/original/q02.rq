@@ -14,8 +14,10 @@ PREFIX dct: <http://purl.org/dc/terms/>
 SELECT * WHERE {
 	?stop a gtfs:Stop . 
 	OPTIONAL { ?stop dct:description ?stopDescription . }
-	OPTIONAL { ?stop geo:lat ?stopLat . }
-	OPTIONAL { ?stop geo:long ?stopLong . }
+	OPTIONAL { 
+		?stop geo:lat ?stopLat . 
+		?stop geo:long ?stopLong .
+	}
 	OPTIONAL { ?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding . }
 	
 	FILTER (?stopLat > 40.20) .
