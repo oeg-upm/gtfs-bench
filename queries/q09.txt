@@ -14,19 +14,17 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 
 SELECT * WHERE {
+	?stopTime a gtfs:StopTime .
+	?stopTime gtfs:trip ?trip .
+	?stopTime gtfs:stop gtfsstop:%STOPID .
+	OPTIONAL { ?stopTime gtfs:arrivalTime ?arrivalTime . } 
 
-        ?stopTime a gtfs:StopTime .
-        ?stopTime gtfs:trip ?trip .
-        ?stopTime gtfs:stop gtfsstop:%STOPID .
-        ?stopTime gtfs:arrivalTime ?arrivalTime .
+	?trip a gtfs:Trip .
+	OPTIONAL { ?trip gtfs:shortName ?tripShortName . } 
+	?trip gtfs:service ?service .
+	?trip gtfs:route ?route .
+	OPTIONAL { ?trip gtfs:headsign %HEADSIGN . } 
 
-        ?trip a gtfs:Trip .
-        ?trip gtfs:shortName ?tripShortName .
-        ?trip gtfs:service ?service .
-        ?trip gtfs:route ?route .
-        ?trip gtfs:headsign %HEADSIGN .
-
-        gtfsstop:%STOPID a gtfs:Stop .
-        OPTIONAL { gtfsstop:%STOPID dct:description ?stopDescription . }
-
+	gtfsstop:%STOPID a gtfs:Stop .
+	OPTIONAL { gtfsstop:%STOPID dct:description ?stopDescription . }
 }
