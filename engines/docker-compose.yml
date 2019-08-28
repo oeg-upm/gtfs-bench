@@ -30,7 +30,7 @@ services:
 
   morph-rdb:
     container_name: morph-rdb
-    image: #Doing******
+    image: oegdataintegration/morph-rdb:3.12.0
     volumes:
       - ../data:/data
       - ../results/morph-rdb:/results
