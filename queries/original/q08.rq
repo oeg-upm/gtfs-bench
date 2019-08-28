@@ -12,11 +12,11 @@ PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
 
 SELECT * WHERE {
 	?route a gtfs:Route .
-	?route gtfs:shortName ?routeShortName .
+	OPTIONAL { ?route gtfs:shortName ?routeShortName . }
 	OPTIONAL { ?route dct:description ?routeDescription . }
 
 	?trip a gtfs:Trip .
-	?trip gtfs:shortName ?tripShortName .
+	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
 	?trip gtfs:service ?service .
 	?trip gtfs:route ?route .
 
@@ -26,5 +26,4 @@ SELECT * WHERE {
 
 	gtfsstop:acc_4_1_1 a gtfs:Stop . 
 	OPTIONAL { gtfsstop:acc_4_1_1 dct:description ?stopDescription . }
-
 }
