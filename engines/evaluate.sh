@@ -7,7 +7,7 @@ mode=$4
 resultdir=$5
 
 echo "pwd = " $PWD
-echo "files = $files"
+echo "queryfilesdir = $queryfilesdir"
 echo "properties = $properties"
 echo "system_name = $system_name"
 echo "mode = $mode"
@@ -33,15 +33,16 @@ do
         then
             echo "Warming up the system ..."
             #sh run_$system_name.sh
-            docker exec -it ${system_name} run_$system_name.sh $system_name $resultdir $size $query_file 0
+            docker exec -it  -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file 0
         fi
 
-        for i in {1..1}
+        for i in 1 2
         do
             echo "***** Evaluating: size $size - query_file $query_file - run $i ..."
             #sh run_$system_name.sh
-            docker exec -it ${system_name} run_$system_name.sh $system_name $resultdir $size $query_file $i
-
+	    echo "executing docker exec -it ${system_name} -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file $i"
+            docker exec -it  -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file $i
+	    #docker exec  -it -w /morph-rdb  morph-rdb sh run_morph-rdb.sh
             #guardamos el tiempo
             #echo "$size, $query_file, $i, $dur">>$resultdir/$system_name-results-times.csv
 
