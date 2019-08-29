@@ -28,6 +28,6 @@ SELECT * WHERE {
 		?stop geo:lat ?stopLat . 
 		?stop geo:long ?stopLong . 
 	}
-	OPTIONAL { ?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding . }
+	?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding .
 	FILTER (?stopWheelchairBoarding =  "true"^^xsd:boolean) .
 }
