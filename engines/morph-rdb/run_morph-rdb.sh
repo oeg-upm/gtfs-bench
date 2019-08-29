@@ -7,7 +7,7 @@ i=$5
 
 if [ $i != 0 ]
 then
-    echo "size, query, run, time (date +%s.%N)">$system_name-results-times.csv
+    echo "size, query, run, time (date +%s.%N)">../results/$system_name-results-times.csv
     #tiempo inicio
     start=$(gdate +%s.%N)
 fi
@@ -21,7 +21,7 @@ then
     fin=$(gdate +%s.%N)
     # resta de tiempos
     dur=$(echo "$fin - $start" | bc)
-    echo "$size, $query_file, $i, $dur">>$system_name-results-times.csv
+    echo "$size, $query_file, $i, $dur">>../results/$system_name-results-times.csv
 fi
 
 
