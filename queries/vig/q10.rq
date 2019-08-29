@@ -30,7 +30,7 @@ SELECT (count(distinct ?service) as ?count)  WHERE {
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
 	?stopTime gtfs:stop ?stop . 
-	OPTIONAL { ?stopTime gtfs:departureTime ?departureTime . } 
+	?stopTime gtfs:departureTime ?departureTime .
 
 	FILTER (?departureTime > "00:20:00") .
 	FILTER (?departureTime < "00:30:00") .
