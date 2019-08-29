@@ -12,7 +12,7 @@ echo "properties = $properties"
 echo "system_name = $system_name"
 echo "mode = $mode"
 
-echo "size, query, run, time (date +%s.%N)">$resultdir/$system_name-results-times.csv
+#echo "size, query, run, time (date +%s.%N)">$resultdir/$system_name-results-times.csv
 for size in 1 5
 do
     echo "size = $size"
@@ -32,26 +32,18 @@ do
         if [ $mode -eq 1 ]
         then
             echo "Warming up the system ..."
-            sh run_$system_name.sh
+            #sh run_$system_name.sh
+            docker exec -it ${system_name} run_$system_name.sh $system_name $resultdir $size $query_file 0
         fi
 
         for i in {1..1}
         do
-
-            #tiempo inicio
-            start=$(date +%s.%N)
-
             echo "***** Evaluating: size $size - query_file $query_file - run $i ..."
-            sh run_$system_name.sh
-          
-            #tiempo fin
-            fin=$(date +%s.%N)
-
-            # resta de tiempos
-            dur=$(echo "$fin - $start" | bc)
+            #sh run_$system_name.sh
+            docker exec -it ${system_name} run_$system_name.sh $system_name $resultdir $size $query_file $i
 
             #guardamos el tiempo
-            echo "$size, $query_file, $i, $dur">>$resultdir/$system_name-results-times.csv
+            #echo "$size, $query_file, $i, $dur">>$resultdir/$system_name-results-times.csv
 
             if [ $mode -eq 0 ]
             then 
