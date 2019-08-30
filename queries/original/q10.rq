@@ -1,4 +1,4 @@
-#Q3D: count services offered by a particular route in a particular interval
+#Q3D: count trips offered by a particular route in a particular interval
 #original.q3d.ROUTEID=4__1___
 #original.q3d.STARTTIME="00:20:00"
 #original.q3d.ENDTIME="00:30:00"
