@@ -1,4 +1,4 @@
-#q7ad What is the duration of a route between a stop X and a stop Y (in its different schedules)
+﻿#q7ad What is the duration of a route between a stop X and a stop Y (in its different schedules)
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -7,8 +7,8 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 
-#Select ?trip,  xsd:time(?arrivalTime1) - xsd:time(?arrivalTime2)
-SELECT ?trip  (?arrivalTime1 - ?arrivalTime2)
+
+SELECT ?trip  ?duration
 #FROM <http://gtfs1.linkeddata.es>
 WHERE
 {
@@ -21,6 +21,8 @@ WHERE
     ?stopTime2 gtfs:trip ?trip .
     ?stopTime2 gtfs:stop ?stop2.
     ?stopTime2 gtfs:arrivalTime ?arrivalTime2 . 
+
+    BIND(IRI(xsd:time(?arrivalTime1) - xsd:time(?arrivalTime2)) AS ?duration) .
      
     ?stop1 foaf:name 'PLAZA DE CASTILLA' .
     ?stop2 foaf:name 'ATOCHA' .
