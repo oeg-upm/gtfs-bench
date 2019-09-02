@@ -1,5 +1,7 @@
 #!/bin/bash
-
+size=$1
+query=$2
+run=$3
 echo "size, query, run, time (date +%s.%N)">../results/results-times.csv
 #start time
 start=$(date +%s.%N)
@@ -9,5 +11,5 @@ finish=$(date +%s.%N)
 #duration
 dur=$(echo "$finish - $start" | bc)
 
-echo "$size, $query_file, $i, $dur">>../results/results-times.csv
+echo "$size, $query, $run, $dur">>../results/results-times.csv
 
