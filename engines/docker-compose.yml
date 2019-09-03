@@ -26,7 +26,8 @@ services:
       - ../data:/data
       - ../results/morph-xr2rml:/results
       - ../mappings:/mappings
-      - ../queries:/queries  
+      - ../queries:/queries
+      - ./morph-xr2rml/properties:/morph-xr2rml/properties  
 
   morph-rdb:
     container_name: morph-rdb
