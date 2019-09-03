@@ -22,7 +22,7 @@ WHERE
     ?trip gtfs:service gtfsservice:4_I14 .
     ?trip gtfs:headsign 'CUATRO CAMINOS' .
     ?trip gtfs:route ?route .
-    ?route gtfs:longName ?name .
+   # ?route gtfs:longName ?name .
 
     ?stop foaf:name ?stopName 
 }

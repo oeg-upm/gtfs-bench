@@ -35,4 +35,5 @@ services:
       - ../data:/data
       - ../results/morph-rdb:/results
       - ../mappings:/mappings
-      - ../queries:/queries  
+      - ../queries:/queries
+      - ./morph-rdb/properties:/morph-rdb/properties
