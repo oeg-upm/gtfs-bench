@@ -3,7 +3,7 @@ services:
 # MYSQL 5.7
   mysql_gtfs1:
     container_name: gtfs1_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-1:/data
     environment:
@@ -13,7 +13,7 @@ services:
 
   mysql_gtfs5:
     container_name: gtfs5_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-5:/data
     environment:
@@ -23,7 +23,7 @@ services:
 
   mysql_gtfs10:
     container_name: gtfs10_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-10:/data
     environment:
@@ -33,7 +33,7 @@ services:
 
   mysql_gtfs50:
     container_name: gtfs50_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-50:/data
     environment:
@@ -43,7 +43,7 @@ services:
 
   mysql_gtfs100:
     container_name: gtfs100_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-100:/data
     environment:
@@ -53,7 +53,7 @@ services:
 
   mysql_gtfs500:
     container_name: gtfs500_mysql
-    image: mysql:5.7
+    image: oegdataintegration/mysql-gtfs:1.0
     volumes:
       - ./gtfs-rdb-500:/data
     environment:
