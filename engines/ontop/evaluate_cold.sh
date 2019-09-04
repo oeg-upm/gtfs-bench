@@ -8,9 +8,9 @@ do
 		do
 			#properties, mapping, querypath, size,query,time
 			if [[ $i -eq 1 ]];then
-				/ontop/run.sh /ontop/properties/gtfs-$i.properties /mapping/gtfs-rdb.obda /queries/original/q$j.rq $i q$j $t
+				/ontop/run.sh /ontop/properties/gtfs-$i.properties /mapping/gtfs-rdb.obda /queries/original/q$j.rq $i q$j $t 'cold'
 			else
-				/ontop/run.sh /ontop/properties/gtfs-$i.properties /mapping/gtfs-rdb.obda /queries/vig/q$j.rq $i q$j $t
+				/ontop/run.sh /ontop/properties/gtfs-$i.properties /mapping/gtfs-rdb.obda /queries/vig/q$j.rq $i q$j $t 'cold'
 			fi
 			rm /data/rdb-$i/flag.txt
 			sleep 5m

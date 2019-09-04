@@ -14,7 +14,6 @@ git clone https://github.com/oeg-upm/gtfs-bench
 cd gtfs-bench/engines/ontop
 wget https://github.com/ontop/ontop/releases/download/ontop-3.0.0-beta-3/ontop-cli-3.0.0-beta-3.zip
 unzip ontop-cli-3.0.0-beta-3.zip
-cp -R ontop/* .
 cd jdbc
 wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar
 cd ..
@@ -23,5 +22,5 @@ docker build -t ontop .
 
 ## How to run a query over
 ```bash
-docker exec -it ontop /ontop/ontop query -m /mappings/r2rmlmapping.ttl -p /ontop/properties/propertiesFile.properties -q /queries/queryX.rq
+docker exec -it ontop /ontop/ontop query -m /mappings/gtfs-rdb.obda -p /ontop/properties/gtfs-SIZE.properties -q /queries/queryX.rq
 ```
