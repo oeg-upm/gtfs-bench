@@ -5,25 +5,27 @@ size=$3
 query_file=$4
 i=$5
 
-if [ $i != 0 ]
+resultfile=$resultdir/$system_name-results-times.csv
+
+echo "i = ${i}"
+if [ $i -eq 0 ]
 then
-    echo "size, query, run, time (date +%s.%N)">../results/$system_name-results-times.csv
+    echo "Running morph-rdb ..."
+    echo "query_file = ${query_file}"
+    java -cp .:morph-rdb.jar:lib/*:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner . gtfs${size}.${query_file}.properties
+else
     #tiempo inicio
-    start=$(gdate +%s.%N)
-fi
+    start=$(date +%s.%N)
 
-echo "Running morph-rdb ..."
-#java -cp .:morph-rdb.jar:lib/*:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner examples-mysql example1-query01-mysql.morph.properties
+    echo "Running morph-rdb ..."
+    echo "query_file = ${query_file}"
+    java -cp .:morph-rdb.jar:lib/*:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner . gtfs${size}.${query_file}.properties
 
-if [ $i != 0 ]
-then
     #tiempo fin
-    fin=$(gdate +%s.%N)
+    fin=$(date +%s.%N)
     # resta de tiempos
     dur=$(echo "$fin - $start" | bc)
-    echo "$size, $query_file, $i, $dur">>../results/$system_name-results-times.csv
+    echo "$size, $query_file, $i, $dur">>$resultfile
+    cat $resultfile
 fi
-
-
-
 

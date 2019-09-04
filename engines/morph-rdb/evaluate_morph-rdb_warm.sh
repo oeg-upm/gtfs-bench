@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sh ../evaluate.sh ../../queries/original gtfs.morph-rdb.properties morph-rdb 1 result
+sh ../evaluate.sh ../../queries properties/gtfs.morph-rdb.properties morph-rdb 1 ../../results

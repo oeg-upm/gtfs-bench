@@ -12,54 +12,58 @@ echo "properties = $properties"
 echo "system_name = $system_name"
 echo "mode = $mode"
 
-#echo "size, query, run, time (date +%s.%N)">$resultdir/$system_name-results-times.csv
+resultfile=$resultdir/$system_name-results-times.csv
+
 for size in 1 5
 do
     echo "size = $size"
-    for file in $queryfilesdir/*.rq
+    if [ $size -eq 1 ]
+    then
+        query_files=$queryfilesdir/original/*.rq
+    else
+        query_files=$queryfilesdir/vig/*.rq
+    fi
+
+    for query_file in $query_files
     do
-        echo "file = $file"
-        if [ $size -eq 1 ]
-        then
-            query_file=original/$(basename $file)
-        else
-            query_file=vig/$(basename $file)
-        fi
-        echo "query_file = $query_file"
-        echo "calling pre_update_config_$system_name.sh $properties $size $query_file ..."
-        sh pre_update_config_$system_name.sh $properties $size $query_file
-        
+        echo "query_file = ${query_file}"
+        query_id=$(basename ${query_file})
+        echo "query_id = ${query_id}"
+
+        new_properties=gtfs$size.${query_id}.properties
+        cp $properties ${new_properties}
+        echo "calling pre_update_config_$system_name.sh ${new_properties} $size $query_id ..."
+        sh pre_update_config_$system_name.sh ${new_properties} $size $query_id
+
         if [ $mode -eq 1 ]
         then
             echo "Warming up the system ..."
-            #sh run_$system_name.sh
-            docker exec -it  -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file 0
+            sh run_$system_name.sh $system_name $resultdir $size $query_id 0
+            #docker exec -it  -w /${system_name} ${system_name}  sh run.sh $system_name $resultdir $size $query_file 0
         fi
 
         for i in 1 2
         do
             echo "***** Evaluating: size $size - query_file $query_file - run $i ..."
-            #sh run_$system_name.sh
-	    echo "executing docker exec -it ${system_name} -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file $i"
-            docker exec -it  -w /${system_name} ${system_name}  sh run_$system_name.sh $system_name $resultdir $size $query_file $i
-	    #docker exec  -it -w /morph-rdb  morph-rdb sh run_morph-rdb.sh
+            sh run_$system_name.sh $system_name $resultdir $size $query_id $i
+            #echo "executing docker exec -it ${system_name} -w /${system_name} ${system_name}  sh run.sh $system_name $resultdir $size $query_file $i"
+            #docker exec -it  -w /${system_name} ${system_name}  sh run.sh $system_name $resultdir $size $query_file $i
+            #docker exec  -it -w /morph-rdb  morph-rdb sh run_morph-rdb.sh
             #guardamos el tiempo
             #echo "$size, $query_file, $i, $dur">>$resultdir/$system_name-results-times.csv
 
             if [ $mode -eq 0 ]
-            then 
+            then
                 echo "Restaring the database ..."
-                sh restart_database_$system_name.sh ${size}
+                #sh restart_database_$system_name.sh ${size}
             fi
         done
 
-        cp $properties gtfs$size.$(basename $file).$properties
-
-        echo "calling post_update_config_$system_name.sh $properties..."
-        sh post_update_config_$system_name.sh $properties
-        echo ""
+        #echo "calling post_update_config_$system_name.sh ${new_properties} ..."
+        #sh post_update_config_$system_name.sh ${new_properties}
+        #echo ""
     done
-    
+
 done
 
 echo "Bye"

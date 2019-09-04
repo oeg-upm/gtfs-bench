@@ -2,14 +2,15 @@
 
 properties=$1
 size=$2
-query=$3
+query_id=$3
 
 port=3306
-
-echo "updating config file"
+query_file="vig/${query_id}"
+echo "updating properties file"
 if [ $size -eq 1 ]
 then
   port=3306
+  query_file="original/${query_id}"
 elif [ $size -eq 5 ]
 then
   port=3307
@@ -29,8 +30,19 @@ else
     port=3306
 fi
 
+#echo "+++++++++++PRE CONFIG+++++++++++++"
+echo " properties $properties"
+#echo " size $size"
+echo " query_file ${query_file}"
+#echo " port $port"
+#cat $properties
+#echo "+++++++++++++++++++++++++++"
+
 #la configuracion depende del tamano y query
-echo "query.file.path=$query">>$properties
-echo "output.file.path=results/result-gtfs$size-$(basename $query).xml">>$properties
-echo "database.name[0]=gtfs$size">>$properties
-echo "database.url[0]=jdbc:mysql://mysql-gtfs$size:$port/morph_example?allowPublicKeyRetrieval=true&useSSL=false">>$properties
+echo "query.file.path=../../queries/$query_file">>$properties
+echo "output.file.path=../../results/result-gtfs$size-${query_id}.xml">>$properties
+echo "database.name[0]=gtfs">>$properties
+echo "database.url[0]=jdbc:mysql://172.18.0.1:$port/gtfs?allowPublicKeyRetrieval=true&useSSL=false">>$properties
+#echo "----------------"
+#echo "END PRE CONF"
+#echo "----------------"
