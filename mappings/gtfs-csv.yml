@@ -21,8 +21,8 @@ mappings:
     s: http://linkedgtfs.com/CITY/stoptimes/$(trip_id)-$(stop_id)-$(arrival_time)
     po:
       - [a, gtfs:StopTime]
-      - [gtfs:arrivalTime, $(arrival_time)]
-      - [gtfs:departureTime, $(departure_time)]
+      - [gtfs:arrivalTime, $(arrival_time), xsd:time]
+      - [gtfs:departureTime, $(departure_time), xsd:time]
       - [gtfs:stopSequence, $(stop_sequence),xsd:integer]
       - [gtfs:headsign, $(stop_headsign)]
       - [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)]
@@ -199,8 +199,8 @@ mappings:
     s: http://linkedgtfs.com/CITY/frequency/$(trip_id)-$(start_time)
     po:
       - [a, gtfs:Frequency]
-      - [gtfs:startTime,$(start_time)]
-      - [gtfs:endTime,$(end_time)]
+      - [gtfs:startTime,$(start_time), xsd:time]
+      - [gtfs:endTime,$(end_time), xsd:time]
       - [gtfs:headwaySeconds,$(headway_secs)]
       - [gtfs:exactTimes,$(exact_times)]
       - p: gtfs:trip

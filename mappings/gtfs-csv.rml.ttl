@@ -80,7 +80,8 @@ map:om_0 a rr:ObjectMap;
     rr:termType rr:IRI.
 map:om_1 a rr:ObjectMap;
     rml:reference "arrival_time";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#time>.
 map:om_10 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#Trip";
     rr:termType rr:IRI.
@@ -114,7 +115,8 @@ map:om_19 a rr:ObjectMap;
     rr:joinCondition map:jc_5.
 map:om_2 a rr:ObjectMap;
     rml:reference "departure_time";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#time>.
 map:om_20 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#Route";
     rr:termType rr:IRI.
@@ -310,10 +312,12 @@ map:om_72 a rr:ObjectMap;
     rr:termType rr:IRI.
 map:om_73 a rr:ObjectMap;
     rml:reference "start_time";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#time>.
 map:om_74 a rr:ObjectMap;
     rml:reference "end_time";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#time>.
 map:om_75 a rr:ObjectMap;
     rml:reference "headway_secs";
     rr:termType rr:Literal.
