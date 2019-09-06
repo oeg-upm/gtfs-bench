@@ -21,8 +21,8 @@ mappings:
     s: http://linkedgtfs.com/madrid/metro/stoptimes/$(trip_id)-$(stop_id)-$(arrival_time)
     po:
       - [a, gtfs:StopTime]
-      - [gtfs:arrivalTime, $(arrival_time)]
-      - [gtfs:departureTime, $(departure_time)]
+      - [gtfs:arrivalTime, $(arrival_time),xsd:duration]
+      - [gtfs:departureTime, $(departure_time),xsd:duration]
       - [gtfs:stopSequence, $(stop_sequence),xsd:integer]
       - [gtfs:headsign, $(stop_headsign)]
       - [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)]
