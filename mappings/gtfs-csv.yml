@@ -138,8 +138,8 @@ mappings:
             condition:
               function: equal
               parameters:
-                - [str1, $(stop_id)]
-                - [str2, $(parent_station)]
+                - [str1, $(parent_station)]
+                - [str2, $(stop_id)]
       - [gtfs:timeZone,$(stop_timezone)]
       - [gtfs:wheelchairBoarding,$(wheelchair_boarding), xsd:boolean]
   services1:
