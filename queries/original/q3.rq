@@ -1,4 +1,4 @@
-#Q1C: Find if a certain stop contains accessibility information
+#Q3: Find the accessibility information of a specific stop
 #eg: original.q1c.STOPID=acc_4_107_288
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -7,7 +7,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX gtfsstop: <http://linkedgtfs.com/CITY/stops/>
+PREFIX gtfsstop: <http://linkedgtfs.com/madrid/metro/stops/>
 
 SELECT * WHERE {
 	gtfsstop:acc_4_107_288 a gtfs:Stop . 

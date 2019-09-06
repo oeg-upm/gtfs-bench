@@ -1,4 +1,4 @@
-#Q1B: List all stops within certain distance from a particular position
+#Q2: List all stops within certain distance from a particular position
 #original.q1b.INPUTLATMIN=40.20
 #original.q1b.INPUTLATMAX=40.80
 #original.q1b.INPUTLONGMIN=-3.75

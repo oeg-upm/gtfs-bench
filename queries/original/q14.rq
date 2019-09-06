@@ -1,4 +1,4 @@
-#q4ad All the stops of a specific line in a specific direction in a certain schedule (service) from its initial station
+#Q14: All the stops from its origin, for a specific line in a specific direction and service 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -7,7 +7,7 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsservice: <http://linkedgtfs.com/CITY/service/>
+PREFIX gtfsservice: <http://linkedgtfs.com/madrid/metro/service/>
 
 SELECT * 
 #FROM <http://gtfs1.linkeddata.es>
