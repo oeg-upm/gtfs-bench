@@ -1,4 +1,4 @@
-#Trips of Route "Circular" that are available on a certain date and weekday 
+#Q11: Trips of Route "Circular" that are available on a certain date and weekday 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -8,6 +8,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX gtfsroute: <http://linkedgtfs.com/madrid/metro/routes/>
 
 SELECT * WHERE {
 	
@@ -20,10 +21,10 @@ SELECT * WHERE {
         FILTER (?endDate > "2017-07-02"^^xsd:date) .
 
         ?trip gtfs:service ?service .
-        ?trip gtfs:route ?route  .
+        ?trip gtfs:route gtfsroute:4__6___  .
   
-        {?route gtfs:longName "Circular"} UNION
-            {?route gtfs:shortName "6"} .                                             
+        # {?route gtfs:longName "Circular"} UNION
+        # {?route gtfs:shortName "6"} .                                             
         
         FILTER NOT EXISTS {?serviceDates a gtfs:ServiceDates .
 	                   ?serviceDates gtfs:service ?service .

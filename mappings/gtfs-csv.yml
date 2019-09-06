@@ -207,7 +207,7 @@ mappings:
   shapes:
     sources:
       - [/data/SHAPES.csv~csv]
-    s: http://linkedgtfs.com/madrid/metro/shape/$(shape_id)
+    s: http://linkedgtfs.com/madrid/metro/shape/$(shape_id)-$(shape_pt_sequence)
     po:
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]

@@ -748,7 +748,7 @@
     rdfs:label "shapes".
 :s_10 a rr:SubjectMap.
 :map_shapes_0 rr:subjectMap :s_10.
-:s_10 rr:template "http://linkedgtfs.com/madrid/metro/shape/{shape_id}".
+:s_10 rr:template "http://linkedgtfs.com/madrid/metro/shape/{shape_id}-{shape_pt_sequence}".
 :pom_70 a rr:PredicateObjectMap.
 :map_shapes_0 rr:predicateObjectMap :pom_70.
 :pm_70 a rr:PredicateMap.

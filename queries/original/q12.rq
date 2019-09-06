@@ -1,4 +1,4 @@
-#q2ad number of stops that are wheelchair-accessible grouped by route
+#Q12: number of stops that are wheelchair-accessible grouped by route
 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
