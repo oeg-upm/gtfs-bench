@@ -514,7 +514,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
 		rr:objectMap[
-			rr:template "http://linkedgtfs.com/CITY/shape/{SHAPE_ID}";
+			#rr:template "http://linkedgtfs.com/CITY/shape/{SHAPE_ID}";
+			rr:parentTriplesMap <shapes>; rr:joinCondition [ rr:child "SHAPE_ID"; rr:parent "SHAPE_ID"; ];
 		];
 	];
 	rr:predicateObjectMap [
