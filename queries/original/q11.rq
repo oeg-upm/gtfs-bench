@@ -14,7 +14,7 @@ SELECT * WHERE {
         ?service a gtfs:Service .
         ?service gtfs:serviceRule ?serviceRule .
 
-        ?serviceRule a gtfs:CalendarDateRule .
+        ?serviceRule a gtfs:CalendarRule .
         ?serviceRule gtfs:sunday "true"^^xsd:boolean . 
         ?serviceRule schema:startDate ?startDate .
         ?serviceRule schema:endDate ?endDate .
@@ -27,7 +27,7 @@ SELECT * WHERE {
         # {?route gtfs:longName "Circular"} UNION
         # {?route gtfs:shortName "6"} .                                             
         
-        FILTER NOT EXISTS {?serviceRule a gtfs:CalendarRule .
+        FILTER NOT EXISTS {?serviceRule a gtfs:CalendarDateRule .
 	                   ?serviceRule gtfs:service ?service .
 	                   ?serviceRule dct:date "2017-07-02"^^xsd:date .
 	                   ?serviceRule gtfs:dateAddition "false"^^xsd:boolean }

@@ -13,6 +13,7 @@ SELECT * WHERE {
 	OPTIONAL { ?route gtfs:longName ?routeLongName . } 
 	OPTIONAL { ?route dct:description ?routeDescription . } 
 	?route gtfs:agency ?agency .
+
 	?agency a gtfs:Agency .
 	?agency foaf:page ?agencyPage .
 	?agency foaf:name ?agencyName .

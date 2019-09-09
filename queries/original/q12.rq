@@ -24,6 +24,6 @@ WHERE {
  	?stop a gtfs:Stop .
  	?stop foaf:name  ?name .
  	?stop gtfs:locationType '0' .
- 	?stop gtfs:wheelchairBoarding "true"^^xsd:boolean	
+ 	?stop gtfs:wheelchairBoarding "1"^^xsd:integer	
 }
 GROUP BY ?longName

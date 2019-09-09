@@ -23,7 +23,7 @@ SELECT (count(distinct ?trip) as ?count)  WHERE {
 	?trip a gtfs:Trip .
 	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
 	?trip gtfs:service ?service .
-	?trip gtfs:route gtfsroute:4__1___ .
+	?trip gtfs:route ?route .
 
 	?service a gtfs:Service .
 

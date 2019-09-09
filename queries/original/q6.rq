@@ -11,11 +11,12 @@ PREFIX gtfsagency: <http://linkedgtfs.com/madrid/metro/agency/>
 
 # SELECT (count(distinct ?route) as ?nRoutes) WHERE {
 SELECT (count(?route) as ?nRoutes) WHERE {
-	gtfsagency:CRTM a gtfs:Agency .
-	gtfsagency:CRTM foaf:page ?agencyPage .
-	gtfsagency:CRTM foaf:name ?agencyName .
-	OPTIONAL { gtfsagency:CRTM foaf:phone ?agencyPhone . }
+	?agency a gtfs:Agency .
+	?agency foaf:page ?agencyPage .
+	?agency foaf:name ?agencyName .
+	# OPTIONAL {?agency foaf:phone ?agencyPhone . }
 
 	?route a gtfs:Route .
-	?route gtfs:agency gtfsagency:CRTM .
+	?route gtfs:agency ?agency .
+        FILTER (?agency=gtfsagency:CRTM)
 }

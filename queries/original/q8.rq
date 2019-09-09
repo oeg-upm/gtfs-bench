@@ -24,6 +24,6 @@ SELECT * WHERE {
 	?stopTime gtfs:stop ?stop . 
 
 	?stop a gtfs:Stop . 
-	OPTIONAL { gtfsstop:par_4_1 dct:description ?stopDescription . } .
+	OPTIONAL {?stop dct:description ?stopDescription . } .
         FILTER (?stop=gtfsstop:par_4_1)
 }

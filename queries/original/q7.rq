@@ -31,6 +31,6 @@ PREFIX gtfsroute: <http://linkedgtfs.com/madrid/metro/routes/>
 		?stop geo:long ?stopLong . 
 	}
 	?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding .
-	FILTER (?stopWheelchairBoarding =  "true"^^xsd:boolean) .
+	FILTER (?stopWheelchairBoarding =  "1"^^xsd:integer) .
         FILTER (?route=gtfsroute:4__1___)
 }
