@@ -7,7 +7,7 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsservice: <http://linkedgtfs.com/madrid/metro/service/>
+PREFIX gtfsservice: <http://linkedgtfs.com/madrid/metro/services/>
 
 SELECT * 
 #FROM <http://gtfs1.linkeddata.es>
@@ -24,8 +24,9 @@ WHERE
     ?trip gtfs:route ?route .
    # ?route gtfs:longName ?name .
 
-    ?stop foaf:name ?stopName 
+    OPTIONAL {?stop foaf:name ?stopName} 
 }
     
 #ORDER BY xsd:integer(?sequence)   
-ORDER BY ?sequence
+ ORDER BY ?sequence
+ 

@@ -13,7 +13,10 @@ SELECT * WHERE {
 	
 	
         ?service a gtfs:Service .
-        ?service gtfs:sunday "true"^^xsd:boolean . 
+        ?service gtfs:serviceRule ?serviceRule .
+
+        ?serviceRule a gtfs:CalendarRule .
+        ?serviceRule gtfs:sunday "true"^^xsd:boolean . 
         
         ?trip gtfs:service ?service .
         ?trip gtfs:route ?route  .

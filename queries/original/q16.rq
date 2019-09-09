@@ -1,4 +1,4 @@
-#q6ad For all the routes all the schedule changes during December
+#Q16: For all the routes, all the schedule changes during December
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -15,10 +15,12 @@ WHERE {
 	?trip gtfs:route ?route . 
 
 #	?route gtfs:longName ?longName .
- 
-        ?serviceDates a gtfs:ServiceDates .
-        ?serviceDates gtfs:service ?service .
-        ?serviceDates  dct:date ?servDate .
-        ?serviceDates  gtfs:dateAddition true .
+
+        ?service a gtfs:Service .
+        ?service gtfs:serviceRule ?serviceRule .
+
+        ?serviceRule a gtfs:CalendarDateRule .
+        ?serviceRule  dct:date ?servDate .
+        ?serviceRule  gtfs:dateAddition "true"^^xsd:boolean .
 	FILTER (?servDate >= '2017-12-01'^^xsd:date)	
 }
