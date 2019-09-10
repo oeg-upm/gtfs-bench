@@ -697,24 +697,6 @@
 	];
 .
 
-<calendar_date_rulesService>
-	xrr:logicalSource [
-		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{$.service_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#CalendarDateRule>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
-		rr:objectMap [
-			rr:parentTriplesMap <services>; rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-.
-
 <calendar_date_rulesDateAddition>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
