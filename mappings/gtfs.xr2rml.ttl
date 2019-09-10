@@ -364,14 +364,11 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
 		rr:objectMap[
-			rr:template "http://linkedgtfs.com/CITY/shape/{$.shape_id}";
+			rr:parentTriplesMap <shapes>; 
+			rr:joinCondition [ rr:child "$.shape_id"; rr:parent "$.shape_id"; ];
 		];
 	];
 .
-
-
-
-
 
 
 <agency>
