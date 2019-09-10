@@ -109,7 +109,7 @@ mappings:
   agency:
     sources:
       - [/data/AGENCY.csv~csv]
-    s: http://linkedgtfs.com/madrid/metro/agency/$(agency_id)
+    s: http://linkedgtfs.com/madrid/agency/$(agency_id)
     po:
       - [a, gtfs:Agency]
       - [foaf:page, $(agency_url)]
