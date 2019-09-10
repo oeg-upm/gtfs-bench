@@ -298,7 +298,7 @@
 	];
 .
 
-<tripService>
+<tripService1>
 	xrr:logicalSource [
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
@@ -310,7 +310,25 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
 		rr:objectMap [
-			rr:parentTriplesMap <services>; 
+			rr:parentTriplesMap <services1>; 
+			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
+		];
+	];
+.
+
+<tripService2>
+	xrr:logicalSource [
+		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services2>; 
 			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
 		];
 	];
