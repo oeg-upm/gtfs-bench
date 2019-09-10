@@ -199,7 +199,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -216,7 +216,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -233,7 +233,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -250,7 +250,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -268,7 +268,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -285,7 +285,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -303,7 +303,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -321,7 +321,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
@@ -339,7 +339,7 @@
 		xrr:query """db.TRIPS.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/trips/{$.trip_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/trips/{$.trip_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Trip>;
 	];
