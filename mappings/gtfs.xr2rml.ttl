@@ -651,7 +651,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -668,7 +668,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -685,7 +685,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -702,7 +702,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -719,7 +719,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -736,7 +736,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -753,7 +753,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -770,7 +770,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -787,7 +787,7 @@
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -799,29 +799,12 @@
 	];
 .
 
-<stopTimezone>
-	xrr:logicalSource [
-		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			xrr:reference "$.stop_timezone";
-		];
-	];
-.
-
 <stopLocationParentStation>
 	xrr:logicalSource [
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -835,19 +818,29 @@
 	];
 .
 
-
-
-
-
-
-
+<stopTimezone>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			xrr:reference "$.stop_timezone";
+		];
+	];
+.
 
 <stopWheelchairBoarding>
 	xrr:logicalSource [
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stops/{$.stop_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
@@ -861,6 +854,75 @@
 .
 
 
+<services1>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Service>
+		];
+	];
+.
+
+<services1ServiceRule>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap[
+			rr:parentTriplesMap <calendar_rules>; 
+			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
+		];
+	];
+.
+
+<services2>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Service>
+		];
+	];
+.
+
+<services2ServiceRule>
+	xrr:logicalSource [
+		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap[
+			rr:parentTriplesMap <calendar_date_rules>; 
+			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
+		];
+	];
+.
 
 
 <calendar_rules>
@@ -1097,72 +1159,3 @@
 
 
 
-<services1>
-	xrr:logicalSource [
-		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
-		rr:objectMap[
-			rr:constant <http://vocab.gtfs.org/terms#Service>
-		];
-	];
-.
-
-<services1ServiceRule>
-	xrr:logicalSource [
-		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
-		rr:objectMap[
-			rr:parentTriplesMap <calendar_rules>; 
-			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
-		];
-	];
-.
-
-<services2>
-	xrr:logicalSource [
-		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
-		rr:objectMap[
-			rr:constant <http://vocab.gtfs.org/terms#Service>
-		];
-	];
-.
-
-<services2ServiceRule>
-	xrr:logicalSource [
-		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{$.service_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
-		rr:objectMap[
-			rr:parentTriplesMap <calendar_date_rules>; 
-			rr:joinCondition [ rr:child "$.service_id"; rr:parent "$.service_id"; ];
-		];
-	];
-.
