@@ -543,74 +543,6 @@
 	];
 .
 
-<agencyFareUrl>
-	xrr:logicalSource [
-		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
-		rr:objectMap[
-			xrr:reference "$.agency_fare_url";
-		];
-	];
-.
-
-<agencyPhone>
-	xrr:logicalSource [
-		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
-		rr:objectMap[
-			xrr:reference "$.agency_phone";
-		];
-	];
-.
-
-<agencyLanguage>
-	xrr:logicalSource [
-		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
-		rr:objectMap[
-			xrr:reference "$.agency_lang";
-		];
-	];
-.
-
-<agencyTimeZone>
-	xrr:logicalSource [
-		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			xrr:reference "$.agency_timezone";
-		];
-	];
-.
-
 <agencyPage>
 	xrr:logicalSource [
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
@@ -641,6 +573,74 @@
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
 		rr:objectMap[
 			xrr:reference "$.agency_name";
+		];
+	];
+.
+
+<agencyTimeZone>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			xrr:reference "$.agency_timezone";
+		];
+	];
+.
+
+<agencyLanguage>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
+		rr:objectMap[
+			xrr:reference "$.agency_lang";
+		];
+	];
+.
+
+<agencyPhone>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
+		rr:objectMap[
+			xrr:reference "$.agency_phone";
+		];
+	];
+.
+
+<agencyFareUrl>
+	xrr:logicalSource [
+		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
+		rr:objectMap[
+			xrr:reference "$.agency_fare_url";
 		];
 	];
 .
