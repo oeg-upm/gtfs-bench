@@ -667,14 +667,14 @@
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarDateRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
 		rr:objectMap[
-			rr:constant <http://vocab.gtfs.org/terms#ServiceDates>
+			rr:constant <http://vocab.gtfs.org/terms#CalendarDateRule>
 		];
 	];
 .
@@ -684,9 +684,9 @@
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarDateRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/date> ];
@@ -702,9 +702,9 @@
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarDateRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
@@ -720,9 +720,9 @@
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/services_dates/{$.service_id}-{$.date}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarDateRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dateAddition> ];
