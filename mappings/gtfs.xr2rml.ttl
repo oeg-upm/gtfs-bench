@@ -376,7 +376,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -393,7 +393,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -410,7 +410,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -427,7 +427,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -444,7 +444,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -461,7 +461,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -478,7 +478,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -495,7 +495,7 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
@@ -512,15 +512,15 @@
 		xrr:query """db.ROUTES.find( { 'route_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/routes/{$.route_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/routes/{$.route_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Route>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
 		rr:objectMap [
-			rr:parentTriplesMap <agency>; rr:joinCondition [ rr:child "$.agency_id"; rr:parent "$.agency_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+			rr:parentTriplesMap <agency>; 
+			rr:joinCondition [ rr:child "$.agency_id"; rr:parent "$.agency_id"; ];
 		];
 	];
 .
