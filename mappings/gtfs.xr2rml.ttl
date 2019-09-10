@@ -483,7 +483,7 @@
 	];
 .
 
-<services>
+<calendar_rules>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -500,7 +500,7 @@
 	];
 .
 
-<serviceMonday>
+<calendar_rulesMonday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -518,7 +518,7 @@
 	];
 .
 
-<serviceTuesday>
+<calendar_rulesTuesday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -536,7 +536,7 @@
 	];
 .
 
-<serviceWednesday>
+<calendar_rulesWednesday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -554,7 +554,7 @@
 	];
 .
 
-<serviceThursday>
+<calendar_rulesThursday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -572,7 +572,7 @@
 	];
 .
 
-<serviceFriday>
+<calendar_rulesFriday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -590,7 +590,7 @@
 	];
 .
 
-<serviceSaturday>
+<calendar_rulesSaturday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -608,7 +608,7 @@
 	];
 .
 
-<serviceSunday>
+<calendar_rulesSunday>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -626,7 +626,7 @@
 	];
 .
 
-<serviceStartDate>
+<calendar_rulesStartDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -644,7 +644,7 @@
 	];
 .
 
-<serviceEndDate>
+<calendar_rulesEndDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
