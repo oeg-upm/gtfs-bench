@@ -680,75 +680,6 @@
 	];
 .
 
-<stopTimezone>
-	xrr:logicalSource [
-		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			xrr:reference "$.stop_timezone";
-		];
-	];
-.
-
-<stopLocationType>
-	xrr:logicalSource [
-		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
-		rr:objectMap[
-			xrr:reference "$.location_type";
-		];
-	];
-.
-
-<stopLocationLong>
-	xrr:logicalSource [
-		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
-		rr:objectMap[
-			xrr:reference "$.stop_lon";
-		];
-	];
-.
-
-<stopLocationParentStation>
-	xrr:logicalSource [
-		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
-		rr:objectMap[
-			#xrr:reference "$.parent_station";
-			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "$.parent_station"; rr:parent "$.stop_id"; ];
-		];
-	];
-.
-
 <stopName>
 	xrr:logicalSource [
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
@@ -800,8 +731,7 @@
 	];
 .
 
-
-<stopWheelchairBoarding>
+<stopLocationLong>
 	xrr:logicalSource [
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
@@ -811,10 +741,9 @@
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
 		rr:objectMap[
-			xrr:reference "$.wheelchair_boarding";
-			rr:datatype xsd:boolean;
+			xrr:reference "$.stop_lon";
 		];
 	];
 .
@@ -835,6 +764,102 @@
 		];
 	];
 .
+
+<stopPage>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			xrr:reference "$.stop_url";
+		];
+	];
+.
+
+<stopLocationType>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
+		rr:objectMap[
+			xrr:reference "$.location_type";
+		];
+	];
+.
+
+<stopTimezone>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			xrr:reference "$.stop_timezone";
+		];
+	];
+.
+
+<stopLocationParentStation>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
+		rr:objectMap[
+			#xrr:reference "$.parent_station";
+			rr:parentTriplesMap <stops>; rr:joinCondition [ 
+			rr:child "$.parent_station"; rr:parent "$.stop_id"; ];
+		];
+	];
+.
+
+
+
+
+
+
+
+
+<stopWheelchairBoarding>
+	xrr:logicalSource [
+		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/CITY/stops/{$.stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
+		rr:objectMap[
+			xrr:reference "$.wheelchair_boarding";
+			rr:datatype xsd:boolean;
+		];
+	];
+.
+
 
 
 
