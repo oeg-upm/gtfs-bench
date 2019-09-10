@@ -989,7 +989,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#arrivalTime> ];
 		rr:objectMap[
 			xrr:reference "$.arrival_time";
-			rr:datatype xsd:time;
+			rr:datatype xsd:duration;
 		];
 	];
 .
@@ -1024,7 +1024,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#departureTime> ];
 		rr:objectMap[
 			xrr:reference "$.departure_time";
-			rr:datatype xsd:time;
+			rr:datatype xsd:duration;
 		];
 	];
 .
