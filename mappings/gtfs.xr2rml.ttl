@@ -531,7 +531,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -548,7 +548,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -565,7 +565,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -582,7 +582,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -599,7 +599,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -616,7 +616,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
@@ -633,7 +633,7 @@
 		xrr:query """db.AGENCY.find( { 'agency_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/agency/{$.agency_id}";
+		rr:template "http://linkedgtfs.com/madrid/agency/{$.agency_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Agency>;
 	];
