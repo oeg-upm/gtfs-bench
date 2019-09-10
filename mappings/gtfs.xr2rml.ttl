@@ -877,7 +877,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -894,7 +894,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -911,7 +911,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -928,7 +928,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -945,7 +945,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -963,7 +963,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -981,7 +981,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -998,7 +998,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -1016,7 +1016,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
@@ -1034,7 +1034,7 @@
 		xrr:query """db.STOP_TIMES.find( { 'trip_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
+		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{$.trip_id}-{$.stop_id}-{$.arrival_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#StopTime>;
 	];
