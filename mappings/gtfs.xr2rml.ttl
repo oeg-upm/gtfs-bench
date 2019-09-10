@@ -662,7 +662,7 @@
 	];
 .
 
-<services_dates>
+<calendar_date_rules>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -679,7 +679,7 @@
 	];
 .
 
-<services_datesDate>
+<calendar_date_rulesDate>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -697,7 +697,7 @@
 	];
 .
 
-<services_datesService>
+<calendar_date_rulesService>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
@@ -715,7 +715,7 @@
 	];
 .
 
-<services_datesDateAddition>
+<calendar_date_rulesDateAddition>
 	xrr:logicalSource [
 		xrr:query """db.CALENDAR_DATES.find( { 'service_id' : {$exists: 1} } )""";
 	];
