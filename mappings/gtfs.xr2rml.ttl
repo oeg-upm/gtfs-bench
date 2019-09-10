@@ -488,14 +488,14 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
 		rr:objectMap[
-			rr:constant <http://vocab.gtfs.org/terms#Service>
+			rr:constant <http://vocab.gtfs.org/terms#CalendarRule>
 		];
 	];
 .
@@ -505,9 +505,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#monday> ];
@@ -523,9 +523,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#tuesday> ];
@@ -541,9 +541,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wednesday> ];
@@ -559,9 +559,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#thursday> ];
@@ -577,9 +577,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#friday> ];
@@ -595,9 +595,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#saturday> ];
@@ -613,9 +613,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#sunday> ];
@@ -631,9 +631,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
@@ -649,9 +649,9 @@
 		xrr:query """db.CALENDAR.find( { 'service_id' : {$exists: 1} } )""";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/service/{$.service_id}";
+		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{$.service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#CalendarRule>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
