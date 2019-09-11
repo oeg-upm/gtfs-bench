@@ -198,6 +198,7 @@ mappings:
       - [/data/FEED_INFO.csv~csv]
     s: http://linkedgtfs.com/madrid/metro/feed/$(feed_publisher_name)
     po:
+      - [a, gtfs:Feed]
       - [dct:publisher,$(feed_publisher_name)]
       - [foaf:page,$(feed_published_url)]
       - [dct:language,$(feed_lang)]
@@ -209,6 +210,7 @@ mappings:
       - [/data/SHAPES.csv~csv]
     s: http://linkedgtfs.com/madrid/metro/shape/$(shape_id)-$(shape_pt_sequence)
     po:
+      - [a, gtfs:Shape]
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]

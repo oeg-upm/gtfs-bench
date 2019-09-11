@@ -46,12 +46,12 @@ map:map_feed_0 rml:logicalSource map:source_9;
     a rr:TriplesMap;
     rdfs:label "feed";
     rr:subjectMap map:s_9;
-    rr:predicateObjectMap map:pom_64, map:pom_65, map:pom_66, map:pom_67, map:pom_68, map:pom_69.
+    rr:predicateObjectMap map:pom_64, map:pom_65, map:pom_66, map:pom_67, map:pom_68, map:pom_69, map:pom_70.
 map:map_frequencies_0 rml:logicalSource map:source_11;
     a rr:TriplesMap;
     rdfs:label "frequencies";
     rr:subjectMap map:s_11;
-    rr:predicateObjectMap map:pom_74, map:pom_75, map:pom_76, map:pom_77, map:pom_78, map:pom_79.
+    rr:predicateObjectMap map:pom_76, map:pom_77, map:pom_78, map:pom_79, map:pom_80, map:pom_81.
 map:map_routes_0 rml:logicalSource map:source_2;
     a rr:TriplesMap;
     rdfs:label "routes";
@@ -71,7 +71,7 @@ map:map_shapes_0 rml:logicalSource map:source_10;
     a rr:TriplesMap;
     rdfs:label "shapes";
     rr:subjectMap map:s_10;
-    rr:predicateObjectMap map:pom_70, map:pom_71, map:pom_72, map:pom_73.
+    rr:predicateObjectMap map:pom_71, map:pom_72, map:pom_73, map:pom_74, map:pom_75.
 map:map_stops_0 rml:logicalSource map:source_4;
     a rr:TriplesMap;
     rdfs:label "stops";
@@ -292,61 +292,67 @@ map:om_64 a rr:ObjectMap;
     rr:termType rr:Literal;
     rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_65 a rr:ObjectMap;
+    rr:constant "http://vocab.gtfs.org/terms#Feed";
+    rr:termType rr:IRI.
+map:om_66 a rr:ObjectMap;
     rml:reference "feed_publisher_name";
     rr:termType rr:Literal.
-map:om_66 a rr:ObjectMap;
+map:om_67 a rr:ObjectMap;
     rml:reference "feed_published_url";
     rr:termType rr:Literal.
-map:om_67 a rr:ObjectMap;
+map:om_68 a rr:ObjectMap;
     rml:reference "feed_lang";
     rr:termType rr:Literal.
-map:om_68 a rr:ObjectMap;
-    rml:reference "feed_start_date";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_69 a rr:ObjectMap;
-    rml:reference "feedend_date";
+    rml:reference "feed_start_date";
     rr:termType rr:Literal;
     rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
 map:om_7 a rr:ObjectMap;
     rml:reference "shape_dist_traveled";
     rr:termType rr:Literal.
 map:om_70 a rr:ObjectMap;
+    rml:reference "feedend_date";
+    rr:termType rr:Literal;
+    rr:datatype <http://www.w3.org/2001/XMLSchema#date>.
+map:om_71 a rr:ObjectMap;
     rml:reference "feed_version";
     rr:termType rr:Literal.
-map:om_71 a rr:ObjectMap;
+map:om_72 a rr:ObjectMap;
+    rr:constant "http://vocab.gtfs.org/terms#Shape";
+    rr:termType rr:IRI.
+map:om_73 a rr:ObjectMap;
     rml:reference "shape_pt_lat";
     rr:termType rr:Literal;
     rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_72 a rr:ObjectMap;
+map:om_74 a rr:ObjectMap;
     rml:reference "shape_pt_lon";
     rr:termType rr:Literal;
     rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_73 a rr:ObjectMap;
+map:om_75 a rr:ObjectMap;
     rml:reference "shape_pt_sequence";
     rr:termType rr:Literal.
-map:om_74 a rr:ObjectMap;
+map:om_76 a rr:ObjectMap;
     rml:reference "shape_dist_traveled";
     rr:termType rr:Literal.
-map:om_75 a rr:ObjectMap;
+map:om_77 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#Frequency";
     rr:termType rr:IRI.
-map:om_76 a rr:ObjectMap;
+map:om_78 a rr:ObjectMap;
     rml:reference "start_time";
     rr:termType rr:Literal.
-map:om_77 a rr:ObjectMap;
-    rml:reference "end_time";
-    rr:termType rr:Literal.
-map:om_78 a rr:ObjectMap;
-    rml:reference "headway_secs";
-    rr:termType rr:Literal.
 map:om_79 a rr:ObjectMap;
-    rml:reference "exact_times";
+    rml:reference "end_time";
     rr:termType rr:Literal.
 map:om_8 a rr:ObjectMap;
     rr:parentTriplesMap map:map_trips_0;
     rr:joinCondition map:jc_0.
 map:om_80 a rr:ObjectMap;
+    rml:reference "headway_secs";
+    rr:termType rr:Literal.
+map:om_81 a rr:ObjectMap;
+    rml:reference "exact_times";
+    rr:termType rr:Literal.
+map:om_82 a rr:ObjectMap;
     rr:parentTriplesMap map:map_trips_0;
     rr:joinCondition map:jc_10.
 map:om_9 a rr:ObjectMap;
@@ -475,40 +481,44 @@ map:pm_62 a rr:PredicateMap;
 map:pm_63 a rr:PredicateMap;
     rr:constant <http://schema.org/endDate>.
 map:pm_64 a rr:PredicateMap;
-    rr:constant <http://purl.org/dc/terms/publisher>.
+    rr:constant rdf:type.
 map:pm_65 a rr:PredicateMap;
-    rr:constant <http://xmlns.com/foaf/0.1/page>.
+    rr:constant <http://purl.org/dc/terms/publisher>.
 map:pm_66 a rr:PredicateMap;
-    rr:constant <http://purl.org/dc/terms/language>.
+    rr:constant <http://xmlns.com/foaf/0.1/page>.
 map:pm_67 a rr:PredicateMap;
-    rr:constant <http://schema.org/startDate>.
+    rr:constant <http://purl.org/dc/terms/language>.
 map:pm_68 a rr:PredicateMap;
-    rr:constant <http://schema.org/endDate>.
+    rr:constant <http://schema.org/startDate>.
 map:pm_69 a rr:PredicateMap;
-    rr:constant <http://schema.org/version>.
+    rr:constant <http://schema.org/endDate>.
 map:pm_7 a rr:PredicateMap;
     rr:constant <http://vocab.gtfs.org/terms#distanceTraveled>.
 map:pm_70 a rr:PredicateMap;
-    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat>.
+    rr:constant <http://schema.org/version>.
 map:pm_71 a rr:PredicateMap;
-    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long>.
-map:pm_72 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#pointSequence>.
-map:pm_73 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#distanceTraveled>.
-map:pm_74 a rr:PredicateMap;
     rr:constant rdf:type.
+map:pm_72 a rr:PredicateMap;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat>.
+map:pm_73 a rr:PredicateMap;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long>.
+map:pm_74 a rr:PredicateMap;
+    rr:constant <http://vocab.gtfs.org/terms#pointSequence>.
 map:pm_75 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#startTime>.
+    rr:constant <http://vocab.gtfs.org/terms#distanceTraveled>.
 map:pm_76 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#endTime>.
+    rr:constant rdf:type.
 map:pm_77 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#headwaySeconds>.
+    rr:constant <http://vocab.gtfs.org/terms#startTime>.
 map:pm_78 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#exactTimes>.
+    rr:constant <http://vocab.gtfs.org/terms#endTime>.
 map:pm_79 a rr:PredicateMap;
-    rr:constant <http://vocab.gtfs.org/terms#trip>.
+    rr:constant <http://vocab.gtfs.org/terms#headwaySeconds>.
 map:pm_8 a rr:PredicateMap;
+    rr:constant <http://vocab.gtfs.org/terms#trip>.
+map:pm_80 a rr:PredicateMap;
+    rr:constant <http://vocab.gtfs.org/terms#exactTimes>.
+map:pm_81 a rr:PredicateMap;
     rr:constant <http://vocab.gtfs.org/terms#trip>.
 map:pm_9 a rr:PredicateMap;
     rr:constant <http://vocab.gtfs.org/terms#stop>.
@@ -749,6 +759,12 @@ map:pom_79 a rr:PredicateObjectMap;
 map:pom_8 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_8;
     rr:objectMap map:om_8.
+map:pom_80 a rr:PredicateObjectMap;
+    rr:predicateMap map:pm_80;
+    rr:objectMap map:om_81.
+map:pom_81 a rr:PredicateObjectMap;
+    rr:predicateMap map:pm_81;
+    rr:objectMap map:om_82.
 map:pom_9 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_9;
     rr:objectMap map:om_9.
