@@ -254,7 +254,7 @@
 :pom_24 rr:objectMap :om_25.
 :om_25 a rr:ObjectMap;
     rml:reference "route_url";
-    rr:termType rr:Literal.
+    rr:termType rr:IRI.
 :pom_25 a rr:PredicateObjectMap.
 :map_routes_0 rr:predicateObjectMap :pom_25.
 :pm_25 a rr:PredicateMap.

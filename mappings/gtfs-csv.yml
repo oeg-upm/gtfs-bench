@@ -94,7 +94,7 @@ mappings:
       - [gtfs:longName, $(route_long_name)]
       - [dct:description, $(route_desc)]
       - [gtfs:routeType, http://vocab.gtfs.org/resource/RouteType/$(route_type)~iri]
-      - [gtfs:routeUrl, $(route_url)]
+      - [gtfs:routeUrl, $(route_url)~iri]
       - [gtfs:color, $(route_color)]
       - [gtfs:textColor, $(route_text_color)]
       - p: gtfs:agency
