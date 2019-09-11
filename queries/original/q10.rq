@@ -13,7 +13,7 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsroute: <http://linkedgtfs.com/madrid/metro/routes/>
+PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
 
 SELECT (count(distinct ?trip) as ?count)  WHERE {
 	?route a gtfs:Route .

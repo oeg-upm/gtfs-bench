@@ -7,10 +7,11 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsroute: <http://linkedgtfs.com/madrid/metro/routes/>
+PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
+PREFIX gtfsaccessible: <http://vocab.gtfs.org/resource/WheelchairBoardingStatus/>
 
 # SELECT * WHERE {
- SELECT DISTINCT ?routeShortName ?routeDescription ?tripShortName ?stopDescription ?stopLat ?stopLong ?stopWheelchairBoarding   WHERE {
+ SELECT DISTINCT ?routeShortName ?routeDescription ?tripShortName ?stopDescription ?stopLat ?stopLong   WHERE {
 	?route a gtfs:Route .
 	OPTIONAL { ?route gtfs:shortName ?routeShortName . }
 	OPTIONAL { ?route dct:description ?routeDescription . }
@@ -30,7 +31,6 @@ PREFIX gtfsroute: <http://linkedgtfs.com/madrid/metro/routes/>
 		?stop geo:lat ?stopLat . 
 		?stop geo:long ?stopLong . 
 	}
-	?stop gtfs:wheelchairBoarding ?stopWheelchairBoarding .
-	FILTER (?stopWheelchairBoarding =  "1"^^xsd:integer) .
+	?stop gtfs:wheelchairAccessible gtfsaccessible:1 .
         FILTER (?route=gtfsroute:4__1___)
 }
