@@ -1279,3 +1279,91 @@
 		];
 	];
 .
+
+
+<shapes>
+	xrr:logicalSource [
+		xrr:query """db.SHAPES.find( { 'shape_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.shape_id}-{$.shape_pt_sequence}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Shape>
+		];
+	];
+.
+
+<shapesLat>
+	xrr:logicalSource [
+		xrr:query """db.SHAPES.find( { 'shape_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.shape_id}-{$.shape_pt_sequence}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
+		rr:objectMap[
+			xrr:reference "$.shape_pt_lat";
+			rr:datatype xsd:double;
+		];
+	];
+.
+
+<shapesLong>
+	xrr:logicalSource [
+		xrr:query """db.SHAPES.find( { 'shape_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.shape_id}-{$.shape_pt_sequence}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
+		rr:objectMap[
+			xrr:reference "$.shape_pt_lon";
+			rr:datatype xsd:double;
+		];
+	];
+.
+
+<shapesPointSequence>
+	xrr:logicalSource [
+		xrr:query """db.SHAPES.find( { 'shape_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.shape_id}-{$.shape_pt_sequence}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pointSequence> ];
+		rr:objectMap[
+			xrr:reference "$.shape_pt_sequence";
+		];
+	];
+.
+
+<shapesDistanceTraveled>
+	xrr:logicalSource [
+		xrr:query """db.SHAPES.find( { 'shape_id' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.shape_id}-{$.shape_pt_sequence}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
+		rr:objectMap[
+			xrr:reference "$.shape_dist_traveled";
+		];
+	];
+.
