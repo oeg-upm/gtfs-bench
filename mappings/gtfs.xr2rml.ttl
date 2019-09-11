@@ -118,7 +118,7 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pickupType> ];
 		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#PickupType={$.pickup_type}";
+			rr:template "http://transport.linkeddata.es/resource/PickupType/{$.pickup_type}";
 		];
 	];
 .
@@ -135,7 +135,7 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dropOffType> ];
 		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#DropOffType={$.drop_off_type}";
+			rr:template "http://transport.linkeddata.es/resource/DropOffType/{$.drop_off_type}";
 		];
 	];
 .
@@ -292,8 +292,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
 		rr:objectMap[
-			xrr:reference "$.wheelchair_accessible";
-			rr:datatype xsd:boolean;
+			xrr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{$.wheelchair_accessible}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -451,7 +451,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
 		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#RouteType={$.route_type}";
+			rr:template "http://transport.linkeddata.es/resource/RouteType/{$.route_type}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -778,6 +779,7 @@
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
 		rr:objectMap[
 			xrr:reference "$.stop_url";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -795,6 +797,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
 		rr:objectMap[
 			xrr:reference "$.location_type";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -847,8 +850,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
 		rr:objectMap[
-			xrr:reference "$.wheelchair_boarding";
-			rr:datatype xsd:boolean;
+			xrr:reference "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{$.wheelchair_boarding}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -1206,6 +1209,7 @@
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
 		rr:objectMap[
 			xrr:reference "$.feed_published_url";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 .
@@ -1433,6 +1437,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headwaySeconds> ];
 		rr:objectMap[
 			xrr:reference "$.headway_secs";
+			rr:datatype xsd:integer;
 		];
 	];
 .
@@ -1450,6 +1455,7 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#exactTimes> ];
 		rr:objectMap[
 			xrr:reference "$.exact_times";
+			rr:datatype xsd:boolean;
 		];
 	];
 .
