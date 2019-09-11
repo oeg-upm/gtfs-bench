@@ -24,8 +24,8 @@ mappings:
       - [gtfs:departureTime, $(departure_time),xsd:duration]
       - [gtfs:stopSequence, $(stop_sequence),xsd:integer]
       - [gtfs:headsign, $(stop_headsign)]
-      - [gtfs:pickupType, http://vocab.gtfs.org/terms#PickupType=$(pickup_type)]
-      - [gtfs:dropOffType, http://vocab.gtfs.org/terms#DropOffType=$(drop_off_type)]
+      - [gtfs:pickupType, http://vocab.gtfs.org/resource/PickupType/$(pickup_type)~iri]
+      - [gtfs:dropOffType, http://vocab.gtfs.org/resource/DropOffType/$(drop_off_type)~iri]
       - [gtfs:distanceTraveled, $(shape_dist_traveled)]
       - p: gtfs:trip
         o:
@@ -53,7 +53,7 @@ mappings:
       - [gtfs:shortName, $(trip_short_name)]
       - [gtfs:direction, $(direction_id)]
       - [gtfs:block, $(block_id)]
-      - [gtfs:wheelchairAccessible, $(wheelchair_accesible), xsd:boolean]
+      - [gtfs:wheelchairAccessible,http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_accesible)~iri]
       - p: gtfs:service
         o:
           - mapping: services1
@@ -93,10 +93,10 @@ mappings:
       - [gtfs:shortName, $(route_short_name)]
       - [gtfs:longName, $(route_long_name)]
       - [dct:description, $(route_desc)]
-      - [gtfs:routeType, http://vocab.gtfs.org/terms#RouteType=$(route_type)]
+      - [gtfs:routeType, http://vocab.gtfs.org/resource/RouteType/$(route_type)~iri]
       - [gtfs:routeUrl, $(route_url)]
       - [gtfs:color, $(route_color)]
-      - [gtfs:textColor, $(gtfs:textColor)]
+      - [gtfs:textColor, $(route_text_color)]
       - p: gtfs:agency
         o:
           - mapping: agency
@@ -111,12 +111,12 @@ mappings:
     s: http://transport.linkeddata.es/madrid/agency/$(agency_id)
     po:
       - [a, gtfs:Agency]
-      - [foaf:page, $(agency_url)]
+      - [foaf:page, $(agency_url)~iri]
       - [foaf:name,$(agency_name)]
       - [gtfs:timeZone,$(agency_timezone)]
       - [dct:language,$(agency_lang)]
       - [foaf:phone,$(agency_phone)]
-      - [gtfs:fareUrl,$(agency_fare_url)]
+      - [gtfs:fareUrl,$(agency_fare_url)~iri]
   stops:
     sources:
       - [/data/STOPS.csv~csv]
@@ -124,13 +124,14 @@ mappings:
     po:
       - [a,gtfs:Stop]
       - [gtfs:code,$(stop_code)]
+      - [dct:identifier,$(stop_id)]
       - [foaf:name,$(stop_name)]
       - [dct:description,$(stop_desc)]
       - [geo:lat,$(stop_lat),xsd:double]
       - [geo:long,$(stop_lon),xsd:double]
       - [gtfs:zone,$(zone_id)]
-      - [foaf:page,$(stop_url)]
-      - [gtfs:locationType,$(location_type)]
+      - [foaf:page,$(stop_url)~iri]
+      - [gtfs:locationType,http://vocab.gtfs.org/resource/LocationType/$(location_type)~iri]
       - p: gtfs:parentStation
         o:
           - mapping: stops
@@ -140,7 +141,7 @@ mappings:
                 - [str1, $(parent_station)]
                 - [str2, $(stop_id)]
       - [gtfs:timeZone,$(stop_timezone)]
-      - [gtfs:wheelchairBoarding,$(wheelchair_boarding), xsd:boolean]
+      - [gtfs:wheelchairBoarding, http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_accesible)~iri]
   services1:
     sources:
       - [/data/CALENDAR.csv~csv]
@@ -199,7 +200,7 @@ mappings:
     po:
       - [a, gtfs:Feed]
       - [dct:publisher,$(feed_publisher_name)]
-      - [foaf:page,$(feed_published_url)]
+      - [foaf:page,$(feed_published_url)~iri]
       - [dct:language,$(feed_lang)]
       - [schema:startDate,$(feed_start_date), xsd:date]
       - [schema:endDate,$(feedend_date), xsd:date]
