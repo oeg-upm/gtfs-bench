@@ -1159,6 +1159,123 @@
 .
 
 
+<feed>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ];
+		rr:objectMap[
+			rr:constant <http://vocab.gtfs.org/terms#Feed>
+		];
+	];
+.
 
+<feedPublisher>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/publisher> ];
+		rr:objectMap[
+			xrr:reference "$.feed_publisher_name";
+		];
+	];
+.
 
+<feedPage>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			xrr:reference "$.feed_published_url";
+		];
+	];
+.
 
+<feedLanguage>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
+		rr:objectMap[
+			xrr:reference "$.feed_lang";
+		];
+	];
+.
+
+<feedStartDate>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
+		rr:objectMap[
+			xrr:reference "$.feed_start_date";
+			rr:datatype xsd:date;
+		];
+	];
+.
+
+<feedEndDate>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
+		rr:objectMap[
+			xrr:reference "$.feed_end_date";
+			rr:datatype xsd:date;
+		];
+	];
+.
+
+<feedVersion>
+	xrr:logicalSource [
+		xrr:query """db.FEED_INFO.find( { 'feed_publisher_name' : {$exists: 1} } )""";
+	];
+	rr:subjectMap [
+		rr:template "http://linkedgtfs.com/madrid/metro/feed/{$.feed_publisher_name}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/version> ];
+		rr:objectMap[
+			xrr:reference "$.feed_version";
+		];
+	];
+.
