@@ -465,7 +465,7 @@
 :map_stops_0 rr:predicateObjectMap :pom_46.
 :pm_46 a rr:PredicateMap.
 :pom_46 rr:predicateMap :pm_46.
-:pm_46 rr:constant gtfs:wheelchairBoarding.
+:pm_46 rr:constant gtfs:wheelchairAccessible.
 :pom_46 rr:objectMap :om_47.
 :om_47 a rr:ObjectMap;
     rr:template "http://vocab.gtfs.org/resource/WheelchairBoardingStatus/{wheelchair_boarding}";
@@ -844,7 +844,8 @@
 :pom_80 rr:objectMap :om_81.
 :om_81 a rr:ObjectMap;
     rml:reference "headway_secs";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype xsd:integer.
 :pom_81 a rr:PredicateObjectMap.
 :map_frequencies_0 rr:predicateObjectMap :pom_81.
 :pm_81 a rr:PredicateMap.
@@ -853,7 +854,8 @@
 :pom_81 rr:objectMap :om_82.
 :om_82 a rr:ObjectMap;
     rml:reference "exact_times";
-    rr:termType rr:Literal.
+    rr:termType rr:Literal;
+    rr:datatype xsd:boolean.
 :pom_82 a rr:PredicateObjectMap.
 :map_frequencies_0 rr:predicateObjectMap :pom_82.
 :pm_82 a rr:PredicateMap.

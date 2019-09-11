@@ -133,7 +133,7 @@ mappings:
       - [foaf:page,$(stop_url)~iri]
       - [gtfs:locationType,http://vocab.gtfs.org/resource/LocationType/$(location_type)~iri]
       - [gtfs:timeZone,$(stop_timezone)]
-      - [gtfs:wheelchairBoarding,http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_boarding)~iri]
+      - [gtfs:wheelchairAccessible,http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_boarding)~iri]
       - p: gtfs:parentStation
         o:
           - mapping: stops
@@ -223,8 +223,8 @@ mappings:
       - [a, gtfs:Frequency]
       - [gtfs:startTime,$(start_time)]
       - [gtfs:endTime,$(end_time)]
-      - [gtfs:headwaySeconds,$(headway_secs)]
-      - [gtfs:exactTimes,$(exact_times)]
+      - [gtfs:headwaySeconds,$(headway_secs),xsd:integer]
+      - [gtfs:exactTimes,$(exact_times),xsd:boolean]
       - p: gtfs:trip
         o:
           - mapping: trips
