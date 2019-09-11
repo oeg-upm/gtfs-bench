@@ -24,8 +24,8 @@ mappings:
       - [gtfs:departureTime, $(departure_time),xsd:duration]
       - [gtfs:stopSequence, $(stop_sequence),xsd:integer]
       - [gtfs:headsign, $(stop_headsign)]
-      - [gtfs:pickupType, http://vocab.gtfs.org/resource/PickupType/$(pickup_type)~iri]
-      - [gtfs:dropOffType, http://vocab.gtfs.org/resource/DropOffType/$(drop_off_type)~iri]
+      - [gtfs:pickupType, http://transport.linkeddata.es/resource/PickupType/$(pickup_type)~iri]
+      - [gtfs:dropOffType, http://transport.linkeddata.es/resource/DropOffType/$(drop_off_type)~iri]
       - [gtfs:distanceTraveled, $(shape_dist_traveled)]
       - p: gtfs:trip
         o:
@@ -53,7 +53,7 @@ mappings:
       - [gtfs:shortName, $(trip_short_name)]
       - [gtfs:direction, $(direction_id)]
       - [gtfs:block, $(block_id)]
-      - [gtfs:wheelchairAccessible,http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_accessible)~iri]
+      - [gtfs:wheelchairAccessible,http://transport.linkeddata.es/resource/WheelchairBoardingStatus/$(wheelchair_accessible)~iri]
       - p: gtfs:service
         o:
           - mapping: services1
@@ -93,7 +93,7 @@ mappings:
       - [gtfs:shortName, $(route_short_name)]
       - [gtfs:longName, $(route_long_name)]
       - [dct:description, $(route_desc)]
-      - [gtfs:routeType, http://vocab.gtfs.org/resource/RouteType/$(route_type)~iri]
+      - [gtfs:routeType, http://transport.linkeddata.es/resource/RouteType/$(route_type)~iri]
       - [gtfs:routeUrl, $(route_url)~iri]
       - [gtfs:color, $(route_color)]
       - [gtfs:textColor, $(route_text_color)]
@@ -131,9 +131,9 @@ mappings:
       - [geo:long,$(stop_lon),xsd:double]
       - [gtfs:zone,$(zone_id)]
       - [foaf:page,$(stop_url)~iri]
-      - [gtfs:locationType,http://vocab.gtfs.org/resource/LocationType/$(location_type)~iri]
+      - [gtfs:locationType,http://transport.linkeddata.es/resource/LocationType/$(location_type)~iri]
       - [gtfs:timeZone,$(stop_timezone)]
-      - [gtfs:wheelchairAccessible,http://vocab.gtfs.org/resource/WheelchairBoardingStatus/$(wheelchair_boarding)~iri]
+      - [gtfs:wheelchairAccessible,http://transport.linkeddata.es/resource/WheelchairBoardingStatus/$(wheelchair_boarding)~iri]
       - p: gtfs:parentStation
         o:
           - mapping: stops
