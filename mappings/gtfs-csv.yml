@@ -203,7 +203,7 @@ mappings:
       - [foaf:page,$(feed_published_url)~iri]
       - [dct:language,$(feed_lang)]
       - [schema:startDate,$(feed_start_date), xsd:date]
-      - [schema:endDate,$(feedend_date), xsd:date]
+      - [schema:endDate,$(feed_end_date), xsd:date]
       - [schema:version,$(feed_version)]
   shapes:
     sources:
