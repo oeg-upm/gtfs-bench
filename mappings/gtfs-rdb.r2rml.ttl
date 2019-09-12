@@ -89,6 +89,78 @@
 	];
 .
 
+<trips>
+	rr:logicalTable [
+		rr:tableName "\"TRIPS\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/trips/{TRIP_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:objectMap[
+			rr:column "TRIP_HEADSIGN";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			rr:column "TRIP_SHORT_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#direction> ];
+		rr:objectMap[
+			rr:column "DIRECTION_ID";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#block> ];
+		rr:objectMap[
+			rr:column "BLOCK_ID";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:objectMap[
+			rr:column "WHEELCHAIR_ACCESSIBLE";
+			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{WHEELCHAIR_ACCESSIBLE}";
+			rrr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services1>; 
+			rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services2>; 
+			rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
+		];
+	];	
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
+		rr:objectMap [
+			rr:parentTriplesMap <routes>; 
+			rr:joinCondition [ rr:child "ROUTE_ID"; rr:parent "ROUTE_ID"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
+		rr:objectMap[
+			rr:parentTriplesMap <shapes>; 
+			rr:joinCondition [ rr:child "SHAPE_ID"; rr:parent "SHAPE_ID"; ];
+		];
+	];
+.
+
 <calendar_date_rules>
 	rr:logicalTable [
 		rr:tableName "\"CALENDAR_DATES\"";
@@ -505,76 +577,7 @@
 	];
 .
 
-<trips>
-	rr:logicalTable [
-		rr:tableName "\"TRIPS\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/trips/{TRIP_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Trip>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
-		rr:objectMap[
-			#rr:template "http://linkedgtfs.com/CITY/shape/{SHAPE_ID}";
-			rr:parentTriplesMap <shapes>; rr:joinCondition [ rr:child "SHAPE_ID"; rr:parent "SHAPE_ID"; ];
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
-		rr:objectMap [
-			rr:parentTriplesMap <services1>; rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{SERVICE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
-		rr:objectMap [
-			rr:parentTriplesMap <services2>; rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{SERVICE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];	
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
-		rr:objectMap[
-			rr:column "TRIP_HEADSIGN";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
-		rr:objectMap [
-			rr:parentTriplesMap <routes>; rr:joinCondition [ rr:child "ROUTE_ID"; rr:parent "ROUTE_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/routes/{ROUTE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#block> ];
-		rr:objectMap[
-			rr:column "BLOCK_ID";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
-		rr:objectMap[
-			rr:column "WHEELCHAIR_ACCESSIBLE";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
-		rr:objectMap[
-			rr:column "TRIP_SHORT_NAME";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#direction> ];
-		rr:objectMap[
-			rr:column "DIRECTION_ID";
-			rr:datatype xsd:boolean;
-		];
-	];
-.
+
 
 <services1>
 	rr:logicalTable [
