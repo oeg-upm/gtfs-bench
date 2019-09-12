@@ -399,7 +399,7 @@
 		rr:tableName "\"CALENDAR_DATES\"";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{SERVICE_ID}";
+		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{SERVICE_ID}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
 	];
@@ -418,9 +418,6 @@
 		];
 	];
 .
-
-
-
 
 <shapes>
 	rr:logicalTable [
