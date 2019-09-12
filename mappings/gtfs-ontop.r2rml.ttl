@@ -17,13 +17,389 @@
 @base <http://example.org/>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 
+<stoptimes>
+	rr:logicalTable [
+		rr:tableName "STOP_TIMES";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id2}-{stop_id2}-{arrival_time}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#StopTime>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#arrivalTime> ];
+		rr:objectMap[
+			rr:column "arrival_time";
+			rr:datatype xsd:duration;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#departureTime> ];
+		rr:objectMap[
+			rr:column "departure_time";
+			rr:datatype xsd:duration;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stopSequence> ];
+		rr:objectMap[
+			rr:column "stop_sequence";
+			rr:datatype xsd:integer;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:objectMap[
+			rr:column "stop_headsign";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pickupType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/PickupType/{pickup_type}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dropOffType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/DropOffType/{drop_off_type}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
+		rr:objectMap[
+			rr:column "shape_dist_traveled";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
+		rr:objectMap [
+			rr:parentTriplesMap <trips>; 
+			rr:joinCondition [ rr:child "trip_id2"; rr:parent "trip_id"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stop> ];
+		rr:objectMap [
+			rr:parentTriplesMap <stops>; 
+			rr:joinCondition [ rr:child "stop_id2"; rr:parent "stop_id"; ];
+		];
+	];
+.
 
-<calendar_date_rules>
+<trips>
+	rr:logicalTable [
+		rr:tableName "TRIPS";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/trips/{trip_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Trip>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:objectMap[
+			rr:column "trip_headsign";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			rr:column "trip_short_name";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#direction> ];
+		rr:objectMap[
+			rr:column "direction_id";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#block> ];
+		rr:objectMap[
+			rr:column "block_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_accessible}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services1>; 
+			rr:joinCondition [ rr:child "service_id2"; rr:parent "service_id"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
+		rr:objectMap [
+			rr:parentTriplesMap <services2>; 
+			rr:joinCondition [ rr:child "service_id2"; rr:parent "service_id"; ];
+		];
+	];	
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
+		rr:objectMap [
+			rr:parentTriplesMap <routes>; 
+			rr:joinCondition [ rr:child "route_id"; rr:parent "route_id"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
+		rr:objectMap[
+			rr:parentTriplesMap <shapes>; 
+			rr:joinCondition [ rr:child "shape_id"; rr:parent "shape_id"; ];
+		];
+	];
+.
+
+<routes>
+	rr:logicalTable [
+		rr:tableName "ROUTES";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es//madrid/metro/routes/{route_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			rr:column "route_short_name";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#longName> ];
+		rr:objectMap[
+			rr:column "route_long_name";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
+		rr:objectMap[
+			rr:column "route_desc";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/RouteType/{route_type}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeUrl> ];
+		rr:objectMap[
+			rr:column "route_url";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#color> ];
+		rr:objectMap[
+			rr:column "route_color";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#textColor> ];
+		rr:objectMap[
+			rr:column "route_text_color";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
+		rr:objectMap [
+			rr:parentTriplesMap <agency>; 
+			rr:joinCondition [ rr:child "agency_id2"; rr:parent "agency_id"; ];
+		];
+	];
+.
+
+<agency>
+	rr:logicalTable [
+		rr:tableName "AGENCY";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/agency/{agency_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			rr:column "agency_url";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
+		rr:objectMap[
+			rr:column "agency_name";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			rr:column "agency_timezone";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
+		rr:objectMap[
+			rr:column "agency_lang";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
+		rr:objectMap[
+			rr:column "agency_phone";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
+		rr:objectMap[
+			rr:column "agency_fare_url";
+		];
+	];
+.
+
+<stops>
+	rr:logicalTable [
+		rr:tableName "STOPS";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/stops/{stop_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#code> ];
+		rr:objectMap[
+			rr:column "stop_code";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/identifier> ];
+		rr:objectMap[
+			rr:column "stop_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
+		rr:objectMap[
+			rr:column "stop_name";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
+		rr:objectMap[
+			rr:column "stop_desc";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
+		rr:objectMap[
+			rr:column "stop_lat";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
+		rr:objectMap[
+			rr:column "stop_lon";
+			rr:datatype xsd:double;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#zone> ];
+		rr:objectMap[
+			rr:column "zone_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			rr:column "stop_url";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/LocationType/{location_type}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			rr:column "stop_timezone";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
+		rr:objectMap[
+			#rr:column "PARENT_STATION";
+			rr:parentTriplesMap <stops>; 
+			rr:joinCondition [ rr:child "parent_station"; rr:parent "stop_id"; ];
+		];
+	];
+.
+
+<services1>
+	rr:logicalTable [
+		rr:tableName "CALENDAR";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap [
+			rr:parentTriplesMap <calendar_rules>; 
+			rr:joinCondition [ rr:child "service_id"; rr:parent "service_id"; ];
+		];
+	];
+.
+
+<services2>
 	rr:logicalTable [
 		rr:tableName "CALENDAR_DATES";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/calendar_date_rule/{service_id2}";
+		rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap [
+			rr:parentTriplesMap <calendar_date_rules>; 
+			rr:joinCondition [ rr:child "service_id"; rr:parent "service_id"; ];
+		];
+	];
+.
+
+<calendar_date_rules>
+	rr:logicalTable [
+		rr:tableName "\"CALENDAR_DATES\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#ServiceDates>;
 	];
@@ -43,349 +419,12 @@
 	];
 .
 
-<agency>
-	rr:logicalTable [
-		rr:tableName "AGENCY";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/agency/{agency_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
-		rr:objectMap[
-			rr:column "agency_fare_url";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
-		rr:objectMap[
-			rr:column "agency_phone";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
-		rr:objectMap[
-			rr:column "agency_lang";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			rr:column "agency_timezone";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
-		rr:objectMap[
-			rr:column "agency_url";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
-		rr:objectMap[
-			rr:column "agency_name";
-		];
-	];
-.
-
-<stops>
-	rr:logicalTable [
-		rr:tableName "STOPS";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/stops/{stop_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#code> ];
-		rr:objectMap[
-			rr:column "stop_code";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			rr:column "stop_timezone";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
-		rr:objectMap[
-			rr:column "location_type";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
-		rr:objectMap[
-			rr:column "stop_lon";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
-		rr:objectMap[
-			#rr:column "PARENT_STATION";
-			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "parent_station"; rr:parent "stop_id"; ];
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
-		rr:objectMap[
-			rr:column "stop_name";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
-		rr:objectMap[
-			rr:column "stop_desc";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
-		rr:objectMap[
-			rr:column "stop_url";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
-		rr:objectMap[
-			rr:column "stop_lat";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
-		rr:objectMap[
-			rr:column "wheelchair_boarding";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#zone> ];
-		rr:objectMap[
-			rr:column "zone_id";
-		];
-	];
-.
-
-<shapes>
-	rr:logicalTable [
-		rr:tableName "SHAPES";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/shape/{shape_id}-{shape_pt_sequence}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pointSequence> ];
-		rr:objectMap[
-			rr:column "shape_pt_sequence";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
-		rr:objectMap[
-			rr:column "shape_pt_lon";
-			rr:datatype xsd:double;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
-		rr:objectMap[
-			rr:column "shape_dist";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
-		rr:objectMap[
-			rr:column "shape_pt_lat";
-			rr:datatype xsd:double;
-		];
-	];
-.
-
-<routes>
-	rr:logicalTable [
-		rr:tableName "ROUTES";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/routes/{route_id}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Route>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#longName> ];
-		rr:objectMap[
-			rr:column "route_long_name";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeUrl> ];
-		rr:objectMap[
-			rr:column "route_url";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#textColor> ];
-		rr:objectMap[
-			rr:column "route_text_color";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
-		rr:objectMap[
-			rr:column "route_short_name";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#color> ];
-		rr:objectMap[
-			rr:column "route_color";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
-		rr:objectMap[
-			rr:column "route_desc";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#RouteType={route_type}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
-		rr:objectMap [
-			rr:parentTriplesMap <agency>; rr:joinCondition [ rr:child "agency_id2"; rr:parent "agency_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/agency/{AGENCY_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-.
-
-<frequencies>
-	rr:logicalTable [
-		rr:tableName "FREQUENCIES";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/frequency/{trip_id2}-{start_time}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Frequency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
-		rr:objectMap [
-			rr:parentTriplesMap <trips>; rr:joinCondition [ rr:child "trip_id2"; rr:parent "trip_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/trips/{TRIP_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#exactTimes> ];
-		rr:objectMap[
-			rr:column "exact_times";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#endTime> ];
-		rr:objectMap[
-			rr:column "end_time";
-			rr:datatype xsd:time;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headwaySeconds> ];
-		rr:objectMap[
-			rr:column "headway_secs";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#startTime> ];
-		rr:objectMap[
-			rr:column "start_time";
-			rr:datatype xsd:time;
-		];
-	];
-.
-
-<stoptimes>
-	rr:logicalTable [
-		rr:tableName "STOP_TIMES";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{trip_id3}-{stop_id2}-{arrival_time}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#StopTime>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pickupType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#PickupType={pickup_type}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
-		rr:objectMap[
-			rr:column "shape_dist_traveled";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dropOffType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#DropOffType={drop_off_type}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stopSequence> ];
-		rr:objectMap[
-			rr:column "stop_sequence";
-			rr:datatype xsd:integer;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#arrivalTime> ];
-		rr:objectMap[
-			rr:column "arrival_time";
-			rr:datatype xsd:duration;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
-		rr:objectMap[
-			rr:column "stop_headsign";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#departureTime> ];
-		rr:objectMap[
-			rr:column "departure_time";
-			rr:datatype xsd:duration;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
-		rr:objectMap [
-			rr:parentTriplesMap <trips>; rr:joinCondition [ rr:child "trip_id3"; rr:parent "trip_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/trips/{TRIP_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stop> ];
-		rr:objectMap [
-			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "stop_id2"; rr:parent "stop_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/stops/{STOP_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-.
-
 <calendar_rules>
 	rr:logicalTable [
 		rr:tableName "CALENDAR";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{service_id}";
+		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		rr:class <http://vocab.gtfs.org/terms#Service>;
 	];
@@ -459,15 +498,9 @@
 		rr:tableName "FEED_INFO";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/feed/{feed_publisher_name}";
+		rr:template "http://ltransport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
-		rr:objectMap[
-			rr:column "feed_end_date";
-			rr:datatype xsd:date;
-		];
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/publisher> ];
@@ -478,7 +511,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
 		rr:objectMap[
-			rr:column "feed_publisher_url";
+			rr:column "feed_publisher_name_url";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -495,6 +529,13 @@
 		];
 	];
 	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
+		rr:objectMap[
+			rr:column "feed_end_date";
+			rr:datatype xsd:date;
+		];
+	];
+	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://schema.org/version> ];
 		rr:objectMap[
 			rr:column "feed_version";
@@ -502,106 +543,83 @@
 	];
 .
 
-<trips>
+<shapes>
 	rr:logicalTable [
-		rr:tableName "TRIPS";
+		rr:tableName "SHAPES";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/trips/{trip_id}";
+		rr:template "transport.linkeddata.es/madrid/metro/shape/{shape_id}-{shape_pt_sequence}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Trip>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
 		rr:objectMap[
-			rr:parentTriplesMap <shapes>; rr:joinCondition [ rr:child "shape_id2"; rr:parent "shape_id"; ];
+			rr:column "shape_pt_lat";
+			rr:datatype xsd:double;
 		];
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
-		rr:objectMap [
-			rr:parentTriplesMap <services1>; rr:joinCondition [ rr:child "service3"; rr:parent "service_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{SERVICE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#service> ];
-		rr:objectMap [
-			rr:parentTriplesMap <services2>; rr:joinCondition [ rr:child "service_id3"; rr:parent "service_id2"; ];
-			# rr:template "http://linkedgtfs.com/CITY/service/{SERVICE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];	
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
 		rr:objectMap[
-			rr:column "trip_headsign";
+			rr:column "shape_pt_lon";
+			rr:datatype xsd:double;
 		];
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
-		rr:objectMap [
-			rr:parentTriplesMap <routes>; rr:joinCondition [ rr:child "route_id2"; rr:parent "route_id"; ];
-			# rr:template "http://linkedgtfs.com/CITY/routes/{ROUTE_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#block> ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pointSequence> ];
 		rr:objectMap[
-			rr:column "block_id";
+			rr:column "shape_pt_sequence";
 		];
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
 		rr:objectMap[
-			rr:column "wheelchair_accessible";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
-		rr:objectMap[
-			rr:column "trip_short_name";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#direction> ];
-		rr:objectMap[
-			rr:column "direction_id";
-			rr:datatype xsd:boolean;
+			rr:column "shape_dist";
 		];
 	];
 .
 
-<services1>
+<frequencies>
 	rr:logicalTable [
-		rr:tableName "CALENDAR";
+		rr:tableName "FREQUENCIES";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{service_id}";
+		rr:template "http://transport.linkeddata.es/madrid/metro/frequency/{trip_id2}-{start_time}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+		rr:class <http://vocab.gtfs.org/terms#Frequency>;
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
-		rr:objectMap [
-			rr:parentTriplesMap <calendar_rules>; rr:joinCondition [ rr:child "service_id"; rr:parent "service_id"; ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#startTime> ];
+		rr:objectMap[
+			rr:column "start_time";
 		];
 	];
-.
-
-<services2>
-	rr:logicalTable [
-		rr:tableName "CALENDAR_DATES";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{service_id2}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#endTime> ];
+		rr:objectMap[
+			rr:column "end_time";
+		];
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headwaySeconds> ];
+		rr:objectMap[
+			rr:column "headway_secs";
+			rr:datatype xsd:integer;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#exactTimes> ];
+		rr:objectMap[
+			rr:column "exact_times";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
 		rr:objectMap [
-			rr:parentTriplesMap <calendar_date_rules>; rr:joinCondition [ rr:child "service_id2"; rr:parent "service_id2"; ];
+			rr:parentTriplesMap <trips>; 
+			rr:joinCondition [ rr:child "trip_id2"; rr:parent "trip_id"; ];
 		];
 	];
 .

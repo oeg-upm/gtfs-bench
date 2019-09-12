@@ -126,7 +126,6 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
 		rr:objectMap[
-			rr:column "WHEELCHAIR_ACCESSIBLE";
 			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{WHEELCHAIR_ACCESSIBLE}";
 			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
@@ -332,7 +331,8 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
 		rr:objectMap[
-			rr:column "LOCATION_TYPE";
+			rr:template "http://transport.linkeddata.es/resource/LocationType/{LOCATION_TYPE}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 	rr:predicateObjectMap [
