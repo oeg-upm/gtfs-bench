@@ -493,6 +493,56 @@
 	];
 .
 
+<feed>
+	rr:logicalTable [
+		rr:tableName "\"FEED_INFO\"";
+	];
+	rr:subjectMap [
+		rr:template "http://ltransport.linkeddata.es/madrid/metro/feed/{FEED_PUBLISHER_NAME}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Feed>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/publisher> ];
+		rr:objectMap[
+			rr:column "FEED_PUBLISHER_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			rr:column "FEED_PUBLISHER_URL";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
+		rr:objectMap[
+			rr:column "FEED_LANG";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
+		rr:objectMap[
+			rr:column "FEED_START_DATE";
+			rr:datatype xsd:date;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
+		rr:objectMap[
+			rr:column "FEED_END_DATE";
+			rr:datatype xsd:date;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/version> ];
+		rr:objectMap[
+			rr:column "FEED_VERSION";
+		];
+	];
+.
+
 <shapes>
 	rr:logicalTable [
 		rr:tableName "\"SHAPES\"";
@@ -580,53 +630,7 @@
 
 
 
-<feed>
-	rr:logicalTable [
-		rr:tableName "\"FEED_INFO\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/feed/{FEED_PUBLISHER_NAME}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
-		rr:objectMap[
-			rr:column "FEED_END_DATE";
-			rr:datatype xsd:date;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/publisher> ];
-		rr:objectMap[
-			rr:column "FEED_PUBLISHER_NAME";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
-		rr:objectMap[
-			rr:column "FEED_PUBLISHER_URL";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
-		rr:objectMap[
-			rr:column "FEED_LANG";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
-		rr:objectMap[
-			rr:column "FEED_START_DATE";
-			rr:datatype xsd:date;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/version> ];
-		rr:objectMap[
-			rr:column "FEED_VERSION";
-		];
-	];
-.
+
 
 
 
