@@ -419,6 +419,80 @@
 	];
 .
 
+<calendar_rules>
+	rr:logicalTable [
+		rr:tableName "\"CALENDAR\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{SERVICE_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#monday> ];
+		rr:objectMap[
+			rr:column "MONDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#tuesday> ];
+		rr:objectMap[
+			rr:column "TUESDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wednesday> ];
+		rr:objectMap[
+			rr:column "WEDNESDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#thursday> ];
+		rr:objectMap[
+			rr:column "THURSDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#friday> ];
+		rr:objectMap[
+			rr:column "FRIDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#saturday> ];
+		rr:objectMap[
+			rr:column "SATURDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#sunday> ];
+		rr:objectMap[
+			rr:column "SUNDAY";
+			rr:datatype xsd:boolean;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
+		rr:objectMap[
+			rr:column "START_DATE";
+			rr:datatype xsd:date;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
+		rr:objectMap[
+			rr:column "END_DATE";
+			rr:datatype xsd:date;
+		];
+	];
+.
+
 <shapes>
 	rr:logicalTable [
 		rr:tableName "\"SHAPES\"";
@@ -504,79 +578,7 @@
 
 
 
-<calendar_rules>
-	rr:logicalTable [
-		rr:tableName "\"CALENDAR\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/calendar_rules/{SERVICE_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#monday> ];
-		rr:objectMap[
-			rr:column "MONDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#tuesday> ];
-		rr:objectMap[
-			rr:column "TUESDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wednesday> ];
-		rr:objectMap[
-			rr:column "WEDNESDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#thursday> ];
-		rr:objectMap[
-			rr:column "THURSDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#friday> ];
-		rr:objectMap[
-			rr:column "FRIDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#saturday> ];
-		rr:objectMap[
-			rr:column "SATURDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#sunday> ];
-		rr:objectMap[
-			rr:column "SUNDAY";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/startDate> ];
-		rr:objectMap[
-			rr:column "START_DATE";
-			rr:datatype xsd:date;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://schema.org/endDate> ];
-		rr:objectMap[
-			rr:column "END_DATE";
-			rr:datatype xsd:date;
-		];
-	];
-.
+
 
 <feed>
 	rr:logicalTable [
