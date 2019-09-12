@@ -17,6 +17,77 @@
 @base <http://example.org/>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 
+<stoptimes>
+	rr:logicalTable [
+		rr:tableName "\"STOP_TIMES\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#StopTime>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#arrivalTime> ];
+		rr:objectMap[
+			rr:column "ARRIVAL_TIME";
+			rr:datatype xsd:duration;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#departureTime> ];
+		rr:objectMap[
+			rr:column "DEPARTURE_TIME";
+			rr:datatype xsd:duration;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stopSequence> ];
+		rr:objectMap[
+			rr:column "STOP_SEQUENCE";
+			rr:datatype xsd:integer;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
+		rr:objectMap[
+			rr:column "STOP_HEADSIGN";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pickupType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/PickupType/{PICKUP_TYPE}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dropOffType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/DropOffType/{DROP_OFF_TYPE}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
+		rr:objectMap[
+			rr:column "SHAPE_DIST_TRAVELED";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
+		rr:objectMap [
+			rr:parentTriplesMap <trips>; 
+			rr:joinCondition [ rr:child "TRIP_ID"; rr:parent "TRIP_ID"; ];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stop> ];
+		rr:objectMap [
+			rr:parentTriplesMap <stops>; 
+			rr:joinCondition [ rr:child "STOP_ID"; rr:parent "STOP_ID"; ];
+		];
+	];
+.
 
 <calendar_date_rules>
 	rr:logicalTable [
@@ -310,75 +381,7 @@
 	];
 .
 
-<stoptimes>
-	rr:logicalTable [
-		rr:tableName "\"STOP_TIMES\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#StopTime>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pickupType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#PickupType={PICKUP_TYPE}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
-		rr:objectMap[
-			rr:column "SHAPE_DIST_TRAVELED";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#dropOffType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#DropOffType={DROP_OFF_TYPE}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stopSequence> ];
-		rr:objectMap[
-			rr:column "STOP_SEQUENCE";
-			rr:datatype xsd:integer;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#arrivalTime> ];
-		rr:objectMap[
-			rr:column "ARRIVAL_TIME";
-			rr:datatype xsd:duration;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#headsign> ];
-		rr:objectMap[
-			rr:column "STOP_HEADSIGN";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#departureTime> ];
-		rr:objectMap[
-			rr:column "DEPARTURE_TIME";
-			rr:datatype xsd:duration;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#trip> ];
-		rr:objectMap [
-			rr:parentTriplesMap <trips>; rr:joinCondition [ rr:child "TRIP_ID"; rr:parent "TRIP_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/trips/{TRIP_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#stop> ];
-		rr:objectMap [
-			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "STOP_ID"; rr:parent "STOP_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/stops/{STOP_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-.
+
 
 <calendar_rules>
 	rr:logicalTable [
