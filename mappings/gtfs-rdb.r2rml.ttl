@@ -358,6 +358,42 @@
 	];
 .
 
+<services1>
+	rr:logicalTable [
+		rr:tableName "\"CALENDAR\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/services/{SERVICE_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap [
+			rr:parentTriplesMap <calendar_rules>; 
+			rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
+		];
+	];
+.
+
+<services2>
+	rr:logicalTable [
+		rr:tableName "\"CALENDAR_DATES\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/services/{SERVICE_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Service>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
+		rr:objectMap [
+			rr:parentTriplesMap <calendar_date_rules>; 
+			rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
+		];
+	];
+.
+
 <calendar_date_rules>
 	rr:logicalTable [
 		rr:tableName "\"CALENDAR_DATES\"";
@@ -595,36 +631,4 @@
 
 
 
-<services1>
-	rr:logicalTable [
-		rr:tableName "\"CALENDAR\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{SERVICE_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
-		rr:objectMap [
-			rr:parentTriplesMap <calendar_rules>; rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
-		];
-	];
-.
 
-<services2>
-	rr:logicalTable [
-		rr:tableName "\"CALENDAR_DATES\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/services/{SERVICE_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Service>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#serviceRule> ];
-		rr:objectMap [
-			rr:parentTriplesMap <calendar_date_rules>; rr:joinCondition [ rr:child "SERVICE_ID"; rr:parent "SERVICE_ID"; ];
-		];
-	];
-.
