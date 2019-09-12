@@ -548,13 +548,15 @@
 		rr:tableName "\"SHAPES\"";
 	];
 	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/CITY/shape/{SHAPE_ID}-{SHAPE_PT_SEQUENCE}";
+		rr:template "transport.linkeddata.es/madrid/metro/shape/{SHAPE_ID}-{SHAPE_PT_SEQUENCE}";
 		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Shape>;
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pointSequence> ];
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
 		rr:objectMap[
-			rr:column "SHAPE_PT_SEQUENCE";
+			rr:column "SHAPE_PT_LAT";
+			rr:datatype xsd:double;
 		];
 	];
 	rr:predicateObjectMap [
@@ -565,18 +567,18 @@
 		];
 	];
 	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#pointSequence> ];
+		rr:objectMap[
+			rr:column "SHAPE_PT_SEQUENCE";
+		];
+	];
+	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> ];
 		rr:objectMap[
 			rr:column "SHAPE_DIST";
 		];
 	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
-		rr:objectMap[
-			rr:column "SHAPE_PT_LAT";
-			rr:datatype xsd:double;
-		];
-	];
+
 .
 
 
