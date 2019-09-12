@@ -271,6 +271,93 @@
 	];
 .
 
+<stops>
+	rr:logicalTable [
+		rr:tableName "\"STOPS\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/metro/stops/{STOP_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Stop>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#code> ];
+		rr:objectMap[
+			rr:column "STOP_CODE";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/identifier> ];
+		rr:objectMap[
+			rr:column "STOP_ID";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
+		rr:objectMap[
+			rr:column "STOP_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
+		rr:objectMap[
+			rr:column "STOP_DESC";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
+		rr:objectMap[
+			rr:column "STOP_LAT";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
+		rr:objectMap[
+			rr:column "STOP_LON";
+			rr:datatype xsd:double;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#zone> ];
+		rr:objectMap[
+			rr:column "ZONE_ID";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			rr:column "STOP_URL";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
+		rr:objectMap[
+			rr:column "LOCATION_TYPE";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			rr:column "STOP_TIMEZONE";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{WHEELCHAIR_BOARDING}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
+		rr:objectMap[
+			#rr:column "PARENT_STATION";
+			rr:parentTriplesMap <stops>; 
+			rr:joinCondition [ rr:child "PARENT_STATION"; rr:parent "STOP_ID"; ];
+		];
+	];
+.
+
 <calendar_date_rules>
 	rr:logicalTable [
 		rr:tableName "\"CALENDAR_DATES\"";
@@ -298,84 +385,6 @@
 
 
 
-<stops>
-	rr:logicalTable [
-		rr:tableName "\"STOPS\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/stops/{STOP_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Stop>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#code> ];
-		rr:objectMap[
-			rr:column "STOP_CODE";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			rr:column "STOP_TIMEZONE";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#locationType> ];
-		rr:objectMap[
-			rr:column "LOCATION_TYPE";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> ];
-		rr:objectMap[
-			rr:column "STOP_LON";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#parentStation> ];
-		rr:objectMap[
-			#rr:column "PARENT_STATION";
-			rr:parentTriplesMap <stops>; rr:joinCondition [ rr:child "PARENT_STATION"; rr:parent "STOP_ID"; ];
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
-		rr:objectMap[
-			rr:column "STOP_NAME";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
-		rr:objectMap[
-			rr:column "STOP_DESC";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
-		rr:objectMap[
-			rr:column "STOP_URL";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ];
-		rr:objectMap[
-			rr:column "STOP_LAT";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
-		rr:objectMap[
-			rr:column "WHEELCHAIR_BOARDING";
-			rr:datatype xsd:boolean;
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#zone> ];
-		rr:objectMap[
-			rr:column "ZONE_ID";
-		];
-	];
-.
 
 <shapes>
 	rr:logicalTable [
