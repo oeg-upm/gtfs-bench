@@ -396,7 +396,7 @@
 
 <calendar_date_rules>
 	rr:logicalTable [
-		rr:tableName "\"CALENDAR_DATES\"";
+		rr:tableName "CALENDAR_DATES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}";
