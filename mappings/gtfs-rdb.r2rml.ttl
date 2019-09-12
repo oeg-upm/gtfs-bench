@@ -128,7 +128,7 @@
 		rr:objectMap[
 			rr:column "WHEELCHAIR_ACCESSIBLE";
 			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{WHEELCHAIR_ACCESSIBLE}";
-			rrr:termType <http://www.w3.org/ns/r2rml#IRI>;
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
 	rr:predicateObjectMap [
