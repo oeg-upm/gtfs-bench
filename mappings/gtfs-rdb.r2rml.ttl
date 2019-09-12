@@ -223,6 +223,54 @@
 	];
 .
 
+<agency>
+	rr:logicalTable [
+		rr:tableName "\"AGENCY\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es/madrid/agency/{AGENCY_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Agency>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
+		rr:objectMap[
+			rr:column "AGENCY_URL";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
+		rr:objectMap[
+			rr:column "AGENCY_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
+		rr:objectMap[
+			rr:column "AGENCY_TIMEZONE";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
+		rr:objectMap[
+			rr:column "AGENCY_LANG";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
+		rr:objectMap[
+			rr:column "AGENCY_PHONE";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
+		rr:objectMap[
+			rr:column "AGENCY_FARE_URL";
+		];
+	];
+.
+
 <calendar_date_rules>
 	rr:logicalTable [
 		rr:tableName "\"CALENDAR_DATES\"";
@@ -248,52 +296,7 @@
 	];
 .
 
-<agency>
-	rr:logicalTable [
-		rr:tableName "\"AGENCY\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/agency/{AGENCY_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Agency>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#fareUrl> ];
-		rr:objectMap[
-			rr:column "AGENCY_FARE_URL";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/phone> ];
-		rr:objectMap[
-			rr:column "AGENCY_PHONE";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/language> ];
-		rr:objectMap[
-			rr:column "AGENCY_LANG";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#timeZone> ];
-		rr:objectMap[
-			rr:column "AGENCY_TIMEZONE";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
-		rr:objectMap[
-			rr:column "AGENCY_URL";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/name> ];
-		rr:objectMap[
-			rr:column "AGENCY_NAME";
-		];
-	];
-.
+
 
 <stops>
 	rr:logicalTable [
