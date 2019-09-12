@@ -161,6 +161,68 @@
 	];
 .
 
+<routes>
+	rr:logicalTable [
+		rr:tableName "\"ROUTES\"";
+	];
+	rr:subjectMap [
+		rr:template "http://transport.linkeddata.es//madrid/metro/routes/{ROUTE_ID}";
+		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		rr:class <http://vocab.gtfs.org/terms#Route>;
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
+		rr:objectMap[
+			rr:column "ROUTE_SHORT_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#longName> ];
+		rr:objectMap[
+			rr:column "ROUTE_LONG_NAME";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
+		rr:objectMap[
+			rr:column "ROUTE_DESC";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
+		rr:objectMap[
+			rr:template "http://transport.linkeddata.es/resource/RouteType/{ROUTE_TYPE}";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeUrl> ];
+		rr:objectMap[
+			rr:column "ROUTE_URL";
+			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#color> ];
+		rr:objectMap[
+			rr:column "ROUTE_COLOR";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#textColor> ];
+		rr:objectMap[
+			rr:column "ROUTE_TEXT_COLOR";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
+		rr:objectMap [
+			rr:parentTriplesMap <agency>; 
+			rr:joinCondition [ rr:child "AGENCY_ID"; rr:parent "AGENCY_ID"; ];
+		];
+	];
+.
+
 <calendar_date_rules>
 	rr:logicalTable [
 		rr:tableName "\"CALENDAR_DATES\"";
@@ -348,65 +410,7 @@
 	];
 .
 
-<routes>
-	rr:logicalTable [
-		rr:tableName "\"ROUTES\"";
-	];
-	rr:subjectMap [
-		rr:template "http://linkedgtfs.com/madrid/metro/routes/{ROUTE_ID}";
-		rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		rr:class <http://vocab.gtfs.org/terms#Route>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#longName> ];
-		rr:objectMap[
-			rr:column "ROUTE_LONG_NAME";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeUrl> ];
-		rr:objectMap[
-			rr:column "ROUTE_URL";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#textColor> ];
-		rr:objectMap[
-			rr:column "ROUTE_TEXT_COLOR";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shortName> ];
-		rr:objectMap[
-			rr:column "ROUTE_SHORT_NAME";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#color> ];
-		rr:objectMap[
-			rr:column "ROUTE_COLOR";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://purl.org/dc/terms/description> ];
-		rr:objectMap[
-			rr:column "ROUTE_DESC";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#routeType> ];
-		rr:objectMap[
-			rr:template "http://vocab.gtfs.org/terms#RouteType={ROUTE_TYPE}";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#agency> ];
-		rr:objectMap [
-			rr:parentTriplesMap <agency>; rr:joinCondition [ rr:child "AGENCY_ID"; rr:parent "AGENCY_ID"; ];
-			# rr:template "http://linkedgtfs.com/CITY/agency/{AGENCY_ID}"; rr:termType <http://www.w3.org/ns/r2rml#IRI>;
-		];
-	];
-.
+
 
 <frequencies>
 	rr:logicalTable [
