@@ -22,15 +22,16 @@ WHERE
     ?stopTime2 gtfs:stop ?stop2.
     ?stopTime2 gtfs:arrivalTime ?arrivalTime2 . 
    
-    ?stop1 foaf:name 'PLAZA DE CASTILLA' .
-    ?stop2 foaf:name 'ATOCHA' .
+    ?stop1 foaf:name "000000000000000000kz" .
+    ?stop2 foaf:name "0000000000000000028f" .
     
     ?trip a gtfs:Trip .
     ?trip gtfs:headsign ?headsign  .
     ?trip gtfs:route ?route .
 
-    ?route gtfs:longName 'Pinar de Chamartín-Valdecarros' .
+    ?route gtfs:longName "00000000000000000001" .
 }
- 
+
+    
 
 

@@ -1,5 +1,5 @@
 #Q3: Find the accessibility information of a specific stop
-#eg: original.q1c.STOPID=0000000000000000002t
+
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

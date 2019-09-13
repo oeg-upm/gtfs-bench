@@ -1,5 +1,5 @@
 #Q5: Services that have been added on a specific day.
-# original.q2b.INPUTDATE="2017-12-25"
+# original.q5.INPUTDATE="2017-12-25"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -16,6 +16,6 @@ SELECT * WHERE {
         ?service gtfs:serviceRule ?serviceRule .
         
         ?serviceRule a gtfs:CalendarDateRule .
-	    ?serviceRule dct:date "2017-03-01 01:00:00.0"^^xsd:date .
-	    ?serviceRule gtfs:dateAddition "2"^^xsd:boolean .	
+	    ?serviceRule dct:date "2017-03-01"^^xsd:date .
+	    ?serviceRule gtfs:dateAddition "1"^^xsd:boolean .	
 }
