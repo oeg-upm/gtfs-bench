@@ -9,11 +9,13 @@ sed -i 's/\\N//g' *.csv
 #HH:MM:SS.0
 sed -i -r 's/[0-9]{2}\:[0-9]{2}\:[0-9]{2}\.[0]{1}//g' *.csv
 
-
+#Remove space
 sed -i 's/ //g' *.csv
 
+#####################
+# Clean colums
+#####################
 
-#Clean colums
 #CALENDAR
 
 awk -F "," '{print $1","$2-1","$3-1","$4-1","$5-1","$6-1","$7-1","$8-1"," $9"," $10}' CALENDAR.csv> tmp.txt
