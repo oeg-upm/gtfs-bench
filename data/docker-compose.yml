@@ -64,7 +64,7 @@ services:
 #MongoDB 3.4.22
   mongo_gtfs1:
     container_name: gtfs1_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-1:/data
@@ -73,7 +73,7 @@ services:
 
   mongo_gtfs5:
     container_name: gtfs5_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-5:/data
@@ -82,7 +82,7 @@ services:
 
   mongo_gtfs10:
     container_name: gtfs10_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-10:/data
@@ -91,7 +91,7 @@ services:
 
   mongo_gtfs50:
     container_name: gtfs50_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-50:/data
@@ -100,7 +100,7 @@ services:
   
   mongo_gtfs100:
     container_name: gtfs100_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-100:/data
@@ -109,7 +109,7 @@ services:
 
   mongo_gtfs500:
     container_name: gtfs500_mongo
-    image: oegdataintegration/mongo-gtfs:1.0
+    image: oegdataintegration/mongo-gtfs:1.1
     restart: always
     volumes:
       - ./gtfs-json-500:/data
