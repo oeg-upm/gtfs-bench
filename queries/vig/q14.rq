@@ -1,4 +1,9 @@
 #Q14: All the stops from its origin, for a specific line in a specific direction and service 
+#original.q11.SERVICEID=4_I14
+#original.q11.HEADSIGN='CUATRO CAMINOS'
+#vig.q11.SERVICEID='0000000000000000000f'
+#vig.q11.HEADSIGN='00000000000000000029'
+
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -9,9 +14,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsservice: <http://transport.linkeddata.es/madrid/metro/services/>
 
-SELECT * 
-#FROM <http://gtfs1.linkeddata.es>
-WHERE
+SELECT * WHERE
 {
     ?stopTime a gtfs:StopTime .
     ?stopTime gtfs:trip ?trip .
@@ -22,11 +25,9 @@ WHERE
     ?trip gtfs:service gtfsservice:0000000000000000000f .
     ?trip gtfs:headsign '00000000000000000029' .
     ?trip gtfs:route ?route .
-   # ?route gtfs:longName ?name .
 
     OPTIONAL {?stop foaf:name ?stopName} 
 }
     
-#ORDER BY xsd:integer(?sequence)   
- ORDER BY ?sequence
+ORDER BY ?sequence
  
