@@ -9,18 +9,18 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT * WHERE {
-	
-	
+SELECT * WHERE {	
         ?service a gtfs:Service .
         ?service gtfs:serviceRule ?serviceRule .
 
         ?serviceRule a gtfs:CalendarRule .
-        ?serviceRule gtfs:sunday "1"^^xsd:boolean . 
+        ?serviceRule gtfs:sunday "true"^^xsd:boolean . 
         
         ?trip gtfs:service ?service .
         ?trip gtfs:route ?route  .
   
-       {?route gtfs:longName ?longName} UNION
-       {?route gtfs:shortName ?shortName} .                                             
+        {  ?route gtfs:longName ?longName  } 
+        UNION
+        {  ?route gtfs:shortName ?shortName } 
+        .                                             
 }

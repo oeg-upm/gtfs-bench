@@ -10,8 +10,6 @@ PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT * WHERE {
-	
-	
         ?service a gtfs:Service .
         ?service gtfs:serviceRule ?serviceRule .
 
@@ -21,6 +19,8 @@ SELECT * WHERE {
         ?trip gtfs:service ?service .
         ?trip gtfs:route ?route  .
   
-       {?route gtfs:longName ?longName} UNION
-       {?route gtfs:shortName ?shortName} .                                             
+        {  ?route gtfs:longName ?longName} 
+        UNION
+        {  ?route gtfs:shortName ?shortName} 
+        .                                             
 }
