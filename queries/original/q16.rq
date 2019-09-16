@@ -1,4 +1,4 @@
-#Q16: For all the routes, all the calendar changes during December
+#Q16: For all the routes, all the calendar changes during the month of March
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -22,5 +22,7 @@ WHERE {
         ?serviceRule a gtfs:CalendarDateRule .
         ?serviceRule  dct:date ?servDate .
         ?serviceRule  gtfs:dateAddition "true"^^xsd:boolean .
-	FILTER (?servDate >= '2017-12-01'^^xsd:date)	
+	FILTER (?servDate >= '2017-03-01'^^xsd:date) .
+        FILTER (?servDate <= '2017-03-31'^^xsd:date) .
+
 }
