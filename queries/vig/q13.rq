@@ -6,7 +6,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX gtfslocation: <http://vocab.gtfs.org/resource/LocationType/>
+PREFIX gtfslocation: <http://transport.linkeddata.es/resource/LocationType/>
 
 
 SELECT  *
@@ -14,11 +14,10 @@ WHERE {
       ?stop a gtfs:Stop .
       ?stop gtfs:parentStation ?parStation .
       OPTIONAL {?stop foaf:name ?accName} .
-      ?stop gtfs:locationType gtfslocation:3 .
+      ?stop gtfs:locationType gtfslocation:2 .
     #  BIND(IRI(concat('http://linkedgtfs.com/CITY/stops/',?parStation)) AS ?station) .
     # ?station a gtfs:Stop .
     # ?station foaf:name 'Nuevos Ministerios'
      ?parStation a gtfs:Stop .
       ?parStation foaf:name '000000000000000000sm'      
 }
-
