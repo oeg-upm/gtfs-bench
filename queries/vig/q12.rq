@@ -9,7 +9,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsaccessible: <http://transport.linkeddata.es/resource/WheelchairBoardingStatus/>
-PREFIX gtfslocation: <http://vocab.gtfs.org/resource/LocationType/>
+PREFIX gtfslocation: <http://transport.linkeddata.es/resource/LocationType/>
 
 SELECT ?longName (count(?name) as ?count)
 WHERE { 	
@@ -26,6 +26,6 @@ WHERE {
  	?stop a gtfs:Stop .
  	?stop foaf:name  ?name .
  	?stop gtfs:locationType gtfslocation:0 .
- 	?stop gtfs:wheelchairAccessible gtfsaccessible:1	
+ 	?stop gtfs:wheelchairAccessible gtfsaccessible:1 .	
 }
 GROUP BY ?longName
