@@ -1,4 +1,5 @@
 #Q7: List all wheelchair accessible stops along a particular route. 
+#original.q7.ROUTEID=4__1___
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
