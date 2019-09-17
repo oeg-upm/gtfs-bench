@@ -1,4 +1,10 @@
 ﻿#Q17: What are the arrival times of a specific route for a stop X and a stop Y (in its different calendars)
+#original.q17.STOP1NAME='PLAZA DE CASTILLA'
+#original.q17.STOP2NAME='ATOCHA'
+#original.q17.ROUTENAME='Pinar de Chamartín-Valdecarros'
+#vig.q17.STOP1NAME='000000000000000000kz'
+#vig.q17.STOP2NAME='0000000000000000028f'
+#vig.q17.ROUTENAME='00000000000000000001'
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -8,10 +14,11 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT *
-#FROM <http://gtfs1.linkeddata.es>
-WHERE
+SELECT * WHERE
 {
+    ?stop1 foaf:name 'PLAZA DE CASTILLA' .
+    ?stop2 foaf:name 'ATOCHA' .
+    
     ?stopTime1 a gtfs:StopTime .
     ?stopTime1 gtfs:trip ?trip .
     ?stopTime1 gtfs:stop ?stop1 .
@@ -22,9 +29,6 @@ WHERE
     ?stopTime2 gtfs:stop ?stop2.
     ?stopTime2 gtfs:arrivalTime ?arrivalTime2 . 
    
-    ?stop1 foaf:name 'PLAZA DE CASTILLA' .
-    ?stop2 foaf:name 'ATOCHA' .
-    
     ?trip a gtfs:Trip .
     ?trip gtfs:headsign ?headsign  .
     ?trip gtfs:route ?route .

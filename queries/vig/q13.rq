@@ -1,4 +1,6 @@
 #Q13: All the accesses of a specific station.
+#original.q11.STOPNAME='Nuevos Ministerios'
+#vig.q11.STOPNAME='000000000000000000sm'
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -11,13 +13,10 @@ PREFIX gtfslocation: <http://transport.linkeddata.es/resource/LocationType/>
 
 SELECT  *
 WHERE {     
-      ?stop a gtfs:Stop .
-      ?stop gtfs:parentStation ?parStation .
-      OPTIONAL {?stop foaf:name ?accName} .
-      ?stop gtfs:locationType gtfslocation:2 .
-    #  BIND(IRI(concat('http://linkedgtfs.com/CITY/stops/',?parStation)) AS ?station) .
-    # ?station a gtfs:Stop .
-    # ?station foaf:name 'Nuevos Ministerios'
-     ?parStation a gtfs:Stop .
-      ?parStation foaf:name '000000000000000000sm'      
+    ?stop a gtfs:Stop .
+    ?stop gtfs:parentStation ?parStation .
+    OPTIONAL {?stop foaf:name ?accName} .
+    ?stop gtfs:locationType gtfslocation:2 .
+    ?parStation a gtfs:Stop .
+    ?parStation foaf:name '000000000000000000sm'      
 }

@@ -1,10 +1,8 @@
 #Q10: Number of trips offered by a specific route that have a duration over 30 minutes
-#original.q3d.ROUTEID=4__1___
-#original.q3d.STARTTIME="00:20:00"
-#original.q3d.ENDTIME="00:30:00"
-#vig.q3d.ROUTEID=00000000000000000008
-#vig.q3d.STARTTIME="00:20:00"
-#vig.q3d.ENDTIME="00:30:00"
+#original.q10.ROUTEID=4__1___
+#original.q10.DEPARTURETIME="00:30:00"
+#vig.q10.ROUTEID=00000000000000000008
+#vig.q10.DEPARTURETIME="00:30:00"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
