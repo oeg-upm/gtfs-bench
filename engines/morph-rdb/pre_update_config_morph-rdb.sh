@@ -1,6 +1,6 @@
 #!/bin/bash
 
-properties=$1
+properties=properties/$1
 size=$2
 query_id=$3
 
