@@ -20,11 +20,11 @@ do
 							#./run.sh $size, $query, $run, $type
 							#echo  $i q${j}.rq $t 'cold'
 							# Load properties configuration
-							./pre_update_config_morph-rdb.sh gtfs.morph-rdb.properties $i q${j}.rq
+							./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
 							# Run engine
 							./run.sh $i q${j}.rq $t 'cold'
 							# Delete properties configuration
-							./post_update_config_morph-rdb.sh gtfs.morph-rdb.properties
+							./post_update_config.sh gtfs.morph-rdb.properties
 					else
 							#VIG queries
 							echo  $i q${j}.rq $t 'cold'
