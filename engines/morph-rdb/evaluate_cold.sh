@@ -27,10 +27,19 @@ do
 							./post_update_config.sh gtfs.morph-rdb.properties
 					else
 							#VIG queries
-							echo  $i q${j}.rq $t 'cold'
+							# Load properties configuration
+							./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
+							# Run engine
+							./run.sh $i q${j}.rq $t 'cold'
+							# Delete properties configuration
+							./post_update_config.sh gtfs.morph-rdb.properties
 					fi
 					# restart database
-					#echo "delete :  /data/gtfs-rdb-$i/flag.txt"
+					echo "delete :  /data/gtfs-rdb-$i/flag.txt"
+					echo "Restart data base..."
+					rm /data/gtfs-rdb-$i/flag.txt
+					sleep 2m
+
                 done
         done
 done
