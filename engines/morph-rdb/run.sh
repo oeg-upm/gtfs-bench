@@ -4,7 +4,7 @@ size=$1
 query=$2
 run=$3
 typ=$4
-echo "size, query, run, type,time (date +%s.%N)">../results/results-times.csv
+
 #start time
 start=$(date +%s.%N)
 java -cp .:morph-rdb.jar:lib/*:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner properties gtfs.morph-rdb.properties
