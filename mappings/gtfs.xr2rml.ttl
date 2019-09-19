@@ -292,7 +292,7 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
 		rr:objectMap[
-			xrr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{$.wheelchair_accessible}";
+			rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{$.wheelchair_accessible}";
 			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
@@ -838,7 +838,7 @@
 	];
 .
 
-<stopWheelchairBoarding>
+<stopWheelchairAccessible>
 	xrr:logicalSource [
 		xrr:query """db.STOPS.find( { 'stop_id' : {$exists: 1} } )""";
 	];
@@ -848,7 +848,7 @@
 		rr:class <http://vocab.gtfs.org/terms#Stop>;
 	];
 	rr:predicateObjectMap [
-		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairBoarding> ];
+		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> ];
 		rr:objectMap[
 			xrr:reference "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{$.wheelchair_boarding}";
 			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
