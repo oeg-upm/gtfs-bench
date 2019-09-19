@@ -1,10 +1,10 @@
 #Q11: Trips of a particular route that are available on a certain date 
 #original.q11.ROUTEID=4__6___
 #original.q11.DATE="2017-07-02"
-#original.q11.DAY=sunday
+
 #vig.q11.ROUTEID=0000000000000000000a
 #vig.q11.DATE="2017-07-02"
-#vig.q11.DAY=sunday
+
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
