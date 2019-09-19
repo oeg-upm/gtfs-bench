@@ -9,13 +9,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX gtfsagency: <http://transport.linkeddata.es/madrid/agency/>
 
-# SELECT (count(distinct ?route) as ?nRoutes) WHERE {
 SELECT (count(?route) as ?nRoutes) WHERE {
-	?agency a gtfs:Agency .
-	?agency foaf:page ?agencyPage .
-	?agency foaf:name ?agencyName .
-	# OPTIONAL {?agency foaf:phone ?agencyPhone . }
-
 	?route a gtfs:Route .
 	?route gtfs:agency ?agency .
 	FILTER (?agency=gtfsagency:CRTM)
