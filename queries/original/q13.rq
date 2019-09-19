@@ -10,9 +10,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX gtfslocation: <http://vocab.gtfs.org/resource/LocationType/>
 
-
-SELECT  *
-WHERE {     
+SELECT  * WHERE {     
     ?stop a gtfs:Stop .
     ?stop gtfs:parentStation ?parStation .
     OPTIONAL {?stop foaf:name ?accName} .

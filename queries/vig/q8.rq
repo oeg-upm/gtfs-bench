@@ -25,5 +25,5 @@ SELECT * WHERE {
 
 	?stop a gtfs:Stop . 
 	OPTIONAL {?stop dct:description ?stopDescription . } .
-        FILTER (?stop=gtfsstop:0000000000000000003o)
+	FILTER (?stop=gtfsstop:0000000000000000003o)
 }

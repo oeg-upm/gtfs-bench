@@ -17,7 +17,7 @@ SELECT * WHERE {
 	OPTIONAL { ?stop gtfs:wheelchairAccessible ?wheelchairAccesible }
 	?stop geo:lat ?stopLat . 
 	?stop geo:long ?stopLong .
-	 FILTER (?stopLat > 40.20) .
+	FILTER (?stopLat > 40.20) .
 	FILTER (?stopLat < 40.80) .
 	FILTER (?stopLong > -3.75) .
 	FILTER (?stopLong < -3.72) .		

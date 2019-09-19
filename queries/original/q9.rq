@@ -12,18 +12,18 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsstop: <http://transport.linkeddata.es/madrid/metro/stops/>
 
 SELECT * WHERE {
-        ?stopTime a gtfs:StopTime .
-        ?stopTime gtfs:trip ?trip .
-        ?stopTime gtfs:stop ?stop .
-        OPTIONAL { ?stopTime gtfs:arrivalTime ?arrivalTime . } 
+	?stopTime a gtfs:StopTime .
+	?stopTime gtfs:trip ?trip .
+	?stopTime gtfs:stop ?stop .
+	OPTIONAL { ?stopTime gtfs:arrivalTime ?arrivalTime . } 
 
-        ?trip a gtfs:Trip .
-        OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
-        ?trip gtfs:service ?service .
-        ?trip gtfs:route ?route .
-        ?trip gtfs:headsign "VALDECARROS" .
+	?trip a gtfs:Trip .
+	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
+	?trip gtfs:service ?service .
+	?trip gtfs:route ?route .
+	?trip gtfs:headsign "VALDECARROS" .
 
-        ?stop a gtfs:Stop .
-        OPTIONAL { ?stop dct:description ?stopDescription . } .
-        FILTER (?stop=gtfsstop:par_4_1)
+	?stop a gtfs:Stop .
+	OPTIONAL { ?stop dct:description ?stopDescription . } .
+	FILTER (?stop=gtfsstop:par_4_1)
 }

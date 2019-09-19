@@ -12,9 +12,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsservice: <http://transport.linkeddata.es/madrid/metro/services/>
 
-SELECT * 
-WHERE
-{
+SELECT * WHERE {
     ?stopTime a gtfs:StopTime .
     ?stopTime gtfs:trip ?trip .
     ?stopTime gtfs:stop ?stop .
@@ -27,5 +25,4 @@ WHERE
 
     OPTIONAL {?stop foaf:name ?stopName} 
 }
-    
 ORDER BY ?sequence

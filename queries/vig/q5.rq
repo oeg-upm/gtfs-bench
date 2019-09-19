@@ -11,12 +11,12 @@ PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT * WHERE {
-        ?service a gtfs:Service .
+	?service a gtfs:Service .
 
-        ?service gtfs:serviceRule ?serviceRule .
+	?service gtfs:serviceRule ?serviceRule .
         
-        ?serviceRule a gtfs:CalendarDateRule .
-        ?serviceRule dct:date "2017-03-14"^^xsd:date .
+	?serviceRule a gtfs:CalendarDateRule .
+	?serviceRule dct:date "2017-03-14"^^xsd:date .
         
-        ?serviceRule gtfs:dateAddition "true"^^xsd:boolean .	
+	?serviceRule gtfs:dateAddition "true"^^xsd:boolean .	
 }
