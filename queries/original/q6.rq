@@ -18,5 +18,5 @@ SELECT (count(?route) as ?nRoutes) WHERE {
 
 	?route a gtfs:Route .
 	?route gtfs:agency ?agency .
-        FILTER (?agency=gtfsagency:CRTM)
+	FILTER (?agency=gtfsagency:CRTM)
 }

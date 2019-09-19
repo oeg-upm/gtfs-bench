@@ -1,10 +1,10 @@
-#Q11: Trips of a particular route that are available on a certain date and weekday 
+#Q11: Trips of a particular route that are available on a certain date  
 #original.q11.ROUTEID=4__6___
 #original.q11.DATE="2017-07-02"
-#original.q11.DAY=sunday
+
 #vig.q11.ROUTEID=0000000000000000000a
 #vig.q11.DATE="2017-07-02"
-#vig.q11.DAY=sunday
+
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -18,25 +18,22 @@ PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
 
 SELECT * WHERE {
         ?service a gtfs:Service .
-        ?service gtfs:serviceRule ?serviceRule .
-
-        ?serviceRule a gtfs:CalendarRule .
-        ?serviceRule gtfs:sunday "true"^^xsd:boolean . 
-        ?serviceRule schema:startDate ?startDate .
-        ?serviceRule schema:endDate ?endDate .
+        ?service gtfs:serviceRule ?calendarRule .
+		
+		?trip gtfs:service ?service .
+		?trip gtfs:route gtfsroute:0000000000000000000a  .
+		
+		?calendarRule a gtfs:CalendarRule .
+       # ?calendarRule gtfs:sunday "true"^^xsd:boolean . 
+        ?calendarRule schema:startDate ?startDate .
+        ?calendarRule schema:endDate ?endDate .
         FILTER (?startDate < "2017-07-02"^^xsd:date) .
         FILTER (?endDate > "2017-07-02"^^xsd:date) .
-
-        ?trip gtfs:service ?service .
-        ?trip gtfs:route gtfsroute:0000000000000000000a  .
-  
-        # {?route gtfs:longName "Circular"} UNION
-        # {?route gtfs:shortName "6"} .                                             
-        
+		
         FILTER NOT EXISTS {
-                ?serviceRule a gtfs:CalendarDateRule .
-	        ?serviceRule gtfs:service ?service .
-	        ?serviceRule dct:date "2017-07-02"^^xsd:date .
-	        ?serviceRule gtfs:dateAddition "false"^^xsd:boolean 
+		    ?service gtfs:serviceRule ?calendarDateRule . 
+            ?calendarDateRule a gtfs:CalendarDateRule .
+	        ?calendarDateRule dct:date "2017-07-02"^^xsd:date .
+	        ?calendarDateRule gtfs:dateAddition "false"^^xsd:boolean 
         }
 }
