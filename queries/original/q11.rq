@@ -20,10 +20,10 @@ SELECT * WHERE {
         ?service a gtfs:Service .
         ?service gtfs:serviceRule ?calendarRule .
 		
-		?trip gtfs:service ?service .
-		?trip gtfs:route gtfsroute:4__6___  .
+        ?trip gtfs:service ?service .
+        ?trip gtfs:route gtfsroute:4__6___  .
 		
-		?calendarRule a gtfs:CalendarRule .
+        ?calendarRule a gtfs:CalendarRule .
        # ?calendarRule gtfs:sunday "true"^^xsd:boolean . 
         ?calendarRule schema:startDate ?startDate .
         ?calendarRule schema:endDate ?endDate .
@@ -31,9 +31,9 @@ SELECT * WHERE {
         FILTER (?endDate > "2017-07-02"^^xsd:date) .
 		
         FILTER NOT EXISTS {
-		    ?service gtfs:serviceRule ?calendarDateRule . 
-            ?calendarDateRule a gtfs:CalendarDateRule .
-	        ?calendarDateRule dct:date "2017-07-02"^^xsd:date .
-	        ?calendarDateRule gtfs:dateAddition "false"^^xsd:boolean 
+                ?service gtfs:serviceRule ?calendarDateRule . 
+                ?calendarDateRule a gtfs:CalendarDateRule .
+                ?calendarDateRule dct:date "2017-07-02"^^xsd:date .
+                ?calendarDateRule gtfs:dateAddition "false"^^xsd:boolean 
         }
 }

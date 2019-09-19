@@ -13,7 +13,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsservice: <http://transport.linkeddata.es/madrid/metro/services/>
 
 SELECT * 
-#FROM <http://gtfs1.linkeddata.es>
 WHERE
 {
     ?stopTime a gtfs:StopTime .
@@ -25,11 +24,8 @@ WHERE
     ?trip gtfs:service gtfsservice:4_I14 .
     ?trip gtfs:headsign 'CUATRO CAMINOS' .
     ?trip gtfs:route ?route .
-   # ?route gtfs:longName ?name .
 
     OPTIONAL {?stop foaf:name ?stopName} 
 }
     
-#ORDER BY xsd:integer(?sequence)   
- ORDER BY ?sequence
- 
+ORDER BY ?sequence
