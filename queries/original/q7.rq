@@ -33,5 +33,5 @@ PREFIX gtfsaccessible: <http://transport.linkeddata.es/resource/WheelchairBoardi
 		?stop geo:long ?stopLong . 
 	}
 	?stop gtfs:wheelchairAccessible gtfsaccessible:1 .
-    FILTER (?route=gtfsroute:4__1___)
+	FILTER (?route=gtfsroute:4__1___)
 }
