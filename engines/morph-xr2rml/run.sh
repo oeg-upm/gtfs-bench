@@ -8,7 +8,7 @@ typ=$4
 
 #start time
 start=$(date +%s.%N)
-java -jar morph-xr2rml-4.0.0.jar  --configDir .  --configFile gtfs.morph-xr2rml.properties
+java -jar morph-xr2rml-4.0.0.jar  --configDir properties  --configFile gtfs.morph-xr2rml.properties
 #finish time
 finish=$(date +%s.%N)
 #duration

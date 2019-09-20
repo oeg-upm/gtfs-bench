@@ -13,32 +13,32 @@ do
         do
                 for t in 1 2 3 4 5
                 do
-					#properties, mapping, querypath, size,query,time
-					if [ $i -eq 1 ]
-					then
-							# original queries
-							#./run.sh $size, $query, $run, $type
-							#echo  $i q${j}.rq $t 'cold'
-							# Load properties configuration
-							#./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
-							# Run engine
-							#./run.sh $i q${j}.rq $t 'cold'
-							# Delete properties configuration
-							#./post_update_config.sh gtfs.morph-rdb.properties
-					else
-							#VIG queries
-							# Load properties configuration
-							#./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
-							# Run engine
-							#./run.sh $i q${j}.rq $t 'cold'
-							# Delete properties configuration
-							#./post_update_config.sh gtfs.morph-rdb.properties
-					fi
-					# restart database
-					echo "delete :  /data/gtfs-json-$i/flag.txt"
-					echo "Restart data base..."
-					#rm /data/gtfs-json-$i/flag.txt
-					sleep 2m
+                    #properties, mapping, querypath, size,query,time
+                    if [ $i -eq 1 ]
+                    then
+                        # original queries
+                        #./run.sh $size, $query, $run, $type
+                        #echo  $i q${j}.rq $t 'cold'
+                        # Load properties configuration
+                        ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq
+                        # Run engine
+                        ./run.sh $i q${j}.rq $t 'cold'
+                        # Delete properties configuration
+                        ./post_update_config.sh gtfs.morph-xr2rml.properties
+                    else
+                        #VIG queries
+                        # Load properties configuration
+                        ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq
+                        # Run engine
+                        ./run.sh $i q${j}.rq $t 'cold'
+                        # Delete properties configuration
+                        ./post_update_config.sh gtfs.morph-xr2rml.properties
+                    fi
+                    # restart database
+                    echo "delete :  /data/gtfs-json-$i/flag_mongo.txt"
+                    echo "Restart data base..."
+                    rm /data/gtfs-json-$i/flag_mongo.txt
+                    sleep 2m
 
                 done
         done

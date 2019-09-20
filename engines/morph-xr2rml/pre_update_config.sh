@@ -1,15 +1,16 @@
 #!/bin/bash
 
-properties=$1
+properties=properties/$1
 size=$2
-query=$3
+query_id=$3
 
 port=27017
-
+query_file="vig/${query_id}"
 echo "updating config file"
 if [ $size -eq 1 ]
 then
 port=27017
+query_file="original/${query_id}"
 elif [ $size -eq 5 ]
 then
 port=27018
@@ -32,7 +33,7 @@ fi
 echo "updating config file $properties"
 
 #la configuracion depende del tamano y query
-echo "query.file.path=$query">>$properties
-echo "output.file.path=results/result-gtfs$size-$query.xml">>$properties
+echo "query.file.path=../../queries/$query_file">>$properties
+echo "output.file.path=../../results/result-gtfs$size-${query_id}.xml">>$properties
 echo "database.name[0]=gtfs">>$properties
-echo "database.url[0]=mongodb://127.0.0.1:$port">>$properties
+echo "database.url[0]=mongodb://172.17.0.1:$port">>$properties
