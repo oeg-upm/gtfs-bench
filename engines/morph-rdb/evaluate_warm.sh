@@ -8,7 +8,8 @@ do
 		for t in 1 2 3 4 5
 		do
 			#properties, mapping, querypath, size,query,time
-			if [[ $i -eq 1 ]];then
+			if [ $i -eq 1 ]
+			then
 				# Load properties configuration
                 ./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
                 # Run engine
