@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix map: <http://mapping.example.com/>.
+@prefix : <http://gtfs.com/mapping#> .
 
 map:jc_0 rr:child "trip_id";
     rr:parent "trip_id".
@@ -802,43 +803,55 @@ map:s_9 a rr:SubjectMap;
     rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
 map:source_0 a rml:LogicalSource;
     rr:tableName "STOP_TIMES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_1 a rml:LogicalSource;
     rr:tableName "TRIPS";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_10 a rml:LogicalSource;
     rr:tableName "SHAPES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_11 a rml:LogicalSource;
     rr:tableName "FREQUENCIES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_2 a rml:LogicalSource;
     rr:tableName "ROUTES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_3 a rml:LogicalSource;
     rr:tableName "AGENCY";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_4 a rml:LogicalSource;
     rr:tableName "STOPS";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_5 a rml:LogicalSource;
     rr:tableName "CALENDAR";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_6 a rml:LogicalSource;
     rr:tableName "CALENDAR_DATES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_7 a rml:LogicalSource;
     rr:tableName "CALENDAR_DATES";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_8 a rml:LogicalSource;
     rr:tableName "CALENDAR";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 map:source_9 a rml:LogicalSource;
     rr:tableName "FEED_INFO";
-    rml:source :DB_source .
+    rml:source <#DB_Source> ;
+    rr:sqlVersion rr:SQL2008 .
 
-:DB_source a d2rq:Database;
-  d2rq:jdbcDSN ""; # the "jbdc:mysql:// part is ignored
-  d2rq:jdbcDriver ""; # this is ignored
-  d2rq:username "";
-  d2rq:password "" .
+<#DB_source> a d2rq:Database;
+        d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
+        d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
+        d2rq:username "root";
+        d2rq:password "oeg".
