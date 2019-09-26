@@ -19,5 +19,5 @@ SELECT * WHERE {
 		?stop geo:long ?stopLong .
 	}
 	OPTIONAL {?stop gtfs:wheelchairAccessible ?wheelchairAccessible .  }
-	FILTER (?location="http://transport.linkeddata.es/resource/LocationType/2")
+	FILTER (?location=<http://transport.linkeddata.es/resource/LocationType/2>)
 }
