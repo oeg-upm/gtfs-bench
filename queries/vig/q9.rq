@@ -1,4 +1,4 @@
-#Q9: Given a specific stop, get the time elapsed after departure from its origin in a particular direction
+#Q9: Trips and associated shapes where lat is bigger than its average
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -10,18 +10,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsstop: <http://transport.linkeddata.es/madrid/metro/stops/>
 
 SELECT * WHERE {
-	?stopTime a gtfs:StopTime .
-	?stopTime gtfs:trip ?trip .
-	?stopTime gtfs:stop ?stop .
-	OPTIONAL { ?stopTime gtfs:arrivalTime ?arrivalTime . } 
-
 	?trip a gtfs:Trip .
 	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
 	?trip gtfs:service ?service .
 	?trip gtfs:route ?route .
-	?trip gtfs:headsign "00000000000000000019" .
+	?trip gtfs:shape ?shape .
 
-	?stop a gtfs:Stop .
-	OPTIONAL { ?stop dct:description ?stopDescription . } .
-	FILTER (?stop=gtfsstop:0000000000000000001b)
+	?shape a gtfs:Shape .
+	?shape geo:lat ?lat .
+	FILTER (?lat > 17514)
 }
