@@ -1,7 +1,7 @@
 {  
   "@context": ["http://www.w3.org/ns/csvw"],
   "tables": [{
-    "url": "/data/agency.txt", 
+    "url": "/data/AGENCY.csv",
     "tableSchema": {
       "columns": [
        {
@@ -16,34 +16,34 @@
         "titles": [
          "agency_name"
         ], 
-        "required": true,
+        "required": true
        }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_url"
         ], 
-        "required": true, 
+        "required": true
         }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_timezone"
         ], 
-        "required": true, 
+        "required": true
         }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_lang"
         ],
-        "required": true, 
+        "required": true
         }
       ]
     }
   },
   {
-    "url": "/data/calendar.csv",
+    "url": "/data/CALENDAR.csv",
     "tableSchema": {
       "columns": [
        {
@@ -51,7 +51,6 @@
         "titles": [
          "service_id"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/service_id", 
         "name": "service_id",
         "required": true, 
         "dc:description": "service_id"
@@ -64,7 +63,6 @@
         "titles": [
          "monday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/monday", 
         "name": "monday",
         "required": true, 
         "dc:description": "monday"
@@ -77,7 +75,6 @@
         "titles": [
          "tuesday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/tuesday", 
         "name": "tuesday", 
         "required": true,
         "dc:description": "tuesday"
@@ -90,7 +87,6 @@
         "titles": [
          "wednesday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/wednesday", 
         "name": "wednesday", 
         "required": true,
         "dc:description": "wednesday"
@@ -103,7 +99,6 @@
         "titles": [
          "thursday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/thursday", 
         "name": "thursday", 
         "required": true,
         "dc:description": "thursday"
@@ -116,7 +111,6 @@
         "titles": [
          "friday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/friday", 
         "name": "friday", 
         "required": true,
         "dc:description": "friday"
@@ -129,7 +123,6 @@
         "titles": [
          "saturday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/saturday", 
         "name": "saturday", 
         "required": true,
         "dc:description": "saturday"
@@ -142,7 +135,6 @@
         "titles": [
          "sunday"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/sunday", 
         "name": "sunday", 
         "required": true,
         "dc:description": "sunday"
@@ -150,12 +142,11 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "start_date"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/start_date", 
         "name": "start_date", 
         "required": true,
         "dc:description": "start_date"
@@ -163,12 +154,11 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "end_date"
         ], 
-        "@id": "https://iisg.amsterdam/calendar.txt/column/end_date", 
         "name": "end_date", 
         "required": true,
         "dc:description": "end_date"
@@ -177,40 +167,40 @@
     }
   },
   {
-    "url": "/data/calendar_dates.csv",
+    "url": "/data/CALENDAR_DATES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
-      "primaryKey": "service_id", 
+      "primaryKey": "service_id,date",
       "columns": [
        {
         "datatype": "string", 
         "titles": [
          "service_id"
         ], 
-        "@id": "https://iisg.amsterdam/calendar_dates.txt/column/service_id", 
         "name": "service_id", 
         "required": true,
         "dc:description": "service_id"
        }, 
        {
         "datatype": {
-          "base": "date",
-           "format": "YYYYMMDD"
+           "base": "date",
+           "format": "yyyyMMdd"
         },
         "titles": [
          "date"
         ], 
-        "@id": "https://iisg.amsterdam/calendar_dates.txt/column/date", 
         "name": "date", 
         "required": true,
         "dc:description": "date"
        }, 
        {
-        "datatype": "integer", 
+        "datatype": {
+          "base": "boolean",
+          "format": "1|2"
+        },
         "titles": [
          "exception_type"
         ], 
-        "@id": "https://iisg.amsterdam/calendar_dates.txt/column/exception_type", 
         "name": "exception_type", 
         "required": true,
         "dc:description": "exception_type"
@@ -218,7 +208,7 @@
       ]}
   },
   {
-    "url": "/data/feed_info.csv",
+    "url": "/data/FEED_INFO.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "feed_publisher_name", 
@@ -228,7 +218,6 @@
         "titles": [
          "feed_publisher_name"
         ], 
-        "@id": "https://iisg.amsterdam/feed_info.txt/column/feed_publisher_name", 
         "name": "feed_publisher_name", 
         "required": true,
         "dc:description": "feed_publisher_name"
@@ -238,17 +227,41 @@
         "titles": [
          "feed_publisher_url"
         ], 
-        "@id": "https://iisg.amsterdam/feed_info.txt/column/feed_publisher_url", 
         "name": "feed_publisher_url", 
         "required": true,
         "dc:description": "feed_publisher_url"
-       }, 
+       },
+       {
+        "datatype": {
+         "base": "date",
+         "format": "yyyyMMdd"
+        },
+        "titles": [
+         "feed_start_date"
+        ],
+        "name": "feed_start_date",
+        "required": true,
+        "null": "",
+        "dc:description": "feed_start_date"
+       },
+       {
+        "datatype": {
+         "base": "date",
+         "format": "yyyyMMdd"
+        },
+        "titles": [
+         "feed_end_date"
+        ],
+        "name": "feed_end_date",
+        "required": true,
+        "null": "",
+        "dc:description": "feed_end_date"
+       },
        {
         "datatype": "string", 
         "titles": [
          "feed_lang"
         ], 
-        "@id": "https://iisg.amsterdam/feed_info.txt/column/feed_lang", 
         "name": "feed_lang", 
         "required": true,
         "dc:description": "feed_lang"
@@ -257,17 +270,15 @@
      }
   },
   {
-    "url": "/data/frequencies.csv",
+    "url": "/data/FREQUENCIES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "trip_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
         "titles": [
          "trip_id"
         ], 
-        "@id": "https://iisg.amsterdam/frequencies.txt/column/trip_id", 
         "name": "trip_id", 
         "required": true,
         "dc:description": "trip_id"
@@ -280,7 +291,6 @@
         "titles": [
          "start_time"
         ], 
-        "@id": "https://iisg.amsterdam/frequencies.txt/column/start_time", 
         "name": "start_time", 
         "required": true,
         "dc:description": "start_time"
@@ -293,26 +303,34 @@
         "titles": [
          "end_time"
         ], 
-        "@id": "https://iisg.amsterdam/frequencies.txt/column/end_time", 
         "name": "end_time", 
         "required": true,
         "dc:description": "end_time"
        }, 
        {
-        "datatype": "integer", 
+        "datatype": "integer",
         "titles": [
          "headway_secs"
-        ], 
-        "@id": "https://iisg.amsterdam/frequencies.txt/column/headway_secs", 
-        "name": "headway_secs", 
+        ],
+        "name": "headway_secs",
         "required": true,
         "dc:description": "headway_secs"
+       },
+       {
+        "datatype": "boolean",
+        "titles": [
+         "exact_times"
+        ],
+        "name": "exact_times",
+        "default": 0,
+        "required": true,
+        "dc:description": "exact_times"
        }
       ]
     }
   },
   {
-    "url" : "/data/routes.csv",
+    "url" : "/data/ROUTES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "route_id", 
@@ -322,7 +340,6 @@
         "titles": [
          "route_id"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/route_id", 
         "name": "route_id", 
         "required": true,
         "dc:description": "route_id"
@@ -332,7 +349,6 @@
         "titles": [
          "agency_id"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/agency_id", 
         "name": "agency_id", 
         "dc:description": "agency_id"
        }, 
@@ -341,7 +357,6 @@
         "titles": [
          "route_short_name"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/route_short_name", 
         "name": "route_short_name", 
         "dc:description": "route_short_name"
        }, 
@@ -350,7 +365,6 @@
         "titles": [
          "route_long_name"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/route_long_name", 
         "name": "route_long_name", 
         "dc:description": "route_long_name"
        }, 
@@ -359,7 +373,6 @@
         "titles": [
          "route_type"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/route_type", 
         "name": "route_type", 
         "required": true,
         "dc:description": "route_type"
@@ -369,7 +382,6 @@
         "titles": [
          "route_url"
         ], 
-        "@id": "https://iisg.amsterdam/routes.txt/column/route_url", 
         "name": "route_url", 
         "dc:description": "route_url"
        }
@@ -377,37 +389,33 @@
     }
   },
   {
-    "url": "/data/shapes",
+    "url": "/data/SHAPES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "shape_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
         "titles": [
          "shape_id"
         ], 
-        "@id": "https://iisg.amsterdam/shapes.txt/column/shape_id", 
         "name": "shape_id", 
         "required": true,
         "dc:description": "shape_id"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "shape_pt_lat"
         ], 
-        "@id": "https://iisg.amsterdam/shapes.txt/column/shape_pt_lat", 
         "name": "shape_pt_lat", 
         "required": true,
         "dc:description": "shape_pt_lat"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "shape_pt_lon"
         ], 
-        "@id": "https://iisg.amsterdam/shapes.txt/column/shape_pt_lon", 
         "name": "shape_pt_lon", 
         "required": true,
         "dc:description": "shape_pt_lon"
@@ -417,7 +425,6 @@
         "titles": [
          "shape_pt_sequence"
         ], 
-        "@id": "https://iisg.amsterdam/shapes.txt/column/shape_pt_sequence", 
         "name": "shape_pt_sequence", 
         "required": true,
         "dc:description": "shape_pt_sequence"
@@ -426,17 +433,15 @@
     }
   },
   {
-    "url": "/data/stop_times",
+    "url": "/data/STOP_TIMES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "trip_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
         "titles": [
          "trip_id"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/trip_id", 
         "name": "trip_id", 
         "required": true,
         "dc:description": "trip_id"
@@ -449,7 +454,6 @@
         "titles": [
          "arrival_time"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/arrival_time", 
         "name": "arrival_time", 
         "required": true,
         "dc:description": "arrival_time"
@@ -462,7 +466,6 @@
         "titles": [
          "departure_time"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/departure_time", 
         "name": "departure_time", 
         "required": true,
         "dc:description": "departure_time"
@@ -472,7 +475,6 @@
         "titles": [
          "stop_id"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/stop_id", 
         "name": "stop_id", 
         "required": true,
         "dc:description": "stop_id"
@@ -482,7 +484,6 @@
         "titles": [
          "stop_sequence"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/stop_sequence", 
         "name": "stop_sequence", 
         "required": true,
         "dc:description": "stop_sequence"
@@ -492,15 +493,24 @@
         "titles": [
          "pickup_type"
         ], 
-        "@id": "https://iisg.amsterdam/stop_times.txt/column/pickup_type", 
-        "name": "pickup_type", 
+        "name": "pickup_type",
+        "default": 0,
         "dc:description": "pickup_type"
+       },
+       {
+        "datatype": "integer",
+        "titles": [
+         "drop_off_type"
+        ],
+        "name": "drop_off_type",
+        "default": 0,
+        "dc:description": "drop_off_type"
        }
       ]
     }
   },
   {
-    "url": "/data/stops.csv",
+    "url": "/data/STOPS.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "stop_id", 
@@ -510,7 +520,6 @@
         "titles": [
          "stop_id"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/stop_id", 
         "name": "stop_id", 
         "required": true,
         "dc:description": "stop_id"
@@ -520,27 +529,24 @@
         "titles": [
          "stop_name"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/stop_name", 
         "name": "stop_name", 
         "required": true,
         "dc:description": "stop_name"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "stop_lat"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/stop_lat", 
         "name": "stop_lat", 
         "required": true,
         "dc:description": "stop_lat"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "stop_lon"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/stop_lon", 
         "name": "stop_lon", 
         "required": true,
         "dc:description": "stop_lon"
@@ -550,7 +556,6 @@
         "titles": [
          "stop_url"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/stop_url", 
         "name": "stop_url", 
         "dc:description": "stop_url"
        }, 
@@ -559,25 +564,39 @@
         "titles": [
          "wheelchair_boarding"
         ], 
-        "@id": "https://iisg.amsterdam/stops.txt/column/wheelchair_boarding", 
         "name": "wheelchair_boarding", 
         "dc:description": "wheelchair_boarding"
+       },
+       {
+        "datatype": "string",
+        "titles": [
+         "parent_station"
+        ],
+        "name": "parent_station",
+        "null": "",
+        "dc:description": "parent_station"
+       },
+       {
+        "datatype": "integer",
+        "titles": [
+         "location_type"
+        ],
+        "name": "location_type",
+        "dc:description": "location_type"
        }
       ]
      }
   },
   {
-    "url": "/data/trips.csv",
+    "url": "/data/TRIPS.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "route_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
         "titles": [
          "route_id"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/route_id", 
         "name": "route_id", 
         "required": true,
         "dc:description": "route_id"
@@ -587,7 +606,6 @@
         "titles": [
          "trip_id"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/trip_id", 
         "name": "trip_id", 
         "required": true,
         "dc:description": "trip_id"
@@ -597,7 +615,6 @@
         "titles": [
          "service_id"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/service_id", 
         "name": "service_id", 
         "required": true,
         "dc:description": "service_id"
@@ -607,7 +624,6 @@
         "titles": [
          "trip_short_name"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/trip_short_name", 
         "name": "trip_short_name", 
         "dc:description": "trip_short_name"
        }, 
@@ -616,7 +632,6 @@
         "titles": [
          "direction_id"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/direction_id", 
         "name": "direction_id", 
         "dc:description": "direction_id"
        }, 
@@ -625,7 +640,6 @@
         "titles": [
          "shape_id"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/shape_id", 
         "name": "shape_id", 
         "dc:description": "shape_id"
        }, 
@@ -634,7 +648,6 @@
         "titles": [
          "wheelchair_accessible"
         ], 
-        "@id": "https://iisg.amsterdam/trips.txt/column/wheelchair_accessible", 
         "name": "wheelchair_accessible", 
         "dc:description": "wheelchair_accessible"
        }

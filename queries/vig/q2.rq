@@ -1,8 +1,5 @@
-#Q2: List all stops between two locations
-#original.q1b.INPUTLATMIN=40.20
-#original.q1b.INPUTLATMAX=40.80
-#original.q1b.INPUTLONGMIN=-3.75
-#original.q1b.INPUTLONGMAX=-3.72
+#Q2: List all stops where the latitude is bigger than its mean
+#original.q1b.INPUTLAT=40.41
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -17,8 +14,5 @@ SELECT * WHERE {
 	OPTIONAL { ?stop gtfs:wheelchairAccessible ?wheelchairAccesible }
 	?stop geo:lat ?stopLat . 
 	?stop geo:long ?stopLong .
-	FILTER (?stopLat > 40.20) .
-	FILTER (?stopLat < 40.80) .
-	FILTER (?stopLong > -3.75) .
-	FILTER (?stopLong < -3.72) .		
+	FILTER (?stopLat > 518) .		
 }
