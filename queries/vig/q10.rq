@@ -14,10 +14,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
 
 SELECT (count(distinct ?trip) as ?count)  WHERE {
-	?route a gtfs:Route .
+	#?route a gtfs:Route .
 
 	?trip a gtfs:Trip .
-	?trip gtfs:route ?route .
+	#?trip gtfs:route ?route .
 
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
