@@ -36,3 +36,12 @@ services:
       - ../results/morph-rdb:/results
       - ../mappings:/mappings
       - ../queries:/queries
+
+  ontario:
+    container_name: ontario
+    image: kemele/ontario:0.3
+    volumes:
+      - ../data:/data
+      - ../results/morph-rdb:/results
+      - ../mappings:/mappings
+      - ../queries:/queries
