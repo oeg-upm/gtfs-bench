@@ -1,0 +1,20 @@
+[
+ {
+   "name": "GTFS",
+   "ID": "http://transport.linkeddata.es/gtfs",
+   "url": "/data/",
+   "params": {
+     "spark.driver.cores": "4",
+     "spark.executor.cores": "4",
+     "spark.cores.max": "6",
+     "spark.default.parallelism": "4",
+     "spark.executor.memory": "6g",
+     "spark.driver.memory": "6g",
+     "spark.driver.maxResultSize": "6g",
+     "spark.python.worker.memory": "4g",
+     "spark.local.dir": "/tmp"
+   },
+   "type": "LOCAL_CSV",
+   "mappings": ["/mappings/gtfs-csv.rml.ttl"]
+ }
+]

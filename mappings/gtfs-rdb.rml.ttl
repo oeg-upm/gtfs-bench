@@ -850,7 +850,7 @@ map:source_9 a rml:LogicalSource;
     rml:source <#DB_Source> ;
     rr:sqlVersion rr:SQL2008 .
 
-<#DB_source> a d2rq:Database;
+<#DB_Source> a d2rq:Database;
         d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
         d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
         d2rq:username "root";
