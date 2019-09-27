@@ -42,7 +42,7 @@ services:
     image: kemele/ontario:0.3
     volumes:
       - ../data:/data
-      - ./configurations:/configurations
+      - ./ontario/configurations:/configurations
       - ../results/ontario:/results
       - ../mappings:/mappings
       - ../queries:/queries
