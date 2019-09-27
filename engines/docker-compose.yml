@@ -42,6 +42,7 @@ services:
     image: kemele/ontario:0.3
     volumes:
       - ../data:/data
-      - ../results/morph-rdb:/results
+      - ./configurations:/configurations
+      - ../results/ontario:/results
       - ../mappings:/mappings
       - ../queries:/queries
