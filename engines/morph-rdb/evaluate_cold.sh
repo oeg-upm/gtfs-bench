@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #sh ../evaluate.sh ../../queries properties/gtfs.morph-rdb.properties morph-rdb 0 ../../results
-#!/bin/bash
 # i = size of dataset
 # j = num of query
 
@@ -16,23 +15,25 @@ do
 					#properties, mapping, querypath, size,query,time
 					if [ $i -eq 1 ]
 					then
-							# original queries
-							#./run.sh $size, $query, $run, $type
-							#echo  $i q${j}.rq $t 'cold'
-							# Load properties configuration
-							./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
-							# Run engine
-							./run.sh $i q${j}.rq $t 'cold'
-							# Delete properties configuration
-							./post_update_config.sh gtfs.morph-rdb.properties
+									echo "size $i  query $j  run $t"
+									# original queries
+									#./run.sh $size, $query, $run, $type
+									#echo  $i q${j}.rq $t 'cold'
+									# Load properties configuration
+									./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
+									# Run engine ----> add timeout 60min
+
+									timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t 'cold' ||echo "$i, q${j}.rq, $t, cold, TimeOut">> ../results/results-times.csv
+									# Delete properties configuration
+									./post_update_config.sh gtfs.morph-rdb.properties
 					else
-							#VIG queries
-							# Load properties configuration
-							./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
-							# Run engine
-							./run.sh $i q${j}.rq $t 'cold'
-							# Delete properties configuration
-							./post_update_config.sh gtfs.morph-rdb.properties
+									#VIG queries
+									# Load properties configuration
+									./pre_update_config.sh gtfs.morph-rdb.properties $i q${j}.rq
+									# Run engine
+									./run.sh $i q${j}.rq $t 'cold'
+									# Delete properties configuration
+									./post_update_config.sh gtfs.morph-rdb.properties
 					fi
 					# restart database
 					echo "delete :  /data/gtfs-rdb-$i/flag.txt"
