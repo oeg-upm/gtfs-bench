@@ -6,6 +6,7 @@
 @prefix map: <http://mapping.example.com/>.
 @prefix : <http://gtfs.com/mapping#> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+
 map:jc_0 rr:child "trip_id";
     rr:parent "trip_id".
 map:jc_1 rr:child "stop_id";
@@ -803,55 +804,55 @@ map:s_9 a rr:SubjectMap;
     rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
 map:source_0 a rml:LogicalSource;
     rr:tableName "gtfs.STOP_TIMES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_1 a rml:LogicalSource;
     rr:tableName "gtfs.TRIPS";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_10 a rml:LogicalSource;
     rr:tableName "gtfs.SHAPES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_11 a rml:LogicalSource;
     rr:tableName "gtfs.FREQUENCIES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_2 a rml:LogicalSource;
     rr:tableName "gtfs.ROUTES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_3 a rml:LogicalSource;
     rr:tableName "gtfs.AGENCY";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_4 a rml:LogicalSource;
     rr:tableName "gtfs.STOPS";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_5 a rml:LogicalSource;
     rr:tableName "gtfs.CALENDAR";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_6 a rml:LogicalSource;
     rr:tableName "gtfs.CALENDAR_DATES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_7 a rml:LogicalSource;
     rr:tableName "gtfs.CALENDAR_DATES";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_8 a rml:LogicalSource;
     rr:tableName "gtfs.CALENDAR";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 map:source_9 a rml:LogicalSource;
     rr:tableName "gtfs.FEED_INFO";
-    rml:source <#DB_Source> ;
+    rml:source <#DB_source> ;
     rr:sqlVersion rr:SQL2008 .
 
-<#DB_Source> a d2rq:Database;
-        d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-        d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
-        d2rq:username "root";
-        d2rq:password "oeg".
+<#DB_source> a d2rq:Database;
+	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
+	d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
+	d2rq:username "root";
+	d2rq:password "oeg".
