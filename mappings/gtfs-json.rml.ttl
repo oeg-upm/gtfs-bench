@@ -801,50 +801,50 @@ map:s_8 a rr:SubjectMap;
 map:s_9 a rr:SubjectMap;
     rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
 map:source_0 a rml:LogicalSource;
-    rml:source "/data/STOP_TIMES.json";
+    rml:source "STOP_TIMES.json";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$".
 map:source_1 a rml:LogicalSource;
-    rml:source "/data/TRIPS.json";
+    rml:source "TRIPS.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_10 a rml:LogicalSource;
-    rml:source "/data/SHAPES.json";
+    rml:source "SHAPES.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_11 a rml:LogicalSource;
-    rml:source "/data/FREQUENCIES.json";
+    rml:source "FREQUENCIES.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_2 a rml:LogicalSource;
-    rml:source "/data/ROUTES.json";
+    rml:source "ROUTES.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_3 a rml:LogicalSource;
-    rml:source "/data/AGENCY.json";
+    rml:source "AGENCY.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_4 a rml:LogicalSource;
-    rml:source "/data/STOPS.json";
+    rml:source "STOPS.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_5 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.json";
+    rml:source "CALENDAR.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_6 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.json";
+    rml:source "CALENDAR_DATES.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_7 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.json";
+    rml:source "CALENDAR_DATES.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_8 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.json";
+    rml:source "CALENDAR.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".
 map:source_9 a rml:LogicalSource;
-    rml:source "/data/FEED_INFO.json";
+    rml:source "FEED_INFO.json";
     rml:referenceFormulation ql:JSONPath;
 	rml:iterator "$".

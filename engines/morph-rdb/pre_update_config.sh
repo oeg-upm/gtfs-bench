@@ -3,6 +3,7 @@
 properties=properties/$1
 size=$2
 query_id=$3
+experim=$4
 
 port=3306
 query_file="vig/${query_id}"
@@ -38,9 +39,12 @@ echo " query_file ${query_file}"
 #cat $properties
 #echo "+++++++++++++++++++++++++++"
 
+echo "+++++++++++++++++++++properties $properties size $size query_id $query_id query_file $query_file port $port "
+
+
 #la configuracion depende del tamano y query
 echo "query.file.path=../../queries/$query_file">>$properties
-echo "output.file.path=../../results/result-gtfs$size-${query_id}.xml">>$properties
+echo "output.file.path=../../results/result-gtfs${size}-${experim}-${query_id}.xml">>$properties
 echo "database.name[0]=gtfs">>$properties
 echo "database.url[0]=jdbc:mysql://172.18.0.1:$port/gtfs?allowPublicKeyRetrieval=true&useSSL=false">>$properties
 #echo "----------------"
