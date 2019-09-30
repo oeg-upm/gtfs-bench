@@ -801,38 +801,38 @@ map:s_8 a rr:SubjectMap;
 map:s_9 a rr:SubjectMap;
     rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
 map:source_0 a rml:LogicalSource;
-    rml:source "/data/STOP_TIMES.csv";
+    rml:source "STOP_TIMES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_1 a rml:LogicalSource;
-    rml:source "/data/TRIPS.csv";
+    rml:source "TRIPS.csv";
     rml:referenceFormulation ql:CSV.
 map:source_10 a rml:LogicalSource;
-    rml:source "/data/SHAPES.csv";
+    rml:source "SHAPES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_11 a rml:LogicalSource;
-    rml:source "/data/FREQUENCIES.csv";
+    rml:source "FREQUENCIES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_2 a rml:LogicalSource;
-    rml:source "/data/ROUTES.csv";
+    rml:source "ROUTES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_3 a rml:LogicalSource;
-    rml:source "/data/AGENCY.csv";
+    rml:source "AGENCY.csv";
     rml:referenceFormulation ql:CSV.
 map:source_4 a rml:LogicalSource;
-    rml:source "/data/STOPS.csv";
+    rml:source "STOPS.csv";
     rml:referenceFormulation ql:CSV.
 map:source_5 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.csv";
+    rml:source "CALENDAR.csv";
     rml:referenceFormulation ql:CSV.
 map:source_6 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.csv";
+    rml:source "CALENDAR_DATES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_7 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.csv";
+    rml:source "CALENDAR_DATES.csv";
     rml:referenceFormulation ql:CSV.
 map:source_8 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.csv";
+    rml:source "CALENDAR.csv";
     rml:referenceFormulation ql:CSV.
 map:source_9 a rml:LogicalSource;
-    rml:source "/data/FEED_INFO.csv";
+    rml:source "FEED_INFO.csv";
     rml:referenceFormulation ql:CSV.
