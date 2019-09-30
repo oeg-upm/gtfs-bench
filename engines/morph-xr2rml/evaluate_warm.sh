@@ -8,6 +8,7 @@ do
 		do
 
 			# Load properties configuration
+			echo  "size-$i-q${j}.rq-run-$t-'warm'"
 			./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq 'warm'
 			# Run engine
 			timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t 'warm' ||echo "$i, q${j}.rq, $t, warm, TimeOut">> ../results/results-times.csv

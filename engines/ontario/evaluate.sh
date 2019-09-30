@@ -14,6 +14,8 @@ do
 		do
 			for t in 1 2 3 4 5
 			do
+				echo "++++++++++++++++++++++++++++++++++++++++++++++"
+				echo  "size-$i-q${j}.rq-run-$t-$p"
 				echo "size $i query $j run $t $p"
 				timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t $p ||echo "$i, q${j}.rq, $t, $p, TimeOut">> ../results/results-times.csv                                       
 			done

@@ -14,6 +14,8 @@ do
                 for t in 1 2 3 4 5
                 do
                     # Load properties configuration
+                    echo "++++++++++++++++++++++++++++++++++++++++++++++"
+                    echo  "size-$i-q${j}.rq-run-$t-'cold'"
                     ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq 'cold'
                     # Run engine
                     timeout -s SIGKILL 60m   ./run.sh $i q${j}.rq $t 'cold'  ||echo "$i, q${j}.rq, $t, cold, TimeOut">> ../results/results-times.csv
