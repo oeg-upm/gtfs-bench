@@ -4,7 +4,8 @@ size=$1
 query=$2
 run=$3
 typ=$4
-if [ $i -eq 1 ]
+
+if [ $size -eq 1 ]
     then
         path=/queries/original/$query
     else

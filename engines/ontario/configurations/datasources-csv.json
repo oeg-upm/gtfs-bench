@@ -2,7 +2,7 @@
  {
    "name": "GTFS",
    "ID": "http://transport.linkeddata.es/gtfs",
-   "url": "/data/",
+   "url": "/",
    "params": {
      "spark.driver.cores": "4",
      "spark.executor.cores": "4",
