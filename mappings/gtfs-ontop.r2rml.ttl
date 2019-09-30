@@ -148,14 +148,14 @@
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#route> ];
 		rr:objectMap [
 			rr:parentTriplesMap <routes>; 
-			rr:joinCondition [ rr:child "route_id"; rr:parent "route_id"; ];
+			rr:joinCondition [ rr:child "route_id2"; rr:parent "route_id"; ];
 		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://vocab.gtfs.org/terms#shape> ];
 		rr:objectMap[
 			rr:parentTriplesMap <shapes>; 
-			rr:joinCondition [ rr:child "shape_id"; rr:parent "shape_id"; ];
+			rr:joinCondition [ rr:child "shape_id2"; rr:parent "shape_id"; ];
 		];
 	];
 .
@@ -511,7 +511,7 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [ rr:constant <http://xmlns.com/foaf/0.1/page> ];
 		rr:objectMap[
-			rr:column "feed_publisher_name_url";
+			rr:column "feed_publisher_url";
 			rr:termType <http://www.w3.org/ns/r2rml#IRI>;
 		];
 	];
