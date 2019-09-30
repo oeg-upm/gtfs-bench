@@ -4,10 +4,15 @@ size=$1
 query=$2
 run=$3
 typ=$4
-
+if [ $i -eq 1 ]
+    then
+        path=/queries/original/$query
+    else
+        path=/queries/vig/$query
+fi
 #start time
 start=$(date +%s.%N)
-/Ontario/scripts/runExperiment.py -c /configurations/myconfig.json -q /queries/$query -r True
+/Ontario/scripts/runExperiment.py -c /configurations/myconfig.json -q $path -r True
 #finish time
 finish=$(date +%s.%N)
 #duration

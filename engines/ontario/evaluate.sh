@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -a array=("csv" "json" "xml" "best" "worst" "random")
+declare -a array=("json" "csv" "xml" "best" "worst" "random")
 
 echo "size, query, run, type,time (date +%s.%N)" > ../results/results-times.csv
 
@@ -7,20 +7,14 @@ for p in "${array[@]}"
 do
 	for i in 1 5 10 50 100 500
 	do
-		if [ $i -eq 1 ]
-		then
-			path=/queries/original
-		else
-			path=/queries/vig
-		fi
-		cp /data/gtfs-$p-$i/* /data/
+		cp -r /data/gtfs-$p-$i/* /data/
 		/Ontario/scripts/create_rdfmts.py -s /configurations/datasources-$p.json -o /configurations/myconfig.json
 		for j in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
 		do
 			for t in 1 2 3 4 5
 			do
 				echo "size $i query $j run $t $p"
-				timeout -s SIGKILL 60m  ./run.sh $i $path/q${j}.rq $t $p ||echo "$i, q${j}.rq, $t, $p, TimeOut">> ../results/results-times.csv                                       
+				timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t $p ||echo "$i, q${j}.rq, $t, $p, TimeOut">> ../results/results-times.csv                                       
 			done
 		done
 		rm /data/*.*
