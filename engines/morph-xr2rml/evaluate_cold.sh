@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#sh ../evaluate.sh ../../queries properties/gtfs.morph-rdb.properties morph-rdb 0 ../../results
-#!/bin/bash
-# i = size of dataset
-# j = num of query
-
 echo "size, query, run, type,time (date +%s.%N)" > ../results/results-times.csv
 
 for i in 1 5 10 50 100 500
@@ -13,9 +8,8 @@ do
         do
                 for t in 1 2 3 4 5
                 do
+                    echo "size:$i  query: q${j}.rq run:$t "
                     # Load properties configuration
-                    echo "++++++++++++++++++++++++++++++++++++++++++++++"
-                    echo  "size-$i-q${j}.rq-run-$t-'cold'"
                     ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq 'cold'
                     # Run engine
                     timeout -s SIGKILL 60m   ./run.sh $i q${j}.rq $t 'cold'  ||echo "$i, q${j}.rq, $t, cold, TimeOut">> ../results/results-times.csv
