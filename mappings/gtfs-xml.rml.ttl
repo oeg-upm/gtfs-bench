@@ -801,50 +801,50 @@ map:s_8 a rr:SubjectMap;
 map:s_9 a rr:SubjectMap;
     rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
 map:source_0 a rml:LogicalSource;
-    rml:source "/data/STOP_TIMES.xml";
+    rml:source "STOP_TIMES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_1 a rml:LogicalSource;
-    rml:source "/data/TRIPS.xml";
+    rml:source "TRIPS.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_10 a rml:LogicalSource;
-    rml:source "/data/SHAPES.xml";
+    rml:source "SHAPES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_11 a rml:LogicalSource;
-    rml:source "/data/FREQUENCIES.xml";
+    rml:source "FREQUENCIES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_2 a rml:LogicalSource;
-    rml:source "/data/ROUTES.xml";
+    rml:source "ROUTES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_3 a rml:LogicalSource;
-    rml:source "/data/AGENCY.xml";
+    rml:source "AGENCY.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_4 a rml:LogicalSource;
-    rml:source "/data/STOPS.xml";
+    rml:source "STOPS.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_5 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.xml";
+    rml:source "CALENDAR.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_6 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.xml";
+    rml:source "CALENDAR_DATES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_7 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.xml";
+    rml:source "CALENDAR_DATES.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_8 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.xml";
+    rml:source "CALENDAR.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
 map:source_9 a rml:LogicalSource;
-    rml:source "/data/FEED_INFO.xml";
+    rml:source "FEED_INFO.xml";
     rml:referenceFormulation ql:XPath;
 	rml:iterator "/Category/Record".
