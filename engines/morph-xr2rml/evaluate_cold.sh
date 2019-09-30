@@ -13,27 +13,12 @@ do
         do
                 for t in 1 2 3 4 5
                 do
-                    #properties, mapping, querypath, size,query,time
-                    if [ $i -eq 1 ]
-                    then
-                        # original queries
-                        #./run.sh $size, $query, $run, $type
-                        #echo  $i q${j}.rq $t 'cold'
-                        # Load properties configuration
-                        ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq
-                        # Run engine
-                        ./run.sh $i q${j}.rq $t 'cold'
-                        # Delete properties configuration
-                        ./post_update_config.sh gtfs.morph-xr2rml.properties
-                    else
-                        #VIG queries
-                        # Load properties configuration
-                        ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq
-                        # Run engine
-                        ./run.sh $i q${j}.rq $t 'cold'
-                        # Delete properties configuration
-                        ./post_update_config.sh gtfs.morph-xr2rml.properties
-                    fi
+                    # Load properties configuration
+                    ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq 'cold'
+                    # Run engine
+                    timeout -s SIGKILL 60m   ./run.sh $i q${j}.rq $t 'cold'  ||echo "$i, q${j}.rq, $t, cold, TimeOut">> ../results/results-times.csv
+                    # Delete properties configuration
+                    ./post_update_config.sh gtfs.morph-xr2rml.properties
                     # restart database
                     echo "delete :  /data/gtfs-json-$i/flag_mongo.txt"
                     echo "Restart data base..."

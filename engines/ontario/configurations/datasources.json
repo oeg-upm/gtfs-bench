@@ -4,7 +4,7 @@
       "url": "drugbankrdb:3306",
       "params": {
         "username": "root",
-        "password": "1234"
+        "password": "oeg"
       },
       "type": "MySQL",
       "mappings": [
