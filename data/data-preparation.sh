@@ -49,8 +49,6 @@ do
 	echo "**********************************"
 	docker exec -it -w /data/  gtfs${i}_mysql mysql -u root -poeg  -e 'source schema.sql'
 	docker exec -it -w /data/   gtfs${i}_ontop_mysql mysql -u root -poeg --local-infile -e 'source schema-ontop.sql'
-#	docker exec -it -w /data/  gtfs$i_mysql mysql -u root -poeg  -e 'source schema.sql'
-#	docker exec -it -w /data/  gtfs$i_ontop_mysql mysql -u root -poeg  -e 'source schema-ontop.sql'
 
 done
 
