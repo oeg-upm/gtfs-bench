@@ -15,16 +15,16 @@ target		<http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> a <http://
 source		SELECT * FROM STOPS
 
 mappingId	mapping-join--11193288
-target		<http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> <http://vocab.gtfs.org/terms#parentStation> <http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> . 
-source		SELECT * FROM (SELECT * FROM STOPS) AS child, (SELECT * FROM STOPS) AS parent WHERE child.parent_station=parent.stop_id
+target		<http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> <http://vocab.gtfs.org/terms#parentStation> <http://transport.linkeddata.es/madrid/metro/stops/{stop_id2}> . 
+source		SELECT * FROM (SELECT * FROM STOPS) AS child, (SELECT stop_id as stop_id2 FROM STOPS) AS parent WHERE child.parent_station=parent.stop_id2
 
 mappingId	mapping-1660279029
 target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> a <http://vocab.gtfs.org/terms#Service> . 
 source		SELECT * FROM CALENDAR
 
 mappingId	mapping-join-457903050
-target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> <http://vocab.gtfs.org/terms#serviceRule> <http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}> . 
-source		SELECT * FROM (SELECT * FROM CALENDAR) AS child, (SELECT * FROM CALENDAR) AS parent WHERE child.service_id=parent.service_id
+target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> <http://vocab.gtfs.org/terms#serviceRule> <http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id2}> . 
+source		SELECT * FROM (SELECT * FROM CALENDAR) AS child, (SELECT service_id as service_id2 FROM CALENDAR) AS parent WHERE child.service_id=parent.service_id2
 
 mappingId	mapping--2111503058
 target		<http://example.com/base/transport.linkeddata.es/madrid/metro/shape/{shape_id}-{shape_pt_sequence}> a <http://vocab.gtfs.org/terms#Shape> ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {shape_pt_lon}^^xsd:double ; <http://vocab.gtfs.org/terms#pointSequence> {shape_pt_sequence} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {shape_pt_lat}^^xsd:double ; <http://vocab.gtfs.org/terms#distanceTraveled> {shape_dist} . 
@@ -55,8 +55,8 @@ target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> a <h
 source		SELECT * FROM CALENDAR_DATES
 
 mappingId	mapping-join-589472903
-target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> <http://vocab.gtfs.org/terms#serviceRule> <http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}> . 
-source		SELECT * FROM (SELECT * FROM CALENDAR_DATES) AS child, (SELECT * FROM CALENDAR_DATES) AS parent WHERE child.service_id=parent.service_id
+target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> <http://vocab.gtfs.org/terms#serviceRule> <http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id1}> . 
+source		SELECT * FROM (SELECT * FROM CALENDAR_DATES) AS child, (SELECT service_id as service_id1 FROM CALENDAR_DATES) AS parent WHERE child.service_id=parent.service_id1
 
 mappingId	mapping--1063046824
 target		<http://transport.linkeddata.es/madrid/metro/frequency/{trip_id2}-{start_time}> a <http://vocab.gtfs.org/terms#Frequency> ; <http://vocab.gtfs.org/terms#startTime> {start_time} ; <http://vocab.gtfs.org/terms#endTime> {end_time} ; <http://vocab.gtfs.org/terms#exactTimes> {exact_times}^^xsd:boolean ; <http://vocab.gtfs.org/terms#headwaySeconds> {headway_secs}^^xsd:integer . 
