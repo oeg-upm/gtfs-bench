@@ -1,7 +1,7 @@
 {  
   "@context": ["http://www.w3.org/ns/csvw"],
   "tables": [{
-    "url": "./evaluation/transport-performance/data/AGENCY.csv",
+    "url": "/data/AGENCY.csv",
     "tableSchema": {
       "columns": [
        {
@@ -43,7 +43,7 @@
     }
   },
   {
-    "url": "./evaluation/transport-performance/data/CALENDAR.csv",
+    "url": "/data/CALENDAR.csv",
     "tableSchema": {
       "columns": [
        {
@@ -177,7 +177,7 @@
     }
   },
   {
-    "url": "./evaluation/transport-performance/data/CALENDAR_DATES.csv",
+    "url": "/data/CALENDAR_DATES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "service_id,date",
@@ -221,7 +221,7 @@
       ]}
   },
   {
-    "url": "./evaluation/transport-performance/data/FEED_INFO.csv",
+    "url": "/data/FEED_INFO.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "feed_publisher_name", 
@@ -288,7 +288,7 @@
      }
   },
   {
-    "url": "./evaluation/transport-performance/data/FREQUENCIES.csv",
+    "url": "/data/FREQUENCIES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}",
       "columns": [
@@ -353,7 +353,7 @@
     }
   },
   {
-    "url" : "./evaluation/transport-performance/data/ROUTES.csv",
+    "url" : "/data/ROUTES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "route_id", 
@@ -418,7 +418,7 @@
     }
   },
   {
-    "url": "./evaluation/transport-performance/data/SHAPES.csv",
+    "url": "/data/SHAPES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}",
       "columns": [
@@ -466,7 +466,7 @@
     }
   },
   {
-    "url": "./evaluation/transport-performance/data/STOP_TIMES.csv",
+    "url": "/data/STOP_TIMES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}",
       "columns": [
@@ -550,7 +550,7 @@
     }
   },
   {
-    "url": "./evaluation/transport-performance/data/STOPS.csv",
+    "url": "/data/STOPS.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "stop_id", 
@@ -636,7 +636,7 @@
      }
   },
   {
-    "url": "./evaluation/transport-performance/data/TRIPS.csv",
+    "url": "/data/TRIPS.csv",
     "tableSchema": {
       "aboutUrl": "{_row}",
       "columns": [
