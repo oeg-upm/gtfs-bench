@@ -1,6 +1,6 @@
 #!/bin/bash
-#declare -a array=("json" "csv" "xml" "best" "worst" "random")
-declare -a array=("json" "csv" "xml")
+
+declare -a array=("best" "worst" "random")
 echo "size, query, run, type,time (date +%s.%N)" > ../results/results-times.csv
 
 for p in "${array[@]}"
