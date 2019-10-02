@@ -36,9 +36,9 @@
    "mappings": ["/mappings/gtfs-best-json.rml.ttl"]
  },
  {
-   "name": "GTFS-XML",
-   "ID": "http://transport.linkeddata.es/gtfs-xml",
-   "url": "/data/",
+   "name": "GTFS-MYSQL",
+   "ID": "http://transport.linkeddata.es/gtfs-mysql",
+   "url": "http://172.18.0.1:3306",
    "params": {
      "spark.driver.cores": "4",
      "spark.executor.cores": "4",
@@ -50,7 +50,7 @@
      "spark.python.worker.memory": "4g",
      "spark.local.dir": "/tmp"
    },
-   "type": "LOCAL_XML",
-   "mappings": ["/mappings/gtfs-best-xml.rml.ttl"]
+   "type": "MySQL",
+   "mappings": ["/mappings/gtfs-best-rdb.rml.ttl"]
  }
 ]
