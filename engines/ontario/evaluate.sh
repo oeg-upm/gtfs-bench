@@ -21,14 +21,6 @@ do
 			done
 		done
 		rm /data/*.*
-		if [ $p -eq "worst" ]
-		then
-			sed -i 's/worst/random/g' /configurations/datasources-dist.json
-		fi
-		if [ $p -eq "best" ]
-		then
-			sed -i 's/best/worst/g' /configurations/datasources-dist.json
-		fi
 	done
 
 done
