@@ -1,6 +1,6 @@
-# The Madrid-GTFS-Bench
+# The GTFS-Madrid-Bench
 
-We present the Madrid-GTFS-Bench, a benchmarking for virutal knowledge graph access in the transport domain. We use the de-facto standard model for publishing open data on web, GTFS, and we scale up and distribute the original dataset in several formats and sizes. This repository contains the following resources:
+We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph access in the transport domain. We use the de-facto standard model for publishing open data on web, GTFS, and we scale up and distribute the original dataset in several formats and sizes. This repository contains the following resources:
 
 - Data: we have generated from several datasets(GTFS-[1,5,10,50,100,500]) in multiple formats (CSV, JSON, XML, SQL, MongoDB). The preparation script will download all these datasets and generate a docker-image for each dataset which is contained in a database (MySQL and MongoDB)
 - Generation: If any practicioner or developer want to create datasets with other scale values all the resources are available.
