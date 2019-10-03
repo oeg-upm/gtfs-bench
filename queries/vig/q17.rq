@@ -1,10 +1,4 @@
-﻿#Q17: What are the arrival times of a specific route for a stop X and a stop Y (in its different calendars)
-#original.q17.STOP1NAME='PLAZA DE CASTILLA'
-#original.q17.STOP2NAME='ATOCHA'
-#original.q17.ROUTENAME='Pinar de Chamartín-Valdecarros'
-#vig.q17.STOP1NAME='000000000000000000kz'
-#vig.q17.STOP2NAME='0000000000000000028f'
-#vig.q17.ROUTENAME='00000000000000000001'
+#Q17: Routes and their types with their associated trips and the start and end time of the frequencies of the trips
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -14,23 +8,20 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT * WHERE {
-    ?stop1 foaf:name "000000000000000000kz" .
-    ?stop2 foaf:name "0000000000000000028f" .
-
-    ?stopTime1 a gtfs:StopTime .
-    ?stopTime1 gtfs:trip ?trip .
-    ?stopTime1 gtfs:stop ?stop1 .
-    ?stopTime1 gtfs:arrivalTime ?arrivalTime1 .
-
-    ?stopTime2 a gtfs:StopTime .
-    ?stopTime2 gtfs:trip ?trip .
-    ?stopTime2 gtfs:stop ?stop2.
-    ?stopTime2 gtfs:arrivalTime ?arrivalTime2 . 
-    
+SELECT ?routeName ?routeType ?trip ?startTime ?endTime WHERE {
     ?trip a gtfs:Trip .
-    ?trip gtfs:headsign ?headsign  .
     ?trip gtfs:route ?route .
 
-    ?route gtfs:longName "00000000000000000001" .
+    ?frequency a gtfs:Frequency .
+    ?frequency gtfs:startTime ?startTime .
+    ?frequency gtfs:endTime ?endTime .
+    ?frequency gtfs:trip ?trip .
+
+    ?route a gtfs:Route .
+    ?route gtfs:shortName ?routeName .
+    ?route gtfs:routeType ?routeType .
+
 }
+ 
+
+

@@ -1,7 +1,7 @@
 {  
   "@context": ["http://www.w3.org/ns/csvw"],
   "tables": [{
-    "url": "/data/agency.txt", 
+    "url": "/data/AGENCY.csv",
     "tableSchema": {
       "columns": [
        {
@@ -16,34 +16,34 @@
         "titles": [
          "agency_name"
         ], 
-        "required": true,
+        "required": true
        }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_url"
         ], 
-        "required": true, 
+        "required": true
         }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_timezone"
         ], 
-        "required": true, 
+        "required": true
         }, 
        {
         "datatype": "string", 
         "titles": [
          "agency_lang"
         ],
-        "required": true, 
+        "required": true
         }
       ]
     }
   },
   {
-    "url": "/data/calendar.csv",
+    "url": "/data/CALENDAR.csv",
     "tableSchema": {
       "columns": [
        {
@@ -150,7 +150,7 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "start_date"
@@ -163,7 +163,7 @@
        {
         "datatype": {
           "base": "date",
-           "format": "YYYYMMDD"
+           "format": "yyyyMMdd"
         },
         "titles": [
          "end_date"
@@ -177,10 +177,10 @@
     }
   },
   {
-    "url": "/data/calendar_dates.csv",
+    "url": "/data/CALENDAR_DATES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
-      "primaryKey": "service_id", 
+      "primaryKey": "service_id,date",
       "columns": [
        {
         "datatype": "string", 
@@ -194,8 +194,8 @@
        }, 
        {
         "datatype": {
-          "base": "date",
-           "format": "YYYYMMDD"
+           "base": "date",
+           "format": "yyyyMMdd"
         },
         "titles": [
          "date"
@@ -206,7 +206,10 @@
         "dc:description": "date"
        }, 
        {
-        "datatype": "integer", 
+        "datatype": {
+          "base": "boolean",
+          "format": "1|2"
+        },
         "titles": [
          "exception_type"
         ], 
@@ -218,7 +221,7 @@
       ]}
   },
   {
-    "url": "/data/feed_info.csv",
+    "url": "/data/FEED_INFO.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "feed_publisher_name", 
@@ -242,7 +245,35 @@
         "name": "feed_publisher_url", 
         "required": true,
         "dc:description": "feed_publisher_url"
-       }, 
+       },
+       {
+        "datatype": {
+         "base": "date",
+         "format": "yyyyMMdd"
+        },
+        "titles": [
+         "feed_start_date"
+        ],
+        "@id": "https://iisg.amsterdam/feed_info.txt/column/feed_start_date",
+        "name": "feed_start_date",
+        "required": true,
+        "null": "",
+        "dc:description": "feed_start_date"
+       },
+       {
+        "datatype": {
+         "base": "date",
+         "format": "yyyyMMdd"
+        },
+        "titles": [
+         "feed_end_date"
+        ],
+        "@id": "https://iisg.amsterdam/feed_info.txt/column/feed_end_date",
+        "name": "feed_end_date",
+        "required": true,
+        "null": "",
+        "dc:description": "feed_end_date"
+       },
        {
         "datatype": "string", 
         "titles": [
@@ -257,10 +288,9 @@
      }
   },
   {
-    "url": "/data/frequencies.csv",
+    "url": "/data/FREQUENCIES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "trip_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
@@ -299,20 +329,31 @@
         "dc:description": "end_time"
        }, 
        {
-        "datatype": "integer", 
+        "datatype": "integer",
         "titles": [
          "headway_secs"
-        ], 
-        "@id": "https://iisg.amsterdam/frequencies.txt/column/headway_secs", 
-        "name": "headway_secs", 
+        ],
+        "@id": "https://iisg.amsterdam/frequencies.txt/column/headway_secs",
+        "name": "headway_secs",
         "required": true,
         "dc:description": "headway_secs"
+       },
+       {
+        "datatype": "boolean",
+        "titles": [
+         "exact_times"
+        ],
+        "@id": "https://iisg.amsterdam/frequencies.txt/column/exact_times",
+        "name": "exact_times",
+        "default": 0,
+        "required": true,
+        "dc:description": "exact_times"
        }
       ]
     }
   },
   {
-    "url" : "/data/routes.csv",
+    "url" : "/data/ROUTES.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "route_id", 
@@ -377,10 +418,9 @@
     }
   },
   {
-    "url": "/data/shapes",
+    "url": "/data/SHAPES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "shape_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
@@ -393,7 +433,7 @@
         "dc:description": "shape_id"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "shape_pt_lat"
         ], 
@@ -403,7 +443,7 @@
         "dc:description": "shape_pt_lat"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "shape_pt_lon"
         ], 
@@ -426,10 +466,9 @@
     }
   },
   {
-    "url": "/data/stop_times",
+    "url": "/data/STOP_TIMES.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "trip_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 
@@ -493,14 +532,25 @@
          "pickup_type"
         ], 
         "@id": "https://iisg.amsterdam/stop_times.txt/column/pickup_type", 
-        "name": "pickup_type", 
+        "name": "pickup_type",
+        "default": 0,
         "dc:description": "pickup_type"
+       },
+       {
+        "datatype": "integer",
+        "titles": [
+         "drop_off_type"
+        ],
+        "@id": "https://iisg.amsterdam/stop_times.txt/column/drop_off_type",
+        "name": "drop_off_type",
+        "default": 0,
+        "dc:description": "drop_off_type"
        }
       ]
     }
   },
   {
-    "url": "/data/stops.csv",
+    "url": "/data/STOPS.csv",
     "tableSchema": {
       "aboutUrl": "{_row}", 
       "primaryKey": "stop_id", 
@@ -526,7 +576,7 @@
         "dc:description": "stop_name"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "stop_lat"
         ], 
@@ -536,7 +586,7 @@
         "dc:description": "stop_lat"
        }, 
        {
-        "datatype": "string", 
+        "datatype": "DECIMAL(18,15)",
         "titles": [
          "stop_lon"
         ], 
@@ -562,15 +612,33 @@
         "@id": "https://iisg.amsterdam/stops.txt/column/wheelchair_boarding", 
         "name": "wheelchair_boarding", 
         "dc:description": "wheelchair_boarding"
+       },
+       {
+        "datatype": "string",
+        "titles": [
+         "parent_station"
+        ],
+        "@id": "https://iisg.amsterdam/stops.txt/column/parent_station",
+        "name": "parent_station",
+        "null": "",
+        "dc:description": "parent_station"
+       },
+       {
+        "datatype": "integer",
+        "titles": [
+         "location_type"
+        ],
+        "@id": "https://iisg.amsterdam/stops.txt/column/location_type",
+        "name": "location_type",
+        "dc:description": "location_type"
        }
       ]
      }
   },
   {
-    "url": "/data/trips.csv",
+    "url": "/data/TRIPS.csv",
     "tableSchema": {
-      "aboutUrl": "{_row}", 
-      "primaryKey": "route_id", 
+      "aboutUrl": "{_row}",
       "columns": [
        {
         "datatype": "string", 

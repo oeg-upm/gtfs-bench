@@ -1,0 +1,1535 @@
+{
+  "templates": [
+    {
+      "rootType": "http://bio2rdf.org/ns/kegg#Drug",
+      "predicates": [
+        {
+          "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Drug"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#url",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/identifier",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/title",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#formula",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#mass",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#synonym",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#urlImage",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#xRef",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        }
+      ],
+      "linkedTo": [
+        "http://bio2rdf.org/ns/kegg#Drug"
+      ],
+      "datasources": [
+        {
+          "datasource": "KEGG",
+          "predicates": [
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://bio2rdf.org/ns/bio2rdf#url",
+            "http://purl.org/dc/elements/1.1/identifier",
+            "http://purl.org/dc/elements/1.1/title",
+            "http://bio2rdf.org/ns/bio2rdf#formula",
+            "http://bio2rdf.org/ns/bio2rdf#mass",
+            "http://bio2rdf.org/ns/bio2rdf#synonym",
+            "http://bio2rdf.org/ns/bio2rdf#urlImage",
+            "http://bio2rdf.org/ns/bio2rdf#xRef"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://bio2rdf.org/ns/kegg#Enzyme",
+      "predicates": [
+        {
+          "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#url",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/identifier",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/title",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#synonym",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#isA",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#systematicName",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xCofactor",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Compound"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xGene",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xProduct",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Compound"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xSubstrate",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Compound"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        }
+      ],
+      "linkedTo": [
+        "http://bio2rdf.org/ns/kegg#Compound",
+        "http://bio2rdf.org/ns/kegg#Compound",
+        "http://bio2rdf.org/ns/kegg#Compound"
+      ],
+      "datasources": [
+        {
+          "datasource": "KEGG",
+          "predicates": [
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www.w3.org/2000/01/rdf-schema#comment",
+            "http://bio2rdf.org/ns/bio2rdf#url",
+            "http://purl.org/dc/elements/1.1/identifier",
+            "http://purl.org/dc/elements/1.1/title",
+            "http://bio2rdf.org/ns/bio2rdf#synonym",
+            "http://bio2rdf.org/ns/bio2rdf#isA",
+            "http://bio2rdf.org/ns/kegg#systematicName",
+            "http://bio2rdf.org/ns/kegg#xCofactor",
+            "http://bio2rdf.org/ns/kegg#xGene",
+            "http://bio2rdf.org/ns/kegg#xProduct",
+            "http://bio2rdf.org/ns/kegg#xSubstrate"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://bio2rdf.org/ns/kegg#Compound",
+      "predicates": [
+        {
+          "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Compound"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#url",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/identifier",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/title",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#formula",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#mass",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#synonym",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#urlImage",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#xRef",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        }
+      ],
+      "linkedTo": [
+        "http://bio2rdf.org/ns/kegg#Compound"
+      ],
+      "datasources": [
+        {
+          "datasource": "KEGG",
+          "predicates": [
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://bio2rdf.org/ns/bio2rdf#url",
+            "http://purl.org/dc/elements/1.1/identifier",
+            "http://purl.org/dc/elements/1.1/title",
+            "http://bio2rdf.org/ns/bio2rdf#formula",
+            "http://bio2rdf.org/ns/bio2rdf#mass",
+            "http://bio2rdf.org/ns/bio2rdf#synonym",
+            "http://bio2rdf.org/ns/bio2rdf#urlImage",
+            "http://bio2rdf.org/ns/bio2rdf#xRef"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://bio2rdf.org/ns/kegg#Reaction",
+      "predicates": [
+        {
+          "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Reaction"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#url",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/identifier",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/title",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#urlImage",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xProduct",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xSubstrate",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#equation",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xEnzyme",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Enzyme"
+          ],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/kegg#xPathway",
+          "range": [],
+          "policies": [
+            {
+              "dataset": "KEGG",
+              "operator": "PR"
+            }
+          ]
+        }
+      ],
+      "linkedTo": [
+        "http://bio2rdf.org/ns/kegg#Reaction",
+        "http://bio2rdf.org/ns/kegg#Enzyme"
+      ],
+      "datasources": [
+        {
+          "datasource": "KEGG",
+          "predicates": [
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www.w3.org/2000/01/rdf-schema#comment",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://bio2rdf.org/ns/bio2rdf#url",
+            "http://purl.org/dc/elements/1.1/identifier",
+            "http://purl.org/dc/elements/1.1/title",
+            "http://bio2rdf.org/ns/bio2rdf#urlImage",
+            "http://bio2rdf.org/ns/kegg#xProduct",
+            "http://bio2rdf.org/ns/kegg#xSubstrate",
+            "http://bio2rdf.org/ns/kegg#equation",
+            "http://bio2rdf.org/ns/kegg#xEnzyme",
+            "http://bio2rdf.org/ns/kegg#xPathway"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drug_interactions",
+      "predicates": [
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug2",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/text",
+          "range": []
+        }
+      ],
+      "linkedTo": [],
+      "datasources": [
+        {
+          "datasource": "Drugbank",
+          "predicates": [
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug2",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/text"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs",
+      "predicates": [
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/atcCode",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/affectedOrganism",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/secondaryAccessionNumber",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandedDrug",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalIupacName",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalLogpHydrophobicity",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedWaterSolubility",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedLogpHydrophobicity",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/indication",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalFormula",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/state",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/patientInformationInsert",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pubchemSubstanceId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/massSpecFile",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/biotransformation",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pubchemCompoundId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/description",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/halfLife",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genericName",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeightAverage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbHomologyId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pkaIsoelectricPoint",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbExperimentalId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/toxicity",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalStructure",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalCaco2Permeability",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/creationDate",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hetId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotName",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/fdaLabelFiles",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/casRegistryNumber",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/primaryAccessionNo",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalWaterSolubility",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/msdsFiles",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/meltingPoint",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/inchiKey",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/limsDrugId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionInsert",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/absorption",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdrhealthLink",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chebiId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/reference",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/contraindicationInsert",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinBinding",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pharmgkbId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedLogs",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/structure",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/updateDate",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeightMono",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/rxlistLink",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggDrugId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId",
+          "range": [
+            "http://bio2rdf.org/ns/kegg#Compound",
+            "http://bio2rdf.org/ns/kegg#Drug"
+          ]
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/smilesStringCanonical",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pharmacology",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/dpdDrugIdNumber",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/smilesStringIsomeric",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synthesisReference",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalLogs",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/mechanismOfAction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/inchiIdentifier",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugType",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synonym",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/ahfsCode",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/foodInteraction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/enzyme",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandMixture",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandName",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": []
+        },
+        {
+          "predicate": "http://xmlns.com/foaf/0.1/page",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/possibleDiseaseTarget",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/dosageForm",
+          "range": []
+        }
+      ],
+      "linkedTo": [
+        "http://bio2rdf.org/ns/kegg#Compound",
+        "http://bio2rdf.org/ns/kegg#Drug"
+      ],
+      "datasources": [
+        {
+          "datasource": "Drugbank",
+          "predicates": [
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/atcCode",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/affectedOrganism",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/secondaryAccessionNumber",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandedDrug",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalIupacName",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalLogpHydrophobicity",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedWaterSolubility",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedLogpHydrophobicity",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/indication",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalFormula",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/state",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/patientInformationInsert",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pubchemSubstanceId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/massSpecFile",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/biotransformation",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pubchemCompoundId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/description",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/halfLife",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genericName",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeightAverage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbHomologyId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pkaIsoelectricPoint",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbExperimentalId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/toxicity",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chemicalStructure",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalCaco2Permeability",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/creationDate",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hetId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotName",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/fdaLabelFiles",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/casRegistryNumber",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/primaryAccessionNo",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalWaterSolubility",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/msdsFiles",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/meltingPoint",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/inchiKey",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/limsDrugId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionInsert",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/absorption",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdrhealthLink",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chebiId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/reference",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/contraindicationInsert",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinBinding",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pharmgkbId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedLogs",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/structure",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/updateDate",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeightMono",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/rxlistLink",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggDrugId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/smilesStringCanonical",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pharmacology",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/dpdDrugIdNumber",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/smilesStringIsomeric",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synthesisReference",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/experimentalLogs",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/mechanismOfAction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/inchiIdentifier",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugType",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synonym",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/ahfsCode",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/foodInteraction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/enzyme",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandMixture",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandName",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://xmlns.com/foaf/0.1/page",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/possibleDiseaseTarget",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/dosageForm"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/enzymes",
+      "predicates": [
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneName",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinSequence",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/name",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage",
+          "range": []
+        }
+      ],
+      "linkedTo": [],
+      "datasources": [
+        {
+          "datasource": "Drugbank",
+          "predicates": [
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneName",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinSequence",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/name",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/references",
+      "predicates": [
+        {
+          "predicate": "http://xmlns.com/foaf/0.1/page",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        }
+      ],
+      "linkedTo": [],
+      "datasources": [
+        {
+          "datasource": "Drugbank",
+          "predicates": [
+            "http://xmlns.com/foaf/0.1/page",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://www.w3.org/2000/01/rdf-schema#label"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/targets",
+      "predicates": [
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synonym",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationComponent",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationFunction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pfamDomainFunction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/transmembraneRegions",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pfamDomainFunctionPage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/cellularLocation",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2002/07/owl#sameAs",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationProcess",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalReference",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugReference",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genatlasId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/locus",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/specificFunction",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeight",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/reaction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hgncId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hgncIdPage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/theoreticalPi",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/bio2rdfSymbol",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdGene",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/name",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hprdId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chromosomeLocation",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneSequence",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalFunction",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pathway",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinSequence",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdGenePage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdProtein",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/numberOfResidues",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/signal",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/essentiality",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneName",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genecardId",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbIdPage",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotName",
+          "range": []
+        },
+        {
+          "predicate": "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdProteinPage",
+          "range": []
+        }
+      ],
+      "linkedTo": [],
+      "datasources": [
+        {
+          "datasource": "Drugbank",
+          "predicates": [
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/synonym",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationComponent",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationFunction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pfamDomainFunction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/transmembraneRegions",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pfamDomainFunctionPage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/cellularLocation",
+            "http://www.w3.org/2002/07/owl#sameAs",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/goClassificationProcess",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalReference",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugReference",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genatlasId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/locus",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/specificFunction",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/molecularWeight",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/reaction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hgncId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hgncIdPage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/theoreticalPi",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/bio2rdfSymbol",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotPage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdGene",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/name",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/hprdId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chromosomeLocation",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneSequence",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalFunction",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pathway",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinSequence",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdGenePage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdProtein",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/numberOfResidues",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/signal",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/essentiality",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/geneName",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genecardId",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/pdbIdPage",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/swissprotName",
+            "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genbankIdProteinPage"
+          ]
+        }
+      ]
+    },
+    {
+      "rootType": "http://bio2rdf.org/ns/chebi#Compound",
+      "predicates": [
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_substituent_group_from",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#has_parent_hydride",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#has_role",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_tautomer_of",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#synonym",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_conjugate_base_of",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#formula",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#has_part",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#iupacName",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_a",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#has_functional_parent",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#xRef",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_conjugate_acid_of",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#url",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#inchi",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#image",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#Status",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+          "range": []
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/identifier",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#is_enantiomer_of",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/bio2rdf#smiles",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#xSource",
+          "range": []
+        },
+        {
+          "predicate": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+          "range": []
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/title",
+          "range": []
+        },
+        {
+          "predicate": "http://purl.org/dc/elements/1.1/modified",
+          "range": []
+        },
+        {
+          "predicate": "http://bio2rdf.org/ns/chebi#xReferencedBy",
+          "range": []
+        }
+      ],
+      "linkedTo": [],
+      "datasources": [
+        {
+          "datasource": "http://tib.eu/chebi-tsv",
+          "predicates": [
+            "http://www.w3.org/2000/01/rdf-schema#comment",
+            "http://bio2rdf.org/ns/chebi#is_substituent_group_from",
+            "http://bio2rdf.org/ns/chebi#has_parent_hydride",
+            "http://bio2rdf.org/ns/chebi#has_role",
+            "http://bio2rdf.org/ns/chebi#is_tautomer_of",
+            "http://bio2rdf.org/ns/bio2rdf#synonym",
+            "http://bio2rdf.org/ns/chebi#is_conjugate_base_of",
+            "http://bio2rdf.org/ns/bio2rdf#formula",
+            "http://bio2rdf.org/ns/chebi#has_part",
+            "http://bio2rdf.org/ns/chebi#iupacName",
+            "http://bio2rdf.org/ns/chebi#is_a",
+            "http://bio2rdf.org/ns/chebi#has_functional_parent",
+            "http://bio2rdf.org/ns/bio2rdf#xRef",
+            "http://bio2rdf.org/ns/chebi#is_conjugate_acid_of",
+            "http://bio2rdf.org/ns/bio2rdf#url",
+            "http://bio2rdf.org/ns/bio2rdf#inchi",
+            "http://bio2rdf.org/ns/bio2rdf#image",
+            "http://bio2rdf.org/ns/chebi#Status",
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            "http://purl.org/dc/elements/1.1/identifier",
+            "http://bio2rdf.org/ns/chebi#is_enantiomer_of",
+            "http://bio2rdf.org/ns/bio2rdf#smiles",
+            "http://bio2rdf.org/ns/chebi#xSource",
+            "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+            "http://purl.org/dc/elements/1.1/title",
+            "http://purl.org/dc/elements/1.1/modified",
+            "http://bio2rdf.org/ns/chebi#xReferencedBy"
+          ]
+        }
+      ]
+    }
+  ],
+  "datasources": [
+    {
+      "name": "Drugbank",
+      "ID": "Drugbank",
+      "url": "drugbankrdb:3306",
+      "params": {
+        "username": "root",
+        "password": "1234"
+      },
+      "type": "MySQL",
+      "mappings": [
+        "/mappings/mysql/drugbank/drug_interactions.ttl",
+        "/mappings/mysql/drugbank/drugs.ttl",
+        "/mappings/mysql/drugbank/enzymes.ttl",
+        "/mappings/mysql/drugbank/references.ttl",
+        "/mappings/mysql/drugbank/targets.ttl"
+      ]
+    },
+    {
+      "name": "KEGG",
+      "ID": "KEGG",
+      "url": "http://keggrdf:8890/sparql",
+      "params": {},
+      "type": "SPARQL_Endpoint",
+      "mappings": []
+    },
+    {
+      "name": "ChEBI-TSV",
+      "ID": "http://tib.eu/chebi-tsv",
+      "url": "/data/tsv",
+      "params": {
+        "spark.driver.cores": "4",
+        "spark.executor.cores": "4",
+        "spark.cores.max": "6",
+        "spark.default.parallelism": "4",
+        "spark.executor.memory": "6g",
+        "spark.driver.memory": "6g",
+        "spark.driver.maxResultSize": "6g",
+        "spark.python.worker.memory": "4g",
+        "spark.local.dir": "/tmp"
+      },
+      "type": "LOCAL_TSV",
+      "mappings": [
+        "/mappings/tsv/chebi/Compound.ttl"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-#Q8: List all routes that pass through a specific stop
-#eg: original.q8.STOPID=par_4_1
+#Q8: List all routes, their trips, their services and their types, their stop and description of the stops
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -24,6 +24,9 @@ SELECT * WHERE {
 	?stopTime gtfs:stop ?stop . 
 
 	?stop a gtfs:Stop . 
-	OPTIONAL {?stop dct:description ?stopDescription . } .
-	FILTER (?stop=gtfsstop:par_4_1)
+	OPTIONAL {?stop dct:description ?stopDescription . }
+
+	?service a gtfs:Service .
+	?service gtfs:serviceRule ?serviceRule .
 }
+

@@ -1,5 +1,4 @@
-#Q3: Find the accessibility information of a specific stop
-#eg: original.q1c.STOPID=par_4_135
+#Q3: Find the accessibility information for the stations
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -11,11 +10,13 @@ PREFIX gtfsstop: <http://transport.linkeddata.es/madrid/metro/stops/>
 
 SELECT * WHERE {
 	?stop a gtfs:Stop . 
+        ?stop gtfs:locationType ?location .
 	OPTIONAL { ?stop dct:description ?stopDescription . }
+
 	OPTIONAL { 
 		?stop geo:lat ?stopLat . 
 		?stop geo:long ?stopLong .
 	}
 	OPTIONAL {?stop gtfs:wheelchairAccessible ?wheelchairAccessible .  }
-	FILTER (?stop=gtfsstop:par_4_135)
+	FILTER (?location=<http://transport.linkeddata.es/resource/LocationType/2>)
 }

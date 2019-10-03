@@ -214,7 +214,7 @@ mappings:
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]
-      - [gtfs:distanceTraveled,$(shape_dist_traveled)]
+      - [gtfs:distanceTraveled,$(shape_dist)]
   frequencies:
     sources:
       - [/data/FREQUENCIES.csv~csv]

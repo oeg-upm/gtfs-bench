@@ -1,9 +1,4 @@
-#Q14: All the stops from its origin, for a specific line in a specific direction and service 
-#original.q11.SERVICEID=4_I14
-#original.q11.HEADSIGN='CUATRO CAMINOS'
-#vig.q11.SERVICEID='0000000000000000000f'
-#vig.q11.HEADSIGN='00000000000000000029'
-
+#Q14: All the ordered stops from its origin, for all routes 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -20,11 +15,11 @@ SELECT * WHERE {
     ?stopTime gtfs:stop ?stop .
     ?stopTime gtfs:stopSequence ?sequence .
 
+    ?stop a gtfs:Stop .
+
     ?trip a gtfs:Trip .
-    ?trip gtfs:service gtfsservice:0000000000000000000f .
-    ?trip gtfs:headsign '00000000000000000029' .
     ?trip gtfs:route ?route .
 
     OPTIONAL {?stop foaf:name ?stopName} 
 }
-ORDER BY ?sequence
+ ORDER BY ?sequence

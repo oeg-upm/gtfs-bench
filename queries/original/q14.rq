@@ -1,4 +1,4 @@
-#Q14: All the stops from its origin, for a specific line in a specific direction and service 
+#Q14: All the ordered stops from its origin, for all routes 
 #original.q11.SERVICEID=4_I14
 #original.q11.HEADSIGN='CUATRO CAMINOS'
 #vig.q11.SERVICEID='0000000000000000000f'
@@ -18,11 +18,11 @@ SELECT * WHERE {
     ?stopTime gtfs:stop ?stop .
     ?stopTime gtfs:stopSequence ?sequence .
 
+    ?stop a gtfs:Stop .
+
     ?trip a gtfs:Trip .
-    ?trip gtfs:service gtfsservice:4_I14 .
-    ?trip gtfs:headsign 'CUATRO CAMINOS' .
     ?trip gtfs:route ?route .
 
     OPTIONAL {?stop foaf:name ?stopName} 
 }
-ORDER BY ?sequence
+ ORDER BY ?sequence

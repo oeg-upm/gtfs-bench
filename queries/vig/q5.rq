@@ -1,5 +1,5 @@
-#Q5: Services that have been added on a specific day.
-#vig.q5.INPUTDATE="2017-03-14"
+#Q5: Services that have been added after a specific date.
+# original.q2b.INPUTDATE="2016-06-01"
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -16,7 +16,7 @@ SELECT * WHERE {
 	?service gtfs:serviceRule ?serviceRule .
         
 	?serviceRule a gtfs:CalendarDateRule .
-	?serviceRule dct:date "2017-03-14"^^xsd:date .
-        
-	?serviceRule gtfs:dateAddition "true"^^xsd:boolean .	
+	?serviceRule dct:date ?date .
+	?serviceRule gtfs:dateAddition "true"^^xsd:boolean .
+	FILTER(?date > "2016-06-01"^^xsd:date)
 }

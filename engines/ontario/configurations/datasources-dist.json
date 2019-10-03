@@ -1,0 +1,56 @@
+[
+ {
+   "name": "GTFS-CSV",
+   "ID": "http://transport.linkeddata.es/gtfs-csv",
+   "url": "/data/",
+   "params": {
+     "spark.driver.cores": "4",
+     "spark.executor.cores": "4",
+     "spark.cores.max": "6",
+     "spark.default.parallelism": "4",
+     "spark.executor.memory": "6g",
+     "spark.driver.memory": "6g",
+     "spark.driver.maxResultSize": "6g",
+     "spark.python.worker.memory": "4g",
+     "spark.local.dir": "/tmp"
+   },
+   "type": "LOCAL_CSV",
+   "mappings": ["/mappings/gtfs-best-csv.rml.ttl"]
+ },
+ {
+   "name": "GTFS-JSON",
+   "ID": "http://transport.linkeddata.es/gtfs-json",
+   "url": "/data/",
+   "params": {
+     "spark.driver.cores": "4",
+     "spark.executor.cores": "4",
+     "spark.cores.max": "6",
+     "spark.default.parallelism": "4",
+     "spark.executor.memory": "6g",
+     "spark.driver.memory": "6g",
+     "spark.driver.maxResultSize": "6g",
+     "spark.python.worker.memory": "4g",
+     "spark.local.dir": "/tmp"
+   },
+   "type": "LOCAL_JSON",
+   "mappings": ["/mappings/gtfs-best-json.rml.ttl"]
+ },
+ {
+   "name": "GTFS-MYSQL",
+   "ID": "http://transport.linkeddata.es/gtfs-mysql",
+   "url": "http://172.18.0.1:3306",
+   "params": {
+     "spark.driver.cores": "4",
+     "spark.executor.cores": "4",
+     "spark.cores.max": "6",
+     "spark.default.parallelism": "4",
+     "spark.executor.memory": "6g",
+     "spark.driver.memory": "6g",
+     "spark.driver.maxResultSize": "6g",
+     "spark.python.worker.memory": "4g",
+     "spark.local.dir": "/tmp"
+   },
+   "type": "MySQL",
+   "mappings": ["/mappings/gtfs-best-rdb.rml.ttl"]
+ }
+]

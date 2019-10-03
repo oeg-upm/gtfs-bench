@@ -12,5 +12,5 @@ PREFIX dct: <http://purl.org/dc/terms/>
 SELECT * WHERE { 
 	?stop a gtfs:Stop .
 	?stop ?p ?str .
-	FILTER regex (?str, '000000000000000002ag')
+	FILTER regex (?str, '000000000000000002')
 }
