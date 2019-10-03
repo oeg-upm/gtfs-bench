@@ -1,3 +1,5 @@
+#Q14: All the ordered stops from its origin, for all routes 
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -19,5 +21,5 @@ SELECT * WHERE {
     ?trip gtfs:route ?route .
 
     OPTIONAL {?stop foaf:name ?stopName} 
-}
- ORDER BY ?sequence
+
+} ORDER BY ?sequence

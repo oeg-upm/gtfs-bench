@@ -1,3 +1,5 @@
+#Q9: Trips and associated shapes where lat is bigger than its average
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -16,5 +18,5 @@ SELECT * WHERE {
 
 	?shape a gtfs:Shape .
 	?shape geo:lat ?lat .
-	FILTER (?lat > 40.40)
+	FILTER (?lat > %AVERAGELAT% )
 }

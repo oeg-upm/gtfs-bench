@@ -1,3 +1,5 @@
+#Q10: Number of trips that have a duration over 30 minutes
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -5,16 +7,14 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsstop: <http://transport.linkeddata.es/madrid/metro/stops/>
+PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
 
-SELECT * WHERE {
+SELECT (count(distinct ?trip) as ?count)  WHERE {
 	?trip a gtfs:Trip .
-	OPTIONAL { ?trip gtfs:shortName ?tripShortName . }
-	?trip gtfs:service ?service .
-	?trip gtfs:route ?route .
-	?trip gtfs:shape ?shape .
 
-	?shape a gtfs:Shape .
-	?shape geo:lat ?lat .
-	FILTER (?lat > 40.40)
+	?stopTime a gtfs:StopTime . 
+	?stopTime gtfs:trip ?trip . 
+	?stopTime gtfs:departureTime ?departureTime .
+
+	FILTER (?departureTime >= %DURATION% ) .
 }
