@@ -17,7 +17,15 @@ do
 				echo "++++++++++++++++++++++++++++++++++++++++++++++"
 				echo  "size-$i-q${j}.rq-run-$t-$p"
 				echo "size $i query $j run $t $p"
-				timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t $p ||echo "$i, q${j}.rq, $t, $p, TimeOut">> ../results/results-times.csv                                       
+				timeout -s SIGKILL 60m  ./run.sh $i q${j}.rq $t $p ||echo "$i, q${j}.rq, $t, $p, TimeOut">> ../results/results-times.csv 
+				#Status of timeout 
+				exit_status=$?
+				if [ $exit_status -eq 137 ]
+				then
+						echo "+++++++++++TimeOut: no more run iterations for query q${j}.rq +++++++++++++++"
+						break
+				fi
+                     
 			done
 		done
 		rm /data/*.*
