@@ -1,4 +1,4 @@
-#Q11: Trips  that are available on a certain date 
+#Q11: Trips that are available on a certain date 
 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -20,13 +20,13 @@ SELECT * WHERE {
 		?calendarRule a gtfs:CalendarRule .
         ?calendarRule schema:startDate ?startDate .
         ?calendarRule schema:endDate ?endDate .
-        FILTER (?startDate < "2017-07-02"^^xsd:date) .
-        FILTER (?endDate > "2017-07-02"^^xsd:date) .
+        FILTER (?startDate < %DATE%^^xsd:date) .
+        FILTER (?endDate > %DATE%^^xsd:date) .
 		
         FILTER NOT EXISTS {
 		    ?service gtfs:serviceRule ?calendarDateRule . 
             ?calendarDateRule a gtfs:CalendarDateRule .
-	        ?calendarDateRule dct:date %DATE1% .
+	        ?calendarDateRule dct:date %DATE% .
 	        ?calendarDateRule gtfs:dateAddition "false"^^xsd:boolean 
         }
 }

@@ -1,4 +1,4 @@
-#Q17: Routes and their types with their associated trips and the start and end time of the frequencies of the trips
+#Q17: Trips with their start and end time of the frequencies and associated routes
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

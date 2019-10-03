@@ -15,6 +15,6 @@ SELECT (count(distinct ?trip) as ?count)  WHERE {
 	?stopTime a gtfs:StopTime . 
 	?stopTime gtfs:trip ?trip . 
 	?stopTime gtfs:departureTime ?departureTime .
-
-	FILTER (?departureTime >= %DURATION% ) .
+	
+	FILTER (?departureTime >= "00:30:00"^^xsd:duration) 
 }

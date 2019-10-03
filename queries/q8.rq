@@ -1,4 +1,4 @@
-#Q8: List all routes, their trips, their services and their types, their stop and description of the stops
+#Q8: List the routes and their related trips, services, stops and stop times with some of their additional data, if available
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
