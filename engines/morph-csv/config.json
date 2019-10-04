@@ -1,0 +1,12 @@
+{
+  "sources":[
+    {
+      "csvw":"/mappings/gtfs-annotations.json",
+      "yarrrml": "/mappings/gtfs-csv.yml",
+      "db": "gtfs",
+      "query": [
+        "queries/original/q19.rq"
+      ]
+    }
+  ]
+}
