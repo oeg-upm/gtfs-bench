@@ -9,7 +9,7 @@ do
 	do
 		cp -r /data/gtfs-$p-$i/* /data/
 		# create config
-		/Ontario/scripts/create_rdfmts.py -s /configurations/datasources-$p.json -o /configurations/myconfig.json
+		/Ontario/scripts/create_rdfmts.py -s /configurations/datasources-$p.json -o /configurations/myconfig-$p.json
 		for j in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
 		do
 			for t in 1 2 3 4 5
