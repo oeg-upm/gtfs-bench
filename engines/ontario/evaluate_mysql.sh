@@ -3,11 +3,12 @@
 
 echo "size, query, run, type,time (date +%s.%N)" > ../results/results-times.csv
 
-
+#data size
 for i in 1 5 10 50 100 500
 do
     # create config
     /Ontario/scripts/create_rdfmts.py -s /configurations/datasources-mysql.json -o /configurations/myconfig-mysql.json
+    #queries
     for j in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
     do
         for t in 1 2 3 4 5
