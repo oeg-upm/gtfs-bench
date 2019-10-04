@@ -1,5 +1,5 @@
 #!/bin/bash
-#declare -a array=("json" "csv" "xml" "best" "worst" "random")
+#declare -a array=("json" "csv" "xml")
 declare -a array=("json")
 echo "size, query, run, type,time (date +%s.%N)" > ../results/results-times.csv
 
