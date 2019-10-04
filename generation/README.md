@@ -20,15 +20,16 @@ We create a SQL relational database for represeting GTFS specification and use a
 - ./run.sh (recommend to run in background)
 - cd src/main/resources/csvs
 - vim distribution (change the scale values in the loop (same as run.sh))
+- chmod +x distribution.sh 
 - ./distribution.sh (recommend to run in background)
 ```
-You will finally obtain a folder for each scale value (X) with 6 different zip files:
+You will finally obtain a folder for each scale value (X) with 7 different zip files (the schema for sql is in /data folder, and that instances are the used in random,best and worst datasets defining the access in the mapping documents):
  - X-csv.zip (csv files)
  - X-json.zip (json files)
- - X-sql.zip (rdb files with sql script to load the MySQL database)
+ - X-sql.zip (csv files)
  - X-xml.zip (xml files)
- - X-dist.zip (N files / N formats - 3/8 internal joins)
- 	- JSON: routes+agency (1 join)
- 	- SQL: frequencies + feed_info (0 join)
- 	- XML: stop_times + stops (1 join)
- 	- CSV: trips + calendar + calendar_dates + shapes (3 joins)
+ - X-random.zip (csv, json files)
+ - X-best.zip (csv, json files)
+ - X-wrost.zip (csv, json files)
+
+

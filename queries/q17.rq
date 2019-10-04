@@ -1,0 +1,26 @@
+#Q17: Trips with their start and end time of the frequencies and associated routes
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX gtfs: <http://vocab.gtfs.org/terms#>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?routeName ?routeType ?trip ?startTime ?endTime WHERE {
+    ?trip a gtfs:Trip .
+    ?trip gtfs:route ?route .
+
+    ?frequency a gtfs:Frequency .
+    ?frequency gtfs:startTime ?startTime .
+    ?frequency gtfs:endTime ?endTime .
+    ?frequency gtfs:trip ?trip .
+
+    ?route a gtfs:Route .
+    ?route gtfs:shortName ?routeName .
+    ?route gtfs:routeType ?routeType .
+}
+ 
+
+

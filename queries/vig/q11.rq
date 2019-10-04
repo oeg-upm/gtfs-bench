@@ -1,11 +1,3 @@
-#Q11: Trips  that are available on a certain date 
-#original.q11.ROUTEID=4__6___
-#original.q11.DATE="2017-07-02"
-
-#vig.q11.ROUTEID=0000000000000000000a
-#vig.q11.DATE="2017-07-02"
-
-
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -21,10 +13,8 @@ SELECT * WHERE {
         ?service gtfs:serviceRule ?calendarRule .
 		
 		?trip gtfs:service ?service .
-		# ?trip gtfs:route gtfsroute:4__6___  .
 		
-		?calendarRule a gtfs:CalendarRule .
-       # ?calendarRule gtfs:sunday "true"^^xsd:boolean . 
+		?calendarRule a gtfs:CalendarRule . 
         ?calendarRule schema:startDate ?startDate .
         ?calendarRule schema:endDate ?endDate .
         FILTER (?startDate < "2017-07-02"^^xsd:date) .

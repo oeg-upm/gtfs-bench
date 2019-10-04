@@ -1,8 +1,3 @@
-#Q14: All the ordered stops from its origin, for all routes 
-#original.q11.SERVICEID=4_I14
-#original.q11.HEADSIGN='CUATRO CAMINOS'
-#vig.q11.SERVICEID='0000000000000000000f'
-#vig.q11.HEADSIGN='00000000000000000029'
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
