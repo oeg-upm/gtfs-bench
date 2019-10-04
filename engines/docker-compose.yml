@@ -17,7 +17,8 @@ services:
       - ../data:/data
       - ../results/morph-csv:/results
       - ../mappings:/mappings
-      - ../queries:/queries  
+      - ../queries:/queries
+      
 
   morph-xr2rml:
     container_name: morph-xr2rml
