@@ -32,27 +32,27 @@ do
     if [ $i -eq 5 ]
     then
             echo $i
-            sed -i 's/3306/3307/g' /configurations/datasources-mysql.json
+            sed -i 's/gtfs1_mysql/gtfs5_mysql/g' /configurations/datasources-mysql.json
     #port=3307
     elif [ $i -eq 10 ]
     then
             echo $i
-            sed -i 's/3307/3308/g' /configurations/datasources-mysql.json
+            sed -i 's/gtfs5_mysql/gtfs10_mysql/g' /configurations/datasources-mysql.json
     #port=3308
     elif [ $i -eq 50 ]
     then
             echo $i
-            sed -i 's/3308/3309/g' /configurations/datasources-mysql.json
+            sed -i 's/gtfs10_mysql/gtfs50_mysql/g' /configurations/datasources-mysql.json
     #port=3309
     elif [ $i -eq 100 ]
     then
             echo $i
-            sed -i 's/3309/3310/g' /configurations/datasources-mysql.json
+            sed -i 's/gtfs50_mysql/gtfs100_mysql/g' /configurations/datasources-mysql.json
     #port=3310
     elif [ $i -eq 500 ]
     then
             echo $i
-            sed -i 's/3310/3311/g' /configurations/datasources-mysql.json
+            sed -i 's/gtfs100_mysql/gtfs500_mysql/g' /configurations/datasources-mysql.json
         #port=3311
     else
         port=3306
@@ -61,4 +61,4 @@ do
     #sed -i 's/$aux/$port/g' /configurations/datasources-mysql.json
 done
 
-sed -i 's/3311/3306/g' /configurations/datasources-mysql.json
+sed -i 's/gtfs500_mysql/gtfs1_mysql/g' /configurations/datasources-mysql.json
