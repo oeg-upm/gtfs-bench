@@ -4,8 +4,8 @@ This folder contains the Dockerfile needed to run Morph-rdb over the GTFS-Benchm
 ## Morph-rdb Docker image
 The created docker image is available at: [https://hub.docker.com/r/oegdataintegration/morph-rdb](https://hub.docker.com/r/oegdataintegration/morph-rdb)
 ```bash
-//docker pull oegdataintegration/morph-rdb:x.x.x
-//docker run -d --name morph-rdb oegdataintegration/morph-rdb:x.x.x
+docker oegdataintegration/morph-rdb:3.12.5
+docker run -d --name morph-rdb oegdataintegration/morph-rdb:3.12.5
 ```
 
 ## Create your own image and container
