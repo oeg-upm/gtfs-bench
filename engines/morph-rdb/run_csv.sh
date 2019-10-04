@@ -7,7 +7,6 @@ typ=$4
 flag=0
 #start time
 start=$(date +%s.%N)
-#java -cp .:morph-rdb.jar:lib/*:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner properties gtfs.morph-rdb.properties || flag=1
 java -cp .:morph-rdb.jar:dependency/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphCSVRunner properties gtfs.morph-rdb-csv.properties
 #finish time
 finish=$(date +%s.%N)
