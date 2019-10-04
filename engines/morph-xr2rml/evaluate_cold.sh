@@ -12,10 +12,21 @@ do
                     # Load properties configuration
                     ./pre_update_config.sh gtfs.morph-xr2rml.properties $i q${j}.rq 'cold'
                     # Run engine
-                    timeout -s SIGKILL 60m   ./run.sh $i q${j}.rq $t 'cold'  ||echo "$i, q${j}.rq, $t, cold, TimeOut">> ../results/results-times.csv
-                    # Delete properties configuration
-                    ./post_update_config.sh gtfs.morph-xr2rml.properties
-                    # restart database
+                    timeout -s SIGKILL 60m   ./run.sh $i q${j}.rq $t 'cold'
+                    exit_status=$?
+                    echo $exit_status
+                    if [ $exit_status -eq 137 ]
+                    then
+                        # Delete properties configuration
+                        ./post_update_config.sh gtfs.morph-xr2rml.properties
+                        echo "$i, q${j}.rq, $t, cold, TimeOut">> ../reslts/results-times.csv
+                        echo "+++++++++++TimeOut: no more iterations+++++++++++++++"
+                        break
+                    else
+                        # Delete properties configuration
+                        ./post_update_config.sh gtfs.morph-xr2rml.properties
+                    fi
+                    # Restart database
                     echo "delete :  /data/gtfs-json-$i/flag_mongo.txt"
                     echo "Restart data base..."
                     rm /data/gtfs-json-$i/flag_mongo.txt
