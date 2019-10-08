@@ -1,0 +1,16 @@
+Dataset,Processor,,Query,,,,,,,,,,,,,,,,,
+,Cache,Name,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18
+GTFS-SQL-100,Warm,Morph-RDB,221.11,7.48,E,2.30,W,1.75,1.96,E,W,1.99,E,2.65,4.68,42.44,15.51,E,8.54,E
+,Cold,Ontario,TO,E,TO,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
+,,Morph-RDB,245.98,8.83,E,3.05,W,2.33,2.52,E,W,2.63,E,3.38,5.76,50.99,19.45,E,10.38,E
+,,Ontop,"1,477.38",8.87,8.25,E,W,E,W,E,W,E,E,E,6.80,27.18,W,W,9.20,4.58
+GTFS-MongoDB-100,Warm,Morph-xR2RML,W,W,W,W,W,W,W,W,W,W,W,W,W,TO,W,W,TO,W
+,Cold,Morph-xR2RML,W,W,W,W,W,W,W,W,W,W,W,W,W,TO,W,W,TO,W
+GTFS-CSV-100,Cold,Morph-RDB,E,43.59,E,38.52,E,38.43,TO,E,TO,"1,582.52",E,TO,TO,E,E,E,TO,W
+,,Morph-CSV,"1,254.19",W,E,958.43,E,933.69,W,E,TO,957.95,E,951.53,952.93,E,E,E,947.82,W
+,,Ontario,W,E,85.59,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
+GTFS-XML-100,Cold,Ontario,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
+GTFS-JSON-100,Cold,Ontario,W,E,33.56,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
+GTFS-B-100,Cold,Ontario,W,E,33.56,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
+GTFS-W-100,Cold,Ontario,W,E,33.56,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
+GTFS-R-100,Cold,Ontario,W,E,TO,E,E,E,E,W,E,E,E,E,E,W,E,E,E,E
