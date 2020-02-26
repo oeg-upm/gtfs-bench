@@ -11,7 +11,8 @@ target		<http://transport.linkeddata.es/madrid/agency/{agency_id}> a <http://voc
 source		SELECT * FROM AGENCY
 
 mappingId	mapping-800798863
-target		<http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> a <http://vocab.gtfs.org/terms#Stop> ; <http://vocab.gtfs.org/terms#locationType> <http://transport.linkeddata.es/resource/LocationType/{location_type}> ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {stop_lat} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {stop_lon}^^xsd:double ; <http://purl.org/dc/terms/identifier> {stop_id} ; <http://purl.org/dc/terms/description> {stop_desc} ; <http://vocab.gtfs.org/terms#wheelchairAccessible> <http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}> ; <http://vocab.gtfs.org/terms#code> {stop_code} ; <http://xmlns.com/foaf/0.1/page> {stop_url} ; <http://vocab.gtfs.org/terms#timeZone> {stop_timezone} ; <http://vocab.gtfs.org/terms#zone> {zone_id} ; <http://xmlns.com/foaf/0.1/name> {stop_name} . 
+target		<http://transport.linkeddata.es/madrid/metro/stops/{stop_id}> a <http://vocab.gtfs.org/terms#Stop> ; <http://vocab.gtfs.org/terms#locationType> <http://transport.linkeddata.es/resource/LocationType/{location_type}> ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {stop_lat} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {stop_lon}^^xsd:double ; <http://purl.org/dc/terms/identifier> {stop_id} ; <http://purl.org/dc/terms/description> {stop_desc} ; <http://vocab.gtfs.org/terms#wheelchairAccessible> <http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}> ; <http://vocab.gtfs.org
+/terms#code> {stop_code} ; <http://xmlns.com/foaf/0.1/page> {stop_url} ; <http://vocab.gtfs.org/terms#timeZone> {stop_timezone} ; <http://vocab.gtfs.org/terms#zone> {zone_id} ; <http://xmlns.com/foaf/0.1/name> {stop_name} . 
 source		SELECT * FROM STOPS
 
 mappingId	mapping-join--11193288
@@ -51,7 +52,7 @@ target		<http://transport.linkeddata.es//madrid/metro/routes/{route_id}> <http:/
 source		SELECT * FROM (SELECT * FROM ROUTES) AS child, (SELECT * FROM AGENCY) AS parent WHERE child.agency_id2=parent.agency_id
 
 mappingId	mapping-1292161785
-target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> a <http://vocab.gtfs.org/terms#Service> . 
+target		<http://transport.linkeddata.es/madrid/metro/services/{service_id}> a <http://vocab.gtfs.org/terms#CalendarRule> . 
 source		SELECT * FROM CALENDAR_DATES
 
 mappingId	mapping-join-589472903
@@ -75,7 +76,7 @@ target		<http://ltransport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}
 source		SELECT * FROM FEED_INFO
 
 mappingId	mapping-1741380878
-target		<http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}> a <http://vocab.gtfs.org/terms#ServiceDates> ; <http://vocab.gtfs.org/terms#dateAddition> {exception_type}^^xsd:boolean ; <http://purl.org/dc/terms/date> {date}^^xsd:date . 
+target		<http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}> a <http://vocab.gtfs.org/terms#CalendarDateRule> ; <http://vocab.gtfs.org/terms#dateAddition> {exception_type}^^xsd:boolean ; <http://purl.org/dc/terms/date> {date}^^xsd:date . 
 source		SELECT * FROM CALENDAR_DATES
 
 mappingId	mapping--1612020054
