@@ -23,14 +23,14 @@ We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph acc
 6. Prepare your run script and obtain the results. Examples of these scripts are provided inside each engine folder.
 
 ## Baseline:
-In order to test the completeness of each engine we have also materialize the generated datasets and make them available through a Virtuoso Triple store: http://gtfs-bench.linkeddata.es/sparql. The data is organized as follows:
+In order to test the completeness of each engine we have also materialized the generated datasets and make them available through a Virtuoso Triple store: http://gtfs-bench.linkeddata.es/sparql. The data is organized as follows:
 
 1. GTFS original (scale 1) in the GRAPH: http://gtfs1.linkeddata.es 
 2. GTFS-5 (scale 5) in the GRAPH: http://gtfs5.linkeddata.es
 3. GTFS-10 (scale 10) in the GRAPH: http://gtfs10.linkeddata.es
 4. GTFS-50 (scale 50) in the GRAPH: http://gtfs50.linkeddata.es
 5. GTFS-100 (scale 100) in the GRAPH: http://gtfs100.linkeddata.es
-6. GTFS-500 (scale 500) in the GRAPH: http://gtfs5.linkeddata.es
+6. GTFS-500 (scale 500) in the GRAPH: http://gtfs500.linkeddata.es
 
 ## Authors
 
