@@ -19,7 +19,7 @@ We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph acc
 	3. Go to point 1 (you have to modify data-preparation.sh in order to add your generated datasets)
 3. Go to the mappings folder and select the files needed for your engine or modify one of them to adapt it to your format.
 4. Go to the query folder and get the queries inside the VIG folder.
-5. If you have a docker image of your engine go to the engines folder and add it to the docker-compose.yml. Note that you have to follow the same configuration as the other engines (i.e., sharred volumes of data, results, mappings and queries) to be accesible your engine.
+5. If you have a docker image of your engine go to the engines folder and add it to the docker-compose.yml. Note that you have to follow the same configuration as the other engines (i.e. shared volumes of data, results, mappings and queries) to be accesible your engine. You can remove the generation of the rest engines.
 6. Prepare your run script and obtain the results. Examples of these scripts are provided inside each engine folder.
 
 ## Baseline:
@@ -32,7 +32,7 @@ In order to test the completeness of each engine we have also materialized the g
 5. GTFS-100 (scale 100) in the GRAPH: http://gtfs100.linkeddata.es
 6. GTFS-500 (scale 500) in the GRAPH: http://gtfs500.linkeddata.es
 
-If other scale value is selected to test the engine, the materialization can be obtained using any [RML-compliant](https://rml.io/implementation-report/) engine (we recommed SDM-RDFizer), the CSVs files exported by VIG and the gtfs-csv.rml.ttl mapping. The generation script is also provided in the generation folder.
+If other scale value is selected to test the engine, the materialization can be obtained using any [RML-compliant](https://rml.io/implementation-report/) engine (we recommed SDM-RDFizer), the CSVs files exported by VIG and the gtfs-csv.rml.ttl mapping.
 
 ## Authors
 
