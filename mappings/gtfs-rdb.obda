@@ -68,7 +68,7 @@ target		<http://transport.linkeddata.es/madrid/metro/frequency/{trip_id2}-{start
 source		SELECT * FROM (SELECT * FROM FREQUENCIES) AS child, (SELECT * FROM TRIPS) AS parent WHERE child.trip_id2=parent.trip_id
 
 mappingId	mapping-1734218856
-target		<http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}> a <http://vocab.gtfs.org/terms#Service> ; <http://vocab.gtfs.org/terms#saturday> {saturday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#wednesday> {wednesday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#friday> {friday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#monday> {monday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#tuesday> {tuesday}^^xsd:boolean ; <http://schema.org/endDate> {end_date}^^xsd:date ; <http://vocab.gtfs.org/terms#sunday> {sunday}^^xsd:boolean ; <http://schema.org/startDate> {start_date}^^xsd:date ; <http://vocab.gtfs.org/terms#thursday> {thursday}^^xsd:boolean . 
+target		<http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}> a <http://vocab.gtfs.org/terms#CalendarRule> ; <http://vocab.gtfs.org/terms#saturday> {saturday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#wednesday> {wednesday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#friday> {friday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#monday> {monday}^^xsd:boolean ; <http://vocab.gtfs.org/terms#tuesday> {tuesday}^^xsd:boolean ; <http://schema.org/endDate> {end_date}^^xsd:date ; <http://vocab.gtfs.org/terms#sunday> {sunday}^^xsd:boolean ; <http://schema.org/startDate> {start_date}^^xsd:date ; <http://vocab.gtfs.org/terms#thursday> {thursday}^^xsd:boolean . 
 source		SELECT * FROM CALENDAR
 
 mappingId	mapping-1532560156
