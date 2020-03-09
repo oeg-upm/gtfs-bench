@@ -3,3 +3,5 @@ engines/morph-csv/morph-csv-morph-csv-1.0.0
 engines/ontop/copyright
 engines/ontop/lib
 script-nextcloud-vig.sh
+mappings/gtfs-worst.yml
+mappings/gtfs-best.yml

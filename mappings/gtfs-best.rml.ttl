@@ -6,8 +6,8 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix : <http://mapping.example.com/>.
-@prefix foaf: <http://xml~xpath, /Category/Recordns.com/foaf/0.1/>.
-@prefix xsd: <http://www.w3.org/2001/xml~xpath, /Category/RecordSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix rev: <http://purl.org/stuff/rev#>.
 @prefix gtfs: <http://vocab.gtfs.org/terms#>.
@@ -114,9 +114,8 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rml:source "/data/TRIPS.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/TRIPS.csv";
+    rml:referenceFormulation ql:CSV.
 :map_trips_0 a rr:TriplesMap;
     rdfs:label "trips".
 :s_1 a rr:SubjectMap.
@@ -196,9 +195,9 @@
 :pom_18 rr:objectMap :om_19.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rml:source "/data/ROUTES.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/ROUTES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_routes_0 a rr:TriplesMap;
     rdfs:label "routes".
 :s_2 a rr:SubjectMap.
@@ -284,9 +283,9 @@
 :pom_27 rr:objectMap :om_28.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rml:source "/data/AGENCY.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/AGENCY.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_agency_0 a rr:TriplesMap;
     rdfs:label "agency".
 :s_3 a rr:SubjectMap.
@@ -483,9 +482,8 @@
 :pom_47 rr:objectMap :om_48.
 :map_services1_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/CALENDAR.csv";
+    rml:referenceFormulation ql:CSV.
 :map_services1_0 a rr:TriplesMap;
     rdfs:label "services1".
 :s_5 a rr:SubjectMap.
@@ -508,9 +506,8 @@
 :pom_49 rr:objectMap :om_50.
 :map_services2_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/CALENDAR_DATES.csv";
+    rml:referenceFormulation ql:CSV.
 :map_services2_0 a rr:TriplesMap;
     rdfs:label "services2".
 :s_6 a rr:SubjectMap.
@@ -533,9 +530,8 @@
 :pom_51 rr:objectMap :om_52.
 :map_calendar_date_rules_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rml:source "/data/CALENDAR_DATES.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/CALENDAR_DATES.csv";
+    rml:referenceFormulation ql:CSV.
 :map_calendar_date_rules_0 a rr:TriplesMap;
     rdfs:label "calendar_date_rules".
 :s_7 a rr:SubjectMap.
@@ -572,9 +568,8 @@
     rr:datatype xsd:boolean.
 :map_calendar_rules_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rml:source "/data/CALENDAR.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/CALENDAR.csv";
+    rml:referenceFormulation ql:CSV.
 :map_calendar_rules_0 a rr:TriplesMap;
     rdfs:label "calendar_rules".
 :s_8 a rr:SubjectMap.
@@ -681,9 +676,8 @@
     rr:datatype xsd:date.
 :map_feed_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rml:source "/data/FEED_INFO.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rr:tableName "gtfs.FEED_INFO";
+    rml:source <#DB_source_mongo> .
 :map_feed_0 a rr:TriplesMap;
     rdfs:label "feed".
 :s_9 a rr:SubjectMap.
@@ -756,9 +750,8 @@
     rr:termType rr:Literal.
 :map_shapes_0 rml:logicalSource :source_10.
 :source_10 a rml:LogicalSource;
-    rml:source "/data/SHAPES.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rml:source "/data/SHAPES.csv";
+    rml:referenceFormulation ql:CSV.
 :map_shapes_0 a rr:TriplesMap;
     rdfs:label "shapes".
 :s_10 a rr:SubjectMap.
@@ -813,9 +806,9 @@
     rr:termType rr:Literal.
 :map_frequencies_0 rml:logicalSource :source_11.
 :source_11 a rml:LogicalSource;
-    rml:source "/data/FREQUENCIES.xml";
-    rml:iterator "/Category/Record";
-    rml:referenceFormulation ql:XPath.
+    rr:tableName "gtfs.FREQUENCIES";
+    rml:source <#DB_source> ;
+    rr:sqlVersion rr:SQL2008 .
 :map_frequencies_0 a rr:TriplesMap;
     rdfs:label "frequencies".
 :s_11 a rr:SubjectMap.
@@ -929,3 +922,15 @@
     rr:joinCondition :jc_10.
 :jc_10 rr:child "trip_id";
     rr:parent "trip_id".
+
+
+<#DB_source> a d2rq:Database;
+    d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
+    d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
+    d2rq:username "root";
+    d2rq:password "oeg".
+
+<#DB_source_mongo> a d2rq:Database;
+    d2rq:jdbcDSN "jdbc:mongo://localhost:27017";
+    d2rq:username "root";
+    d2rq:password "oeg".
