@@ -200,7 +200,7 @@ mappings:
     po:
       - [a, gtfs:Feed]
       - [dct:publisher,$(feed_publisher_name)]
-      - [foaf:page,$(feed_published_url)~iri]
+      - [foaf:page,$(feed_publisher_url)~iri]
       - [dct:language,$(feed_lang)]
       - [schema:startDate,$(feed_start_date), xsd:date]
       - [schema:endDate,$(feed_end_date), xsd:date]
