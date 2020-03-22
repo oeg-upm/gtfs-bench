@@ -1,15 +1,13 @@
 {
-	"sources": [
-		{"id": 0, "type": "file", "format": "CSV", "path": "///"},
-		{"id": 1, "type": "file", "format": "JSON", "path": "///"},
-		{"id": 2, "type": "db", "connection": 
-			{"user": "root", "pass": "oeg", "dsn": "", "driver": "com.mysql.cj.jdbc.Driver" },
-		{"id": 3, "type": "file", "format": "XML", "path": "///"},
-		....
-	],
 	"entities": [
-		{"id": 0, "name": "TRIPS", source: 0},
-		{"id": 1, "name": "STOP_TIMES", source: 0},
-		...
+		{
+			"id": 1,
+			"name": "TRIPS",
+			"map": "partial/trips.ttl",
+			"source": {
+				"type": "csv",
+				"file": "source.csv"
+			}	
+		}
 	]
 }
