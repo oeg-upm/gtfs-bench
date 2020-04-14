@@ -19,7 +19,7 @@ We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph acc
 	3. Go to point 1 (you have to modify data-preparation.sh in order to add your generated datasets)
 3. Go to the mappings folder and select the files needed for your engine or modify one of them to adapt it to your format.
 4. Go to the query folder and get the queries inside the VIG folder.
-5. If you have a docker image of your engine go to the engines folder and add it to the docker-compose.yml. Note that you have to follow the same configuration as the other engines (i.e. shared volumes of data, results, mappings and queries) to be accesible your engine. You can remove the generation of the rest engines.
+5. If you have a docker image of your engine go to the engines folder and add it to the docker-compose.yml. Note that you have to follow the same configuration as the other engines (i.e. shared volumes of data, results, mappings and queries) to be accesibled by your engine. You can remove the creation of the docker images of the rest engines.
 6. Prepare your run script and obtain the results. Examples of these scripts are provided inside each engine folder.
 
 ## Baseline:
