@@ -1,0 +1,1278 @@
+@prefix ns1: <http://www.w3.org/ns/r2rml#> .
+@prefix ns2: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ns3: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mapping.example.com/uuid/1b4dfdfa-ad96-4e9e-9911-399b218615fa> a ns1:TriplesMap ;
+    rdfs:label "frequencies" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/2a500ca4-95ed-4d08-87fc-fe06f8b8ccd7> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/2d268719-9f2f-4761-a6dc-7b589542f2fe>,
+        <http://mapping.example.com/uuid/41501bde-0eb3-4ae6-b847-f6c2ea23fb33>,
+        <http://mapping.example.com/uuid/5f2a02f7-aebb-4d6d-af7f-fc41c45b71e1>,
+        <http://mapping.example.com/uuid/6d3bd554-d594-42b7-b4dc-92185fa87579>,
+        <http://mapping.example.com/uuid/deea3352-319e-476f-aed6-0d4b50738693>,
+        <http://mapping.example.com/uuid/e13dc792-ad49-4069-bb83-2e541d0b44c4> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/3984588d-303f-4f62-ae2f-1d67a12ee24f> .
+
+<http://mapping.example.com/uuid/f2a96d22-1819-4e26-a2d2-4398dc9cc58e> a ns1:TriplesMap ;
+    rdfs:label "stoptimes" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/2fc477cb-8c4f-42c0-8706-a052e4f70828> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/33d1e27a-b931-4c15-aa51-00f5840255f5>,
+        <http://mapping.example.com/uuid/36ecfbf0-330a-4621-b0a7-81eeb5bb5126>,
+        <http://mapping.example.com/uuid/7853e902-f6ce-4b3f-8cc1-e562aaab8381>,
+        <http://mapping.example.com/uuid/8406ac07-5e0f-40b4-b499-4bb765bd63e1>,
+        <http://mapping.example.com/uuid/96d5859b-4e7a-45dd-bf2f-f46ab6678778>,
+        <http://mapping.example.com/uuid/9b52f6b4-17e4-44a5-9bc3-a8b4c7683266>,
+        <http://mapping.example.com/uuid/b309fc8e-91cd-4afd-8481-3cd10fc39902>,
+        <http://mapping.example.com/uuid/ba691736-46ea-4ac1-bebe-6781f8bdcf5c>,
+        <http://mapping.example.com/uuid/ee4a97c3-1112-4e9c-a8c3-e08073c75214>,
+        <http://mapping.example.com/uuid/f5aaf4c4-ae37-4cc6-8925-171743bc36a0> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/fc55658a-6170-4cf0-a7ca-362443706715> .
+
+<http://mapping.example.com/uuid/fbe5a065-7b43-4940-88d3-bd376d3fbc5f> a ns1:TriplesMap ;
+    rdfs:label "feed" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/92f0fae0-6b0f-484a-a2df-5bc59a46e48d> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/0b42be68-66a8-4bae-8dcc-6c50ca161a20>,
+        <http://mapping.example.com/uuid/12095004-efa2-4ea6-8799-8a9cde2123c5>,
+        <http://mapping.example.com/uuid/1db50534-7be5-4ff5-82b9-aace09cec21c>,
+        <http://mapping.example.com/uuid/26e5f3d3-3484-4c86-bfaf-9092ed5a26e3>,
+        <http://mapping.example.com/uuid/3a5f10bd-329f-42b1-8b1a-91bf023f9974>,
+        <http://mapping.example.com/uuid/8784e597-4592-4ce3-b6fc-4b9da754f2e7>,
+        <http://mapping.example.com/uuid/ed62f97f-fbf3-46e9-8e01-82d2e9a3afaa> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/81121a39-bf43-4f69-bc9c-bf95f40c4347> .
+
+<http://mapping.example.com/uuid/01ef71e5-9560-40f7-895d-3017553067cb> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/21a9788e-17b9-4a00-a772-7ae8c842c29b> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/c8dc0b46-bd78-488d-aa1f-00787aaf97e9> .
+
+<http://mapping.example.com/uuid/02184db8-9820-4a04-b1ff-b2f08d27768c> a ns1:ObjectMap ;
+    ns2:reference "end_time" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/0500395c-9ffb-4dfd-870d-de3021086bcb> a ns1:ObjectMap ;
+    ns2:reference "agency_phone" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/057b22ee-a2c5-451b-b227-ce47b6232db1> a ns1:PredicateMap ;
+    ns1:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<http://mapping.example.com/uuid/081c0286-3923-4702-a365-b94641b7c6ca> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/88239da7-545a-4eeb-96cc-f67060e714f4> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/14b623da-18a1-46ef-97ec-bc063362b771> .
+
+<http://mapping.example.com/uuid/0949e36c-0011-489d-b078-3db5f7ce8aa8> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Trip" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/0b42be68-66a8-4bae-8dcc-6c50ca161a20> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/d8f354b3-d498-44ea-aaf5-e0a3caad85b1> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/1b55dd3b-d6f8-426c-90d9-6358828f844a> .
+
+<http://mapping.example.com/uuid/0c1d28ee-c4c2-4783-b50a-7bc3a62f5a8f> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/0c690a76-ded1-4a3a-bdf0-d6cdba9ef8c3> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/0d3f252a-8a0e-48c5-98ca-8f8a9bac3d94> a ns1:ObjectMap ;
+    ns2:reference "date" ;
+    ns1:datatype xsd:date ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/0e905479-0ba4-443e-be23-bd4355c6ef85> a ns1:ObjectMap ;
+    ns2:reference "agency_url" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/0f3bd98d-eeca-498d-b110-0c2b8c0b5512> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/371a568f-8cff-4ab8-9fd6-949064de6925> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <SHAPES> .
+
+<http://mapping.example.com/uuid/0f62fce7-139d-467d-ada5-21475bb559ee> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}" .
+
+<http://mapping.example.com/uuid/1013f5af-daac-47af-af87-3b43a1a7689d> a ns1:ObjectMap ;
+    ns2:reference "stop_timezone" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/1145b7eb-8f58-4a11-b949-330fe3a63ad4> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/812ea844-2830-411a-af6e-ab983711e211> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/8fc5c7be-4403-417f-b289-b14a52340031> .
+
+<http://mapping.example.com/uuid/11472209-9787-4b23-b857-97df8dcf1d69> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/57eb7b28-1c83-41d6-a9a6-be5dcfdc57f6> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <CALENDAR> .
+
+<http://mapping.example.com/uuid/12095004-efa2-4ea6-8799-8a9cde2123c5> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/ac6403fe-f0bb-458b-95a1-7b8ff47ed4fe> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/c05bba17-7021-46ce-8efd-641ade660d59> .
+
+<http://mapping.example.com/uuid/127fbe68-5f77-4ba9-8a04-3c0c1a6380b8> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/description> .
+
+<http://mapping.example.com/uuid/14b623da-18a1-46ef-97ec-bc063362b771> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#code> .
+
+<http://mapping.example.com/uuid/14e1697b-3719-4d1f-a5f4-de95e07569b6> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/page> .
+
+<http://mapping.example.com/uuid/151aabfd-77ee-465e-97bc-db18a0263da9> a ns1:ObjectMap ;
+    ns2:reference "start_time" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/169f1c2e-a1cc-41b9-b9ee-5b39ce01f5f4> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/9fff1c9c-48e5-4a2c-a85b-28d79d310ba5> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/ba0330b5-3ea3-443f-9320-4abd57a889dd> .
+
+<http://mapping.example.com/uuid/16daaf77-3c5d-4718-9217-94faf0259ace> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/1cf4fe37-d3d6-480d-bab5-5cde62edf06b> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/baf80c1d-adfe-4471-89b5-e0a79e55497e> .
+
+<http://mapping.example.com/uuid/172bd651-6c76-4c4f-8703-6d93f13d80d9> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#CalendarRule" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/17d4d3c5-f9aa-4da8-8d96-e5a74c430022> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/stops/{stop_id}" .
+
+<http://mapping.example.com/uuid/18243c6c-e954-49bf-a01f-4c74ecb88585> a ns1:ObjectMap ;
+    ns2:reference "headway_secs" ;
+    ns1:datatype xsd:integer ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/18409cbe-777d-4db6-a36e-1209f547b897> a ns1:ObjectMap ;
+    ns2:reference "shape_pt_lat" ;
+    ns1:datatype xsd:double ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/19d9b9c5-a9b9-489f-895c-a6ef19124d1e> a ns1:ObjectMap ;
+    ns2:reference "trip_short_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/1a0687d7-8e37-438a-a445-a34951e092a1> a ns1:ObjectMap ;
+    ns2:reference "sunday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/1a55d037-b7b2-4895-9529-0f26d3c47fa0> a ns1:TriplesMap ;
+    rdfs:label "routes" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/220983ee-2b1f-4152-bbe8-8054ff42f23e> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/40c00ef8-1f79-41ae-b9c2-49ad8cd59d29>,
+        <http://mapping.example.com/uuid/4ab410c4-1a80-4950-ac16-2fe4ea1bbcc0>,
+        <http://mapping.example.com/uuid/4ace1022-9473-4969-8f4d-2b7137d1c2d3>,
+        <http://mapping.example.com/uuid/6996be4e-1eca-434d-ae3f-0b0b1e2bd6a5>,
+        <http://mapping.example.com/uuid/8bc21c6a-bb53-47f5-960e-1d02d0b1c256>,
+        <http://mapping.example.com/uuid/8dff70df-6321-40af-bd16-83b4387d12f8>,
+        <http://mapping.example.com/uuid/9ee75eee-1834-48da-b9ab-49537d4a756c>,
+        <http://mapping.example.com/uuid/d86036a2-b3e7-4068-9cb8-e2dedaa82539>,
+        <http://mapping.example.com/uuid/fde16445-b3f5-4eca-8be3-ad668d4ed021> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/aa814a99-fd66-4cf4-9daa-4d11ce10914a> .
+
+<http://mapping.example.com/uuid/1b55dd3b-d6f8-426c-90d9-6358828f844a> a ns1:PredicateMap ;
+    ns1:constant <http://schema.org/startDate> .
+
+<http://mapping.example.com/uuid/1cf4fe37-d3d6-480d-bab5-5cde62edf06b> a ns1:ObjectMap ;
+    ns2:reference "monday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/1db50534-7be5-4ff5-82b9-aace09cec21c> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/ff77d994-8495-45b0-a0a3-1d793fac9e7b> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3aa650c7-5569-4a4b-8203-1d680bb6f4e4> .
+
+<http://mapping.example.com/uuid/1e4fc18d-3d28-4a1b-9f44-384b32c463d9> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/2d43eb35-d786-4610-b9e6-14cce69bb382> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/c2fd81a9-8a5d-454e-8fd8-fb758307656a> .
+
+<http://mapping.example.com/uuid/1e94530b-2df6-4ff2-83e2-f304d5225a66> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/62976aaf-126b-4f8a-b2a5-37d9d61d9887> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/46ef5d18-9c2b-4efd-b0c5-46dd16c179cf> .
+
+<http://mapping.example.com/uuid/1f2e4c27-eabe-4aec-bc9e-315a927c077f> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/913a896c-ba03-48c5-a90a-918f1800e1f6> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/7ea8d161-fa86-4e13-95eb-a355f82c30fa> .
+
+<http://mapping.example.com/uuid/2003d15f-0d62-4341-9fbe-60f67fbad710> a ns1:ObjectMap ;
+    ns2:reference "stop_url" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/215a321c-eb2d-4f08-b2e2-c16f057a2550> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}-{shape_pt_sequence}" .
+
+<http://mapping.example.com/uuid/21a9788e-17b9-4a00-a772-7ae8c842c29b> a ns1:ObjectMap ;
+    ns2:reference "block_id" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/22081583-0dcf-4204-9ec5-debf50e832c3> a ns1:ObjectMap ;
+    ns2:reference "shape_dist_traveled" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/220983ee-2b1f-4152-bbe8-8054ff42f23e> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/8f89bd56-d018-40e5-b8cc-6c71a33999f0> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <ROUTES> .
+
+<http://mapping.example.com/uuid/245b1f79-9880-4f67-a56b-cfbe993d1d94> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/26e5f3d3-3484-4c86-bfaf-9092ed5a26e3> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/e041399c-0c83-4872-a1bc-af8851c0f1b9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/a168d1b5-ee2c-4d07-b5ad-5381f55d66fa> .
+
+<http://mapping.example.com/uuid/2984cf1a-0647-4601-a0ac-52539ccefde7> a ns1:PredicateMap ;
+    ns1:constant <http://schema.org/startDate> .
+
+<http://mapping.example.com/uuid/29df6d7b-d597-46e6-90c6-3916d9191559> a ns1:ObjectMap ;
+    ns2:reference "stop_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/2a500ca4-95ed-4d08-87fc-fe06f8b8ccd7> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/6b82b7bb-18cd-4786-a445-49f7ca9e69bc> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <FREQUENCIES> .
+
+<http://mapping.example.com/uuid/2aa7fb07-2df4-4c68-bb10-b561fa81a838> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/0949e36c-0011-489d-b078-3db5f7ce8aa8> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/ee5f6109-80ab-480e-8833-4c5c421d5dc4> .
+
+<http://mapping.example.com/uuid/2d23470d-b764-4227-a418-aead2be24e53> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/2003d15f-0d62-4341-9fbe-60f67fbad710> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/14e1697b-3719-4d1f-a5f4-de95e07569b6> .
+
+<http://mapping.example.com/uuid/2d268719-9f2f-4761-a6dc-7b589542f2fe> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/fe4b6d83-d678-4a6f-8f2d-09d05b3582ba> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/d205f781-f340-4115-93f5-5ef2c39360a3> .
+
+<http://mapping.example.com/uuid/2d43eb35-d786-4610-b9e6-14cce69bb382> ns1:child "service_id" ;
+    ns1:parent "service_id" .
+
+<http://mapping.example.com/uuid/2dcd1909-90a0-4120-b629-c4479b16a18d> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/b77a4a78-274a-473b-bd90-9b3ba5ab8af9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/d72ed056-eac7-4ee5-9754-a002d74cd247> .
+
+<http://mapping.example.com/uuid/2fc477cb-8c4f-42c0-8706-a052e4f70828> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/d3ac47ed-ee7e-49d6-8762-94201ace4266> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <STOP_TIMES> .
+
+<http://mapping.example.com/uuid/3078aef4-3b35-4ad3-b800-32bba382d590> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Service" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/317d31a2-56c2-4bc1-b3d4-c330a31b7a58> a ns1:ObjectMap ;
+    ns2:reference "exact_times" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/327f78fb-200d-47c6-81f9-fddea12f3aa3> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#headsign> .
+
+<http://mapping.example.com/uuid/33d1e27a-b931-4c15-aa51-00f5840255f5> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f6ab052a-18f8-4b83-a65d-950c2b4cd573> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/61035c25-4f47-4bf3-a1a4-c51fe7b282df> .
+
+<http://mapping.example.com/uuid/36ecfbf0-330a-4621-b0a7-81eeb5bb5126> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/6a09927d-9b48-4788-a99c-372468384e9d> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/61c35bf1-c8f3-44c8-9ce1-5a445f04d75f> .
+
+<http://mapping.example.com/uuid/371a568f-8cff-4ab8-9fd6-949064de6925> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/3735284c-fbf8-4dc3-94aa-ae99d396514b> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/6df7b578-7036-43ec-8c62-ae036752911e> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/9063c3e5-0ea0-42a7-aabc-c7e165da2bcb> .
+
+<http://mapping.example.com/uuid/38060da1-c1c6-49da-8714-eef5ef186f8a> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/388cf32b-c631-4f6e-898f-0b4123de0370> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/95245ebe-a041-4ed5-b043-23852b5e7c92> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/d65d7bf4-fbef-4680-b554-920922caf968> .
+
+<http://mapping.example.com/uuid/3984588d-303f-4f62-ae2f-1d67a12ee24f> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/frequency/{trip_id}-{start_time}" .
+
+<http://mapping.example.com/uuid/39b63534-315b-4fd0-9c44-d3c6d50527c0> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/39bd6963-81ab-4c79-8f10-9cb41e3ad3ec> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#distanceTraveled> .
+
+<http://mapping.example.com/uuid/3a5f10bd-329f-42b1-8b1a-91bf023f9974> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/80e060ed-bc27-4053-9ae9-9783b8c932dc> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/8c98041f-ae93-472c-81c4-e4bc6219642c> .
+
+<http://mapping.example.com/uuid/3aa650c7-5569-4a4b-8203-1d680bb6f4e4> a ns1:PredicateMap ;
+    ns1:constant <http://schema.org/version> .
+
+<http://mapping.example.com/uuid/3accf63a-d3e9-4e41-b402-60636c605762> a ns1:ObjectMap ;
+    ns2:reference "feed_lang" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/3ba0f35a-f3cc-4871-a845-90dc114202d1> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#shape> .
+
+<http://mapping.example.com/uuid/3bcbf99c-89c1-4b18-a29a-7b5425a71fbc> a ns1:TriplesMap ;
+    rdfs:label "services1" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/11472209-9787-4b23-b857-97df8dcf1d69> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/70ed1859-9c43-4a9d-a131-d73474b75c78>,
+        <http://mapping.example.com/uuid/924a1c05-6f0e-4701-bf63-5825ca8b227b> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/fb9c05f0-fac3-468e-a4f9-d25f8e757e26> .
+
+<http://mapping.example.com/uuid/3c5bd95f-d902-4499-bd5f-78e5755e2f80> ns1:child "route_id" ;
+    ns1:parent "route_id" .
+
+<http://mapping.example.com/uuid/3d011c1f-eaea-4bf6-ab75-a58747edbd2d> a ns1:PredicateMap ;
+    ns1:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<http://mapping.example.com/uuid/3d80b52a-ac94-4bb9-8c9f-c63704cf8208> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/ce3d2f47-0999-446f-85d9-bb5654dfc299> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/54e463f1-73df-4d55-8b40-627461b6676b> .
+
+<http://mapping.example.com/uuid/3ddbf8cd-0bff-44ee-b6d1-0284590f61fb> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#departureTime> .
+
+<http://mapping.example.com/uuid/3f389aae-37b6-4269-b1db-20cf5ecf25ee> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#pickupType> .
+
+<http://mapping.example.com/uuid/3fc2674f-9329-48ad-85a5-95481ae3b673> a ns1:PredicateMap ;
+    ns1:constant <http://schema.org/endDate> .
+
+<http://mapping.example.com/uuid/405d0191-7ee7-428c-a17f-4fb5a88fe6b0> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f30e000f-de47-4a51-b606-1c157215b485> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/b04cf5fc-7254-4156-9c87-1b17bef7588a> .
+
+<http://mapping.example.com/uuid/40c00ef8-1f79-41ae-b9c2-49ad8cd59d29> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/b7ac62da-b497-4861-969c-0dc96189c8a1> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/6ecb3303-2fbc-49b0-be37-291a3897a7f1> .
+
+<http://mapping.example.com/uuid/41501bde-0eb3-4ae6-b847-f6c2ea23fb33> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/5fe531a6-331b-429e-b4cd-2aa1d601ff97> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/4db43535-c704-4bf7-ae0d-e7ce46b6ab38> .
+
+<http://mapping.example.com/uuid/440cf96c-60af-4cda-a156-482e375a003c> a ns1:ObjectMap ;
+    ns2:reference "thursday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/45d1340c-b683-46a2-9ce5-d617e195ebf9> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/4633da14-88f5-462d-adb7-62ec45511d9a> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/464a7256-5029-4e88-a0a2-5e9dfbf5b9ca> a ns2:LogicalSource ;
+    ns2:referenceFormulation <http://semweb.mmlab.be/ns/ql#CSV> ;
+    ns2:source <source.csv> .
+
+<http://mapping.example.com/uuid/46bbe81c-d277-4a38-a079-18316b39d9b9> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/3c5bd95f-d902-4499-bd5f-78e5755e2f80> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/1a55d037-b7b2-4895-9529-0f26d3c47fa0> .
+
+<http://mapping.example.com/uuid/46ef5d18-9c2b-4efd-b0c5-46dd16c179cf> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> .
+
+<http://mapping.example.com/uuid/499f1165-013b-4bd1-8e91-285333a0f531> a ns1:ObjectMap ;
+    ns2:reference "wednesday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/4ab410c4-1a80-4950-ac16-2fe4ea1bbcc0> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/1f2e4c27-eabe-4aec-bc9e-315a927c077f> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/6c357423-7c4e-46eb-a9ea-cc3b62ff1f9c> .
+
+<http://mapping.example.com/uuid/4abefd92-9325-4afb-bae9-b2e457be00f2> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#pointSequence> .
+
+<http://mapping.example.com/uuid/4ace1022-9473-4969-8f4d-2b7137d1c2d3> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/eb971182-e3db-4797-8148-a90c160658c6> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/ecbbe6cb-e14c-4f01-b986-427efa1ba61b> .
+
+<http://mapping.example.com/uuid/4b6dd2a8-8ebf-4351-974c-1a1790bb5d7c> a ns1:ObjectMap ;
+    ns2:reference "direction_id" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/4b921eb5-f35e-4db2-a9f0-82287133d7bb> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/name> .
+
+<http://mapping.example.com/uuid/4c811eb3-63ed-488f-a50f-53e06a87adc6> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#timeZone> .
+
+<http://mapping.example.com/uuid/4db43535-c704-4bf7-ae0d-e7ce46b6ab38> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/4fb5a962-6b94-4ead-b6c7-880a160ff482> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/502160bd-de7e-4a88-94fa-92b335ccea10> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#trip> .
+
+<http://mapping.example.com/uuid/54390a80-3752-4ba7-a95c-3a8a2c87084e> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/18409cbe-777d-4db6-a36e-1209f547b897> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3d011c1f-eaea-4bf6-ab75-a58747edbd2d> .
+
+<http://mapping.example.com/uuid/548b362e-d05e-4a9a-a77a-325389b85648> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#distanceTraveled> .
+
+<http://mapping.example.com/uuid/54e463f1-73df-4d55-8b40-627461b6676b> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#dateAddition> .
+
+<http://mapping.example.com/uuid/569f6c36-5d0b-41ef-a2ec-de111f9688ab> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#headsign> .
+
+<http://mapping.example.com/uuid/56d9c80b-c952-439e-a1d5-e018c1b027ed> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/eb3bb88d-fcdd-4b21-ba8d-21cd4919ee3a> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/f900ad47-2ff7-4dcf-8fd3-2c93e8f3edc9> .
+
+<http://mapping.example.com/uuid/57166344-4a17-4af5-bd21-050c7236a063> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#shortName> .
+
+<http://mapping.example.com/uuid/57eb7b28-1c83-41d6-a9a6-be5dcfdc57f6> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/58274403-5585-4d4e-b1c7-c34cc3ea93e7> a ns1:ObjectMap ;
+    ns2:reference "route_url" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/588b2f2a-76ad-46fe-9565-2f34c89b4177> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#textColor> .
+
+<http://mapping.example.com/uuid/59aa111d-9169-4d09-b8dc-a5ec9f92faa9> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/46bbe81c-d277-4a38-a079-18316b39d9b9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/b5d46a62-50f2-4567-b81d-674cbc7b1511> .
+
+<http://mapping.example.com/uuid/5aba0c71-c5db-4f55-b780-c9151db6aa06> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> .
+
+<http://mapping.example.com/uuid/5b151292-c2ad-4bad-aa51-4345ed46abad> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/a7a5d235-6a9b-4002-98ca-2885762436f0> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/057b22ee-a2c5-451b-b227-ce47b6232db1> .
+
+<http://mapping.example.com/uuid/5baa7c2e-4c7b-404f-800f-8d3558d296a7> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/name> .
+
+<http://mapping.example.com/uuid/5d96d30c-6631-4100-b5be-8804efd2fa2a> a ns1:TriplesMap ;
+    rdfs:label "calendar_rules" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/63a23eef-089a-46e1-a427-178ba8ab0757> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/16daaf77-3c5d-4718-9217-94faf0259ace>,
+        <http://mapping.example.com/uuid/2dcd1909-90a0-4120-b629-c4479b16a18d>,
+        <http://mapping.example.com/uuid/71f1ee51-f604-464e-9332-c16f0d0eee36>,
+        <http://mapping.example.com/uuid/7b4ad74e-639b-42f0-a552-dfca421af986>,
+        <http://mapping.example.com/uuid/8fbd6c84-4fc5-4d00-96e2-889d1a05a4dc>,
+        <http://mapping.example.com/uuid/d21b5093-50a0-47e5-b6d9-a4f8d5d0b54f>,
+        <http://mapping.example.com/uuid/d78cf95d-2a89-4bd4-9b85-6511024f245c>,
+        <http://mapping.example.com/uuid/d7ce9b27-8550-48d9-99ac-1ca12ce3e351>,
+        <http://mapping.example.com/uuid/e8353d6b-5c18-4957-8edd-01bccdfccf91>,
+        <http://mapping.example.com/uuid/e93d0319-e544-480c-942c-746ebefc0336> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/d5039ec0-4101-4136-a5d3-937ca01500d3> .
+
+<http://mapping.example.com/uuid/5f2a02f7-aebb-4d6d-af7f-fc41c45b71e1> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/151aabfd-77ee-465e-97bc-db18a0263da9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/aef37f85-6d6e-4124-8d57-2d6d89c80ae3> .
+
+<http://mapping.example.com/uuid/5fe531a6-331b-429e-b4cd-2aa1d601ff97> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Frequency" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/600065e1-e2f9-4a0b-bdce-fa37c6c2ebf8> a ns1:ObjectMap ;
+    ns2:reference "start_date" ;
+    ns1:datatype xsd:date ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/61035c25-4f47-4bf3-a1a4-c51fe7b282df> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#stop> .
+
+<http://mapping.example.com/uuid/618cd5c8-7014-4fd1-8519-bfc24b772040> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/0500395c-9ffb-4dfd-870d-de3021086bcb> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/c495b038-fb31-45bd-925c-a6f886366929> .
+
+<http://mapping.example.com/uuid/61c35bf1-c8f3-44c8-9ce1-5a445f04d75f> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/621be838-29f4-4e43-9cfd-891c977d7653> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#dropOffType> .
+
+<http://mapping.example.com/uuid/62957f12-13ba-44f9-b779-bf1e6fd012d9> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/e253fb00-d514-4725-8944-41c754716b01> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/b119d474-b9ed-478b-b4d2-639e1ece9224> .
+
+<http://mapping.example.com/uuid/62976aaf-126b-4f8a-b2a5-37d9d61d9887> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/630040a3-935b-4f38-a01c-fa35d8594522> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/1e4fc18d-3d28-4a1b-9f44-384b32c463d9>,
+        <http://mapping.example.com/uuid/c5473817-1ec9-48c0-afa3-bb92fc0c7a29> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/fcde8579-5bf5-412f-b0b7-bc9fc83d9e9d> .
+
+<http://mapping.example.com/uuid/63a23eef-089a-46e1-a427-178ba8ab0757> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/d99ed7f1-11a4-4e73-b34d-422ecc2f428b> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <CALENDAR> .
+
+<http://mapping.example.com/uuid/682690a6-f993-46b1-8e62-45313ececd2b> a ns1:ObjectMap ;
+    ns2:reference "zone_id" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/6996be4e-1eca-434d-ae3f-0b0b1e2bd6a5> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/a5c8a5c2-c1de-4df9-8ba9-96503d7fd8d9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/588b2f2a-76ad-46fe-9565-2f34c89b4177> .
+
+<http://mapping.example.com/uuid/6a09927d-9b48-4788-a99c-372468384e9d> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#StopTime" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/6a2791ee-3311-4f89-bfe4-0554bcceef90> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/682690a6-f993-46b1-8e62-45313ececd2b> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/aea6bb3a-4108-4c8a-83f1-337fd23e3b55> .
+
+<http://mapping.example.com/uuid/6afc9049-9bee-402c-9ae7-48b1ebfa5b8f> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#routeType> .
+
+<http://mapping.example.com/uuid/6b3be2f2-e5d4-453c-9014-4d0ade873009> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/e2296fe1-7034-458c-b79b-baca5e0d5d51> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/39b63534-315b-4fd0-9c44-d3c6d50527c0> .
+
+<http://mapping.example.com/uuid/6b45e42e-81b9-4621-850b-2c9870a80c6e> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/b9514842-735c-4535-a2d7-73733d1059d0> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/b4ee21e1-b2e2-4323-96fb-f8d0a6778296> .
+
+<http://mapping.example.com/uuid/6b82b7bb-18cd-4786-a445-49f7ca9e69bc> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/6b9f5c6d-8ee1-4236-9826-858682d41444> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#tuesday> .
+
+<http://mapping.example.com/uuid/6c357423-7c4e-46eb-a9ea-cc3b62ff1f9c> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#agency> .
+
+<http://mapping.example.com/uuid/6d3bd554-d594-42b7-b4dc-92185fa87579> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/18243c6c-e954-49bf-a01f-4c74ecb88585> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/e2afeff4-00dd-4b46-832d-ac621130ae2f> .
+
+<http://mapping.example.com/uuid/6df7b578-7036-43ec-8c62-ae036752911e> a ns1:ObjectMap ;
+    ns2:reference "stop_lon" ;
+    ns1:datatype xsd:double ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/6ecb3303-2fbc-49b0-be37-291a3897a7f1> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#longName> .
+
+<http://mapping.example.com/uuid/70ed1859-9c43-4a9d-a131-d73474b75c78> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/798432dc-c666-4db9-a493-cce43933d9ac> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/de4231c0-8bdf-434f-a8ca-05bb760ff61d> .
+
+<http://mapping.example.com/uuid/71d25747-1599-46cf-95b7-c822a144487e> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_accessible}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/71f1ee51-f604-464e-9332-c16f0d0eee36> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8c9df425-59c0-451b-b65c-c377bdf6fa36> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/6b9f5c6d-8ee1-4236-9826-858682d41444> .
+
+<http://mapping.example.com/uuid/73a45a1d-f9cd-45d5-9ac4-5b3df55ba492> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Service" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/740810fd-f3ff-4c7e-97ee-e16d796774fe> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#color> .
+
+<http://mapping.example.com/uuid/74b394d0-0bcc-4963-88fc-39a72964d616> ns1:child "service_id" ;
+    ns1:parent "service_id" .
+
+<http://mapping.example.com/uuid/76f0bffc-501d-46a2-b1c6-709b61bfb7c3> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/4b6dd2a8-8ebf-4351-974c-1a1790bb5d7c> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/c02869c5-8281-4c3a-a42b-ab02389957b4> .
+
+<http://mapping.example.com/uuid/77804a83-91e1-46e7-bd11-68afdc289d9e> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/language> .
+
+<http://mapping.example.com/uuid/7853e902-f6ce-4b3f-8cc1-e562aaab8381> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/22081583-0dcf-4204-9ec5-debf50e832c3> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/39bd6963-81ab-4c79-8f10-9cb41e3ad3ec> .
+
+<http://mapping.example.com/uuid/798432dc-c666-4db9-a493-cce43933d9ac> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/bd54adb5-4f1b-429f-a03b-599c1f784c05> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/5d96d30c-6631-4100-b5be-8804efd2fa2a> .
+
+<http://mapping.example.com/uuid/7b4ad74e-639b-42f0-a552-dfca421af986> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/172bd651-6c76-4c4f-8703-6d93f13d80d9> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/38060da1-c1c6-49da-8714-eef5ef186f8a> .
+
+<http://mapping.example.com/uuid/7dacfb13-0a0d-4bdc-83bb-28739ba88109> a ns1:ObjectMap ;
+    ns2:reference "departure_time" ;
+    ns1:datatype xsd:duration ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/7ea8d161-fa86-4e13-95eb-a355f82c30fa> a ns1:TriplesMap ;
+    rdfs:label "agency" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/c9c742cc-2004-462f-a413-9e02b69ac26a> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/1145b7eb-8f58-4a11-b949-330fe3a63ad4>,
+        <http://mapping.example.com/uuid/618cd5c8-7014-4fd1-8519-bfc24b772040>,
+        <http://mapping.example.com/uuid/62957f12-13ba-44f9-b779-bf1e6fd012d9>,
+        <http://mapping.example.com/uuid/6b45e42e-81b9-4621-850b-2c9870a80c6e>,
+        <http://mapping.example.com/uuid/c545cee7-0f74-44f2-8863-7c9b7fc897cf>,
+        <http://mapping.example.com/uuid/cae24d17-cf6a-4574-a8fa-35032edf21ac>,
+        <http://mapping.example.com/uuid/ce6f9a75-ac38-4eec-b95f-9b75111086cd> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/cc427540-da77-4e4a-b1ff-a927b17d70ae> .
+
+<http://mapping.example.com/uuid/7ebb258c-742b-446a-a3c9-1ebcaa33010f> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/d088cced-80b9-4067-a106-d84afb606501> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/0c1d28ee-c4c2-4783-b50a-7bc3a62f5a8f> .
+
+<http://mapping.example.com/uuid/80e060ed-bc27-4053-9ae9-9783b8c932dc> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Feed" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/81121a39-bf43-4f69-bc9c-bf95f40c4347> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}" .
+
+<http://mapping.example.com/uuid/812ea844-2830-411a-af6e-ab983711e211> a ns1:ObjectMap ;
+    ns2:reference "agency_lang" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8214f97a-4ddf-4612-ae2c-0fbba46802a8> a ns1:ObjectMap ;
+    ns2:reference "stop_sequence" ;
+    ns1:datatype xsd:integer ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8406ac07-5e0f-40b4-b499-4bb765bd63e1> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/7dacfb13-0a0d-4bdc-83bb-28739ba88109> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3ddbf8cd-0bff-44ee-b6d1-0284590f61fb> .
+
+<http://mapping.example.com/uuid/846a5bf6-e700-45f4-a450-50b91d781b56> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#sunday> .
+
+<http://mapping.example.com/uuid/8784e597-4592-4ce3-b6fc-4b9da754f2e7> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/c1ecf595-5df9-4ef9-8996-00e23c028da4> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/9301eaed-4608-49df-8690-36a00b7cc06b> .
+
+<http://mapping.example.com/uuid/87c2f432-f932-45da-97ba-53efc35056c0> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#locationType> .
+
+<http://mapping.example.com/uuid/88239da7-545a-4eeb-96cc-f67060e714f4> a ns1:ObjectMap ;
+    ns2:reference "stop_code" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/89b2b9bb-d55a-46e2-b39a-01a332f5c6ed> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/date> .
+
+<http://mapping.example.com/uuid/8ba002f5-ca2a-4d89-b546-72ab830909e6> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/trips/{trip_id}" .
+
+<http://mapping.example.com/uuid/8bc21c6a-bb53-47f5-960e-1d02d0b1c256> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/dfd22760-3282-438d-99c1-6d848b504a0c> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/740810fd-f3ff-4c7e-97ee-e16d796774fe> .
+
+<http://mapping.example.com/uuid/8c98041f-ae93-472c-81c4-e4bc6219642c> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/8c9df425-59c0-451b-b65c-c377bdf6fa36> a ns1:ObjectMap ;
+    ns2:reference "tuesday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8d6fc7df-ac99-4901-9910-bc61cb7ff8a0> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/0d3f252a-8a0e-48c5-98ca-8f8a9bac3d94> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/89b2b9bb-d55a-46e2-b39a-01a332f5c6ed> .
+
+<http://mapping.example.com/uuid/8df78aa7-74c6-4294-a192-f9c4952c4fc2> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Stop" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/8dff70df-6321-40af-bd16-83b4387d12f8> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/bccfb93b-1afc-4bf2-b51b-83dd4c5d54d5> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/6afc9049-9bee-402c-9ae7-48b1ebfa5b8f> .
+
+<http://mapping.example.com/uuid/8e3600e7-e3f3-4f28-adac-99c8ef1f2ab0> a ns1:ObjectMap ;
+    ns2:reference "stop_headsign" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8e8049a0-9098-4127-9329-5201e96ac080> a ns1:ObjectMap ;
+    ns2:reference "shape_pt_sequence" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8f7aadd6-e41d-4c26-9fde-1b69ddc55a86> a ns1:ObjectMap ;
+    ns2:reference "agency_timezone" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/8f89bd56-d018-40e5-b8cc-6c71a33999f0> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/8fbd6c84-4fc5-4d00-96e2-889d1a05a4dc> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f3a4bdec-f032-4edf-88b4-cb7b5cbdf5dc> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3fc2674f-9329-48ad-85a5-95481ae3b673> .
+
+<http://mapping.example.com/uuid/8fc5c7be-4403-417f-b289-b14a52340031> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/language> .
+
+<http://mapping.example.com/uuid/9006a461-b591-46ee-90a2-f5095dfd5096> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/9063c3e5-0ea0-42a7-aabc-c7e165da2bcb> a ns1:PredicateMap ;
+    ns1:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<http://mapping.example.com/uuid/913a896c-ba03-48c5-a90a-918f1800e1f6> ns1:child "agency_id" ;
+    ns1:parent "agency_id" .
+
+<http://mapping.example.com/uuid/924a1c05-6f0e-4701-bf63-5825ca8b227b> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/73a45a1d-f9cd-45d5-9ac4-5b3df55ba492> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/45d1340c-b683-46a2-9ce5-d617e195ebf9> .
+
+<http://mapping.example.com/uuid/927ba2af-9ed2-4ed8-84fc-acd0071cea67> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#arrivalTime> .
+
+<http://mapping.example.com/uuid/92f0fae0-6b0f-484a-a2df-5bc59a46e48d> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/9006a461-b591-46ee-90a2-f5095dfd5096> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <FEED_INFO> .
+
+<http://mapping.example.com/uuid/9301eaed-4608-49df-8690-36a00b7cc06b> a ns1:PredicateMap ;
+    ns1:constant <http://schema.org/endDate> .
+
+<http://mapping.example.com/uuid/95245ebe-a041-4ed5-b043-23852b5e7c92> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/bac5b150-e554-4972-9219-3df743e109c6> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/9ee4dbb5-6360-4b62-b852-ee6cea1c0280> .
+
+<http://mapping.example.com/uuid/9633c6eb-e41b-4e46-a4db-ba24308be706> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/29df6d7b-d597-46e6-90c6-3916d9191559> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/5baa7c2e-4c7b-404f-800f-8d3558d296a7> .
+
+<http://mapping.example.com/uuid/96d5859b-4e7a-45dd-bf2f-f46ab6678778> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f95319be-5dc2-4e94-a010-af7595b15231> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/927ba2af-9ed2-4ed8-84fc-acd0071cea67> .
+
+<http://mapping.example.com/uuid/975f7591-3e59-4d1d-884b-a413b62cd700> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/identifier> .
+
+<http://mapping.example.com/uuid/98b4e406-3d7b-4db3-9eb8-986987f9772b> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8df78aa7-74c6-4294-a192-f9c4952c4fc2> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/4fb5a962-6b94-4ead-b6c7-880a160ff482> .
+
+<http://mapping.example.com/uuid/99247081-9b12-4ece-8f05-70e4031b10cb> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#timeZone> .
+
+<http://mapping.example.com/uuid/9b52f6b4-17e4-44a5-9bc3-a8b4c7683266> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/fbd453cd-9b3e-49c4-af0b-3db220efeb2a> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3f389aae-37b6-4269-b1db-20cf5ecf25ee> .
+
+<http://mapping.example.com/uuid/9d974c25-99b3-4559-a6dd-fa4fa08741fe> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/0c690a76-ded1-4a3a-bdf0-d6cdba9ef8c3> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <CALENDAR_DATES> .
+
+<http://mapping.example.com/uuid/9ee4dbb5-6360-4b62-b852-ee6cea1c0280> a ns1:TriplesMap ;
+    rdfs:label "calendar_date_rules" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/e3d805cd-0a5a-48bd-acdb-81066a4a4460> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/3d80b52a-ac94-4bb9-8c9f-c63704cf8208>,
+        <http://mapping.example.com/uuid/7ebb258c-742b-446a-a3c9-1ebcaa33010f>,
+        <http://mapping.example.com/uuid/8d6fc7df-ac99-4901-9910-bc61cb7ff8a0> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/a2c6c349-9770-4713-987b-8bbc316fbe57> .
+
+<http://mapping.example.com/uuid/9ee75eee-1834-48da-b9ab-49537d4a756c> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f505793a-7c0d-4d8f-8ec3-a5bba7d3f5cd> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/57166344-4a17-4af5-bd21-050c7236a063> .
+
+<http://mapping.example.com/uuid/9fff1c9c-48e5-4a2c-a85b-28d79d310ba5> ns1:child "trip_id" ;
+    ns1:parent "trip_id" .
+
+<http://mapping.example.com/uuid/a01868ca-f684-4999-b550-034202149ad8> a ns1:ObjectMap ;
+    ns2:reference "trip_headsign" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/a168d1b5-ee2c-4d07-b5ad-5381f55d66fa> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/page> .
+
+<http://mapping.example.com/uuid/a20110b8-8821-4119-bfc9-c57ad70e803a> ns1:child "parent_station" ;
+    ns1:parent "stop_id" .
+
+<http://mapping.example.com/uuid/a2c6c349-9770-4713-987b-8bbc316fbe57> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}" .
+
+<http://mapping.example.com/uuid/a5c8a5c2-c1de-4df9-8ba9-96503d7fd8d9> a ns1:ObjectMap ;
+    ns2:reference "route_text_color" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/a7a5d235-6a9b-4002-98ca-2885762436f0> a ns1:ObjectMap ;
+    ns2:reference "shape_pt_lon" ;
+    ns1:datatype xsd:double ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/a9ab544b-29cc-4cbd-a9d9-297b867dc3b1> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#stopSequence> .
+
+<http://mapping.example.com/uuid/aa814a99-fd66-4cf4-9daa-4d11ce10914a> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/routes/{route_id}" .
+
+<http://mapping.example.com/uuid/aae75e45-cfbf-45da-8223-448f788053e3> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/3078aef4-3b35-4ad3-b800-32bba382d590> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/245b1f79-9880-4f67-a56b-cfbe993d1d94> .
+
+<http://mapping.example.com/uuid/ab229a85-1c0c-485b-be2c-68f7467b34d2> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#endTime> .
+
+<http://mapping.example.com/uuid/ac6403fe-f0bb-458b-95a1-7b8ff47ed4fe> a ns1:ObjectMap ;
+    ns2:reference "feed_publisher_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/ad7f9772-f51b-4296-a555-fd04d1f190da> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/e6ec4408-b2c7-40cc-b342-ce55d582e4df> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/548b362e-d05e-4a9a-a77a-325389b85648> .
+
+<http://mapping.example.com/uuid/aea6bb3a-4108-4c8a-83f1-337fd23e3b55> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#zone> .
+
+<http://mapping.example.com/uuid/aef37f85-6d6e-4124-8d57-2d6d89c80ae3> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#startTime> .
+
+<http://mapping.example.com/uuid/b04cf5fc-7254-4156-9c87-1b17bef7588a> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#parentStation> .
+
+<http://mapping.example.com/uuid/b119d474-b9ed-478b-b4d2-639e1ece9224> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#fareUrl> .
+
+<http://mapping.example.com/uuid/b309fc8e-91cd-4afd-8481-3cd10fc39902> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/169f1c2e-a1cc-41b9-b9ee-5b39ce01f5f4> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/502160bd-de7e-4a88-94fa-92b335ccea10> .
+
+<http://mapping.example.com/uuid/b4ee21e1-b2e2-4323-96fb-f8d0a6778296> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/b5d46a62-50f2-4567-b81d-674cbc7b1511> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#route> .
+
+<http://mapping.example.com/uuid/b77a4a78-274a-473b-bd90-9b3ba5ab8af9> a ns1:ObjectMap ;
+    ns2:reference "friday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/b7ac62da-b497-4861-969c-0dc96189c8a1> a ns1:ObjectMap ;
+    ns2:reference "route_long_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/b9514842-735c-4535-a2d7-73733d1059d0> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Agency" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/b9eb3af4-0844-494f-ac91-9718376ec035> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/bf3bc881-feb7-46f4-a344-57ac096b7988> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/e03310fb-2355-40f5-a21f-9701632d9f9c> .
+
+<http://mapping.example.com/uuid/ba691736-46ea-4ac1-bebe-6781f8bdcf5c> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8214f97a-4ddf-4612-ae2c-0fbba46802a8> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/a9ab544b-29cc-4cbd-a9d9-297b867dc3b1> .
+
+<http://mapping.example.com/uuid/bac5b150-e554-4972-9219-3df743e109c6> ns1:child "service_id" ;
+    ns1:parent "service_id" .
+
+<http://mapping.example.com/uuid/baf80c1d-adfe-4471-89b5-e0a79e55497e> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#monday> .
+
+<http://mapping.example.com/uuid/bb2189f6-3265-49a1-a1f3-7cb62aadc2be> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#saturday> .
+
+<http://mapping.example.com/uuid/bccfb93b-1afc-4bf2-b51b-83dd4c5d54d5> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/RouteType/{route_type}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/bd54adb5-4f1b-429f-a03b-599c1f784c05> ns1:child "service_id" ;
+    ns1:parent "service_id" .
+
+<http://mapping.example.com/uuid/be95831a-1df7-4762-9d79-24024ccccef2> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#routeUrl> .
+
+<http://mapping.example.com/uuid/bf0bedad-b758-49e9-9cdd-cb4aec14c111> a ns1:ObjectMap ;
+    ns2:reference "route_desc" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/bf3bc881-feb7-46f4-a344-57ac096b7988> ns1:child "shape_id" ;
+    ns1:parent "shape_id" .
+
+<http://mapping.example.com/uuid/bff222bd-2d68-406d-8709-c25ee6ac98cb> a ns1:ObjectMap ;
+    ns2:reference "stop_id" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/c02869c5-8281-4c3a-a42b-ab02389957b4> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#direction> .
+
+<http://mapping.example.com/uuid/c05bba17-7021-46ce-8efd-641ade660d59> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/publisher> .
+
+<http://mapping.example.com/uuid/c13b2efa-235a-4a59-b190-71465163395a> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#wednesday> .
+
+<http://mapping.example.com/uuid/c1ccc5ce-ece1-47ff-9413-b71c832bd772> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/c1ecf595-5df9-4ef9-8996-00e23c028da4> a ns1:ObjectMap ;
+    ns2:reference "feed_end_date" ;
+    ns1:datatype xsd:date ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/c2fd81a9-8a5d-454e-8fd8-fb758307656a> a ns1:TriplesMap ;
+    rdfs:label "services2" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/9d974c25-99b3-4559-a6dd-fa4fa08741fe> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/388cf32b-c631-4f6e-898f-0b4123de0370>,
+        <http://mapping.example.com/uuid/aae75e45-cfbf-45da-8223-448f788053e3> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/0f62fce7-139d-467d-ada5-21475bb559ee> .
+
+<http://mapping.example.com/uuid/c495b038-fb31-45bd-925c-a6f886366929> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/phone> .
+
+<http://mapping.example.com/uuid/c545cee7-0f74-44f2-8863-7c9b7fc897cf> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/0e905479-0ba4-443e-be23-bd4355c6ef85> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/ee622061-68a2-4596-b11f-371e41f95119> .
+
+<http://mapping.example.com/uuid/c5473817-1ec9-48c0-afa3-bb92fc0c7a29> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/74b394d0-0bcc-4963-88fc-39a72964d616> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/3bcbf99c-89c1-4b18-a29a-7b5425a71fbc> .
+
+<http://mapping.example.com/uuid/c816de12-8506-4de4-909c-1971a722b613> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/19d9b9c5-a9b9-489f-895c-a6ef19124d1e> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/eb6fc3d7-0b2e-410f-9b1e-35e562e52153> .
+
+<http://mapping.example.com/uuid/c86bae9e-b3bb-422a-8804-4d6f3bdb131b> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/a01868ca-f684-4999-b550-034202149ad8> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/569f6c36-5d0b-41ef-a2ec-de111f9688ab> .
+
+<http://mapping.example.com/uuid/c8dc0b46-bd78-488d-aa1f-00787aaf97e9> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#block> .
+
+<http://mapping.example.com/uuid/c9c742cc-2004-462f-a413-9e02b69ac26a> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/4633da14-88f5-462d-adb7-62ec45511d9a> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <AGENCY> .
+
+<http://mapping.example.com/uuid/ca696e56-77b5-4dd7-8575-4b0fc2838dbf> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/b9eb3af4-0844-494f-ac91-9718376ec035> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/3ba0f35a-f3cc-4871-a845-90dc114202d1> .
+
+<http://mapping.example.com/uuid/cae24d17-cf6a-4574-a8fa-35032edf21ac> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8f7aadd6-e41d-4c26-9fde-1b69ddc55a86> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/99247081-9b12-4ece-8f05-70e4031b10cb> .
+
+<http://mapping.example.com/uuid/cc427540-da77-4e4a-b1ff-a927b17d70ae> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/agency/{agency_id}" .
+
+<http://mapping.example.com/uuid/ce3d2f47-0999-446f-85d9-bb5654dfc299> a ns1:ObjectMap ;
+    ns2:reference "exception_type" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/ce6f9a75-ac38-4eec-b95f-9b75111086cd> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/ea0758f8-ec98-4685-be15-0fe4a21a432c> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/4b921eb5-f35e-4db2-a9f0-82287133d7bb> .
+
+<http://mapping.example.com/uuid/cf66d099-f6d3-485e-a30e-053fac4febfb> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/71d25747-1599-46cf-95b7-c822a144487e> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/5aba0c71-c5db-4f55-b780-c9151db6aa06> .
+
+<http://mapping.example.com/uuid/d088cced-80b9-4067-a106-d84afb606501> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#CalendarDateRule" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/d205f781-f340-4115-93f5-5ef2c39360a3> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#trip> .
+
+<http://mapping.example.com/uuid/d21b5093-50a0-47e5-b6d9-a4f8d5d0b54f> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/600065e1-e2f9-4a0b-bdce-fa37c6c2ebf8> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/2984cf1a-0647-4601-a0ac-52539ccefde7> .
+
+<http://mapping.example.com/uuid/d3ac47ed-ee7e-49d6-8762-94201ace4266> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/d5039ec0-4101-4136-a5d3-937ca01500d3> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}" .
+
+<http://mapping.example.com/uuid/d65d7bf4-fbef-4680-b554-920922caf968> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#serviceRule> .
+
+<http://mapping.example.com/uuid/d691b0fe-dcff-4c8a-9b30-02471806dcc3> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#thursday> .
+
+<http://mapping.example.com/uuid/d72ed056-eac7-4ee5-9754-a002d74cd247> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#friday> .
+
+<http://mapping.example.com/uuid/d78cf95d-2a89-4bd4-9b85-6511024f245c> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/440cf96c-60af-4cda-a156-482e375a003c> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/d691b0fe-dcff-4c8a-9b30-02471806dcc3> .
+
+<http://mapping.example.com/uuid/d7ce9b27-8550-48d9-99ac-1ca12ce3e351> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/499f1165-013b-4bd1-8e91-285333a0f531> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/c13b2efa-235a-4a59-b190-71465163395a> .
+
+<http://mapping.example.com/uuid/d7d99986-decb-4e20-be53-097e09125a29> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/f5f61c63-07f7-4635-ac9e-a2c9cee7fb96> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/87c2f432-f932-45da-97ba-53efc35056c0> .
+
+<http://mapping.example.com/uuid/d86036a2-b3e7-4068-9cb8-e2dedaa82539> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/58274403-5585-4d4e-b1c7-c34cc3ea93e7> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/be95831a-1df7-4762-9d79-24024ccccef2> .
+
+<http://mapping.example.com/uuid/d86ed3df-15e0-430b-bf84-2c54971d77b7> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8e8049a0-9098-4127-9329-5201e96ac080> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/4abefd92-9325-4afb-bae9-b2e457be00f2> .
+
+<http://mapping.example.com/uuid/d8f354b3-d498-44ea-aaf5-e0a3caad85b1> a ns1:ObjectMap ;
+    ns2:reference "feed_start_date" ;
+    ns1:datatype xsd:date ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/d99ed7f1-11a4-4e73-b34d-422ecc2f428b> a ns3:Database ;
+    ns3:jdbcDSN <jdbc:mysql://localhost:3306/gtfs> ;
+    ns3:jdbcDriver <com.mysql.cj.jdbc.Driver> ;
+    ns3:password <oeg> ;
+    ns3:username <root> .
+
+<http://mapping.example.com/uuid/da9e04ec-d479-4d84-9b76-75235738177f> a ns2:LogicalSource ;
+    ns2:referenceFormulation <http://semweb.mmlab.be/ns/ql#CSV> ;
+    ns2:source <source.csv> .
+
+<http://mapping.example.com/uuid/dd4c2dbb-e5fa-46c9-9e09-1c8e9d7a6669> a ns1:ObjectMap ;
+    ns2:reference "stop_desc" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/de4231c0-8bdf-434f-a8ca-05bb760ff61d> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#serviceRule> .
+
+<http://mapping.example.com/uuid/deea3352-319e-476f-aed6-0d4b50738693> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/02184db8-9820-4a04-b1ff-b2f08d27768c> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/ab229a85-1c0c-485b-be2c-68f7467b34d2> .
+
+<http://mapping.example.com/uuid/dfd22760-3282-438d-99c1-6d848b504a0c> a ns1:ObjectMap ;
+    ns2:reference "route_color" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/e03310fb-2355-40f5-a21f-9701632d9f9c> a ns1:TriplesMap ;
+    rdfs:label "shapes" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/0f3bd98d-eeca-498d-b110-0c2b8c0b5512> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/54390a80-3752-4ba7-a95c-3a8a2c87084e>,
+        <http://mapping.example.com/uuid/5b151292-c2ad-4bad-aa51-4345ed46abad>,
+        <http://mapping.example.com/uuid/6b3be2f2-e5d4-453c-9014-4d0ade873009>,
+        <http://mapping.example.com/uuid/ad7f9772-f51b-4296-a555-fd04d1f190da>,
+        <http://mapping.example.com/uuid/d86ed3df-15e0-430b-bf84-2c54971d77b7> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/215a321c-eb2d-4f08-b2e2-c16f057a2550> .
+
+<http://mapping.example.com/uuid/e041399c-0c83-4872-a1bc-af8851c0f1b9> a ns1:ObjectMap ;
+    ns2:reference "feed_published_url" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/e13dc792-ad49-4069-bb83-2e541d0b44c4> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/317d31a2-56c2-4bc1-b3d4-c330a31b7a58> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/eef7619f-939e-42b7-bf5d-ee6820ca2f32> .
+
+<http://mapping.example.com/uuid/e1a9666c-6134-48d2-bff1-016b104a9e80> ns1:child "trip_id" ;
+    ns1:parent "trip_id" .
+
+<http://mapping.example.com/uuid/e2296fe1-7034-458c-b79b-baca5e0d5d51> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Shape" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/e253fb00-d514-4725-8944-41c754716b01> a ns1:ObjectMap ;
+    ns2:reference "agency_fare_url" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/e2afeff4-00dd-4b46-832d-ac621130ae2f> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#headwaySeconds> .
+
+<http://mapping.example.com/uuid/e3d805cd-0a5a-48bd-acdb-81066a4a4460> a ns2:LogicalSource ;
+    ns2:source <http://mapping.example.com/uuid/c1ccc5ce-ece1-47ff-9413-b71c832bd772> ;
+    ns1:sqlVersion ns1:SQL2008 ;
+    ns1:tableName <CALENDAR_DATES> .
+
+<http://mapping.example.com/uuid/e6ec4408-b2c7-40cc-b342-ce55d582e4df> a ns1:ObjectMap ;
+    ns2:reference "shape_dist" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/e7a66d9d-6eed-4dd2-9837-251002249ec1> ns1:child "stop_id" ;
+    ns1:parent "stop_id" .
+
+<http://mapping.example.com/uuid/e8353d6b-5c18-4957-8edd-01bccdfccf91> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/e9cf4b3b-f77f-4ac7-a952-e732e5f6a785> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/bb2189f6-3265-49a1-a1f3-7cb62aadc2be> .
+
+<http://mapping.example.com/uuid/e93d0319-e544-480c-942c-746ebefc0336> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/1a0687d7-8e37-438a-a445-a34951e092a1> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/846a5bf6-e700-45f4-a450-50b91d781b56> .
+
+<http://mapping.example.com/uuid/e9403d31-583b-44a7-b5ad-6a51308ab4a4> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/dd4c2dbb-e5fa-46c9-9e09-1c8e9d7a6669> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/edd51ff9-ff69-4762-bb3c-b0d5d31c160d> .
+
+<http://mapping.example.com/uuid/e9cf4b3b-f77f-4ac7-a952-e732e5f6a785> a ns1:ObjectMap ;
+    ns2:reference "saturday" ;
+    ns1:datatype xsd:boolean ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/ea0758f8-ec98-4685-be15-0fe4a21a432c> a ns1:ObjectMap ;
+    ns2:reference "agency_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/ea43a008-6a56-4f0e-a27e-2835e776544d> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/bff222bd-2d68-406d-8709-c25ee6ac98cb> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/975f7591-3e59-4d1d-884b-a413b62cd700> .
+
+<http://mapping.example.com/uuid/eb3bb88d-fcdd-4b21-ba8d-21cd4919ee3a> a ns1:ObjectMap ;
+    ns2:reference "stop_lat" ;
+    ns1:datatype xsd:double ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/eb6fc3d7-0b2e-410f-9b1e-35e562e52153> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#shortName> .
+
+<http://mapping.example.com/uuid/eb971182-e3db-4797-8148-a90c160658c6> a ns1:ObjectMap ;
+    ns1:constant "http://vocab.gtfs.org/terms#Route" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/ecbbe6cb-e14c-4f01-b986-427efa1ba61b> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/ed62f97f-fbf3-46e9-8e01-82d2e9a3afaa> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/3accf63a-d3e9-4e41-b402-60636c605762> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/77804a83-91e1-46e7-bd11-68afdc289d9e> .
+
+<http://mapping.example.com/uuid/edd51ff9-ff69-4762-bb3c-b0d5d31c160d> a ns1:PredicateMap ;
+    ns1:constant <http://purl.org/dc/terms/description> .
+
+<http://mapping.example.com/uuid/ee4a97c3-1112-4e9c-a8c3-e08073c75214> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/8e3600e7-e3f3-4f28-adac-99c8ef1f2ab0> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/327f78fb-200d-47c6-81f9-fddea12f3aa3> .
+
+<http://mapping.example.com/uuid/ee5f6109-80ab-480e-8833-4c5c421d5dc4> a ns1:PredicateMap ;
+    ns1:constant rdf:type .
+
+<http://mapping.example.com/uuid/ee622061-68a2-4596-b11f-371e41f95119> a ns1:PredicateMap ;
+    ns1:constant <http://xmlns.com/foaf/0.1/page> .
+
+<http://mapping.example.com/uuid/eef7619f-939e-42b7-bf5d-ee6820ca2f32> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#exactTimes> .
+
+<http://mapping.example.com/uuid/ef494f04-2527-414b-8d05-e6c9cffa3a08> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/DropOffType/{drop_off_type}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/f30e000f-de47-4a51-b606-1c157215b485> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/a20110b8-8821-4119-bfc9-c57ad70e803a> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/1e74cdf3-c716-43b9-973f-5d39c252d5af> .
+
+<http://mapping.example.com/uuid/f3a4bdec-f032-4edf-88b4-cb7b5cbdf5dc> a ns1:ObjectMap ;
+    ns2:reference "end_date" ;
+    ns1:datatype xsd:date ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/f505793a-7c0d-4d8f-8ec3-a5bba7d3f5cd> a ns1:ObjectMap ;
+    ns2:reference "route_short_name" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/f5aaf4c4-ae37-4cc6-8925-171743bc36a0> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/ef494f04-2527-414b-8d05-e6c9cffa3a08> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/621be838-29f4-4e43-9cfd-891c977d7653> .
+
+<http://mapping.example.com/uuid/f5f61c63-07f7-4635-ac9e-a2c9cee7fb96> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/LocationType/{location_type}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/f6ab052a-18f8-4b83-a65d-950c2b4cd573> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/e7a66d9d-6eed-4dd2-9837-251002249ec1> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/1e74cdf3-c716-43b9-973f-5d39c252d5af> .
+
+<http://mapping.example.com/uuid/f900ad47-2ff7-4dcf-8fd3-2c93e8f3edc9> a ns1:PredicateMap ;
+    ns1:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<http://mapping.example.com/uuid/f95319be-5dc2-4e94-a010-af7595b15231> a ns1:ObjectMap ;
+    ns2:reference "arrival_time" ;
+    ns1:datatype xsd:duration ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/fb9c05f0-fac3-468e-a4f9-d25f8e757e26> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}" .
+
+<http://mapping.example.com/uuid/fbd453cd-9b3e-49c4-af0b-3db220efeb2a> a ns1:ObjectMap ;
+    ns1:template "http://transport.linkeddata.es/resource/PickupType/{pickup_type}" ;
+    ns1:termType ns1:IRI .
+
+<http://mapping.example.com/uuid/fc55658a-6170-4cf0-a7ca-362443706715> a ns1:SubjectMap ;
+    ns1:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}" .
+
+<http://mapping.example.com/uuid/fcaa4d54-c59e-43a5-adff-0e4f24f368e4> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/1013f5af-daac-47af-af87-3b43a1a7689d> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/4c811eb3-63ed-488f-a50f-53e06a87adc6> .
+
+<http://mapping.example.com/uuid/fcde8579-5bf5-412f-b0b7-bc9fc83d9e9d> a ns1:PredicateMap ;
+    ns1:constant <http://vocab.gtfs.org/terms#service> .
+
+<http://mapping.example.com/uuid/fde16445-b3f5-4eca-8be3-ad668d4ed021> a ns1:PredicateObjectMap ;
+    ns1:objectMap <http://mapping.example.com/uuid/bf0bedad-b758-49e9-9cdd-cb4aec14c111> ;
+    ns1:predicateMap <http://mapping.example.com/uuid/127fbe68-5f77-4ba9-8a04-3c0c1a6380b8> .
+
+<http://mapping.example.com/uuid/fe4b6d83-d678-4a6f-8f2d-09d05b3582ba> a ns1:ObjectMap ;
+    ns1:joinCondition <http://mapping.example.com/uuid/e1a9666c-6134-48d2-bff1-016b104a9e80> ;
+    ns1:parentTriplesMap <http://mapping.example.com/uuid/ba0330b5-3ea3-443f-9320-4abd57a889dd> .
+
+<http://mapping.example.com/uuid/ff77d994-8495-45b0-a0a3-1d793fac9e7b> a ns1:ObjectMap ;
+    ns2:reference "feed_version" ;
+    ns1:termType ns1:Literal .
+
+<http://mapping.example.com/uuid/1e74cdf3-c716-43b9-973f-5d39c252d5af> a ns1:TriplesMap ;
+    rdfs:label "stops" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/464a7256-5029-4e88-a0a2-5e9dfbf5b9ca> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/081c0286-3923-4702-a365-b94641b7c6ca>,
+        <http://mapping.example.com/uuid/1e94530b-2df6-4ff2-83e2-f304d5225a66>,
+        <http://mapping.example.com/uuid/2d23470d-b764-4227-a418-aead2be24e53>,
+        <http://mapping.example.com/uuid/3735284c-fbf8-4dc3-94aa-ae99d396514b>,
+        <http://mapping.example.com/uuid/405d0191-7ee7-428c-a17f-4fb5a88fe6b0>,
+        <http://mapping.example.com/uuid/56d9c80b-c952-439e-a1d5-e018c1b027ed>,
+        <http://mapping.example.com/uuid/6a2791ee-3311-4f89-bfe4-0554bcceef90>,
+        <http://mapping.example.com/uuid/9633c6eb-e41b-4e46-a4db-ba24308be706>,
+        <http://mapping.example.com/uuid/98b4e406-3d7b-4db3-9eb8-986987f9772b>,
+        <http://mapping.example.com/uuid/d7d99986-decb-4e20-be53-097e09125a29>,
+        <http://mapping.example.com/uuid/e9403d31-583b-44a7-b5ad-6a51308ab4a4>,
+        <http://mapping.example.com/uuid/ea43a008-6a56-4f0e-a27e-2835e776544d>,
+        <http://mapping.example.com/uuid/fcaa4d54-c59e-43a5-adff-0e4f24f368e4> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/17d4d3c5-f9aa-4da8-8d96-e5a74c430022> .
+
+<http://mapping.example.com/uuid/ba0330b5-3ea3-443f-9320-4abd57a889dd> a ns1:TriplesMap ;
+    rdfs:label "trips" ;
+    ns2:logicalSource <http://mapping.example.com/uuid/da9e04ec-d479-4d84-9b76-75235738177f> ;
+    ns1:predicateObjectMap <http://mapping.example.com/uuid/01ef71e5-9560-40f7-895d-3017553067cb>,
+        <http://mapping.example.com/uuid/2aa7fb07-2df4-4c68-bb10-b561fa81a838>,
+        <http://mapping.example.com/uuid/59aa111d-9169-4d09-b8dc-a5ec9f92faa9>,
+        <http://mapping.example.com/uuid/630040a3-935b-4f38-a01c-fa35d8594522>,
+        <http://mapping.example.com/uuid/76f0bffc-501d-46a2-b1c6-709b61bfb7c3>,
+        <http://mapping.example.com/uuid/c816de12-8506-4de4-909c-1971a722b613>,
+        <http://mapping.example.com/uuid/c86bae9e-b3bb-422a-8804-4d6f3bdb131b>,
+        <http://mapping.example.com/uuid/ca696e56-77b5-4dd7-8575-4b0fc2838dbf>,
+        <http://mapping.example.com/uuid/cf66d099-f6d3-485e-a30e-053fac4febfb> ;
+    ns1:subjectMap <http://mapping.example.com/uuid/8ba002f5-ca2a-4d89-b546-72ab830909e6> .
+
