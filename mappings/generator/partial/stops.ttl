@@ -138,7 +138,7 @@
 :pom_47 rr:objectMap :om_48.
 
 :om_48 a rr:ObjectMap;
-    rr:parentTriplesMap :map_stops;
+    rr:parentTriplesMap :map_stops_0;
     rr:joinCondition :jc_7.
 :jc_7 rr:child "parent_station";
     rr:parent "stop_id".

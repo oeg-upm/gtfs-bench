@@ -100,7 +100,7 @@
 :pom_27 rr:objectMap :om_28.
 
 :om_28 a rr:ObjectMap;
-    rr:parentTriplesMap :map_agency;
+    rr:parentTriplesMap :map_agency_0;
     rr:joinCondition :jc_6.
 :jc_6 rr:child "agency_id";
     rr:parent "agency_id".

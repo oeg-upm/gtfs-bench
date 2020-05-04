@@ -75,7 +75,7 @@
 :pom_82 rr:objectMap :om_83.
 
 :om_83 a rr:ObjectMap;
-    rr:parentTriplesMap :map_trips;
+    rr:parentTriplesMap :map_trips_0;
     rr:joinCondition :jc_10.
 :jc_10 rr:child "trip_id";
     rr:parent "trip_id".

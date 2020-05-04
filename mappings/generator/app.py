@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import re
 import uuid
@@ -86,7 +88,7 @@ class TriplesMap:
 
 		for subj, pred, obj in self.graph:
 				
-			if re.match("^http://mapping.example.com/.*", subj):
+			if re.match("^http://mapping.example.com/.*", subj) and not re.match("^http://mapping.example.com/map_.*", subj):
 				if not (subj in rainbow):
 						
 					rainbow[subj] = URIRef("http://mapping.example.com/uuid/"+str(uuid.uuid4()))
@@ -167,51 +169,26 @@ class Mapping:
 			
 			self.graph += ent.get_graph()
 	
-	def link_join_condition(self):
-		
-		# Link joinCondition between TriplesMap. http://mapping.example.com/map_[parent map label]
-				
-		for subj, pred, obj in self.graph:
-			
-			exp = re.match("^http://mapping.example.com/map_(.*)", obj)
-			
-			if exp:
-				
-				match = exp.groups()[0]
-				
-				ext_tm = self.graph.value(subject=None, predicate = rdfs.label, object = Literal(match), any=True)
-				
-				if ext_tm:
-					
-					self.graph.remove((subj,pred,obj))
-					self.graph.add((subj, pred, ext_tm))
-
-				else:
-				
-					print("Referencia a TM rota [", match, "], comprueba que todas tus entidades están mapeadas!")
-					
-					self.graph.remove((subj,pred,obj))
-					self.graph.add((subj, pred, ex.fixme_tm_not_found))
 				
 	def get_mapping(self):
 		return self.graph
 
 parser = argparse.ArgumentParser(description='Generate multisource mapping file')
-parser.add_argument('--config-file', dest='in_config', required=True)
-parser.add_argument('--output-mapping', dest='out_mapping', required=True)
+parser.add_argument('-c', '--config', dest='config', required=True, help="Data source configuration file")
+parser.add_argument('-o', '--output', dest='out_mapping', required=True, help="Output mapping file")
+parser.add_argument('-f', '--output-format', dest='out_format', required=False, default='turtle', help="Output mapping format. Format support can be extended with plugins, but “xml”, “n3”, “turtle”, “nt”, “pretty-xml”, “trix” and “trig” are built in.")
 
 m = Mapping()
 
 args = parser.parse_args()
 
-config = json.load(open(args.in_config))
+config = json.load(open(args.config))
 
 m.process_config(config)
 m.generate_graph()
-m.link_join_condition()
 
-m.get_mapping().serialize(destination=args.out_mapping, format='turtle')
+m.get_mapping().serialize(destination=args.out_mapping, format=str(args.out_format))
 
-
+print("Mapping saved to: "+str(args.out_mapping))
 
 

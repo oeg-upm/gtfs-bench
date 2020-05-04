@@ -1,6 +1,0 @@
-@prefix ex: <http://mapping.example.com/>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-
-ex:4770e923-e2b4-4dc6-bf1f-ae38cd1c6ac6 rdfs:label "trips".
-ex:b906150f-cedf-4852-abc1-8b3119c40c2e rdfs:label "stops".
-ex:77890c4d-07f3-477b-922b-43a78f73de0b rdfs:label "agency".

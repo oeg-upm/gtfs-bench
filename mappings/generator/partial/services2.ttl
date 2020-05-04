@@ -37,7 +37,7 @@
 :pom_1 rr:objectMap :om_1.
 
 :om_1 a rr:ObjectMap;
-    rr:parentTriplesMap :map_calendar_date_rules;
+    rr:parentTriplesMap :map_calendar_date_rules_0;
     rr:joinCondition :jc_9.
 :jc_9 rr:child "service_id";
     rr:parent "service_id".

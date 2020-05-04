@@ -94,22 +94,22 @@
 :pom_18 rr:objectMap :om_19.
 
 :om_16 a rr:ObjectMap;
-    rr:parentTriplesMap :map_services1;
+    rr:parentTriplesMap :map_services1_0;
     rr:joinCondition :jc_2.
 :jc_2 rr:child "service_id";
     rr:parent "service_id".
 :om_17 a rr:ObjectMap;
-    rr:parentTriplesMap :map_services2;
+    rr:parentTriplesMap :map_services2_0;
     rr:joinCondition :jc_3.
 :jc_3 rr:child "service_id";
     rr:parent "service_id".
 :om_18 a rr:ObjectMap;
-    rr:parentTriplesMap :map_routes;
+    rr:parentTriplesMap :map_routes_0;
     rr:joinCondition :jc_4.
 :jc_4 rr:child "route_id";
     rr:parent "route_id".
 :om_19 a rr:ObjectMap;
-    rr:parentTriplesMap :map_shapes;
+    rr:parentTriplesMap :map_shapes_0;
     rr:joinCondition :jc_5.
 :jc_5 rr:child "shape_id";
     rr:parent "shape_id".
