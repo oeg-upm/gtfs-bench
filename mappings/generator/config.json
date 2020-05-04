@@ -29,8 +29,8 @@
 			"name": "STOPS",
 			"map": "partial/stops.ttl",
 			"source": {
-				"type": "csv",
-				"file": "source.csv"
+				"type": "json",
+				"file": "source.json"
 			}	
 		},
 		{

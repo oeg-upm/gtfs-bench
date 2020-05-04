@@ -5,8 +5,7 @@ import re
 import uuid
 import json
 from rdflib import Graph, URIRef, Namespace, Literal
-from rdflib.namespace import RDF
-from enum import Enum
+from rdflib.namespace import RDF,XSD
 
 rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 rr = Namespace("http://www.w3.org/ns/r2rml#")
@@ -31,7 +30,7 @@ class CSVSource(Source):
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
 		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
-		self.graph.add((ex.source, rml.source, URIRef(self.filename)))
+		self.graph.add((ex.source, rml.source, Literal(self.filename, datatype=XSD.string)))	
 		self.graph.add((ex.source, rml.referenceFormulation, ql.CSV))	
 			
 		return self.graph
@@ -44,8 +43,9 @@ class JSONSource(Source):
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
 		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
-		self.graph.add((ex.source, rml.source, URIRef(self.filename)))
-		self.graph.add((ex.source, rml.referenceFormulation, ql.JSON))
+		self.graph.add((ex.source, rml.source, Literal(self.filename, datatype=XSD.string)))	
+		self.graph.add((ex.source, rml.referenceFormulation, ql.JSONPath))
+		self.graph.add((ex.source, rml.iterator, Literal("$.[*]", datatype=XSD.string)))
 		
 		return self.graph
 		
@@ -62,14 +62,14 @@ class MySQLSource(Source):
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
 		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
-		self.graph.add((ex.source, rr.tableName, URIRef(self.table)))
+		self.graph.add((ex.source, rr.tableName, Literal(self.table, datatype=XSD.string)))
 		self.graph.add((ex.source, rml.source, ex.DB_source))
 		self.graph.add((ex.source, rr.sqlVersion, rr.SQL2008)) # ?
 		self.graph.add((ex.DB_source, RDF.type, d2rq.Database))
-		self.graph.add((ex.DB_source, d2rq.jdbcDSN, URIRef(self.connection_uri)))
-		self.graph.add((ex.DB_source, d2rq.jdbcDriver, URIRef(self.driver)))
-		self.graph.add((ex.DB_source, d2rq.username, URIRef(self.user)))
-		self.graph.add((ex.DB_source, d2rq.password, URIRef(self.password)))
+		self.graph.add((ex.DB_source, d2rq.jdbcDSN, Literal(self.connection_uri, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.jdbcDriver, Literal(self.driver, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.username, Literal(self.user, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.password, Literal(self.password, datatype=XSD.string)))
 
 		return self.graph
 
@@ -161,7 +161,7 @@ class Mapping:
 			
 			self.triplesmaps.append(ent)
 			
-			print("Procesando TM: ", e["name"])
+			print("Processing TripleMap: " + e["name"])
 
 	def generate_graph(self):
 		
