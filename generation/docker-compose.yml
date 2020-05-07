@@ -9,4 +9,4 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: oeg
     ports:
-      - "3306:3306"
+      - "53306:53306"
