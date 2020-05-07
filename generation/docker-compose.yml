@@ -1,0 +1,12 @@
+version: '2'
+services:
+# MYSQL 5.7
+  mysql_gtfs_vig:
+    container_name: mysql_gtfs_vig
+    image: oegdataintegration/mysql-gtfs:1.0
+    volumes:
+      - ./mysql_data:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3306:3306"
