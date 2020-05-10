@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import subprocess
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 from PyInquirer import Validator, ValidationError
@@ -74,11 +75,11 @@ else:
 
 print(sizes)
 
-print("Starting MySQL docker image and loading data dump...")
+#print("Starting MySQL docker image and loading data dump...")
 
-os.chdir(path_gen)
+#os.chdir(path_gen)
 
-debug = subprocess.run(["./prepare.sh"], capture_output=True)
+#debug = subprocess.run(["./prepare.sh"], capture_output=True)
 
 for s in sizes:
 	
