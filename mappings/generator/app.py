@@ -5,10 +5,11 @@ import re
 import uuid
 import json
 from rdflib import Graph, URIRef, Namespace, Literal
-from rdflib.namespace import RDF,XSD
+from rdflib.namespace import XSD
 
 rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 rr = Namespace("http://www.w3.org/ns/r2rml#")
+rdf = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 rml = Namespace("http://semweb.mmlab.be/ns/rml#")
 ql = Namespace("http://semweb.mmlab.be/ns/ql#")
 ex = Namespace("http://mapping.example.com/")
@@ -29,7 +30,20 @@ class CSVSource(Source):
 		
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
-		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
+		self.graph.add((ex.source, rdf.type, rml.LogicalSource))
+		self.graph.add((ex.source, rml.source, Literal(self.filename, datatype=XSD.string)))	
+		self.graph.add((ex.source, rml.referenceFormulation, ql.CSV))	
+			
+		return self.graph
+		
+class XMLSource(Source):
+	def __init__(self, filename):
+		self.filename = filename
+		self.graph = Graph()
+		
+	def get_graph(self, map_value):
+		self.graph.add((map_value, rml.logicalSource, ex.source))
+		self.graph.add((ex.source, rdf.type, rml.LogicalSource))
 		self.graph.add((ex.source, rml.source, Literal(self.filename, datatype=XSD.string)))	
 		self.graph.add((ex.source, rml.referenceFormulation, ql.CSV))	
 			
@@ -42,7 +56,7 @@ class JSONSource(Source):
 		
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
-		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
+		self.graph.add((ex.source, rdf.type, rml.LogicalSource))
 		self.graph.add((ex.source, rml.source, Literal(self.filename, datatype=XSD.string)))	
 		self.graph.add((ex.source, rml.referenceFormulation, ql.JSONPath))
 		self.graph.add((ex.source, rml.iterator, Literal("$.[*]", datatype=XSD.string)))
@@ -61,11 +75,34 @@ class MySQLSource(Source):
 		
 	def get_graph(self, map_value):
 		self.graph.add((map_value, rml.logicalSource, ex.source))
-		self.graph.add((ex.source, RDF.type, rml.LogicalSource))
+		self.graph.add((ex.source, rdf.type, rml.LogicalSource))
 		self.graph.add((ex.source, rr.tableName, Literal(self.table, datatype=XSD.string)))
 		self.graph.add((ex.source, rml.source, ex.DB_source))
 		self.graph.add((ex.source, rr.sqlVersion, rr.SQL2008)) # ?
-		self.graph.add((ex.DB_source, RDF.type, d2rq.Database))
+		self.graph.add((ex.DB_source, rdf.type, d2rq.Database))
+		self.graph.add((ex.DB_source, d2rq.jdbcDSN, Literal(self.connection_uri, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.jdbcDriver, Literal(self.driver, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.username, Literal(self.user, datatype=XSD.string)))
+		self.graph.add((ex.DB_source, d2rq.password, Literal(self.password, datatype=XSD.string)))
+
+		return self.graph
+
+class MongoSource(Source):
+	def __init__(self, connection_uri, driver, user, password, table):
+		self.connection_uri = connection_uri
+		self.driver = driver
+		self.user = user
+		self.password = password
+		self.table = table
+		self.graph = Graph()
+		
+	def get_graph(self, map_value):
+		self.graph.add((map_value, rml.logicalSource, ex.source))
+		self.graph.add((ex.source, rdf.type, rml.LogicalSource))
+		self.graph.add((ex.source, rr.tableName, Literal(self.table, datatype=XSD.string)))
+		self.graph.add((ex.source, rml.source, ex.DB_source))
+		self.graph.add((ex.source, rr.sqlVersion, rr.SQL2008)) # ?
+		self.graph.add((ex.DB_source, rdf.type, d2rq.Database))
 		self.graph.add((ex.DB_source, d2rq.jdbcDSN, Literal(self.connection_uri, datatype=XSD.string)))
 		self.graph.add((ex.DB_source, d2rq.jdbcDriver, Literal(self.driver, datatype=XSD.string)))
 		self.graph.add((ex.DB_source, d2rq.username, Literal(self.user, datatype=XSD.string)))
@@ -80,6 +117,7 @@ class TriplesMap:
 		self.graph = Graph()
 		
 	def import_mapp(self, mapping_file):
+		self.graph.bind("rdf", rdf)
 		self.graph.parse(mapping_file, format="turtle")
 	
 	def uniquize(self):
@@ -171,6 +209,9 @@ class Mapping:
 	
 				
 	def get_mapping(self):
+		
+		
+				
 		return self.graph
 
 parser = argparse.ArgumentParser(description='Generate multisource mapping file')

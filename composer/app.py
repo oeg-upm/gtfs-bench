@@ -1,11 +1,8 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-* Pizza delivery prompt example
-* run example by writing `python example/pizza.py` in your console
-"""
-from __future__ import print_function, unicode_literals
 
 import os
+import subprocess
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 from PyInquirer import Validator, ValidationError
@@ -21,11 +18,14 @@ custom_style_3 = style_from_dict({
     Token.Question: '',
 })
 
-path_gen = "../generation/"
-path_mapp = "../mappings/generator/"
+base_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
+
+path_gen = base_path+"/generation/"
+path_mapp = base_path+"/mappings/generator/"
+tmp_path = base_path+"/tmp/"
 
 try:
-	os.mkdir("../tmp/")
+	os.mkdir(tmp_path)
 except:
 	pass
 
@@ -64,6 +64,35 @@ q2 = [
     }
 ]
 
+q3 = [
+    {
+        'type': 'input',
+        'name': 'q',
+        'message': '\nNow lets generate the mappings! Choose witch ones you want:',
+        'choices': [ 
+            {
+                'name': 'JSON'
+            },
+            {
+                'name': 'SQL'
+            },
+            {
+                'name': 'XML'
+            },
+            {
+                'name': 'CSV'
+            },
+            {
+                'name': 'Best'
+            },
+            {
+                'name': 'Worst'
+            }
+            
+        ]
+    }
+]
+
 q1_a = prompt(q1, style=custom_style_3)
 
 if q1_a["q"] == 'custom':
@@ -73,17 +102,21 @@ else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
 
-print(sizes)
+#print(sizes)
 
-print("Starting MySQL docker image and loading data dump...")
+#print("Starting MySQL docker image and loading data dump...")
 
-os.chdir(path_gen)
+#os.chdir(path_gen)
 
-debug = subprocess.run(["./prepare.sh"], capture_output=True)
+#debug = subprocess.run(["./prepare.sh"], capture_output=True)
 
 for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
 	
-	debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
+	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
+	
+	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
+	
+print("DONE!")
 	
