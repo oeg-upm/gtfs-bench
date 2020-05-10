@@ -5,3 +5,4 @@ engines/ontop/lib
 script-nextcloud-vig.sh
 mappings/gtfs-worst.yml
 mappings/gtfs-best.yml
+tmp

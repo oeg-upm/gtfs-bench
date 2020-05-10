@@ -1,9 +1,5 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-* Pizza delivery prompt example
-* run example by writing `python example/pizza.py` in your console
-"""
-from __future__ import print_function, unicode_literals
 
 import os
 from termcolor import colored
@@ -21,11 +17,14 @@ custom_style_3 = style_from_dict({
     Token.Question: '',
 })
 
-path_gen = "../generation/"
-path_mapp = "../mappings/generator/"
+base_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
+
+path_gen = base_path+"/generation/"
+path_mapp = base_path+"/mappings/generator/"
+tmp_path = base_path+"/tmp/"
 
 try:
-	os.mkdir("../tmp/")
+	os.mkdir(tmp_path)
 except:
 	pass
 
