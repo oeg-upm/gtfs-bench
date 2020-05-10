@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Move cwd to here if needed
+
+if [ ! -z "$2" ]
+	cd $2
+fi
 
 java -jar bin/vig-1.8.1.jar --res=resources --scale=$1
 
