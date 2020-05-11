@@ -85,5 +85,7 @@ for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
 	
-	debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
+	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
+	
+	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
 	
