@@ -3,6 +3,7 @@
 #Move cwd to here if needed
 
 if [ ! -z "$2" ]
+then
 	cd $2
 fi
 
