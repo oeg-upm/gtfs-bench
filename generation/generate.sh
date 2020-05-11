@@ -7,13 +7,13 @@ then
 	cd $2
 fi
 
-java -jar bin/vig-1.8.1.jar --res=resources --scale=$1
+java -jar bin/vig-1.8.1.jar --res=resources --scale=$1 > /dev/null
 
 cd resources/csvs
-./clean.sh
-./headers.sh
-zip $1.zip *.csv
-rm *.csv
+./clean.sh > /dev/null
+./headers.sh > /dev/null
+zip $1.zip *.csv > /dev/null
+rm *.csv 
 
-./distribution.sh $1
+./distribution.sh $1 > /dev/null
 cd ../../
