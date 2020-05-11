@@ -27,4 +27,5 @@ cd ..
 
 rm $1.zip
 
+rm -r ../../output/$1/
 mv $1 ../../output/
