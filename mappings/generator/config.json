@@ -5,14 +5,8 @@
 			"name": "AGENCY",
 			"map": "partial/agency.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "AGENCY"
+				"type": "csv",
+				"file": "AGENCY.csv"
 			}
 		}, 
 		{
@@ -21,7 +15,7 @@
 			"map": "partial/trips.ttl",
 			"source": {
 				"type": "csv",
-				"file": "source.csv"
+				"file": "TRIPS.csv"
 			}	
 		}, 
 		{
@@ -30,7 +24,7 @@
 			"map": "partial/stops.ttl",
 			"source": {
 				"type": "json",
-				"file": "source.json"
+				"file": "STOPS.json"
 			}	
 		},
 		{
@@ -38,14 +32,8 @@
 			"name": "SERVICES2",
 			"map": "partial/services2.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "CALENDAR_DATES"
+				"type": "json",
+				"file": "CALENDAR_DATES.json"
 			}
 		},
 		{
@@ -53,14 +41,8 @@
 			"name": "CALENDAR_DATE_RULES",
 			"map": "partial/calendar_date_rules.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "CALENDAR_DATES"
+				"type": "json",
+				"file": "CALENDAR_DATES.json"
 			}
 		},
 		{
@@ -68,14 +50,8 @@
 			"name": "SERVICES1",
 			"map": "partial/services1.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "CALENDAR"
+				"type": "json",
+				"file": "CALENDAR.json"
 			}
 		},
 		{
@@ -83,14 +59,8 @@
 			"name": "CALENDAR_RULES",
 			"map": "partial/calendar_rules.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "CALENDAR"
+				"type": "json",
+				"file": "CALENDAR.json"
 			}
 		},
 		{
@@ -98,14 +68,8 @@
 			"name": "ROUTES",
 			"map": "partial/routes.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "ROUTES"
+				"type": "json",
+				"file": "ROUTES.json"
 			}
 		},
 		{
@@ -113,14 +77,8 @@
 			"name": "FEED",
 			"map": "partial/feed.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "FEED_INFO"
+				"type": "csv",
+				"file": "FEED_INFO.csv"
 			}
 		},
 		{
@@ -128,14 +86,8 @@
 			"name": "SHAPES",
 			"map": "partial/shapes.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "SHAPES"
+				"type": "json",
+				"file": "SHAPES.json"
 			}
 		},
 		{
@@ -143,14 +95,8 @@
 			"name": "FREQUENCIES",
 			"map": "partial/frequencies.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "FREQUENCIES"
+				"type": "json",
+				"file": "FREQUENCIES.json"
 			}
 		},
 		{
@@ -158,14 +104,8 @@
 			"name": "STOPTIMES",
 			"map": "partial/stoptimes.ttl",
 			"source": {
-				"type": "mysql",
-				"connection": {
-					"user": "root",
-					"pass": "oeg",
-					"dsn": "jdbc:mysql://localhost:3306/gtfs",
-					"driver": "com.mysql.cj.jdbc.Driver"
-				},
-				"table": "STOP_TIMES"
+				"type": "json",
+				"file": "STOP_TIMES.json"
 			}
 		}
 	]
