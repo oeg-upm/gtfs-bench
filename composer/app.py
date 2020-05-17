@@ -68,7 +68,7 @@ q3 = [
     {
         'type': 'input',
         'name': 'q',
-        'message': '\nNow lets generate the mappings! Choose witch ones you want:',
+        'message': '\nNow let\'s select the output formats! This will also generate the corresponding mapping files. Choose which ones you want:',
         'choices': [ 
             {
                 'name': 'JSON'
@@ -87,6 +87,9 @@ q3 = [
             },
             {
                 'name': 'Worst'
+            },
+            {
+                'name': 'Customized'
             }
             
         ]
@@ -101,6 +104,11 @@ if q1_a["q"] == 'custom':
 else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
+	
+q3_a = prompt(q1, style=custom_style_3)
+
+print(q3_a)
+quit()
 
 #print(sizes)
 
