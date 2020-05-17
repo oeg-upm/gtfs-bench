@@ -64,6 +64,35 @@ q2 = [
     }
 ]
 
+q3 = [
+    {
+        'type': 'input',
+        'name': 'q',
+        'message': '\nNow lets generate the mappings! Choose witch ones you want:',
+        'choices': [ 
+            {
+                'name': 'JSON'
+            },
+            {
+                'name': 'SQL'
+            },
+            {
+                'name': 'XML'
+            },
+            {
+                'name': 'CSV'
+            },
+            {
+                'name': 'Best'
+            },
+            {
+                'name': 'Worst'
+            }
+            
+        ]
+    }
+]
+
 q1_a = prompt(q1, style=custom_style_3)
 
 if q1_a["q"] == 'custom':
@@ -73,7 +102,7 @@ else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
 
-print(sizes)
+#print(sizes)
 
 #print("Starting MySQL docker image and loading data dump...")
 
@@ -88,4 +117,6 @@ for s in sizes:
 	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
 	
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
+	
+print("DONE!")
 	
