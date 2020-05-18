@@ -207,7 +207,7 @@ def generate_mapping(distribution):
 			}
 			 
 
-	print(config)
+	json.dump(config, path_mapp+"config_"+distribution+".json")
 
 
 
