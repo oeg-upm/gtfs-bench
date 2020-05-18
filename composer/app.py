@@ -157,9 +157,14 @@ def generate_distribution(distribution):
 	
 	try:
 		os.mkdir('./dist/')
-		os.mkdir('./dist/'+distribution)
 	except:
 		pass
+		
+	try:
+		os.mkdir('./dist/'+distribution)
+	except:
+		pass	
+		
 	
 	for tm in static_distributions[distribution]:
 				
