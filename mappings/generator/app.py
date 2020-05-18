@@ -184,7 +184,7 @@ class Mapping:
 			
 			if e["source"]["type"] == "mysql":
 				s = MySQLSource(e["source"]["connection"]["dsn"], e["source"]["connection"]["driver"], e["source"]["connection"]["user"], e["source"]["connection"]["pass"], e["source"]["table"])
-			elif e["source"]["type"] == "xml":
+			elif e["source"]["type"] == "mongo":
 				s = MongoSource(e["source"]["connection"]["dsn"], e["source"]["connection"]["user"], e["source"]["connection"]["pass"], e["source"]["table"])
 			elif e["source"]["type"] == "csv":
 				s = CSVSource(e["source"]["file"])
