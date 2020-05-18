@@ -39,28 +39,96 @@ tm_to_entity = {
 	'TRIPS': 'TRIPS'
 }
 
+csv = { 'AGENCY': 'csv',
+		'CALENDAR': 'csv',
+		'CALENDAR_DATES': 'csv',
+		'FEED_INFO': 'csv',
+		'FREQUENCIES': 'csv',
+		'ROUTES': 'csv',
+		'SHAPES': 'csv',
+		'STOPS': 'csv',
+		'STOP_TIMES': 'csv',
+		'TRIPS': 'csv'
+	}
+	
+json = { 'AGENCY': 'json',
+		'CALENDAR': 'json',
+		'CALENDAR_DATES': 'json',
+		'FEED_INFO': 'json',
+		'FREQUENCIES': 'json',
+		'ROUTES': 'json',
+		'SHAPES': 'json',
+		'STOPS': 'json',
+		'STOP_TIMES': 'json',
+		'TRIPS': 'json'
+	}
+
+xml = { 'AGENCY': 'xml',
+		'CALENDAR': 'xml',
+		'CALENDAR_DATES': 'xml',
+		'FEED_INFO': 'xml',
+		'FREQUENCIES': 'xml',
+		'ROUTES': 'xml',
+		'SHAPES': 'xml',
+		'STOPS': 'xml',
+		'STOP_TIMES': 'xml',
+		'TRIPS': 'xml'
+	}
+	
+		
+best = { 'AGENCY': 'json',
+		'CALENDAR': 'csv',
+		'CALENDAR_DATES': 'csv',
+		'FEED_INFO': 'mongo',
+		'FREQUENCIES': 'sql',
+		'ROUTES': 'json',
+		'SHAPES': 'csv',
+		'STOPS': 'xml',
+		'STOP_TIMES': 'xml',
+		'TRIPS': 'csv'
+	}
+
+worst = { 'AGENCY': 'sql',
+		'CALENDAR': 'sql',
+		'CALENDAR_DATES': 'mongo',
+		'FEED_INFO': 'json',
+		'FREQUENCIES': 'mongo',
+		'ROUTES': 'xml',
+		'SHAPES': 'csv',
+		'STOPS': 'csv',
+		'STOP_TIMES': 'xml',
+		'TRIPS': 'json'
+	}
+	
+static_distributions = {'csv': csv,
+						'json': json,
+						'xml': xml,
+						'sql': csv,
+						'mongo': json,
+						'best': best,
+						'worst': worst}
+
+
 default_mysql = {
 
-	"type": "mysql",
+		"type": "mysql",
 		"connection": {
 			"user": "oeg",
 			"pass": "oeg",
 			"dsn": "jdbc:mysql://localhost:3306/gtfs",
 			"driver": "com.mysql.cj.jdbc.Driver"
 		}
-
-}
+	}
 
 default_mongo = {
 
-	"type": "mongo",
+		"type": "mongo",
 		"connection": {
 			"user": "oeg",
 			"pass": "oeg",
 			"dsn": "jdbc:mongo://localhost:27017",
 		}
-
-}
+	}
 
 def generate_dataset(size):
 		
@@ -77,88 +145,14 @@ def generate_dataset(size):
 	os.system("./headers.sh > /dev/null")
 	
 	
-def generate_distribution(distribution):
-	
-	
-	csv = { 'AGENCY': 'csv',
-			'CALENDAR': 'csv',
-			'CALENDAR_DATES': 'csv',
-			'FEED_INFO': 'csv',
-			'FREQUENCIES': 'csv',
-			'ROUTES': 'csv',
-			'SHAPES': 'csv',
-			'STOPS': 'csv',
-			'STOP_TIMES': 'csv',
-			'TRIPS': 'csv'
-		}
-		
-	json = { 'AGENCY': 'json',
-			'CALENDAR': 'json',
-			'CALENDAR_DATES': 'json',
-			'FEED_INFO': 'json',
-			'FREQUENCIES': 'json',
-			'ROUTES': 'json',
-			'SHAPES': 'json',
-			'STOPS': 'json',
-			'STOP_TIMES': 'json',
-			'TRIPS': 'json'
-		}
-	
-	xml = { 'AGENCY': 'xml',
-			'CALENDAR': 'xml',
-			'CALENDAR_DATES': 'xml',
-			'FEED_INFO': 'xml',
-			'FREQUENCIES': 'xml',
-			'ROUTES': 'xml',
-			'SHAPES': 'xml',
-			'STOPS': 'xml',
-			'STOP_TIMES': 'xml',
-			'TRIPS': 'xml'
-		}
-
-	
-
-		
-	best = { 'AGENCY': 'json',
-			'CALENDAR': 'csv',
-			'CALENDAR_DATES': 'csv',
-			'FEED_INFO': 'mongo',
-			'FREQUENCIES': 'sql',
-			'ROUTES': 'json',
-			'SHAPES': 'csv',
-			'STOPS': 'xml',
-			'STOP_TIMES': 'xml',
-			'TRIPS': 'csv'
-		}
-	
-	worst = { 'AGENCY': 'sql',
-			'CALENDAR': 'sql',
-			'CALENDAR_DATES': 'mongo',
-			'FEED_INFO': 'json',
-			'FREQUENCIES': 'mongo',
-			'ROUTES': 'xml',
-			'SHAPES': 'csv',
-			'STOPS': 'csv',
-			'STOP_TIMES': 'xml',
-			'TRIPS': 'json'
-		}
-		
-	static_distributions = {'csv': csv,
-							'json': json,
-							'xml': xml,
-							'sql': csv,
-							'mongo': json,
-							'best': best,
-							'worst': worst}
-	
-	
+def generate_distribution(distribution):	
 		
 	try:
 		os.mkdir('./dist/'+distribution)
 	except:
 		pass	
 		
-	print("Preparing distribution:", distribution)
+	print("\tPreparing distribution:", distribution)
 	
 	for tm in static_distributions[distribution]:
 				
@@ -173,12 +167,48 @@ def generate_distribution(distribution):
 	
 	# Need TM <--> Format relation
 	
-def generate_mapping(config):
+def generate_mapping(distribution):
 	
-	# Need TM <--> Format relation and default filenames and database source [customizable in future reviews]
-	pass
+	
+			 
+	tms = []
+	
+	for tm in tm_to_entity:
+		
+		e = tm_to_entity[tm]
+		
+		f = static_distributions[distribution][e]
+		
+		t = {
+			'name': tm,
+			'map': 'partial/'+tm.lower()+'ttl'
+		}
+		
+		if f == 'csv':
+			t['source'] = {'type': 'csv', 'file': tm+'.csv'}
+		elif f == 'json':
+			t['source'] = {'type': 'json', 'file': tm+'.json'}
+		elif f == 'xml':
+			t['source'] = {'type': 'xml', 'file': tm+'.xml'}	
+		elif f == 'mongo':
+			t['source'] = default_mongo
+			t['source']['table'] = 'gtfs.'+tm
+		elif f == 'sql':
+			t['source'] = default_mysql
+			t['source']['table'] = 'gtfs.'+tm
+		else:
+			print("Format", f, "not implemented")
+			
+		tms.append(t)
+		
+	
+		config = {
+				{
+					"entities": [tms]
+				}
+			 }
 
-
+		print(config)
 
 
 
@@ -276,6 +306,8 @@ q3_a = prompt(q3)
 
 distribution = q3_a["q"]
 
+#Data
+
 for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
@@ -295,8 +327,12 @@ for s in sizes:
 		
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
+
+#Mapping
+
+for d in distribution:
 	
-	
+	generate_mapping(d)
 	
 print("DONE!")
 	
