@@ -158,7 +158,7 @@ def generate_distribution(distribution):
 	except:
 		pass	
 		
-	print("Preparing distribution
+	print("Preparing distribution:", distribution)
 	
 	for tm in static_distributions[distribution]:
 				
