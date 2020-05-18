@@ -151,14 +151,7 @@ def generate_distribution(distribution):
 							'best': best,
 							'worst': worst}
 	
-	os.chdir(path_gen+'/resources/csvs/')
 	
-	
-	
-	try:
-		os.mkdir('./dist/')
-	except:
-		pass
 		
 	try:
 		os.mkdir('./dist/'+distribution)
@@ -292,10 +285,18 @@ for s in sizes:
 	
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
 	
+	os.chdir(path_gen+'/resources/csvs/')
+	
+	os.system("rm -r ./dist/")
+	os.system("mkdir ./dist/")
+	
 	for d in distribution:
 	
 		generate_distribution(d)
 		
+	os.system("rm *.csv")
+	os.system("zip /tmp/output/datasets/"+str(s)+"-dataset.zip .")
+	
 	
 	
 print("DONE!")
