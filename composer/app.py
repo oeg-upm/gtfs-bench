@@ -277,8 +277,8 @@ for s in sizes:
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
 	
 	for d in distribution:
-		
-		os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
+	
+		generate_distribution(d)
 		
 	
 	
