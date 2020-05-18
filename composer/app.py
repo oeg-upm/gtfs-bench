@@ -3,6 +3,7 @@
 
 import os
 import subprocess
+import json
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 from PyInquirer import Validator, ValidationError
@@ -51,7 +52,7 @@ csv = { 'AGENCY': 'csv',
 		'TRIPS': 'csv'
 	}
 	
-json = { 'AGENCY': 'json',
+_json = { 'AGENCY': 'json',
 		'CALENDAR': 'json',
 		'CALENDAR_DATES': 'json',
 		'FEED_INFO': 'json',
@@ -101,7 +102,7 @@ worst = { 'AGENCY': 'sql',
 	}
 	
 static_distributions = {'csv': csv,
-						'json': json,
+						'json': _json,
 						'xml': xml,
 						'sql': csv,
 						'mongo': json,
@@ -206,8 +207,8 @@ def generate_mapping(distribution):
 				"entities": tms
 			}
 			 
-
-	json.dump(config, path_mapp+"config_"+distribution+".json")
+	with open(path_mapp+"config_"+distribution+".json", 'w') as outfile:
+		json.dump(config, outfile)
 
 
 
