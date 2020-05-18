@@ -244,10 +244,10 @@ q3 = [
                 'value': 'worst',
                 'checked': True
             }
-            ''',
-            {
-                'name': 'Customized'
-            }'''
+            #,
+            #{
+            #    'name': 'Customized'
+            #}'''
             
         ]
     }
