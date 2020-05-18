@@ -24,16 +24,140 @@ path_gen = base_path+"/generation/"
 path_mapp = base_path+"/mappings/generator/"
 tmp_path = base_path+"/tmp/"
 
+tm_to_entity = {
+	'AGENCY': 'AGENCY',
+	'SERVICES2': 'CALENDAR_DATES',
+	'CALENDAR_DATE_RULES': 'CALENDAR_DATES',
+	'SERVICES1': 'CALENDAR',
+	'CALENDAR_RULES': 'CALENDAR',
+	'FEED': 'FEED_INFO',
+	'FREQUENCIES': 'FREQUENCIES',
+	'ROUTES': 'ROUTES',
+	'SHAPES': 'SHAPES',
+	'STOPS': 'STOPS',
+	'STOPTIMES': 'STOP_TIMES',
+	'TRIPS': 'TRIPS'
+}
+
+default_mysql = {
+
+	"type": "mysql",
+		"connection": {
+			"user": "oeg",
+			"pass": "oeg",
+			"dsn": "jdbc:mysql://localhost:3306/gtfs",
+			"driver": "com.mysql.cj.jdbc.Driver"
+		}
+
+}
+
+default_mongo = {
+
+	"type": "mongo",
+		"connection": {
+			"user": "oeg",
+			"pass": "oeg",
+			"dsn": "jdbc:mongo://localhost:27017",
+		}
+
+}
 
 def generate_dataset(size):
-	
+		
 	os.chdir(path_gen)
 	
 	print("Running VIG with scale", size)
 	
 	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+str(size)+" > /dev/null")
 	
-def generate_distribution(config):
+	os.chdir(path_gen+'/resources/csvs/')
+	
+	os.system("./clean.sh > /dev/null")
+	
+	os.system("./headers.sh > /dev/null")
+	
+	
+def generate_distribution(distribution):
+	
+	
+	csv = { 'AGENCY': 'csv',
+			'CALENDAR': 'csv',
+			'CALENDAR_DATES': 'csv',
+			'FEED_INFO': 'csv',
+			'FREQUENCIES': 'csv',
+			'ROUTES': 'csv',
+			'SHAPES': 'csv',
+			'STOPS': 'csv',
+			'STOP_TIMES': 'csv',
+			'TRIPS': 'csv'
+		}
+		
+	json = { 'AGENCY': 'json',
+			'CALENDAR': 'json',
+			'CALENDAR_DATES': 'json',
+			'FEED_INFO': 'json',
+			'FREQUENCIES': 'json',
+			'ROUTES': 'json',
+			'SHAPES': 'json',
+			'STOPS': 'json',
+			'STOP_TIMES': 'json',
+			'TRIPS': 'json'
+		}
+	
+	xml = { 'AGENCY': 'xml',
+			'CALENDAR': 'xml',
+			'CALENDAR_DATES': 'xml',
+			'FEED_INFO': 'xml',
+			'FREQUENCIES': 'xml',
+			'ROUTES': 'xml',
+			'SHAPES': 'xml',
+			'STOPS': 'xml',
+			'STOP_TIMES': 'xml',
+			'TRIPS': 'xml'
+		}
+
+	
+
+		
+	best = { 'AGENCY': 'csv',
+			'CALENDAR': 'csv',
+			'CALENDAR_DATES': 'csv',
+			'FEED_INFO': 'csv',
+			'FREQUENCIES': 'csv',
+			'ROUTES': 'csv',
+			'SHAPES': 'csv',
+			'STOPS': 'csv',
+			'STOP_TIMES': 'csv',
+			'TRIPS': 'csv'
+		}
+	
+	worst = { 'AGENCY': 'csv',
+			'CALENDAR': 'csv',
+			'CALENDAR_DATES': 'csv',
+			'FEED_INFO': 'csv',
+			'FREQUENCIES': 'csv',
+			'ROUTES': 'csv',
+			'SHAPES': 'csv',
+			'STOPS': 'csv',
+			'STOP_TIMES': 'csv',
+			'TRIPS': 'csv'
+		}
+		
+	static_distributions = {'csv': csv,
+							'json': json,
+							'xml': xml,
+							'rdb': csv,
+							'mongo': json,
+							'best': best,
+							'worst': worst}
+	
+	os.chdir(path_gen+'/resources/csvs/')
+	
+	
+	for tm in static_distributions:
+		
+		
+		
 	
 	# Need TM <--> Format relation
 	pass
@@ -135,18 +259,6 @@ q3_a = prompt(q3)
 distribution = q3_a["q"]
 
 print(q3_a)
-
-generate_dataset(1)
-
-quit()
-
-#print(sizes)
-
-#print("Starting MySQL docker image and loading data dump...")
-
-#os.chdir(path_gen)
-
-#debug = subprocess.run(["./prepare.sh"], capture_output=True)
 
 for s in sizes:
 	
