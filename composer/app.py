@@ -181,21 +181,21 @@ def generate_mapping(distribution):
 		
 		t = {
 			'name': tm,
-			'map': 'partial/'+tm.lower()+'ttl'
+			'map': 'partial/'+tm.lower()+'.ttl'
 		}
 		
 		if f == 'csv':
-			t['source'] = {'type': 'csv', 'file': tm+'.csv'}
+			t['source'] = {'type': 'csv', 'file': e+'.csv'}
 		elif f == 'json':
-			t['source'] = {'type': 'json', 'file': tm+'.json'}
+			t['source'] = {'type': 'json', 'file': e+'.json'}
 		elif f == 'xml':
-			t['source'] = {'type': 'xml', 'file': tm+'.xml'}	
+			t['source'] = {'type': 'xml', 'file': e+'.xml'}	
 		elif f == 'mongo':
 			t['source'] = default_mongo
-			t['source']['table'] = 'gtfs.'+tm
+			t['source']['table'] = 'gtfs.'+e
 		elif f == 'sql':
 			t['source'] = default_mysql
-			t['source']['table'] = 'gtfs.'+tm
+			t['source']['table'] = 'gtfs.'+e
 		else:
 			print("Format", f, "not implemented")
 			
@@ -307,7 +307,7 @@ distribution = q3_a["q"]
 
 #Data
 
-for s in sizes:
+'''for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
 	
@@ -326,7 +326,7 @@ for s in sizes:
 		
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
-
+'''
 #Mapping
 
 for d in distribution:
