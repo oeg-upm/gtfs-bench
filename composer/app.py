@@ -119,39 +119,42 @@ def generate_distribution(distribution):
 	
 
 		
-	best = { 'AGENCY': 'csv',
+	best = { 'AGENCY': 'json',
 			'CALENDAR': 'csv',
 			'CALENDAR_DATES': 'csv',
-			'FEED_INFO': 'csv',
-			'FREQUENCIES': 'csv',
-			'ROUTES': 'csv',
+			'FEED_INFO': 'mongo',
+			'FREQUENCIES': 'sql',
+			'ROUTES': 'json',
 			'SHAPES': 'csv',
-			'STOPS': 'csv',
-			'STOP_TIMES': 'csv',
+			'STOPS': 'xml',
+			'STOP_TIMES': 'xml',
 			'TRIPS': 'csv'
 		}
 	
-	worst = { 'AGENCY': 'csv',
-			'CALENDAR': 'csv',
-			'CALENDAR_DATES': 'csv',
-			'FEED_INFO': 'csv',
-			'FREQUENCIES': 'csv',
-			'ROUTES': 'csv',
+	worst = { 'AGENCY': 'sql',
+			'CALENDAR': 'sql',
+			'CALENDAR_DATES': 'mongo',
+			'FEED_INFO': 'json',
+			'FREQUENCIES': 'mongo',
+			'ROUTES': 'xml',
 			'SHAPES': 'csv',
 			'STOPS': 'csv',
-			'STOP_TIMES': 'csv',
-			'TRIPS': 'csv'
+			'STOP_TIMES': 'xml',
+			'TRIPS': 'json'
 		}
 		
 	static_distributions = {'csv': csv,
 							'json': json,
 							'xml': xml,
-							'rdb': csv,
+							'sql': csv,
 							'mongo': json,
 							'best': best,
 							'worst': worst}
 	
 	os.chdir(path_gen+'/resources/csvs/')
+	
+	
+	
 	try:
 		os.mkdir('./dist/')
 		os.mkdir('./dist/'+distribution)
