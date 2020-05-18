@@ -18,7 +18,7 @@ transit:	http://vocab.org/transit/terms/
 
 [SourceDeclaration]
 sourceUri       x
-connectionUrl   jdbc:mysql://localhost:53306/gtfs
+connectionUrl   jdbc:mysql://localhost:3306/gtfs
 username        oeg
 password        oeg
 driverClass     com.mysql.jdbc.Driver

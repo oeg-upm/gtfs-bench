@@ -45,7 +45,7 @@
 :pm_67 rr:constant foaf:page.
 :pom_67 rr:objectMap :om_68.
 :om_68 a rr:ObjectMap;
-    rml:reference "feed_published_url";
+    rml:reference "feed_publisher_url";
     rr:termType rr:IRI.
 :pom_68 a rr:PredicateObjectMap.
 :map_feed_0 rr:predicateObjectMap :pom_68.
