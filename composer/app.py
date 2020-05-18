@@ -212,7 +212,7 @@ def generate_mapping(distribution):
 	with open("config_"+distribution+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
-	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt"
+	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt")
 
 
 try:
