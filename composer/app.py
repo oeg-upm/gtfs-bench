@@ -206,10 +206,13 @@ def generate_mapping(distribution):
 	config = {
 				"entities": tms
 			}
+			
+	os.chdir(path_mapp)
 			 
-	with open(path_mapp+"config_"+distribution+".json", 'w') as outfile:
+	with open("config_"+distribution+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
+	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt"
 
 
 try:
@@ -308,7 +311,7 @@ distribution = q3_a["q"]
 
 #Data
 
-'''for s in sizes:
+for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
 	
@@ -327,7 +330,7 @@ distribution = q3_a["q"]
 		
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
-'''
+
 #Mapping
 
 for d in distribution:
