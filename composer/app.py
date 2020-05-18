@@ -153,15 +153,22 @@ def generate_distribution(distribution):
 	
 	os.chdir(path_gen+'/resources/csvs/')
 	
+	os.mkdir('./dist/')
 	
 	for tm in static_distributions[distribution]:
 		
-		print(tm)
+		os.mkdir('./dist/'+distribution)
 		
+		f = static_distributions[distribution][tm]
 		
+		if f == 'csv' or f == 'sql':
+			os.system("cp "+tm+".csv ./dist/"+distribution+"/"+tm+".csv")
+		elif f == 'json' or f == 'mongo':
+			os.system("csvjson "+tm+".csv > ./dist/"+distribution+"/"+tm+".json")
+		elif f == 'xml'
+			os.system("di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution+"/"+tm+".xml")
 	
 	# Need TM <--> Format relation
-	pass
 	
 def generate_mapping(config):
 	
