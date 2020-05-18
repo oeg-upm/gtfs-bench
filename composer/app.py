@@ -152,13 +152,14 @@ def generate_distribution(distribution):
 							'worst': worst}
 	
 	os.chdir(path_gen+'/resources/csvs/')
-	
-	os.mkdir('./dist/')
+	try:
+		os.mkdir('./dist/')
+		os.mkdir('./dist/'+distribution)
+	except:
+		pass
 	
 	for tm in static_distributions[distribution]:
-		
-		os.mkdir('./dist/'+distribution)
-		
+				
 		f = static_distributions[distribution][tm]
 		
 		if f == 'csv' or f == 'sql':
