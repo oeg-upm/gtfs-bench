@@ -36,12 +36,12 @@ def generate_dataset(size):
 def generate_distribution(config):
 	
 	# Need TM <--> Format relation
-	
+	pass
 	
 def generate_mapping(config):
 	
 	# Need TM <--> Format relation and default filenames and database source [customizable in future reviews]
-		
+	pass
 
 
 
