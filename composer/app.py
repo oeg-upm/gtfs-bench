@@ -154,8 +154,9 @@ def generate_distribution(distribution):
 	os.chdir(path_gen+'/resources/csvs/')
 	
 	
-	for tm in static_distributions:
+	for tm in static_distributions[distribution]:
 		
+		print(tm)
 		
 		
 	
@@ -218,28 +219,35 @@ q3 = [
         'message': '\nNow let\'s select the output formats! This will also generate the corresponding mapping files. Choose which ones you want:',
         'choices': [ 
             {
-                'name': 'JSON'
+                'name': 'JSON',
+                'value': 'json'
             },
             {
-                'name': 'SQL'
+                'name': 'SQL',
+                'value': 'sql'
             },
             {
-                'name': 'XML'
+                'name': 'XML',
+				'value': 'xml'
             },
             {
-                'name': 'CSV'
+                'name': 'CSV',
+				'value': 'csv'
             },
             {
                 'name': 'Best',
+                'value': 'best',
                 'checked': True
             },
             {
                 'name': 'Worst',
+                'value': 'worst',
                 'checked': True
-            },
+            }
+            ''',
             {
                 'name': 'Customized'
-            }
+            }'''
             
         ]
     }
