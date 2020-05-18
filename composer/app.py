@@ -31,11 +31,18 @@ def generate_dataset(size):
 	
 	print("Running VIG with scale", size)
 	
-	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+int(size)+" > /dev/null")
+	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+str(size)+" > /dev/null")
+	
+def generate_distribution(config):
+	
+	# Need TM <--> Format relation
 	
 	
+def generate_mapping(config):
 	
-	
+	# Need TM <--> Format relation and default filenames and database source [customizable in future reviews]
+		
+
 
 
 
