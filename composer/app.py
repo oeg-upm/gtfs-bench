@@ -204,7 +204,7 @@ def generate_mapping(distribution):
 	
 		config = {
 				{
-					"entities": [tms]
+					"entities": tms
 				}
 			 }
 
