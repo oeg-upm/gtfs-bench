@@ -88,7 +88,7 @@ class MySQLSource(Source):
 		return self.graph
 
 class MongoSource(Source):
-	def __init__(self, connection_uri, driver, user, password, table):
+	def __init__(self, connection_uri, user, password, table):
 		self.connection_uri = connection_uri
 		self.driver = driver
 		self.user = user
@@ -104,7 +104,6 @@ class MongoSource(Source):
 		self.graph.add((ex.source, rr.sqlVersion, rr.SQL2008)) # ?
 		self.graph.add((ex.DB_source, rdf.type, d2rq.Database))
 		self.graph.add((ex.DB_source, d2rq.jdbcDSN, Literal(self.connection_uri, datatype=XSD.string)))
-		self.graph.add((ex.DB_source, d2rq.jdbcDriver, Literal(self.driver, datatype=XSD.string)))
 		self.graph.add((ex.DB_source, d2rq.username, Literal(self.user, datatype=XSD.string)))
 		self.graph.add((ex.DB_source, d2rq.password, Literal(self.password, datatype=XSD.string)))
 
@@ -185,10 +184,15 @@ class Mapping:
 			
 			if e["source"]["type"] == "mysql":
 				s = MySQLSource(e["source"]["connection"]["dsn"], e["source"]["connection"]["driver"], e["source"]["connection"]["user"], e["source"]["connection"]["pass"], e["source"]["table"])
+			elif e["source"]["type"] == "xml":
+				s = MongoSource(e["source"]["connection"]["dsn"], e["source"]["connection"]["user"], e["source"]["connection"]["pass"], e["source"]["table"])
 			elif e["source"]["type"] == "csv":
 				s = CSVSource(e["source"]["file"])
 			elif e["source"]["type"] == "json":
 				s = JSONSource(e["source"]["file"])
+			elif e["source"]["type"] == "xml":
+				s = XMLSource(e["source"]["file"])
+			
 			else:
 				print("Origen de datos " + str(e["source"]["type"]) + " no soportado!")
 			

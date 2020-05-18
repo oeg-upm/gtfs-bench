@@ -15,7 +15,7 @@ mkdir /tmp/output/datasets/
 mkdir /tmp/output/mappings/
 mkdir /tmp/output/queries/
 
-mv /repository/gtfs-bench/generation/output/* /tmp/output/datasets/
+#mv /repository/gtfs-bench/generation/output/* /tmp/output/datasets/
 
 #cp /repository/gtfs-bench/mappings/gtfs-csv.rml.ttl /tmp/output/mappings/
 #cp /repository/gtfs-bench/mappings/gtfs-json.rml.ttl /tmp/output/mappings/
