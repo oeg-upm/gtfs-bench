@@ -276,8 +276,6 @@ q3_a = prompt(q3)
 
 distribution = q3_a["q"]
 
-print(q3_a)
-
 for s in sizes:
 	
 	print("Generating dataset at scale: "+str(s))
@@ -288,7 +286,7 @@ for s in sizes:
 	
 	os.chdir(path_gen+'/resources/csvs/')
 	
-	os.system("rm -r ./dist/")
+	os.system("rm -r ./dist/ > /dev/null")
 	os.system("mkdir ./dist/")
 	
 	for d in distribution:
