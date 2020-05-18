@@ -24,6 +24,22 @@ path_gen = base_path+"/generation/"
 path_mapp = base_path+"/mappings/generator/"
 tmp_path = base_path+"/tmp/"
 
+
+def generate_dataset(size):
+	
+	os.chdir(path_gen)
+	
+	print("Running VIG with scale", size)
+	
+	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+int(size)+" > /dev/null")
+	
+	
+	
+	
+
+
+
+
 try:
 	os.mkdir(tmp_path)
 except:
@@ -66,7 +82,7 @@ q2 = [
 
 q3 = [
     {
-        'type': 'input',
+        'type': 'checkbox',
         'name': 'q',
         'message': '\nNow let\'s select the output formats! This will also generate the corresponding mapping files. Choose which ones you want:',
         'choices': [ 
@@ -83,10 +99,12 @@ q3 = [
                 'name': 'CSV'
             },
             {
-                'name': 'Best'
+                'name': 'Best',
+                'checked': True
             },
             {
-                'name': 'Worst'
+                'name': 'Worst',
+                'checked': True
             },
             {
                 'name': 'Customized'
@@ -96,7 +114,7 @@ q3 = [
     }
 ]
 
-q1_a = prompt(q1, style=custom_style_3)
+q1_a = prompt(q1)
 
 if q1_a["q"] == 'custom':
 	sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)["q"].split(","))]
@@ -105,9 +123,14 @@ else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
 	
-q3_a = prompt(q1, style=custom_style_3)
+q3_a = prompt(q3)
+
+distribution = q3_a["q"]
 
 print(q3_a)
+
+generate_dataset(1)
+
 quit()
 
 #print(sizes)
@@ -125,6 +148,12 @@ for s in sizes:
 	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
 	
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
+	
+	for d in distribution:
+		
+		os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
+		
+	
 	
 print("DONE!")
 	
