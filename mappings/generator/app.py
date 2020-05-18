@@ -90,7 +90,6 @@ class MySQLSource(Source):
 class MongoSource(Source):
 	def __init__(self, connection_uri, user, password, table):
 		self.connection_uri = connection_uri
-		self.driver = driver
 		self.user = user
 		self.password = password
 		self.table = table
