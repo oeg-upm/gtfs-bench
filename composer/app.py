@@ -158,6 +158,7 @@ def generate_distribution(distribution):
 	except:
 		pass	
 		
+	print("Preparing distribution
 	
 	for tm in static_distributions[distribution]:
 				
@@ -295,7 +296,7 @@ for s in sizes:
 		generate_distribution(d)
 		
 	os.system("rm *.csv")
-	os.system("zip /tmp/output/datasets/"+str(s)+"-dataset.zip .")
+	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 	
 	
 	
