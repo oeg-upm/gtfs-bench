@@ -173,9 +173,9 @@ def generate_distribution(distribution):
 		if f == 'csv' or f == 'sql':
 			os.system("cp "+tm+".csv ./dist/"+distribution+"/"+tm+".csv")
 		elif f == 'json' or f == 'mongo':
-			os.system("csvjson "+tm+".csv > ./dist/"+distribution+"/"+tm+".json")
+			os.system("csvjson --stream --no-inference "+tm+".csv > ./dist/"+distribution+"/"+tm+".json")
 		elif f == 'xml':
-			os.system("di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution+"/"+tm+".xml")
+			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution+"/"+tm+".xml")
 	
 	# Need TM <--> Format relation
 	
