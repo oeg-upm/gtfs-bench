@@ -202,13 +202,12 @@ def generate_mapping(distribution):
 		tms.append(t)
 		
 	
-		config = {
-				{
-					"entities": tms
-				}
-			 }
+	config = {
+				"entities": tms
+			}
+			 
 
-		print(config)
+	print(config)
 
 
 
