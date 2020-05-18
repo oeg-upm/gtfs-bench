@@ -212,7 +212,7 @@ def generate_mapping(distribution):
 	with open("config_"+distribution+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
-	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt")
+	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt > /dev/null")
 
 
 try:
@@ -321,7 +321,7 @@ for s in sizes:
 	
 	os.chdir(path_gen+'/resources/csvs/')
 	
-	os.system("rm -r ./dist/ > /dev/null")
+	#os.system("rm -r ./dist/ > /dev/null")
 	os.system("mkdir ./dist/")
 	
 	for d in distribution:
