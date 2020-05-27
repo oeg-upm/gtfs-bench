@@ -52,7 +52,31 @@ csv = { 'AGENCY': 'csv',
 		'TRIPS': 'csv'
 	}
 	
+sql = { 'AGENCY': 'csv',
+		'CALENDAR': 'csv',
+		'CALENDAR_DATES': 'csv',
+		'FEED_INFO': 'csv',
+		'FREQUENCIES': 'csv',
+		'ROUTES': 'csv',
+		'SHAPES': 'csv',
+		'STOPS': 'csv',
+		'STOP_TIMES': 'csv',
+		'TRIPS': 'csv'
+	}
+	
 _json = { 'AGENCY': 'json',
+		'CALENDAR': 'json',
+		'CALENDAR_DATES': 'json',
+		'FEED_INFO': 'json',
+		'FREQUENCIES': 'json',
+		'ROUTES': 'json',
+		'SHAPES': 'json',
+		'STOPS': 'json',
+		'STOP_TIMES': 'json',
+		'TRIPS': 'json'
+	}
+	
+mongo = { 'AGENCY': 'json',
 		'CALENDAR': 'json',
 		'CALENDAR_DATES': 'json',
 		'FEED_INFO': 'json',
@@ -104,8 +128,8 @@ worst = { 'AGENCY': 'sql',
 static_distributions = {'csv': csv,
 						'json': _json,
 						'xml': xml,
-						'sql': csv,
-						'mongo': json,
+						'sql': sql,
+						'mongo': mongo,
 						'best': best,
 						'worst': worst}
 

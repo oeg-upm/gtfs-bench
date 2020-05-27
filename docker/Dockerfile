@@ -20,6 +20,12 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 WORKDIR /repository
+RUN git clone https://github.com/SDM-TIB/SDM-RDFizer.git
+WORKDIR /repository/SDM-RDFizer
+RUN apt-get install libpq-dev -y
+RUN pip3 install -r  requirements.txt
+
+WORKDIR /repository
 RUN git clone https://github.com/oeg-upm/gtfs-bench.git
 WORKDIR /repository/gtfs-bench
 
@@ -32,6 +38,9 @@ ARG versions_sensitive_commands
 RUN git pull
 RUN git fetch
 RUN git checkout wip
+
+
+
 
 RUN echo "Rebuilding based on commit: ${versions_sensitive_commands}"
 
