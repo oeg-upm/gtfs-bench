@@ -209,6 +209,8 @@ def generate_mapping(distribution):
 			'map': 'partial/'+tm.lower()+'.ttl'
 		}
 		
+		print("\tGenerating mapping:", f)
+		
 		if f == 'csv':
 			t['source'] = {'type': 'csv', 'file': e+'.csv'}
 		elif f == 'json':
