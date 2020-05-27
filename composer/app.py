@@ -52,16 +52,16 @@ csv = { 'AGENCY': 'csv',
 		'TRIPS': 'csv'
 	}
 	
-sql = { 'AGENCY': 'csv',
-		'CALENDAR': 'csv',
-		'CALENDAR_DATES': 'csv',
-		'FEED_INFO': 'csv',
-		'FREQUENCIES': 'csv',
-		'ROUTES': 'csv',
-		'SHAPES': 'csv',
-		'STOPS': 'csv',
-		'STOP_TIMES': 'csv',
-		'TRIPS': 'csv'
+sql = { 'AGENCY': 'sql',
+		'CALENDAR': 'sql',
+		'CALENDAR_DATES': 'sql',
+		'FEED_INFO': 'sql',
+		'FREQUENCIES': 'sql',
+		'ROUTES': 'sql',
+		'SHAPES': 'sql',
+		'STOPS': 'sql',
+		'STOP_TIMES': 'sql',
+		'TRIPS': 'sql'
 	}
 	
 _json = { 'AGENCY': 'json',
@@ -76,16 +76,16 @@ _json = { 'AGENCY': 'json',
 		'TRIPS': 'json'
 	}
 	
-mongo = { 'AGENCY': 'json',
-		'CALENDAR': 'json',
-		'CALENDAR_DATES': 'json',
-		'FEED_INFO': 'json',
-		'FREQUENCIES': 'json',
-		'ROUTES': 'json',
-		'SHAPES': 'json',
-		'STOPS': 'json',
-		'STOP_TIMES': 'json',
-		'TRIPS': 'json'
+mongo = { 'AGENCY': 'mongo',
+		'CALENDAR': 'mongo',
+		'CALENDAR_DATES': 'mongo',
+		'FEED_INFO': 'mongo',
+		'FREQUENCIES': 'mongo',
+		'ROUTES': 'mongo',
+		'SHAPES': 'mongo',
+		'STOPS': 'mongo',
+		'STOP_TIMES': 'mongo',
+		'TRIPS': 'mongo'
 	}
 
 xml = { 'AGENCY': 'xml',
