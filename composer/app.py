@@ -194,7 +194,7 @@ def generate_distribution(distribution):
 	
 def generate_mapping(distribution):
 	
-	
+	print("\tGenerating mapping:", distribution)
 			 
 	tms = []
 	
@@ -209,7 +209,7 @@ def generate_mapping(distribution):
 			'map': 'partial/'+tm.lower()+'.ttl'
 		}
 		
-		print("\tGenerating mapping:", f)
+		
 		
 		if f == 'csv':
 			t['source'] = {'type': 'csv', 'file': e+'.csv'}
