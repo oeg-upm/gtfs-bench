@@ -2,7 +2,8 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
-@prefix fno: <http://w3id.org/function/ontology#>.
+@prefix fno: <https://w3id.org/function/ontology#>.
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix : <http://mapping.example.com/>.
@@ -17,9 +18,9 @@
 
 :map_stoptimes_0 rml:logicalSource :source_0.
 :source_0 a rml:LogicalSource;
-    rml:source "STOP_TIMES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/STOP_TIMES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_stoptimes_0 a rr:TriplesMap;
     rdfs:label "stoptimes".
 :s_0 a rr:SubjectMap.
@@ -114,9 +115,9 @@
 :pom_9 rr:objectMap :om_9.
 :map_trips_0 rml:logicalSource :source_1.
 :source_1 a rml:LogicalSource;
-    rml:source "TRIPS.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/TRIPS.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_trips_0 a rr:TriplesMap;
     rdfs:label "trips".
 :s_1 a rr:SubjectMap.
@@ -196,9 +197,9 @@
 :pom_18 rr:objectMap :om_19.
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
-    rml:source "ROUTES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/ROUTES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_routes_0 a rr:TriplesMap;
     rdfs:label "routes".
 :s_2 a rr:SubjectMap.
@@ -284,9 +285,9 @@
 :pom_27 rr:objectMap :om_28.
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
-    rml:source "AGENCY.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/AGENCY.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_agency_0 a rr:TriplesMap;
     rdfs:label "agency".
 :s_3 a rr:SubjectMap.
@@ -357,9 +358,9 @@
     rr:termType rr:IRI.
 :map_stops_0 rml:logicalSource :source_4.
 :source_4 a rml:LogicalSource;
-    rml:source "STOPS.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/STOPS.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_stops_0 a rr:TriplesMap;
     rdfs:label "stops".
 :s_4 a rr:SubjectMap.
@@ -483,9 +484,9 @@
 :pom_47 rr:objectMap :om_48.
 :map_services1_0 rml:logicalSource :source_5.
 :source_5 a rml:LogicalSource;
-    rml:source "CALENDAR.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/CALENDAR.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_services1_0 a rr:TriplesMap;
     rdfs:label "services1".
 :s_5 a rr:SubjectMap.
@@ -508,9 +509,9 @@
 :pom_49 rr:objectMap :om_50.
 :map_services2_0 rml:logicalSource :source_6.
 :source_6 a rml:LogicalSource;
-    rml:source "CALENDAR_DATES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/CALENDAR_DATES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_services2_0 a rr:TriplesMap;
     rdfs:label "services2".
 :s_6 a rr:SubjectMap.
@@ -533,9 +534,9 @@
 :pom_51 rr:objectMap :om_52.
 :map_calendar_date_rules_0 rml:logicalSource :source_7.
 :source_7 a rml:LogicalSource;
-    rml:source "CALENDAR_DATES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/CALENDAR_DATES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_calendar_date_rules_0 a rr:TriplesMap;
     rdfs:label "calendar_date_rules".
 :s_7 a rr:SubjectMap.
@@ -572,9 +573,9 @@
     rr:datatype xsd:boolean.
 :map_calendar_rules_0 rml:logicalSource :source_8.
 :source_8 a rml:LogicalSource;
-    rml:source "CALENDAR.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/CALENDAR.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_calendar_rules_0 a rr:TriplesMap;
     rdfs:label "calendar_rules".
 :s_8 a rr:SubjectMap.
@@ -681,9 +682,9 @@
     rr:datatype xsd:date.
 :map_feed_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rml:source "FEED_INFO.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/FEED_INFO.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_feed_0 a rr:TriplesMap;
     rdfs:label "feed".
 :s_9 a rr:SubjectMap.
@@ -714,7 +715,7 @@
 :pm_67 rr:constant foaf:page.
 :pom_67 rr:objectMap :om_68.
 :om_68 a rr:ObjectMap;
-    rml:reference "feed_published_url";
+    rml:reference "feed_publisher_url";
     rr:termType rr:IRI.
 :pom_68 a rr:PredicateObjectMap.
 :map_feed_0 rr:predicateObjectMap :pom_68.
@@ -756,9 +757,9 @@
     rr:termType rr:Literal.
 :map_shapes_0 rml:logicalSource :source_10.
 :source_10 a rml:LogicalSource;
-    rml:source "SHAPES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/SHAPES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_shapes_0 a rr:TriplesMap;
     rdfs:label "shapes".
 :s_10 a rr:SubjectMap.
@@ -813,9 +814,9 @@
     rr:termType rr:Literal.
 :map_frequencies_0 rml:logicalSource :source_11.
 :source_11 a rml:LogicalSource;
-    rml:source "FREQUENCIES.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.[*]".
+    rml:source "/data/FREQUENCIES.json";
+    rml:iterator "$";
+    rml:referenceFormulation ql:JSONPath.
 :map_frequencies_0 a rr:TriplesMap;
     rdfs:label "frequencies".
 :s_11 a rr:SubjectMap.

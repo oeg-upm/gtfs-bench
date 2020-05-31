@@ -1,7 +1,7 @@
 prefixes:
   rr: http://www.w3.org/ns/r2rml#
-  foaf: http://xml~xpath, /Category/Recordns.com/foaf/0.1/
-  xsd: http://www.w3.org/2001/xml~xpath, /Category/RecordSchema#
+  foaf: http://ns.com/foaf/0.1/
+  xsd: http://www.w3.org/2001/
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   dc: http://purl.org/dc/elements/1.1/
   rev: http://purl.org/stuff/rev#
