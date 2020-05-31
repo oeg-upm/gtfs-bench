@@ -6,8 +6,8 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix : <http://mapping.example.com/>.
-@prefix foaf: <http://xml~xpath, /Category/Recordns.com/foaf/0.1/>.
-@prefix xsd: <http://www.w3.org/2001/xml~xpath, /Category/RecordSchema#>.
+@prefix foaf: <http://ns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/Schema#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix rev: <http://purl.org/stuff/rev#>.
 @prefix gtfs: <http://vocab.gtfs.org/terms#>.
