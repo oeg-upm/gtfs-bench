@@ -2,7 +2,8 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
-@prefix fno: <http://w3id.org/function/ontology#>.
+@prefix fno: <https://w3id.org/function/ontology#>.
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix : <http://mapping.example.com/>.
@@ -196,7 +197,7 @@
 :map_routes_0 rml:logicalSource :source_2.
 :source_2 a rml:LogicalSource;
     rml:source "/data/ROUTES.json";
-    rml:iterator "$";
+    rml:iterator "$.[*]";
     rml:referenceFormulation ql:JSONPath.
 :map_routes_0 a rr:TriplesMap;
     rdfs:label "routes".
@@ -284,7 +285,7 @@
 :map_agency_0 rml:logicalSource :source_3.
 :source_3 a rml:LogicalSource;
     rml:source "/data/AGENCY.json";
-    rml:iterator "$";
+    rml:iterator "$.[*]";
     rml:referenceFormulation ql:JSONPath.
 :map_agency_0 a rr:TriplesMap;
     rdfs:label "agency".
@@ -676,8 +677,8 @@
     rr:datatype xsd:date.
 :map_feed_0 rml:logicalSource :source_9.
 :source_9 a rml:LogicalSource;
-    rr:tableName "gtfs.FEED_INFO";
-    rml:source <#DB_source_mongo> .
+    rml:source "/data/FEED_INFO.csv";
+    rml:referenceFormulation ql:CSV.
 :map_feed_0 a rr:TriplesMap;
     rdfs:label "feed".
 :s_9 a rr:SubjectMap.
@@ -708,7 +709,7 @@
 :pm_67 rr:constant foaf:page.
 :pom_67 rr:objectMap :om_68.
 :om_68 a rr:ObjectMap;
-    rml:reference "feed_published_url";
+    rml:reference "feed_publisher_url";
     rr:termType rr:IRI.
 :pom_68 a rr:PredicateObjectMap.
 :map_feed_0 rr:predicateObjectMap :pom_68.
@@ -806,9 +807,8 @@
     rr:termType rr:Literal.
 :map_frequencies_0 rml:logicalSource :source_11.
 :source_11 a rml:LogicalSource;
-    rr:tableName "gtfs.FREQUENCIES";
-    rml:source <#DB_source> ;
-    rr:sqlVersion rr:SQL2008 .
+    rml:source "/data/FREQUENCIES.csv";
+    rml:referenceFormulation ql:CSV.
 :map_frequencies_0 a rr:TriplesMap;
     rdfs:label "frequencies".
 :s_11 a rr:SubjectMap.
@@ -922,15 +922,3 @@
     rr:joinCondition :jc_10.
 :jc_10 rr:child "trip_id";
     rr:parent "trip_id".
-
-
-<#DB_source> a d2rq:Database;
-    d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-    d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
-    d2rq:username "root";
-    d2rq:password "oeg".
-
-<#DB_source_mongo> a d2rq:Database;
-    d2rq:jdbcDSN "jdbc:mongo://localhost:27017";
-    d2rq:username "root";
-    d2rq:password "oeg".
