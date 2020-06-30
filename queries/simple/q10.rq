@@ -1,4 +1,4 @@
-#Q10: Number of trips that have a duration over 30 minutes. Testing count with join and filter
+#Q14: All stops times and their related routes and stops order by their sequence. Testing Order By
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -7,14 +7,10 @@ PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gtfsroute: <http://transport.linkeddata.es/madrid/metro/routes/>
+PREFIX gtfsservice: <http://transport.linkeddata.es/madrid/metro/services/>
 
-SELECT (count(distinct ?trip) as ?count)  WHERE {
-	?trip a gtfs:Trip .
+SELECT * WHERE {
+    ?stopTime a gtfs:StopTime .
+    ?stopTime gtfs:stopSequence ?sequence .
 
-	?stopTime a gtfs:StopTime . 
-	?stopTime gtfs:trip ?trip . 
-	?stopTime gtfs:departureTime ?departureTime .
-	
-	FILTER (?departureTime >= "00:30:00"^^xsd:duration) 
-}
+} ORDER BY ?sequence

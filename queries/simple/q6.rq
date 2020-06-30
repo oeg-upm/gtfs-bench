@@ -1,4 +1,4 @@
-#Q6: Check the number of routes of a particular agency. Testing count
+#Q6: Check the number of routes. Testing count
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -10,5 +10,4 @@ PREFIX gtfsagency: <http://transport.linkeddata.es/madrid/agency/>
 
 SELECT (count(?route) as ?nRoutes) WHERE {
 	?route a gtfs:Route .
-	?route gtfs:agency ?agency .
 }

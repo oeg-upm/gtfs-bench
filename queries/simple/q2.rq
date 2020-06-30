@@ -9,8 +9,6 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT * WHERE {
 	?stop a gtfs:Stop . 
-	OPTIONAL { ?stop dct:description ?stopDescription . }
 	OPTIONAL { ?stop gtfs:wheelchairAccessible ?wheelchairAccesible }
-	?stop geo:lat ?stopLat . 
-	?stop geo:long ?stopLong .
+
 }

@@ -12,6 +12,4 @@ SELECT * WHERE {
 	?route gtfs:agency ?agency .
 
 	?agency a gtfs:Agency .
-	?agency foaf:page ?agencyPage .
-	?agency foaf:name ?agencyName .
 }
