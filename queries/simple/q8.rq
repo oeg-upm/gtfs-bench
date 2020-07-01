@@ -1,4 +1,4 @@
-#Q11: Trips that are available on a certain date. Testing filter not exists
+#Q8: Testing filter not exists
 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

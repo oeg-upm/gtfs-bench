@@ -1,4 +1,4 @@
-#Q5: Services that have been added after a specific date. Testing multiple join
+#Q5: Testing multiple join
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

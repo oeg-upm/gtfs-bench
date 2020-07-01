@@ -1,4 +1,4 @@
-#Q2: List all stops. Testing Optional
+#Q2: Testing Optional
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
