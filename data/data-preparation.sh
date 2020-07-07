@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -a arr=("csv" "json" "rdb" "xml" "best" "worst" "random")
+declare -a arr=("csv" "json" "rdb" "xml")
 
 # download from data-url
 while IFS=, read -r format gtfs gtfs5 gtfs10 gtfs50 gtfs100 gtfs500
