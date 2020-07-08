@@ -339,7 +339,7 @@ distribution = q3_a["q"]
 
 #Base RDF
 
-'''print("Generating SDM-RDFizer required files...")
+print("Generating SDM-RDFizer required files...")
 		
 os.system(path_gen+"./generate.sh 1 "+path_gen)
 	
@@ -349,7 +349,7 @@ os.mkdir("/tmp/output/rdf/")
 	
 os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")	
 		
-os.system("rm *.csv")'''
+os.system("rm *.csv")
 
 #Data
 
