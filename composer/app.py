@@ -125,13 +125,15 @@ worst = { 'AGENCY': 'sql',
 		'TRIPS': 'json'
 	}
 	
-static_distributions = {'csv': csv,
-						'json': _json,
-						'xml': xml,
-						'sql': sql,
-						'mongo': mongo,
-						'best': best,
-						'worst': worst}
+static_distributions = {
+	'csv': csv,
+	'json': _json,
+	'xml': xml,
+	'sql': sql,
+	'mongo': mongo,
+	'best': best,
+	'worst': worst
+}
 
 
 default_mysql = {
