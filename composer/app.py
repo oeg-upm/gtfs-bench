@@ -335,6 +335,20 @@ q3_a = prompt(q3)
 
 distribution = q3_a["q"]
 
+#Base RDF
+
+'''print("Generating SDM-RDFizer required files...")
+		
+os.system(path_gen+"./generate.sh 1 "+path_gen)
+	
+os.chdir(path_gen+'/resources/csvs/')
+
+os.mkdir("/tmp/output/rdf/")
+	
+os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")	
+		
+os.system("rm *.csv")'''
+
 #Data
 
 for s in sizes:
