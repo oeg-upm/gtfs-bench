@@ -346,7 +346,9 @@ os.system(path_gen+"./generate.sh 1 "+path_gen)
 os.chdir(path_gen+'/resources/csvs/')
 
 os.mkdir("/tmp/output/rdf/")
-	
+
+generate_mapping("csv")
+
 os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")	
 		
 os.system("rm *.csv")
