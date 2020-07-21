@@ -8,6 +8,11 @@ We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph acc
 - Mappings: 1 R2RML mapping document, 7 RML mapping document, 1 xR2RML mapping document, 1 YARRRML mapping and 1 CSVW annotations
 - Engines: docker-compose with all the tested engines and running scripts
 
+## Using the Madrid-GTFS-Bench-generator for custom dataset generation
+
+1. You can use the following docker image to generate datasets by size and format, also with the proper mapping and queries
+2. Run `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
+3. [GIF](misc/demo.gif)
 
 ## Steps for using the Madrid-GTFS-Bench
 
