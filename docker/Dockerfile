@@ -29,13 +29,13 @@ RUN service mysql start && pv -f generation/mysql_data/dump-gtfs.sql | mysql -u 
 
 # This part is almost dynamic, forced by last commit
 
-ARG versions_sensitive_commands
+ARG version_sensitive_commands
 
 RUN git pull
 RUN git fetch
 RUN git checkout wip
 
-RUN echo "Rebuilding based on commit: ${versions_sensitive_commands}"
+RUN echo "Rebuilding based on commit: ${version_sensitive_commands}"
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh

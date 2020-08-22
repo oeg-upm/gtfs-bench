@@ -386,9 +386,6 @@ for a in q3_a:
 		distributions.append(static_distributions[a])
 
 
-print(distributions)
-
-quit()
 
 for s in sizes:
 
