@@ -40,100 +40,83 @@ tm_to_entity = {
 	'TRIPS': 'TRIPS'
 }
 
-csv = { 'AGENCY': 'csv',
-		'CALENDAR': 'csv',
-		'CALENDAR_DATES': 'csv',
-		'FEED_INFO': 'csv',
-		'FREQUENCIES': 'csv',
-		'ROUTES': 'csv',
-		'SHAPES': 'csv',
-		'STOPS': 'csv',
-		'STOP_TIMES': 'csv',
-		'TRIPS': 'csv'
-	}
-	
-sql = { 'AGENCY': 'sql',
-		'CALENDAR': 'sql',
-		'CALENDAR_DATES': 'sql',
-		'FEED_INFO': 'sql',
-		'FREQUENCIES': 'sql',
-		'ROUTES': 'sql',
-		'SHAPES': 'sql',
-		'STOPS': 'sql',
-		'STOP_TIMES': 'sql',
-		'TRIPS': 'sql'
-	}
-	
-_json = { 'AGENCY': 'json',
-		'CALENDAR': 'json',
-		'CALENDAR_DATES': 'json',
-		'FEED_INFO': 'json',
-		'FREQUENCIES': 'json',
-		'ROUTES': 'json',
-		'SHAPES': 'json',
-		'STOPS': 'json',
-		'STOP_TIMES': 'json',
-		'TRIPS': 'json'
-	}
-	
-mongo = { 'AGENCY': 'mongo',
-		'CALENDAR': 'mongo',
-		'CALENDAR_DATES': 'mongo',
-		'FEED_INFO': 'mongo',
-		'FREQUENCIES': 'mongo',
-		'ROUTES': 'mongo',
-		'SHAPES': 'mongo',
-		'STOPS': 'mongo',
-		'STOP_TIMES': 'mongo',
-		'TRIPS': 'mongo'
-	}
+csv_distribution = {'name': 'csv',
+		'formats': { 'AGENCY': 'csv',
+				'CALENDAR': 'csv',
+				'CALENDAR_DATES': 'csv',
+				'FEED_INFO': 'csv',
+				'FREQUENCIES': 'csv',
+				'ROUTES': 'csv',
+				'SHAPES': 'csv',
+				'STOPS': 'csv',
+				'STOP_TIMES': 'csv',
+				'TRIPS': 'csv'
+			}
+		}
 
-xml = { 'AGENCY': 'xml',
-		'CALENDAR': 'xml',
-		'CALENDAR_DATES': 'xml',
-		'FEED_INFO': 'xml',
-		'FREQUENCIES': 'xml',
-		'ROUTES': 'xml',
-		'SHAPES': 'xml',
-		'STOPS': 'xml',
-		'STOP_TIMES': 'xml',
-		'TRIPS': 'xml'
-	}
-	
-		
-best = { 'AGENCY': 'json',
-		'CALENDAR': 'csv',
-		'CALENDAR_DATES': 'csv',
-		'FEED_INFO': 'mongo',
-		'FREQUENCIES': 'sql',
-		'ROUTES': 'json',
-		'SHAPES': 'csv',
-		'STOPS': 'xml',
-		'STOP_TIMES': 'xml',
-		'TRIPS': 'csv'
-	}
+sql_distribution = {'name': 'sql',
+		'formats': { 'AGENCY': 'sql',
+				'CALENDAR': 'sql',
+				'CALENDAR_DATES': 'sql',
+				'FEED_INFO': 'sql',
+				'FREQUENCIES': 'sql',
+				'ROUTES': 'sql',
+				'SHAPES': 'sql',
+				'STOPS': 'sql',
+				'STOP_TIMES': 'sql',
+				'TRIPS': 'sql'
+			}
+		}
 
-worst = { 'AGENCY': 'sql',
-		'CALENDAR': 'sql',
-		'CALENDAR_DATES': 'mongo',
-		'FEED_INFO': 'json',
-		'FREQUENCIES': 'mongo',
-		'ROUTES': 'xml',
-		'SHAPES': 'csv',
-		'STOPS': 'csv',
-		'STOP_TIMES': 'xml',
-		'TRIPS': 'json'
-	}
-	
+json_distribution = {'name': 'json',
+		'formats': { 'AGENCY': 'json',
+				'CALENDAR': 'json',
+				'CALENDAR_DATES': 'json',
+				'FEED_INFO': 'json',
+				'FREQUENCIES': 'json',
+				'ROUTES': 'json',
+				'SHAPES': 'json',
+				'STOPS': 'json',
+				'STOP_TIMES': 'json',
+				'TRIPS': 'json'
+			}
+		}
+
+mongo_distribution = {'name': 'mongo',
+		'formats': { 'AGENCY': 'mongo',
+				'CALENDAR': 'mongo',
+				'CALENDAR_DATES': 'mongo',
+				'FEED_INFO': 'mongo',
+				'FREQUENCIES': 'mongo',
+				'ROUTES': 'mongo',
+				'SHAPES': 'mongo',
+				'STOPS': 'mongo',
+				'STOP_TIMES': 'mongo',
+				'TRIPS': 'mongo'
+			}
+		}
+
+xml_distribution = {'name': 'xml',
+		'formats': { 'AGENCY': 'xml',
+				'CALENDAR': 'xml',
+				'CALENDAR_DATES': 'xml',
+				'FEED_INFO': 'xml',
+				'FREQUENCIES': 'xml',
+				'ROUTES': 'xml',
+				'SHAPES': 'xml',
+				'STOPS': 'xml',
+				'STOP_TIMES': 'xml',
+				'TRIPS': 'xml'
+			}
+		}
+
 static_distributions = {
-	'csv': csv,
-	'json': _json,
-	'xml': xml,
-	'sql': sql,
-	'mongo': mongo,
-	'best': best,
-	'worst': worst
-}
+	'csv': csv_distribution,
+	'json': json_distribution,
+	'xml': xml_distribution,
+	'sql': sql_distribution,
+	'mongo': mongo_distribution
+	}
 
 
 default_mysql = {
@@ -158,67 +141,131 @@ default_mongo = {
 	}
 
 def generate_dataset(size):
-		
+
 	os.chdir(path_gen)
-	
+
 	print("Running VIG with scale", size)
-	
+
 	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+str(size)+" > /dev/null")
-	
+
 	os.chdir(path_gen+'/resources/csvs/')
-	
+
 	os.system("./clean.sh > /dev/null")
-	
+
 	os.system("./headers.sh > /dev/null")
-	
-	
-def generate_distribution(distribution):	
-		
+
+
+def generate_distribution(distribution):
+
 	try:
-		os.mkdir('./dist/'+distribution)
+		os.mkdir('./dist/'+distribution['name'])
 	except:
-		pass	
-		
-	print("\tPreparing distribution:", distribution)
-	
-	for tm in static_distributions[distribution]:
-				
-		f = static_distributions[distribution][tm]
-		
-		if f == 'csv' or f == 'sql':
-			os.system("cp "+tm+".csv ./dist/"+distribution+"/"+tm+".csv")
-		elif f == 'json' or f == 'mongo':
-			os.system("csvjson --stream --no-inference "+tm+".csv > ./dist/"+distribution+"/"+tm+".json")
+		pass
+
+	print("\tPreparing distribution:", distribution['name'])
+
+	for tm in distribution['formats']:
+
+		f = distribution['formats'][tm]
+
+		if f == 'csv' or f == 'sql': # We import CSV files to MySQL instance
+			os.system("cp "+tm+".csv ./dist/"+distribution['name']+"/"+tm+".csv")
+		elif f == 'json' or f == 'mongo': # Mongo format is JSON
+			os.system("csvjson --stream --no-inference "+tm+".csv > ./dist/"+distribution['name']+"/"+tm+".json")
 		elif f == 'xml':
-			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution+"/"+tm+".xml")
-	
-	# Need TM <--> Format relation
-	
+			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".xml")
+
+def custom_distribution():
+
+	tm_list = list(dict.fromkeys(list(tm_to_entity.values())).keys())
+
+	options = [{
+                'name': 'JSON',
+                'value': 'json'
+            },
+            {
+                'name': 'XML',
+				'value': 'xml'
+            },
+            {
+                'name': 'CSV',
+				'value': 'csv'
+            },
+            {
+                'name': 'MongoDB',
+                'value': 'mongo',
+            },
+            {
+                'name': 'MySQL',
+                'value': 'mysql',
+            }]
+
+	distrib = dict()
+
+	q = [
+			{
+				'type': 'list',
+				'name': 'q',
+				'message': '',
+				'choices': [
+					{
+						'name': 'JSON',
+						'value': 'json',
+						'checked': True
+					},
+					{
+						'name': 'XML',
+						'value': 'xml'
+					},
+					{
+						'name': 'CSV',
+						'value': 'csv'
+					},
+					{
+						'name': 'MongoDB',
+						'value': 'mongo',
+					},
+					{
+						'name': 'MySQL',
+						'value': 'sql',
+					}
+
+				]
+			}
+		]
+
+	for tm in tm_list:
+
+		q[0]['message'] = '[ Custom distribution ] Select output format for {} TM:'.format(tm)
+
+		q_a = prompt(q)['q']
+
+		distrib[tm] = q_a
+
+	return distrib
+
+
 def generate_mapping(distribution):
-	
-	print("\tGenerating mapping:", distribution)
-			 
+
 	tms = []
-	
+
 	for tm in tm_to_entity:
-		
+
 		e = tm_to_entity[tm]
-		
+
 		f = static_distributions[distribution][e]
-		
+
 		t = {
 			'name': tm,
 			'map': 'partial/'+tm.lower()+'.ttl'
 		}
-		
-		
-		
+
 		if f == 'csv':
 			t['source'] = {'type': 'csv', 'file': e+'.csv'}
 		elif f == 'json':
 			t['source'] = {'type': 'json', 'file': e+'.json'}
 		elif f == 'xml':
-			t['source'] = {'type': 'xml', 'file': e+'.xml'}	
+			t['source'] = {'type': 'xml', 'file': e+'.xml'}
 		elif f == 'mongo':
 			t['source'] = default_mongo
 			t['source']['table'] = 'gtfs.'+e
@@ -227,16 +274,16 @@ def generate_mapping(distribution):
 			t['source']['table'] = 'gtfs.'+e
 		else:
 			print("Format", f, "not implemented")
-			
+
 		tms.append(t)
-		
-	
+
+
 	config = {
 				"entities": tms
 			}
-			
+
 	os.chdir(path_mapp)
-			 
+
 	with open("config_"+distribution+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
@@ -279,7 +326,7 @@ q2 = [
     {
         'type': 'input',
         'name': 'q',
-        'message': '\nPlease, specify the size(s) separated by commas',
+        'message': 'Please, specify the size(s) separated by commas',
     }
 ]
 
@@ -287,15 +334,11 @@ q3 = [
     {
         'type': 'checkbox',
         'name': 'q',
-        'message': '\nNow let\'s select the output formats! This will also generate the corresponding mapping files. Choose which ones you want:',
-        'choices': [ 
+        'message': 'Now let\'s select the output formats! This will also generate the corresponding mapping files. Choose which ones you want:',
+        'choices': [
             {
                 'name': 'JSON',
                 'value': 'json'
-            },
-            {
-                'name': 'SQL',
-                'value': 'sql'
             },
             {
                 'name': 'XML',
@@ -306,20 +349,19 @@ q3 = [
 				'value': 'csv'
             },
             {
-                'name': 'Best',
-                'value': 'best',
-                'checked': True
+                'name': 'MongoDB',
+                'value': 'mongo',
             },
             {
-                'name': 'Worst',
-                'value': 'worst',
-                'checked': True
+                'name': 'MySQL',
+                'value': 'sql',
+            },
+            {
+                'name': 'Custom distribution',
+                'value': 'custom'
+
             }
-            #,
-            #{
-            #    'name': 'Customized'
-            #}'''
-            
+
         ]
     }
 ]
@@ -332,54 +374,49 @@ if q1_a["q"] == 'custom':
 else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
-	
-q3_a = prompt(q3)
 
-distribution = q3_a["q"]
+q3_a = prompt(q3)["q"]
 
-#Base RDF
+distributions = list()
 
-print("Generating SDM-RDFizer required files...")
-		
-os.system(path_gen+"./generate.sh 1 "+path_gen)
+for a in q3_a:
+	if a == 'custom':
+		distributions.append(custom_distribution())
+	else:
+		distributions.append(static_distributions[a])
 
-os.mkdir("/tmp/output/rdf/")
 
-generate_mapping("csv")
+print(distributions)
 
-os.chdir(path_gen+'/resources/csvs/')
-
-os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")	
-		
-os.system("rm *.csv")
-
-#Data
+quit()
 
 for s in sizes:
-	
+
 	print("Generating dataset at scale: "+str(s))
-	
+
 	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
-	
+
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
-	
+
 	os.chdir(path_gen+'/resources/csvs/')
-	
+
 	#os.system("rm -r ./dist/ > /dev/null")
 	os.system("mkdir ./dist/")
-	
-	for d in distribution:
-	
+
+	for d in distributions:
+
 		generate_distribution(d)
-		
+
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 
 #Mapping
 
-for d in distribution:
-	
+for d in distributions:
+
 	generate_mapping(d)
-	
+
+
+
 print("DONE!")
-	
+
