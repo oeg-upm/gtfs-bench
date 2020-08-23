@@ -594,7 +594,7 @@ def custom_distribution():
 
 def deploy_mysql(size):
 
-	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -u root '.format(size))
+	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -uoeg -poeg '.format(size))
 
 def deploy(distributions, size):
 
