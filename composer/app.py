@@ -833,8 +833,9 @@ for s in sizes:
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 
-	# Cleanup
-	os.system("echo 'DROP DATABASE `gtfs` | mysql -u root")
+# Cleanup
+
+os.system("echo 'DROP DATABASE `gtfs`' | mysql -u root")
 
 
 
