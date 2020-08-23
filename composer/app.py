@@ -260,7 +260,7 @@ def generate_mapping(distribution):
 
 		e = tm_to_entity[tm]
 
-		f = static_distributions[distribution]['formats'][e]
+		f = distribution['formats'][e]
 
 		t = {
 			'name': tm,
