@@ -614,7 +614,7 @@ def deploy(distributions, size):
 
 	for d in distributions:
 
-		if d == q6_a:
+		if d['name'] == q6_a:
 
 			distribution = d
 
