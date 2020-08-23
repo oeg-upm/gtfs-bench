@@ -392,7 +392,39 @@ for a in q3_a:
 	else:
 		distributions.append(static_distributions[a])
 
+#Base RDF
 
+q4 = [
+    {
+        'type': 'list',
+        'name': 'q',
+        'message': 'Do you want to generate base RDF (scale 1) using SDM-RDFizer?',
+        'choices': [
+			{'name':'Yes', 'value': 'yes'},
+			{'name':'No', 'value': 'no'}
+		],
+    }
+]
+
+q4_a = prompt(q4)['q']
+
+if q4_a == 'yes':
+
+	print("Generating base RDF using SDM-RDFizer...")
+
+	os.system(path_gen+"./generate.sh 1 "+path_gen)
+
+	os.mkdir("/tmp/output/rdf/")
+
+	generate_mapping("csv")
+
+	os.chdir(path_gen+'/resources/csvs/')
+
+	os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")
+
+	os.system("rm *.csv")
+
+#Data
 
 for s in sizes:
 
@@ -420,6 +452,31 @@ for d in distributions:
 
 	generate_mapping(d)
 
+
+#Move
+
+os.system("cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/")
+os.chdir("/tmp/output/")
+os.system("zip  -9 -r /output/result.zip . > /dev/null")
+
+#Deploy
+
+q5 = [
+    {
+        'type': 'list',
+        'name': 'q',
+        'message': 'Do you want to start a MySQL and MongoDB server with the generated data?',
+        'choices': [
+			{'name':'Yes', 'value': 'yes'},
+			{'name':'No', 'value': 'no'}
+		],
+    }
+]
+
+q5_a = prompt(q4)['q']
+
+if q5_a == 'yes':
+	deploy()
 
 
 print("DONE!")

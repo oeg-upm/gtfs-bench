@@ -22,6 +22,16 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 WORKDIR /repository
+RUN git clone https://github.com/SDM-TIB/SDM-RDFizer.git
+WORKDIR /repository/SDM-RDFizer
+RUN apt-get install libpq-dev software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt-get install libpython3.5-dev python3.5 -y
+RUN python3.5 -m pip install -r requirements.txt
+
+
+
+WORKDIR /repository
 RUN git clone https://github.com/oeg-upm/gtfs-bench.git
 WORKDIR /repository/gtfs-bench
 
