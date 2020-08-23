@@ -625,6 +625,8 @@ def deploy(distributions, size):
 
 			distribution = d
 
+	print("Importing data in MySQL server")
+
 	for s in sizes:
 
 		generate_sql_schema(distribution, s)
@@ -831,6 +833,11 @@ for s in sizes:
 	os.system("rm *.csv")
 	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 
+	# Cleanup
+	os.system("echo 'DROP DATABASE `gtfs` | mysql -u root")
+
+
+
 #Mapping
 
 for d in distributions:
@@ -863,10 +870,10 @@ q5_a = prompt(q5)['q']
 if q5_a == 'yes':
 	deploy(distributions, sizes)
 
-
+print("Remember, the generated data is in the result.zip file at the current path.")
 
 def signal_handler(sig, frame):
-    print('Bye!')
+    print('\nBye! ')
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
