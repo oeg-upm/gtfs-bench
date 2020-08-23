@@ -206,7 +206,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`agency_fare_url` VARCHAR(200) DEFAULT NULL,
 				PRIMARY KEY (agency_id));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/AGENCY.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/AGENCY.csv'
 				INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET agency_phone = IF(agency_phone = '', NULL, agency_phone),
 					agency_fare_url = IF(agency_fare_url = '', NULL, agency_fare_url);
@@ -223,7 +223,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`exception_type` INT,
 				PRIMARY KEY (service_id,date));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/CALENDAR_DATES.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR_DATES.csv'
 				INTO TABLE CALENDAR_DATES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET exception_type = IF(exception_type=2,0,exception_type);
 
@@ -247,7 +247,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`end_date` DATE DEFAULT NULL,
 				PRIMARY KEY (service_id));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/CALENDAR.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR.csv'
 				INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET end_date = IF(end_date = '', NULL, end_date);
 
@@ -266,7 +266,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`feed_version` VARCHAR(200),
 				PRIMARY KEY (feed_publisher_name));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/FEED_INFO.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FEED_INFO.csv'
 				INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 				   SET feed_start_date = IF(feed_start_date = '', NULL, feed_start_date),
 				   feed_end_date = IF(feed_end_date = '', NULL, feed_end_date);
@@ -289,7 +289,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`exact_times` INT DEFAULT 0,
 				PRIMARY KEY (trip_id,start_time));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/FREQUENCIES.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FREQUENCIES.csv'
 				INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET exact_times = IF(exact_times='',NULL,exact_times);
 
@@ -319,7 +319,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`route_text_color` VARCHAR(200),
 				PRIMARY KEY (route_id));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/ROUTES.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/ROUTES.csv'
 				INTO TABLE ROUTES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET route_desc = IF(route_desc = '', NULL, route_desc);
 
@@ -345,7 +345,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`shape_dist` DECIMAL(18,15),
 				PRIMARY KEY (shape_id,shape_pt_sequence));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/SHAPES.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/SHAPES.csv'
 				INTO TABLE SHAPES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 
@@ -370,7 +370,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`wheelchair_boarding` INT,
 				PRIMARY KEY (stop_id));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/STOPS.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOPS.csv'
 				INTO TABLE STOPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 				   SET zone_id = IF(zone_id = '', NULL, zone_id),
 				   stop_timezone = IF(stop_timezone = '', NULL, stop_timezone),
@@ -397,7 +397,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`shape_dist_traveled` DECIMAL(18,15),
 				PRIMARY KEY (trip_id,stop_id,arrival_time));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 				   SET trip_id = IF(trip_id = '', NULL, trip_id),
 					   arrival_time = IF(arrival_time = '', NULL, arrival_time),
 					   departure_time = IF(departure_time = '', NULL, departure_time),
@@ -439,7 +439,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				`wheelchair_accessible` INT,
 				PRIMARY KEY (trip_id));
 
-				LOAD DATA LOCAL INFILE '{1}datasets/{0}/TRIPS.csv'
+				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/TRIPS.csv'
 				INTO TABLE TRIPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 					SET block_id = IF(block_id = '', NULL, block_id);
 
@@ -477,7 +477,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 					ALTER TABLE  TRIPS  ADD FOREIGN KEY (service_id) REFERENCES CALENDAR_DATES (service_id);
 
 				'''
-		data = schema.format(size, absolute_path)
+		data = schema.format(size, distribution[name], absolute_path)
 
 		with open('/tmp/output/schema-{0}.sql'.format(size), 'w') as f:
 
