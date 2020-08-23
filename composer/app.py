@@ -157,6 +157,8 @@ def generate_dataset(size):
 
 def generate_distribution(distribution):
 
+	print(distribution)
+
 	try:
 		os.mkdir('./dist/'+distribution['name'])
 	except:
@@ -244,6 +246,8 @@ def custom_distribution():
 
 	return distrib
 
+def deploy():
+	pass
 
 def generate_mapping(distribution):
 
