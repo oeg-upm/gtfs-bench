@@ -194,6 +194,8 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 			CREATE DATABASE IF NOT EXISTS `gtfs-{0}`;
 			USE `gtfs-{0}`;'''
 
+		schema_post = ""
+
 		if distribution['formats']['AGENCY'] == 'sql':
 
 			schema += '''
@@ -299,7 +301,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['TRIPS'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  FREQUENCIES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
 
@@ -329,7 +331,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['AGENCY'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  ROUTES  ADD FOREIGN  KEY (agency_id) REFERENCES AGENCY (agency_id);
 
@@ -411,7 +413,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['STOPS'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (stop_id) REFERENCES STOPS (stop_id);
 
@@ -419,7 +421,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['TRIPS'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
 
@@ -450,7 +452,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['SHAPES'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (shape_id) REFERENCES SHAPES (shape_id);
 
@@ -458,7 +460,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['ROUTES'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (route_id) REFERENCES ROUTES (route_id);
 
@@ -466,7 +468,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['CALENDAR'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_id);
 
@@ -474,11 +476,14 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			if distribution['formats']['CALENDAR_DATES'] == 'sql':
 
-				schema += '''
+				schema_post += '''
 
 					ALTER TABLE  TRIPS  ADD FOREIGN KEY (service_id) REFERENCES CALENDAR_DATES (service_id);
 
 				'''
+
+		schema += schema_post
+
 		data = schema.format(size, distribution['name'], absolute_path)
 
 		with open('/tmp/output/schema-{0}.sql'.format(size), 'w') as f:
