@@ -614,7 +614,7 @@ def deploy(distributions, size):
 
 		if d == q6_a:
 
-		distribution = d
+			distribution = d
 
 	for s in sizes:
 
