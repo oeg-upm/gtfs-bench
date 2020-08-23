@@ -792,7 +792,7 @@ if q4_a == 'yes':
 
 	os.mkdir("/tmp/output/rdf/")
 
-	generate_mapping("csv")
+	generate_mapping(csv_distribution)
 
 	os.chdir(path_gen+'/resources/csvs/')
 
