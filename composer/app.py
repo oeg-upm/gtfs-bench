@@ -479,7 +479,7 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 				'''
 		data = schema.format(size, absolute_path)
 
-		with open('/tmp/output/schema-{0}.sql'.format(size), 'w') as f:w
+		with open('/tmp/output/schema-{0}.sql'.format(size), 'w') as f:
 
 			f.write(data)
 
