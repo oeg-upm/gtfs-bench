@@ -4,6 +4,8 @@
 import os
 import subprocess
 import json
+import signal
+import sys
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 from PyInquirer import Validator, ValidationError
@@ -857,5 +859,12 @@ if q5_a == 'yes':
 	deploy(distributions, sizes)
 
 
-print("Bye!")
+
+def signal_handler(sig, frame):
+    print('Bye!')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+print('Press Ctrl+C to exit')
+signal.pause()
 
