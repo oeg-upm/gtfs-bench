@@ -585,7 +585,29 @@ def custom_distribution():
 
 	return distrib
 
-def deploy():
+def deploy(distributions):
+
+	dist_options = list()
+
+	for d in distributions:
+		dist_options.append({
+			'name': d['name'],
+			'value': d['name']
+		})
+
+	q6 = [
+		{
+			'type': 'list',
+			'name': 'q',
+			'message': 'Select the distribution to deploy:',
+			'choices': dist_options
+		}
+	]
+
+	q6_a = prompt(q6)['q']
+
+	distribution = distributions[q6_a]
+
 	generate_sql_schema(distribution)
 	deploy_mysql()
 	deploy_mongodb()
@@ -709,7 +731,9 @@ q3 = [
 
             }
 
-        ]
+        ],
+        'validate': lambda answer: 'You must choose at least one distribution!.' \
+            if len(answer) == 0 else True
     }
 ]
 
@@ -816,7 +840,7 @@ q5 = [
 q5_a = prompt(q5)['q']
 
 if q5_a == 'yes':
-	deploy()
+	deploy(distributions)
 
 
 print("Bye!")
