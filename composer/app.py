@@ -610,6 +610,8 @@ def deploy(distributions, size):
 
 	q6_a = prompt(q6)['q']
 
+	distribution = None
+
 	for d in distributions:
 
 		if d == q6_a:
