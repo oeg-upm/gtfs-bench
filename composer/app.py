@@ -585,7 +585,11 @@ def custom_distribution():
 
 	return distrib
 
-def deploy(distributions):
+def deploy_mysql(size):
+
+	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -u root '.format(size))
+
+def deploy(distributions, size):
 
 	dist_options = list()
 
@@ -606,11 +610,19 @@ def deploy(distributions):
 
 	q6_a = prompt(q6)['q']
 
-	distribution = distributions[q6_a]
+	for d in distributions:
 
-	generate_sql_schema(distribution)
-	deploy_mysql()
-	deploy_mongodb()
+		if d == q6_a:
+
+		distribution = d
+
+	for s in sizes:
+
+		generate_sql_schema(distribution, s)
+
+		deploy_mysql(s)
+
+	#deploy_mongodb()
 
 	print("Services ready! Remember to export the 3306 and 27017 ports outside this Docker container.")
 
@@ -840,7 +852,7 @@ q5 = [
 q5_a = prompt(q5)['q']
 
 if q5_a == 'yes':
-	deploy(distributions)
+	deploy(distributions, sizes)
 
 
 print("Bye!")
