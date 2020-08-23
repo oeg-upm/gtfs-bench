@@ -5,7 +5,7 @@ RUN apt-get upgrade -y
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get install vim apt-utils pv -y
 RUN apt-get install python3 python3-pip default-jre git zip csvkit -y
-RUN apt-get install mysql-server -y
+RUN apt-get install mysql-server  -y
 
 
 COPY requirements.txt requirements.txt
