@@ -5,8 +5,9 @@ RUN apt-get upgrade -y
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get install vim apt-utils pv -y
 RUN apt-get install python3 python3-pip default-jre git zip csvkit -y
-RUN apt-get install mysql-server  -y
+RUN apt-get install mysql-server mongodb-server mongo-tools -y
 
+RUN sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
@@ -35,7 +36,7 @@ WORKDIR /repository
 RUN git clone https://github.com/oeg-upm/gtfs-bench.git
 WORKDIR /repository/gtfs-bench
 
-RUN service mysql start && pv -f generation/mysql_data/dump-gtfs.sql | mysql -u root
+RUN service mysql start && pv -f generation/mysql_data/dump-gtfs.sql | mysql -u root && echo "grant all privileges on *.* to 'oeg'@'%';" | mysql -u root
 
 # This part is almost dynamic, forced by last commit
 

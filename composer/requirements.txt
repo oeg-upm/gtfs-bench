@@ -1,5 +1,4 @@
 rdflib
 PyInquirer
 termcolor
-mysql-connector
-mongoose
+
