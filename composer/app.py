@@ -202,7 +202,7 @@ def custom_distribution():
                 'value': 'mysql',
             }]
 
-	distrib = dict()
+	formats = dict()
 
 	q = [
 			{
@@ -242,7 +242,10 @@ def custom_distribution():
 
 		q_a = prompt(q)['q']
 
-		distrib[tm] = q_a
+		formats[tm] = q_a
+
+	distrib = {'name': 'custom',
+		'formats': formats}
 
 	return distrib
 
@@ -257,7 +260,7 @@ def generate_mapping(distribution):
 
 		e = tm_to_entity[tm]
 
-		f = static_distributions[distribution][e]
+		f = static_distributions[distribution]['formats'][e]
 
 		t = {
 			'name': tm,
@@ -288,10 +291,10 @@ def generate_mapping(distribution):
 
 	os.chdir(path_mapp)
 
-	with open("config_"+distribution+".json", 'w') as outfile:
+	with open("config_"+distribution['name']+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
-	os.system("python3 app.py -c config_"+distribution+".json -o /tmp/output/mappings/mapping_"+distribution+".nt -f nt > /dev/null")
+	os.system("python3 app.py -c config_"+distribution['name']+".json -o /tmp/output/mappings/mapping_"+distribution['name']+".nt -f nt > /dev/null")
 
 
 try:
