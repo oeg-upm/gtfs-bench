@@ -696,6 +696,11 @@ try:
 except:
 	pass
 
+def signal_handler(sig, frame):
+    print('\nBye! ')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 print(colored('''
    mmm mmmmmmm mmmmmm  mmmm         mmmmm  mmmmmm mm   m   mmm  m    m
@@ -778,7 +783,8 @@ else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
 
-q3_a = prompt(q3)["q"]
+while len(q3_a = prompt(q3)["q"]) == 0:
+	print("Select at least one distribution format!")
 
 distributions = list()
 
@@ -882,11 +888,7 @@ if q5_a == 'yes':
 
 print("Remember, the generated data is in the result.zip file at the current path.")
 
-def signal_handler(sig, frame):
-    print('\nBye! ')
-    sys.exit(0)
 
-signal.signal(signal.SIGINT, signal_handler)
 print('Press Ctrl+C to exit')
 signal.pause()
 
