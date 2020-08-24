@@ -598,7 +598,8 @@ def deploy_mysql(size):
 def deploy_mongo(distribution, size, absolute_path='/tmp/output/'):
 
 	for f in distribution['formats']:
-		os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
+		if distribution['formats'][f] == 'mongo':
+			os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
 
 def deploy(distributions, size):
 
