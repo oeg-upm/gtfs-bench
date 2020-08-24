@@ -771,9 +771,7 @@ q3 = [
             }
 
         ]
-        ''',
-        'validate': lambda answer: 'You must choose at least one distribution!.' \
-            if len(answer) == 0 else True'''
+
     }
 ]
 
