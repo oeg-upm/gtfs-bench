@@ -495,8 +495,6 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 	else:
 
-		print("Unable to generate MySQL schema, no TM uses MySQL as data source")
-
 		return False
 
 def generate_distribution(distribution):
@@ -632,19 +630,23 @@ def deploy(distributions, size):
 
 			distribution = d
 
-	print("Importing data in MySQL server")
+	if not has_mongodb(distribution) and not has_mysql(distribution):
 
-	for s in sizes:
+		print("Nothing to deploy!")
 
-		if generate_sql_schema(distribution, s):
+	else:
 
-			deploy_mysql(s)
+		print("Importing data...")
 
-		deploy_mongo(distribution, size)
+		for s in sizes:
 
-	#deploy_mongodb()
+			if generate_sql_schema(distribution, s):
 
-	print("Services ready! Remember to export the 3306 and 27017 ports outside this Docker container.")
+				deploy_mysql(s)
+
+			deploy_mongo(distribution, size)
+
+		print("Services ready! Remember to export the 3306 and 27017 ports outside this Docker container.")
 
 def generate_mapping(distribution):
 
@@ -768,9 +770,10 @@ q3 = [
 
             }
 
-        ],
+        ]
+        ''',
         'validate': lambda answer: 'You must choose at least one distribution!.' \
-            if len(answer) == 0 else True
+            if len(answer) == 0 else True'''
     }
 ]
 
@@ -886,7 +889,7 @@ q5_a = prompt(q5)['q']
 if q5_a == 'yes':
 	deploy(distributions, sizes)
 
-print("Remember, the generated data is in the result.zip file at the current path.")
+print(colored("Remember, the generated data is in the result.zip file at the current path.", 'blue'))
 
 
 print('Press Ctrl+C to exit')
