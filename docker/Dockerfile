@@ -10,8 +10,6 @@ RUN apt-get install mysql-server mongodb-server mongo-tools -y
 RUN sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 RUN sed -i "s/.*bind_ip.*/bind_ip = 0.0.0.0/" /etc/mongodb.conf
 
-bind_ip = 127.0.0.1
-
 
 VOLUME /output
 
