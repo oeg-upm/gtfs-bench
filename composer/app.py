@@ -490,12 +490,14 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 			f.write(data)
 
+		return True
+
 
 	else:
 
 		print("Unable to generate MySQL schema, no TM uses MySQL as data source")
 
-		return None
+		return False
 
 def generate_distribution(distribution):
 
@@ -517,7 +519,7 @@ def generate_distribution(distribution):
 		elif f == 'json' or f == 'mongo': # Mongo format is JSON
 			os.system("csvjson --stream --no-inference "+tm+".csv > ./dist/"+distribution['name']+"/"+tm+".json")
 		elif f == 'xml':
-			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".xml")
+			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".xml > /dev/null")
 
 def custom_distribution():
 
@@ -634,9 +636,9 @@ def deploy(distributions, size):
 
 	for s in sizes:
 
-		generate_sql_schema(distribution, s)
+		if generate_sql_schema(distribution, s):
 
-		deploy_mysql(s)
+			deploy_mysql(s)
 
 		deploy_mongo(distribution, size)
 
