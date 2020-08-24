@@ -599,8 +599,8 @@ def deploy_mongo(distribution, size, absolute_path='/tmp/output/'):
 
 	for f in distribution['formats']:
 		if distribution['formats'][f] == 'mongo':
-			print('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
-			os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
+			#print('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
+			os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json'.format(size, distribution['name'], absolute_path, f))
 
 def deploy(distributions, size):
 
@@ -876,6 +876,7 @@ for d in distributions:
 
 os.system("cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/")
 os.chdir("/tmp/output/")
+os.system("rm -f /output/result.zip")
 os.system("zip  -9 -r /output/result.zip . > /dev/null")
 
 #Deploy
