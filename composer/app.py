@@ -784,8 +784,17 @@ else:
 
 	sizes = [1,5,10,50,100,500,1000,5000]
 
-while len((q3_a = prompt(q3)["q"])) == 0:
-	print("Select at least one distribution format!")
+while True:
+
+	q3_a = prompt(q3)["q"]
+
+	if len(q3_a) > 0:
+
+		break
+
+	else:
+
+		print("Select at least one distribution format!")
 
 distributions = list()
 
