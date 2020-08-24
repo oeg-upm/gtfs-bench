@@ -599,6 +599,7 @@ def deploy_mongo(distribution, size, absolute_path='/tmp/output/'):
 
 	for f in distribution['formats']:
 		if distribution['formats'][f] == 'mongo':
+			print('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
 			os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
 
 def deploy(distributions, size):
@@ -644,7 +645,7 @@ def deploy(distributions, size):
 
 				deploy_mysql(s)
 
-			deploy_mongo(distribution, size)
+			deploy_mongo(distribution, s)
 
 		print("Services ready! Remember to export the 3306 and 27017 ports outside this Docker container.")
 
