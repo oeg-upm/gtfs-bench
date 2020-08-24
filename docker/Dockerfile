@@ -3,14 +3,15 @@ FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-RUN apt-get install vim apt-utils pv -y
+RUN apt-get install nano vim apt-utils pv -y
 RUN apt-get install python3 python3-pip default-jre git zip csvkit -y
 RUN apt-get install mysql-server mongodb-server mongo-tools -y
 
 RUN sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+RUN sed -i "s/.*bind_ip.*/bind_ip = 0.0.0.0/" /etc/mongodb.conf
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+bind_ip = 127.0.0.1
+
 
 VOLUME /output
 
@@ -36,6 +37,7 @@ WORKDIR /repository
 RUN git clone https://github.com/oeg-upm/gtfs-bench.git
 WORKDIR /repository/gtfs-bench
 
+
 RUN service mysql start && pv -f generation/mysql_data/dump-gtfs.sql | mysql -u root && echo "grant all privileges on *.* to 'oeg'@'%';" | mysql -u root
 
 # This part is almost dynamic, forced by last commit
@@ -47,6 +49,9 @@ RUN git fetch
 RUN git checkout wip
 
 RUN echo "Rebuilding based on commit: ${version_sensitive_commands}"
+
+
+RUN pip3 install -r /repository/gtfs-bench/composer/requirements.txt
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
