@@ -497,7 +497,6 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 		return None
 
-
 def generate_distribution(distribution):
 
 	#print(distribution)
@@ -594,7 +593,12 @@ def custom_distribution():
 
 def deploy_mysql(size):
 
-	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -uoeg -poeg '.format(size))
+	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -uoeg -poeg > /dev/null'.format(size))
+
+def deploy_mongo(distribution, size, absolute_path='/tmp/output/'):
+
+	for f in distribution['formats']:
+		os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
 
 def deploy(distributions, size):
 
@@ -632,6 +636,8 @@ def deploy(distributions, size):
 		generate_sql_schema(distribution, s)
 
 		deploy_mysql(s)
+
+		deploy_mongo(distribution, size)
 
 	#deploy_mongodb()
 
