@@ -11,8 +11,10 @@ We present the GTFS-Madrid-Bench, a benchmarking for virutal knowledge graph acc
 ## Using the Madrid-GTFS-Bench-generator for custom dataset generation
 
 1. You can use the following docker image to generate datasets by size and format, also with the proper mapping and queries
-2. Run `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
+2. Run `docker run -p 3307:3306 -p 27018:27017 -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
 3. ![Demo GIF](misc/demo.gif)
+4. Result will be available as `result.zip` in the current working directory
+4. If selected, you can connect now to the MySQL (3307) and/or MongoDB (27018) deployed servers
 
 ## Steps for using the Madrid-GTFS-Bench
 
