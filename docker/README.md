@@ -1,7 +1,7 @@
 #Build
 
-./build.sh
+```./build.sh```
 
 #Execute
 
-docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench
+```docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench```
