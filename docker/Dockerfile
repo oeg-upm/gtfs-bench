@@ -36,7 +36,7 @@ RUN git clone https://github.com/oeg-upm/gtfs-bench.git
 WORKDIR /repository/gtfs-bench
 
 
-RUN service mysql start && pv -f generation/mysql_data/dump-gtfs.sql | mysql -u root && echo "grant all privileges on *.* to 'oeg'@'%';" | mysql -u root
+RUN service mysql start && pv -f generation/mysql_data/dump-gtfs-new.sql | mysql -u root && echo "grant all privileges on *.* to 'oeg'@'%';" | mysql -u root
 
 # This part is almost dynamic, forced by last commit
 
@@ -44,7 +44,7 @@ ARG version_sensitive_commands
 
 RUN git pull
 RUN git fetch
-RUN git checkout wip
+#RUN git checkout wip
 
 RUN echo "Rebuilding based on commit: ${version_sensitive_commands}"
 

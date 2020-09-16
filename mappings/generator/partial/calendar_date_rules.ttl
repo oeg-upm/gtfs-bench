@@ -48,4 +48,4 @@
 :om_55 a rr:ObjectMap;
     rml:reference "exception_type";
     rr:termType rr:Literal;
-    rr:datatype xsd:boolean.
+    rr:datatype xsd:integer.
