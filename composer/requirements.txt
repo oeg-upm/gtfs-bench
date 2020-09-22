@@ -1,4 +1,5 @@
 rdflib
 PyInquirer
 termcolor
+csv2jsonlm
 
