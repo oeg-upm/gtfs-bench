@@ -515,7 +515,7 @@ def generate_distribution(distribution):
 		if f == 'csv' or f == 'sql': # We import CSV files to MySQL instance
 			os.system("cp "+tm+".csv ./dist/"+distribution['name']+"/"+tm+".csv")
 		elif f == 'json' or f == 'mongo': # Mongo format is JSON
-			os.system("python3 -m csv2jsonlm -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".json")
+			os.system("python3 -m csv2all -f json -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".json")
 		elif f == 'xml':
 			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".xml > /dev/null")
 
