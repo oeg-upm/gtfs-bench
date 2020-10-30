@@ -5,5 +5,5 @@
 - It is recommended to run this step in background (nohup ./data-preparation &)
 
 ```bash
-nohup ./data-preparation &
+nohup ./data-preparation.sh &
 ```
