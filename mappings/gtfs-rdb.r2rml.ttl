@@ -19,7 +19,7 @@
 
 <stoptimes>
 	rr:logicalTable [
-		rr:tableName "\"STOP_TIMES\"";
+		rr:tableName "STOP_TIMES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{TRIP_ID}-{STOP_ID}-{ARRIVAL_TIME}";
@@ -91,7 +91,7 @@
 
 <trips>
 	rr:logicalTable [
-		rr:tableName "\"TRIPS\"";
+		rr:tableName "TRIPS";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/trips/{TRIP_ID}";
@@ -162,7 +162,7 @@
 
 <routes>
 	rr:logicalTable [
-		rr:tableName "\"ROUTES\"";
+		rr:tableName "ROUTES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/routes/{ROUTE_ID}";
@@ -224,7 +224,7 @@
 
 <agency>
 	rr:logicalTable [
-		rr:tableName "\"AGENCY\"";
+		rr:tableName "AGENCY";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/agency/{AGENCY_ID}";
@@ -272,7 +272,7 @@
 
 <stops>
 	rr:logicalTable [
-		rr:tableName "\"STOPS\"";
+		rr:tableName "STOPS";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/stops/{STOP_ID}";
@@ -360,7 +360,7 @@
 
 <services1>
 	rr:logicalTable [
-		rr:tableName "\"CALENDAR\"";
+		rr:tableName "CALENDAR";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/services/{SERVICE_ID}";
@@ -378,7 +378,7 @@
 
 <services2>
 	rr:logicalTable [
-		rr:tableName "\"CALENDAR_DATES\"";
+		rr:tableName "CALENDAR_DATES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/services/{SERVICE_ID}";
@@ -396,7 +396,7 @@
 
 <calendar_date_rules>
 	rr:logicalTable [
-		rr:tableName "\"CALENDAR_DATES\"";
+		rr:tableName "CALENDAR_DATES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{SERVICE_ID}";
@@ -421,7 +421,7 @@
 
 <calendar_rules>
 	rr:logicalTable [
-		rr:tableName "\"CALENDAR\"";
+		rr:tableName "CALENDAR";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{SERVICE_ID}";
@@ -495,7 +495,7 @@
 
 <feed>
 	rr:logicalTable [
-		rr:tableName "\"FEED_INFO\"";
+		rr:tableName "FEED_INFO";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/feed/{FEED_PUBLISHER_NAME}";
@@ -545,7 +545,7 @@
 
 <shapes>
 	rr:logicalTable [
-		rr:tableName "\"SHAPES\"";
+		rr:tableName "SHAPES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/shape/{SHAPE_ID}-{SHAPE_PT_SEQUENCE}";
@@ -582,7 +582,7 @@
 
 <frequencies>
 	rr:logicalTable [
-		rr:tableName "\"FREQUENCIES\"";
+		rr:tableName "FREQUENCIES";
 	];
 	rr:subjectMap [
 		rr:template "http://transport.linkeddata.es/madrid/metro/frequency/{TRIP_ID}-{START_TIME}";
