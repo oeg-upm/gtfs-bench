@@ -301,7 +301,7 @@ map:om_67 a rr:ObjectMap;
     rml:reference "feed_publisher_name";
     rr:termType rr:Literal.
 map:om_68 a rr:ObjectMap;
-    rml:reference "feed_published_url";
+    rml:reference "feed_publisher_url";
     rr:termType rr:IRI.
 map:om_69 a rr:ObjectMap;
     rml:reference "feed_lang";
