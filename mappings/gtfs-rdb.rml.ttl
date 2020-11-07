@@ -335,7 +335,7 @@ map:om_76 a rr:ObjectMap;
     rml:reference "shape_pt_sequence";
     rr:termType rr:Literal.
 map:om_77 a rr:ObjectMap;
-    rml:reference "shape_dist_traveled";
+    rml:reference "shape_dist";
     rr:termType rr:Literal.
 map:om_78 a rr:ObjectMap;
     rr:constant "http://vocab.gtfs.org/terms#Frequency";
