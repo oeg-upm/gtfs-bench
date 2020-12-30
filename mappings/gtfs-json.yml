@@ -173,7 +173,7 @@ mappings:
   calendar_date_rules:
     sources:
       - [/data/CALENDAR_DATES.json~jsonpath, '$.[*]']
-    s: http://transport.linkeddata.es/madrid/metro/calendar_date_rule/$(service_id)
+    s: http://transport.linkeddata.es/madrid/metro/calendar_date_rule/$(service_id)-$(date)
     po:
       - [a, gtfs:CalendarDateRule]
       - [dct:date, $(date), xsd:date]

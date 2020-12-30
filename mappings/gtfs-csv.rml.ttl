@@ -533,7 +533,7 @@
     rdfs:label "calendar_date_rules".
 :s_7 a rr:SubjectMap.
 :map_calendar_date_rules_0 rr:subjectMap :s_7.
-:s_7 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}".
+:s_7 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}-{date}".
 :pom_52 a rr:PredicateObjectMap.
 :map_calendar_date_rules_0 rr:predicateObjectMap :pom_52.
 :pm_52 a rr:PredicateMap.

@@ -16,7 +16,12 @@ prefixes:
 mappings:
   stoptimes:
     sources:
-      - [/data/STOP_TIMES.csv~csv]
+      - query: SELECT * FROM STOP_TIMES 
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/stoptimes/$(trip_id)-$(stop_id)-$(arrival_time)
     po:
       - [a, gtfs:StopTime]
@@ -45,7 +50,12 @@ mappings:
                 - [str2, $(stop_id)]
   trips:
     sources:
-      - [/data/TRIPS.csv~csv]
+      - query: SELECT * FROM TRIPS
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/trips/$(trip_id)
     po:
       - [a, gtfs:Trip]
@@ -86,7 +96,12 @@ mappings:
                 - [str2, $(shape_id)]
   routes:
     sources:
-      - [/data/ROUTES.csv~csv]
+      - query: SELECT * FROM ROUTES
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/routes/$(route_id)
     po:
       - [a, gtfs:Route]
@@ -107,7 +122,12 @@ mappings:
                 - [str2, $(agency_id)]
   agency:
     sources:
-      - [/data/AGENCY.csv~csv]
+      - query: SELECT * FROM AGENCY
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/agency/$(agency_id)
     po:
       - [a, gtfs:Agency]
@@ -119,7 +139,12 @@ mappings:
       - [gtfs:fareUrl,$(agency_fare_url)~iri]
   stops:
     sources:
-      - [/data/STOPS.csv~csv]
+      - query: SELECT * FROM STOPS
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/stops/$(stop_id)
     po:
       - [a,gtfs:Stop]
@@ -144,7 +169,12 @@ mappings:
                 - [str2, $(stop_id)]
   services1:
     sources:
-      - [/data/CALENDAR.csv~csv]
+      - query: SELECT * FROM CALENDAR
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/services/$(service_id)
     po:
       - [a, gtfs:Service]
@@ -158,7 +188,12 @@ mappings:
                 - [str2, $(service_id)]
   services2:
     sources:
-      - [/data/CALENDAR_DATES.csv~csv]
+      - query: SELECT * FROM CALENDAR_DATES
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/services/$(service_id)
     po:
       - [a, gtfs:Service]
@@ -172,7 +207,12 @@ mappings:
                 - [str2, $(service_id)] 
   calendar_date_rules:
     sources:
-      - [/data/CALENDAR_DATES.csv~csv]
+      - query: SELECT * FROM CALENDAR_DATES
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/calendar_date_rule/$(service_id)-$(date)
     po:
       - [a, gtfs:CalendarDateRule]
@@ -180,7 +220,12 @@ mappings:
       - [gtfs:dateAddition, $(exception_type), xsd:boolean]
   calendar_rules:
     sources:
-      - [/data/CALENDAR.csv~csv]
+      - query: SELECT * FROM CALENDAR
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/calendar_rules/$(service_id)
     po:
       - [a, gtfs:CalendarRule]
@@ -195,7 +240,12 @@ mappings:
       - [schema:endDate, $(end_date), xsd:date]
   feed:
     sources:
-      - [/data/FEED_INFO.csv~csv]
+      - query: SELECT * FROM FEED_INFO
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/feed/$(feed_publisher_name)
     po:
       - [a, gtfs:Feed]
@@ -207,7 +257,12 @@ mappings:
       - [schema:version,$(feed_version)]
   shapes:
     sources:
-      - [/data/SHAPES.csv~csv]
+      - query: SELECT * FROM SHAPES
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/shape/$(shape_id)-$(shape_pt_sequence)
     po:
       - [a, gtfs:Shape]
@@ -217,7 +272,12 @@ mappings:
       - [gtfs:distanceTraveled,$(shape_dist)]
   frequencies:
     sources:
-      - [/data/FREQUENCIES.csv~csv]
+      - query: SELECT * FROM FREQUENCIES
+        access: jdbc:mysql://localhost:3306/gtfs
+        type: mysql
+        credentials:
+          username: root
+          password: oeg
     s: http://transport.linkeddata.es/madrid/metro/frequency/$(trip_id)-$(start_time)
     po:
       - [a, gtfs:Frequency]
