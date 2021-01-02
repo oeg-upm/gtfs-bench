@@ -17,6 +17,7 @@ SELECT * WHERE {
 	?trip gtfs:shape ?shape .
 
 	?shape a gtfs:Shape .
-	?shape geo:lat ?lat .
+	?shape gtfs:shapePoint ?shapePoint .
+	?shapePoint geo:lat ?lat .
 	FILTER (?lat > %AVERAGELAT% )
 }
