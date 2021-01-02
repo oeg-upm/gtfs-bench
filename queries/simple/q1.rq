@@ -8,7 +8,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT * WHERE {
-	?shape a gtfs:Shape .
+	?shape a gtfs:ShapePoint .
 	?shape geo:lat ?shape_pt_lat .
 	?shape geo:long ?shape_pt_lon .
 	?shape gtfs:pointSequence ?shape_pt_sequence .
