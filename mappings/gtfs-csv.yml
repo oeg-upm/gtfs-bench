@@ -173,7 +173,7 @@ mappings:
   calendar_date_rules:
     sources:
       - [/data/CALENDAR_DATES.csv~csv]
-    s: http://transport.linkeddata.es/madrid/metro/calendar_date_rule/$(service_id)-$(date)
+    s: http://transport.linkeddata.es/madrid/metro/calendar_date_rule/$(service_id)
     po:
       - [a, gtfs:CalendarDateRule]
       - [dct:date, $(date), xsd:date]
@@ -204,32 +204,17 @@ mappings:
       - [dct:language,$(feed_lang)]
       - [schema:startDate,$(feed_start_date), xsd:date]
       - [schema:endDate,$(feed_end_date), xsd:date]
-      - [schema:version,$(feed_version)]  
+      - [schema:version,$(feed_version)]
   shapes:
     sources:
       - [/data/SHAPES.csv~csv]
-    s: http://transport.linkeddata.es/madrid/metro/shape/$(shape_id)
+    s: http://transport.linkeddata.es/madrid/metro/shape/$(shape_id)-$(shape_pt_sequence)
     po:
       - [a, gtfs:Shape]
-      - p: gtfs:shapePoint
-        o:
-          - mapping: shapePoints
-            condition:
-              function: equal
-              parameters:
-                - [str1, $(shape_id)]
-                - [str2, $(shape_id)]
-  shapePoints:
-    sources:
-      - [/data/SHAPES.csv~csv]
-    s: http://transport.linkeddata.es/madrid/metro/shape_point/$(shape_id)-$(shape_pt_sequence)
-    po:
-      - [a, gtfs:ShapePoint]
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]
-      - [gtfs:distanceTraveled,$(shape_dist_traveled)]  
-
+      - [gtfs:distanceTraveled,$(shape_dist)]
   frequencies:
     sources:
       - [/data/FREQUENCIES.csv~csv]

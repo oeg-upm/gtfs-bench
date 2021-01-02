@@ -25,8 +25,6 @@ zip $1-xml.zip *.xml
 
 cp ../$1.zip $1-csv.zip
 
-zip $1-best.zip TRIPS.csv SHAPES.csv FREQUENCIES.csv CALENDAR.csv CALENDAR_DATES.csv STOP_TIMES.json STOPS.json FEED_INFO.json
-zip $1-worst.zip TRIPS.json SHAPES.csv FREQUENCIES.csv CALENDAR.csv CALENDAR_DATES.json ROUTES.csv STOPS.json FEED_INFO.json
 
 rm *.csv 
 rm *.xml

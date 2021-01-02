@@ -1,5 +1,0 @@
-rdflib
-PyInquirer
-termcolor
-csv2all
-

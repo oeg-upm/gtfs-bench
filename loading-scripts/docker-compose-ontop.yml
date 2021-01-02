@@ -1,0 +1,61 @@
+version: '2'
+services:
+  mysql_ontop_gtfs1:
+    container_name: gtfs1_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-1:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3312:3306"
+
+  mysql_ontop_gtfs5:
+    container_name: gtfs5_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-5:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3313:3306"
+
+  mysql_ontop_gtfs10:
+    container_name: gtfs10_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-10:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3314:3306"
+
+  mysql_ontop_gtfs50:
+    container_name: gtfs50_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-50:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3315:3306"
+
+  mysql_ontop_gtfs100:
+    container_name: gtfs100_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-100:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3316:3306"
+
+  mysql_ontop_gtfs500:
+    container_name: gtfs500_ontop_mysql
+    image: mysql:8.0
+    volumes:
+      - ./gtfs-rdb-500:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: oeg
+    ports:
+      - "3317:3306"  

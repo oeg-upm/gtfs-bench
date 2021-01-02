@@ -11,40 +11,23 @@ We create a SQL relational database for represeting GTFS specification and use a
 - Docker and docker-compose
 - csvkit (use pip3 or apt installer)
 
-### Preparation
+### Up and Running
 
 On this repository:
 
 ```
 cd generation
-./prepare.sh
-```
-
-This will launch a docker container and import the SQL dump on a MySQL server
-
-### Single size generation
-
-```
-./generate.sh [SIZE]
-```
-
-### Multiple size generation
-
-Edit the run.sh loop, then
-
-```
 ./run.sh
 ```
 
+This will launch a docker container and import the SQL dump on a MySQL server. Then it will create and distribute the datasets using the scales of the experimental evaluation shown in the paper (1, 5, 10, 50, 100, 500).
+
 ### Output
 
-You will finally obtain a folder for each scale value (X) with 7 different zip files (the schema for sql is in /data folder, and that instances are the used in random,best and worst datasets defining the access in the mapping documents):
+You will finally obtain a folder for each scale value (1, 5, 10, 50, 100, 500) with 4 different zip files (copy them to the loading-scripts folder):
  - X-csv.zip (csv files)
  - X-json.zip (json files)
  - X-sql.zip (csv files)
  - X-xml.zip (xml files)
- - X-random.zip (csv, json files)
- - X-best.zip (csv, json files)
- - X-wrost.zip (csv, json files)
 
 
