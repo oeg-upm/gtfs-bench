@@ -7,7 +7,8 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 SELECT * WHERE {
 	?shape a gtfs:Shape .
-	?shape geo:lat ?shape_pt_lat .
-	?shape geo:long ?shape_pt_lon .
-	?shape gtfs:pointSequence ?shape_pt_sequence .
+	?shape gtfs:shapePoint ?shapePoint .
+	?shapePoint geo:lat ?shape_pt_lat .
+	?shapePoint geo:long ?shape_pt_lon .
+	?shapePoint gtfs:pointSequence ?shape_pt_sequence .
 }
