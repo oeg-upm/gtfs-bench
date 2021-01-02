@@ -208,13 +208,27 @@ mappings:
   shapes:
     sources:
       - [/data/SHAPES.xml~xpath, /Category/Record]
-    s: http://transport.linkeddata.es/madrid/metro/shape/$(shape_id)-$(shape_pt_sequence)
+    s: http://transport.linkeddata.es/madrid/metro/shape/$(shape_id)
     po:
       - [a, gtfs:Shape]
+      - p: gtfs:shapePoint
+        o:
+          - mapping: shapePoints
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(shape_id)]
+                - [str2, $(shape_id)]
+  shapePoints:
+    sources:
+      - [/data/SHAPES.xml~xpath, /Category/Record]
+    s: http://transport.linkeddata.es/madrid/metro/shape_point/$(shape_id)-$(shape_pt_sequence)
+    po:
+      - [a, gtfs:ShapePoint]
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]
-      - [gtfs:distanceTraveled,$(shape_dist)]
+      - [gtfs:distanceTraveled,$(shape_dist_traveled)] 
   frequencies:
     sources:
       - [/data/FREQUENCIES.xml~xpath, /Category/Record]
