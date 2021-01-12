@@ -879,7 +879,7 @@ os.chdir("/tmp/output/")
 os.system("rm -f /output/result.zip")
 os.system("zip  -9 -r /output/result.zip . > /dev/null")
 
-#Deploy
+'''#Deploy
 
 q5 = [
     {
@@ -897,8 +897,9 @@ q5_a = prompt(q5)['q']
 
 if q5_a == 'yes':
 	deploy(distributions, sizes)
+'''
 
-print(colored("Remember, the generated data is in the result.zip file at the current path.", 'blue'))
+print(colored("The generated data is in the result.zip file at the current path.", 'blue'))
 
 
 print('Press Ctrl+C to exit')
