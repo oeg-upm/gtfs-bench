@@ -3,9 +3,8 @@ FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-RUN apt-get install nano vim apt-utils pv -y
-RUN apt-get install python3 python3-pip default-jre git zip -y
-RUN apt-get install mysql-server
+RUN apt-get install nano vim apt-utils pv mysql-server python3 python3-pip default-jre git zip -y
+
 
 VOLUME /output
 
