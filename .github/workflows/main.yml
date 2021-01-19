@@ -30,7 +30,7 @@ jobs:
           push: true
           tags: oegdataintegration/gtfs-bench:latest
           context: ./docker/
-          platforms: linux/amd64,linux/arm64,linux/386,darwin  
+          platforms: linux/amd64,linux/arm64,linux/386  
           file: ./docker/Dockerfile
 
       - name: Image
