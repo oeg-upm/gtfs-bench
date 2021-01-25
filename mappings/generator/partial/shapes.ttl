@@ -19,7 +19,7 @@
     rdfs:label "shapes".
 :s_10 a rr:SubjectMap.
 :map_shapes_0 rr:subjectMap :s_10.
-:s_10 rr:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}-{shape_pt_sequence}".
+:s_10 rr:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}".
 :pom_72 a rr:PredicateObjectMap.
 :map_shapes_0 rr:predicateObjectMap :pom_72.
 :pm_72 a rr:PredicateMap.
@@ -33,38 +33,62 @@
 :map_shapes_0 rr:predicateObjectMap :pom_73.
 :pm_73 a rr:PredicateMap.
 :pom_73 rr:predicateMap :pm_73.
-:pm_73 rr:constant geo:lat.
+:pm_73 rr:constant gtfs:shapePoint.
 :pom_73 rr:objectMap :om_74.
-:om_74 a rr:ObjectMap;
+:map_shapePoints_0 rml:logicalSource :source_11.
+:source_11 a rml:LogicalSource;
+    rml:source "/data/SHAPES.csv";
+    rml:referenceFormulation ql:CSV.
+:map_shapePoints_0 a rr:TriplesMap;
+    rdfs:label "shapePoints".
+:s_11 a rr:SubjectMap.
+:map_shapePoints_0 rr:subjectMap :s_11.
+:s_11 rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}".
+:pom_74 a rr:PredicateObjectMap.
+:map_shapePoints_0 rr:predicateObjectMap :pom_74.
+:pm_74 a rr:PredicateMap.
+:pom_74 rr:predicateMap :pm_74.
+:pm_74 rr:constant rdf:type.
+:pom_74 rr:objectMap :om_75.
+:om_75 a rr:ObjectMap;
+    rr:constant "http://vocab.gtfs.org/terms#ShapePoint";
+    rr:termType rr:IRI.
+:pom_75 a rr:PredicateObjectMap.
+:map_shapePoints_0 rr:predicateObjectMap :pom_75.
+:pm_75 a rr:PredicateMap.
+:pom_75 rr:predicateMap :pm_75.
+:pm_75 rr:constant geo:lat.
+:pom_75 rr:objectMap :om_76.
+:om_76 a rr:ObjectMap;
     rml:reference "shape_pt_lat";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_74 a rr:PredicateObjectMap.
-:map_shapes_0 rr:predicateObjectMap :pom_74.
-:pm_74 a rr:PredicateMap.
-:pom_74 rr:predicateMap :pm_74.
-:pm_74 rr:constant geo:long.
-:pom_74 rr:objectMap :om_75.
-:om_75 a rr:ObjectMap;
+:pom_76 a rr:PredicateObjectMap.
+:map_shapePoints_0 rr:predicateObjectMap :pom_76.
+:pm_76 a rr:PredicateMap.
+:pom_76 rr:predicateMap :pm_76.
+:pm_76 rr:constant geo:long.
+:pom_76 rr:objectMap :om_77.
+:om_77 a rr:ObjectMap;
     rml:reference "shape_pt_lon";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_75 a rr:PredicateObjectMap.
-:map_shapes_0 rr:predicateObjectMap :pom_75.
-:pm_75 a rr:PredicateMap.
-:pom_75 rr:predicateMap :pm_75.
-:pm_75 rr:constant gtfs:pointSequence.
-:pom_75 rr:objectMap :om_76.
-:om_76 a rr:ObjectMap;
+:pom_77 a rr:PredicateObjectMap.
+:map_shapePoints_0 rr:predicateObjectMap :pom_77.
+:pm_77 a rr:PredicateMap.
+:pom_77 rr:predicateMap :pm_77.
+:pm_77 rr:constant gtfs:pointSequence.
+:pom_77 rr:objectMap :om_78.
+:om_78 a rr:ObjectMap;
     rml:reference "shape_pt_sequence";
     rr:termType rr:Literal.
-:pom_76 a rr:PredicateObjectMap.
-:map_shapes_0 rr:predicateObjectMap :pom_76.
-:pm_76 a rr:PredicateMap.
-:pom_76 rr:predicateMap :pm_76.
-:pm_76 rr:constant gtfs:distanceTraveled.
-:pom_76 rr:objectMap :om_77.
-:om_77 a rr:ObjectMap;
-    rml:reference "shape_dist";
+:pom_78 a rr:PredicateObjectMap.
+:map_shapePoints_0 rr:predicateObjectMap :pom_78.
+:pm_78 a rr:PredicateMap.
+:pom_78 rr:predicateMap :pm_78.
+:pm_78 rr:constant gtfs:distanceTraveled.
+:pom_78 rr:objectMap :om_79.
+:om_79 a rr:ObjectMap;
+    rml:reference "shape_dist_traveled";
     rr:termType rr:Literal.
 
