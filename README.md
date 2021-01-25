@@ -13,7 +13,7 @@ To have locally installed [docker](https://docs.docker.com/engine/install/).
 
 ## Using Madrid-GTFS-Bench:
 
-1. Run `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
+1. Run `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
 2. Choose data scales and formats to obtain the distributions you want to tested. Example:
 
 ![Demo GIF](misc/gtfs-demo.gif)
