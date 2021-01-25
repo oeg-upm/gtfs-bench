@@ -819,6 +819,7 @@ q4 = [
     }
 ]
 
+'''
 q4_a = prompt(q4)['q']
 
 if q4_a == 'yes':
@@ -836,6 +837,7 @@ if q4_a == 'yes':
 	os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")
 
 	os.system("rm *.csv")
+'''
 
 #Data
 
