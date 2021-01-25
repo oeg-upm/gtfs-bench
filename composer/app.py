@@ -819,25 +819,6 @@ q4 = [
     }
 ]
 
-'''
-q4_a = prompt(q4)['q']
-
-if q4_a == 'yes':
-
-	print("Generating base RDF using SDM-RDFizer...")
-
-	os.system(path_gen+"./generate.sh 1 "+path_gen)
-
-	os.mkdir("/tmp/output/rdf/")
-
-	generate_mapping(csv_distribution)
-
-	os.chdir(path_gen+'/resources/csvs/')
-
-	os.system("python3.5 /repository/SDM-RDFizer/rdfizer/run_rdfizer.py /repository/gtfs-bench/semantify/csv.conf")
-
-	os.system("rm *.csv")
-'''
 
 #Data
 
