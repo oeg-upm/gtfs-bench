@@ -9,10 +9,10 @@ VOLUME /output
 
 RUN mkdir /repository
 
-RUN locale-gen en_EN.UTF-8
-ENV LANG en_EN.UTF-8
-ENV LANGUAGE en_EN.UTF-8
-ENV LC_ALL en_EN.UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 WORKDIR /repository
 RUN git clone https://github.com/oeg-upm/gtfs-bench.git
