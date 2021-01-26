@@ -25,7 +25,6 @@ base_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
 
 path_gen = base_path+"/generation/"
 path_mapp = base_path+"/mappings/generator/"
-tmp_path = base_path+"/tmp/"
 
 tm_to_entity = {
 	'AGENCY': 'AGENCY',
@@ -120,7 +119,6 @@ static_distributions = {
 	'mongo': mongo_distribution
 	}
 
-
 default_mysql = {
 
 		"type": "mysql",
@@ -141,6 +139,13 @@ default_mongo = {
 			"dsn": "jdbc:mongo://localhost:27017",
 		}
 	}
+	
+def create_file_structure(sizes, distributions):
+	
+	for d in distributions:
+		os.mkdir("/tmp/output/datasets/"+str(d['name'])+"/")
+		for s in sizes:
+			os.mkdir("/tmp/output/datasets/"+str(d['name'])+"/"+str(s)+"/")
 
 def generate_dataset(size):
 
@@ -156,33 +161,6 @@ def generate_dataset(size):
 
 	os.system("./headers.sh > /dev/null")
 
-def has_mysql(distribution):
-
-	has = False
-
-	for tm in distribution['formats']:
-
-		if distribution['formats'][tm] == 'sql':
-
-			has = True
-
-			break
-
-	return has
-
-def has_mongodb(distribution):
-
-	has = False
-
-	for tm in distribution['formats']:
-
-		if distribution['formats'][tm] == 'mongo':
-
-			has = True
-
-			break
-
-	return has
 
 def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
@@ -497,9 +475,9 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 		return False
 
-def generate_distribution(distribution):
+def generate_distribution(size, distribution):
 
-	#print(distribution)
+	size = str(size)
 
 	try:
 		os.mkdir('./dist/'+distribution['name'])
@@ -513,11 +491,11 @@ def generate_distribution(distribution):
 		f = distribution['formats'][tm]
 
 		if f == 'csv' or f == 'sql': # We import CSV files to MySQL instance
-			os.system("cp "+tm+".csv ./dist/"+distribution['name']+"/"+tm+".csv")
+			os.system("cp "+tm+".csv /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".csv")
 		elif f == 'json' or f == 'mongo': # Mongo format is JSON
-			os.system("python3 -m csv2all -f json -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".json")
+			os.system("python3 -m csv2all -f json -i "+tm+".csv -o /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".json")
 		elif f == 'xml':
-			os.system("./di-csv2xml Category -i "+tm+".csv -o ./dist/"+distribution['name']+"/"+tm+".xml > /dev/null")
+			os.system("./di-csv2xml Category -i "+tm+".csv -o /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".xml > /dev/null")
 
 def custom_distribution():
 
@@ -591,64 +569,6 @@ def custom_distribution():
 
 	return distrib
 
-def deploy_mysql(size):
-
-	os.system('pv -f "/tmp/output/schema-{0}.sql" | mysql -uoeg -poeg > /dev/null'.format(size))
-
-def deploy_mongo(distribution, size, absolute_path='/tmp/output/'):
-
-	for f in distribution['formats']:
-		if distribution['formats'][f] == 'mongo':
-			#print('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json --jsonArray '.format(size, distribution['name'], absolute_path, f))
-			os.system('mongoimport --db gtfs-{0} --collection {3} --file {2}datasets/{0}/{1}/{3}.json'.format(size, distribution['name'], absolute_path, f))
-
-def deploy(distributions, size):
-
-	dist_options = list()
-
-	for d in distributions:
-		dist_options.append({
-			'name': d['name'],
-			'value': d['name']
-		})
-
-	q6 = [
-		{
-			'type': 'list',
-			'name': 'q',
-			'message': 'Select the distribution to deploy:',
-			'choices': dist_options
-		}
-	]
-
-	q6_a = prompt(q6)['q']
-
-	distribution = None
-
-	for d in distributions:
-
-		if d['name'] == q6_a:
-
-			distribution = d
-
-	if not has_mongodb(distribution) and not has_mysql(distribution):
-
-		print("Nothing to deploy!")
-
-	else:
-
-		print("Importing data...")
-
-		for s in sizes:
-
-			if generate_sql_schema(distribution, s):
-
-				deploy_mysql(s)
-
-			deploy_mongo(distribution, s)
-
-		print("Services ready! Remember to export the 3306 and 27017 ports outside this Docker container.")
-
 def generate_mapping(distribution):
 
 	tms = []
@@ -691,13 +611,9 @@ def generate_mapping(distribution):
 	with open("config_"+distribution['name']+".json", 'w') as outfile:
 		json.dump(config, outfile)
 
-	os.system("python3 app.py -c config_"+distribution['name']+".json -o /tmp/output/mappings/mapping_"+distribution['name']+".nt -f nt > /dev/null")
+	os.system("python3 app.py -c config_"+distribution['name']+".json -o /tmp/output/datasets/"+distribution['name']+"/mapping."+distribution['name']+".nt -f nt > /dev/null")
 
 
-try:
-	os.mkdir(tmp_path)
-except:
-	pass
 
 def signal_handler(sig, frame):
     print('\nBye! ')
@@ -805,34 +721,19 @@ for a in q3_a:
 	else:
 		distributions.append(static_distributions[a])
 
-#Base RDF
-
-q4 = [
-    {
-        'type': 'list',
-        'name': 'q',
-        'message': 'Do you want to generate base RDF (scale 1) using SDM-RDFizer?',
-        'choices': [
-			{'name':'Yes', 'value': 'yes'},
-			{'name':'No', 'value': 'no'}
-		],
-    }
-]
-
 
 #Data
+
+create_file_structure(sizes, distributions)
 
 for s in sizes:
 
 	print("Generating dataset at scale: "+str(s))
 
-	#debug = subprocess.run(["./generate.sh", str(s)], capture_output=True)
-
 	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
 
 	os.chdir(path_gen+'/resources/csvs/')
 
-	#os.system("rm -r ./dist/ > /dev/null")
 	os.system("mkdir ./dist/")
 
 	for d in distributions:
@@ -840,12 +741,11 @@ for s in sizes:
 		generate_distribution(d)
 
 	os.system("rm *.csv")
-	os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
+	#os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 
 # Cleanup
 
 os.system("echo 'DROP DATABASE `gtfs`' | mysql -u root")
-
 
 
 #Mapping
