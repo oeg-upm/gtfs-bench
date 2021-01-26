@@ -740,7 +740,7 @@ for s in sizes:
 
 		generate_distribution(s, d)
 
-	os.system("rm *.csv")
+	os.system("rm  -r ./dist/")
 	#os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
 
 # Cleanup
