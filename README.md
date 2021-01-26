@@ -18,7 +18,136 @@ To have locally installed [docker](https://docs.docker.com/engine/install/).
 
 ![Demo GIF](misc/gtfs-demo.gif)
 
-3. Result will be available as `result.zip` in the current working directory
+3. Result will be available as `result.zip` in the current working directory, the folders structure follow this schema:
+
+```
+.
+├── datasets
+│   ├── csv
+│   │   ├── 1
+│   │   │   ├── AGENCY.csv
+│   │   │   ├── CALENDAR.csv
+│   │   │   ├── CALENDAR_DATES.csv
+│   │   │   ├── FEED_INFO.csv
+│   │   │   ├── FREQUENCIES.csv
+│   │   │   ├── ROUTES.csv
+│   │   │   ├── SHAPES.csv
+│   │   │   ├── STOPS.csv
+│   │   │   ├── STOP_TIMES.csv
+│   │   │   └── TRIPS.csv
+│   │   ├── 2
+│   │   │   ├── AGENCY.csv
+│   │   │   ├── CALENDAR.csv
+│   │   │   ├── CALENDAR_DATES.csv
+│   │   │   ├── FEED_INFO.csv
+│   │   │   ├── FREQUENCIES.csv
+│   │   │   ├── ROUTES.csv
+│   │   │   ├── SHAPES.csv
+│   │   │   ├── STOPS.csv
+│   │   │   ├── STOP_TIMES.csv
+│   │   │   └── TRIPS.csv
+│   │   ├── 3
+│   │   │   ├── AGENCY.csv
+│   │   │   ├── CALENDAR.csv
+│   │   │   ├── CALENDAR_DATES.csv
+│   │   │   ├── FEED_INFO.csv
+│   │   │   ├── FREQUENCIES.csv
+│   │   │   ├── ROUTES.csv
+│   │   │   ├── SHAPES.csv
+│   │   │   ├── STOPS.csv
+│   │   │   ├── STOP_TIMES.csv
+│   │   │   └── TRIPS.csv
+│   │   └── mapping.csv.nt
+│   ├── json
+│   │   ├── 1
+│   │   │   ├── AGENCY.json
+│   │   │   ├── CALENDAR_DATES.json
+│   │   │   ├── CALENDAR.json
+│   │   │   ├── FEED_INFO.json
+│   │   │   ├── FREQUENCIES.json
+│   │   │   ├── ROUTES.json
+│   │   │   ├── SHAPES.json
+│   │   │   ├── STOPS.json
+│   │   │   ├── STOP_TIMES.json
+│   │   │   └── TRIPS.json
+│   │   ├── 2
+│   │   │   ├── AGENCY.json
+│   │   │   ├── CALENDAR_DATES.json
+│   │   │   ├── CALENDAR.json
+│   │   │   ├── FEED_INFO.json
+│   │   │   ├── FREQUENCIES.json
+│   │   │   ├── ROUTES.json
+│   │   │   ├── SHAPES.json
+│   │   │   ├── STOPS.json
+│   │   │   ├── STOP_TIMES.json
+│   │   │   └── TRIPS.json
+│   │   ├── 3
+│   │   │   ├── AGENCY.json
+│   │   │   ├── CALENDAR_DATES.json
+│   │   │   ├── CALENDAR.json
+│   │   │   ├── FEED_INFO.json
+│   │   │   ├── FREQUENCIES.json
+│   │   │   ├── ROUTES.json
+│   │   │   ├── SHAPES.json
+│   │   │   ├── STOPS.json
+│   │   │   ├── STOP_TIMES.json
+│   │   │   └── TRIPS.json
+│   │   └── mapping.json.nt
+│   └── sql
+│       ├── 1
+│       │   ├── AGENCY.csv
+│       │   ├── CALENDAR.csv
+│       │   ├── CALENDAR_DATES.csv
+│       │   ├── FEED_INFO.csv
+│       │   ├── FREQUENCIES.csv
+│       │   ├── ROUTES.csv
+│       │   ├── SHAPES.csv
+│       │   ├── STOPS.csv
+│       │   ├── STOP_TIMES.csv
+│       │   └── TRIPS.csv
+│       ├── 2
+│       │   ├── AGENCY.csv
+│       │   ├── CALENDAR.csv
+│       │   ├── CALENDAR_DATES.csv
+│       │   ├── FEED_INFO.csv
+│       │   ├── FREQUENCIES.csv
+│       │   ├── ROUTES.csv
+│       │   ├── SHAPES.csv
+│       │   ├── STOPS.csv
+│       │   ├── STOP_TIMES.csv
+│       │   └── TRIPS.csv
+│       ├── 3
+│       │   ├── AGENCY.csv
+│       │   ├── CALENDAR.csv
+│       │   ├── CALENDAR_DATES.csv
+│       │   ├── FEED_INFO.csv
+│       │   ├── FREQUENCIES.csv
+│       │   ├── ROUTES.csv
+│       │   ├── SHAPES.csv
+│       │   ├── STOPS.csv
+│       │   ├── STOP_TIMES.csv
+│       │   └── TRIPS.csv
+│       └── mapping.sql.nt
+└── queries
+    ├── q10.rq
+    ├── q11.rq
+    ├── q12.rq
+    ├── q13.rq
+    ├── q14.rq
+    ├── q15.rq
+    ├── q16.rq
+    ├── q17.rq
+    ├── q18.rq
+    ├── q1.rq
+    ├── q2.rq
+    ├── q3.rq
+    ├── q4.rq
+    ├── q5.rq
+    ├── q6.rq
+    ├── q7.rq
+    ├── q8.rq
+    └── q9.rq
+```
 
 
 ## Resources
