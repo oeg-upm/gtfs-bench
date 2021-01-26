@@ -160,10 +160,23 @@ def generate_dataset(size):
 	os.system("./clean.sh > /dev/null")
 
 	os.system("./headers.sh > /dev/null")
+	
+def has_mysql(distribution):
 
+	has = False
 
-def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
+	for tm in distribution['formats']:
 
+		if distribution['formats'][tm] == 'sql':
+
+			has = True
+
+			break
+
+	return has
+
+def generate_sql_schema(distribution, size):
+	
 	if has_mysql(distribution):
 
 		schema = '''
@@ -462,9 +475,9 @@ def generate_sql_schema(distribution, size=1, absolute_path='/tmp/output/'):
 
 		schema += schema_post
 
-		data = schema.format(size, distribution['name'], absolute_path)
+		data = schema.format(distribution['name'], size, './')
 
-		with open('/tmp/output/schema-{0}.sql'.format(size), 'w') as f:
+		with open('/tmp/output/datasets/{1}/{0}/mysql_schema.sql'.format(distribution['name'], size), 'w') as f:
 
 			f.write(data)
 
@@ -739,6 +752,7 @@ for s in sizes:
 	for d in distributions:
 
 		generate_distribution(s, d)
+		generate_sql_schema(d, s)
 
 	os.system("rm  -r ./dist/")
 	#os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
