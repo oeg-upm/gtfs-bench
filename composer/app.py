@@ -477,7 +477,7 @@ def generate_sql_schema(distribution, size):
 
 		data = schema.format(distribution['name'], size, './')
 
-		with open('/tmp/output/datasets/{1}/{0}/mysql_schema.sql'.format(distribution['name'], size), 'w') as f:
+		with open('/tmp/output/datasets/{0}/{1}/mysql_schema.sql'.format(distribution['name'], size), 'w') as f:
 
 			f.write(data)
 
