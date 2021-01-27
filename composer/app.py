@@ -646,19 +646,6 @@ based on the GTFS transport data format.
 
 ''', 'red'))
 
-print('Datasets can be scaled as desired, by default we use 1, 5, 10, 50, 100, 500, 1000 and 5000 sizes but you can specify your own selection and we\'ll generate it...\n')
-
-q1 = [
-    {
-        'type': 'list',
-        'name': 'q',
-        'message': 'So... what do you want?',
-        'choices': [
-			{'name':'Use pregenerated default sizes', 'value': 'default'},
-			{'name':'Specify my own size(s)', 'value': 'custom'}
-		],
-    }
-]
 
 q2 = [
     {
@@ -705,14 +692,8 @@ q3 = [
     }
 ]
 
-q1_a = prompt(q1)
+sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)["q"].split(","))]
 
-if q1_a["q"] == 'custom':
-	sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)["q"].split(","))]
-
-else:
-
-	sizes = [1,5,10,50,100,500,1000,5000]
 
 while True:
 
