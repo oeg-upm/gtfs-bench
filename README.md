@@ -173,6 +173,7 @@ Our experiences testing (virtual) knowledge graph engines have revealed the diff
 We highly recommend that (virutalizers or materializers) KG construction engines tested with this benchmark provide (at least) the following metris:
 - Total execution time
 - Number of answers	
+- Memory consumption
 - Initial delay	
 - Dief@k (only for continuous/streaming behavior)*	
 - Dief@t (only for continuous/streaming behavior)*
