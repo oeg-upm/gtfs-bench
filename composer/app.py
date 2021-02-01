@@ -572,7 +572,7 @@ def custom_distribution():
 
 	for tm in tm_list:
 
-		q[0]['message'] = '[ Custom distribution ] Select output format for {} TM:'.format(tm)
+		q[0]['message'] = '[ Custom distribution ] Select output format for {} data source:'.format(tm)
 
 		q_a = prompt(q)['q']
 
