@@ -4,17 +4,22 @@ We present GTFS-Madrid-Bench, **a benchmark to evaluate declarative KG construct
 
 ### Main Publication:
 David Chaves-Fraga, Freddy Priyatna, Andrea Cimmino, Jhon Toledo, Edna Ruckhaus, & Oscar Corcho (2020). GTFS-Madrid-Bench: A benchmark for virtual knowledge graph access in the transport domain. Journal of Web Semantics, 65. [Online](https://doi.org/10.1016/j.websem.2020.100596)
+The results shown in the paper can be reproduce throught the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
 
 
 ## Requirements for the use:
 
 To have locally installed [docker](https://docs.docker.com/engine/install/).
 
+Decide the distributions to be used for your testing. They can be:
+- Standard distributions: data sources are represented in one format (e.g., GTFS-CSV, GTFS-JSON or GTFS-SQL).
+- Custom distributions: each data source is represented in the format selected by the user (e.g., SHAPES in JSON, CALENDAR in CSV, etc.)
+
 
 ## Using Madrid-GTFS-Bench:
 
 1. Run `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
-2. Choose data scales and formats to obtain the distributions you want to test. Example:
+2. Choose data scales and formats to obtain the distributions you want to test. You have to provide: first the data scales (in one line, separated by a comma), then, select the standard distributions (from none to all) and if is needed, the configuration for one custom distribution. If you want to generate several custom distributions, you will have to run the generator several times. Example:
 
 ![Demo GIF](misc/gtfs-demo.gif)
 
@@ -128,6 +133,7 @@ To have locally installed [docker](https://docs.docker.com/engine/install/).
 │       │   ├── STOP_TIMES.csv
 │       │   └── TRIPS.csv
 │       └── mapping.sql.nt
+│       └── schema.sql
 └── queries
     ├── q10.rq
     ├── q11.rq
@@ -200,4 +206,4 @@ We know that there are variables and dimensions that we did not take into accoun
 - Andrea Cimmino
 - Oscar Corcho
 
-Ontology Engineering Group, October 2019
+Ontology Engineering Group, October 2019 - Present
