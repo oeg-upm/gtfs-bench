@@ -23,7 +23,7 @@ Decide the distributions to be used for your testing. They can be:
 
 ![Demo GIF](misc/gtfs-demo.gif)
 
-3. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. See the following example:
+3. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. **Consider that the mappings and SQL paths to the data are general to each distribution and the management for the set up has to be done by the user**. You can visit the [utils](https://github.com/oeg-upm/gtfs-bench/tree/master/utils) folder where we provide ideas on how to perform evaluation in this context. See the following example:
 
 ```
 .
