@@ -162,7 +162,7 @@ Decide the distributions to be used for your testing. They can be:
 Additionally to the generator engine, that provides the data at desirable scales and distributions, together with corresponding mappings and queries, there are also common resources openly available to be modified or used by any practicioner or developer:
 
 - Folder [mappings](https://github.com/oeg-upm/gtfs-bench/tree/master/mappings) contains RML mappings for CSV, XML, JSON and RDB distributions of the input GTFS dataset, R2RML mapping for RDB and xR2RML mapping for MongoDB. It also includes CSVW annotations for the CSV distributions.
-- Folder [queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries) includes 18 queries with different levels of complexity including a representative set of SPARQL 1.1. operators. Additionally, the folder contains [11 simple queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries/simple) that will help to test the basic capabilities of virutal KG construction engines (i.e., to understand if the engine is able to translate correctly the SPARQL operators over different GTFS distributions before starting to test performance and scalability).
+- Folder [queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries) includes 18 queries with different levels of complexity including a representative set of SPARQL 1.1. operators. Additionally, the folder contains [11 simple queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries/simple) that will help to test the basic capabilities of virtual KG construction engines (i.e., to understand if the engine is able to translate correctly the SPARQL operators over different GTFS distributions before starting to test performance and scalability).
 
 ## Utils
 
