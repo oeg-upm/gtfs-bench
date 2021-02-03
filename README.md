@@ -19,7 +19,9 @@ Decide the distributions to be used for your testing. They can be:
 
 ## Using Madrid-GTFS-Bench:
 
-1. Run `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
+1. Download and run the docker image (run it always to ensure you are using the last version of the docker image).
+* Docker v20.10 or later: `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench` 
+* Previous versions: `docker pull oegdataintegration/gtfs-bench` and then `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
 2. Choose data scales and formats to obtain the distributions you want to test. You have to provide: first the data scales (in one line, separated by a comma), then, select the standard distributions (from none to all) and if is needed, the configuration for one custom distribution. If you want to generate several custom distributions, you will have to run the generator several times. Example:
 
 ![Demo GIF](misc/gtfs-demo.gif)
