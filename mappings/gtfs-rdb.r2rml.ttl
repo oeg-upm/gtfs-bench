@@ -4,10 +4,11 @@
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
 @prefix fno: <https://w3id.org/function/ontology#>.
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
-@prefix : <http://mapping.example.com/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix void: <http://rdfs.org/ns/void#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix : <http://mapping.example.com/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rev: <http://purl.org/stuff/rev#>.
 @prefix gtfs: <http://vocab.gtfs.org/terms#>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
@@ -16,921 +17,831 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 
-:map_stoptimes_0 rr:logicalTable :source_0.
-:source_0 a rr:LogicalTable;
+:rules_000 a void:Dataset;
+    void:exampleResource :map_stoptimes_000.
+:map_stoptimes_000 rr:logicalTable :source_000.
+:source_000 a rr:LogicalTable;
     rr:tableName "STOP_TIMES".
-:map_stoptimes_0 a rr:TriplesMap;
+:map_stoptimes_000 a rr:TriplesMap;
     rdfs:label "stoptimes".
-:s_0 a rr:SubjectMap.
-:map_stoptimes_0 rr:subjectMap :s_0.
-:s_0 rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}".
-:pom_0 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_0.
-:pm_0 a rr:PredicateMap.
-:pom_0 rr:predicateMap :pm_0.
-:pm_0 rr:constant rdf:type.
-:pom_0 rr:objectMap :om_0.
-:om_0 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#StopTime";
-    rr:termType rr:IRI.
-:pom_1 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_1.
-:pm_1 a rr:PredicateMap.
-:pom_1 rr:predicateMap :pm_1.
-:pm_1 rr:constant gtfs:arrivalTime.
-:pom_1 rr:objectMap :om_1.
-:om_1 a rr:ObjectMap;
+:s_000 a rr:SubjectMap.
+:map_stoptimes_000 rr:subjectMap :s_000.
+:s_000 rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}";
+    rr:class gtfs:StopTime.
+:pom_000 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_000.
+:pm_000 a rr:PredicateMap.
+:pom_000 rr:predicateMap :pm_000.
+:pm_000 rr:constant gtfs:arrivalTime.
+:pom_000 rr:objectMap :om_000.
+:om_000 a rr:ObjectMap;
     rr:column "arrival_time";
     rr:termType rr:Literal;
     rr:datatype xsd:duration.
-:pom_2 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_2.
-:pm_2 a rr:PredicateMap.
-:pom_2 rr:predicateMap :pm_2.
-:pm_2 rr:constant gtfs:departureTime.
-:pom_2 rr:objectMap :om_2.
-:om_2 a rr:ObjectMap;
+:pom_001 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_001.
+:pm_001 a rr:PredicateMap.
+:pom_001 rr:predicateMap :pm_001.
+:pm_001 rr:constant gtfs:departureTime.
+:pom_001 rr:objectMap :om_001.
+:om_001 a rr:ObjectMap;
     rr:column "departure_time";
     rr:termType rr:Literal;
     rr:datatype xsd:duration.
-:pom_3 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_3.
-:pm_3 a rr:PredicateMap.
-:pom_3 rr:predicateMap :pm_3.
-:pm_3 rr:constant gtfs:stopSequence.
-:pom_3 rr:objectMap :om_3.
-:om_3 a rr:ObjectMap;
+:pom_002 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_002.
+:pm_002 a rr:PredicateMap.
+:pom_002 rr:predicateMap :pm_002.
+:pm_002 rr:constant gtfs:stopSequence.
+:pom_002 rr:objectMap :om_002.
+:om_002 a rr:ObjectMap;
     rr:column "stop_sequence";
     rr:termType rr:Literal;
     rr:datatype xsd:integer.
-:pom_4 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_4.
-:pm_4 a rr:PredicateMap.
-:pom_4 rr:predicateMap :pm_4.
-:pm_4 rr:constant gtfs:headsign.
-:pom_4 rr:objectMap :om_4.
-:om_4 a rr:ObjectMap;
+:pom_003 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_003.
+:pm_003 a rr:PredicateMap.
+:pom_003 rr:predicateMap :pm_003.
+:pm_003 rr:constant gtfs:headsign.
+:pom_003 rr:objectMap :om_003.
+:om_003 a rr:ObjectMap;
     rr:column "stop_headsign";
     rr:termType rr:Literal.
-:pom_5 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_5.
-:pm_5 a rr:PredicateMap.
-:pom_5 rr:predicateMap :pm_5.
-:pm_5 rr:constant gtfs:pickupType.
-:pom_5 rr:objectMap :om_5.
-:om_5 a rr:ObjectMap;
+:pom_004 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_004.
+:pm_004 a rr:PredicateMap.
+:pom_004 rr:predicateMap :pm_004.
+:pm_004 rr:constant gtfs:pickupType.
+:pom_004 rr:objectMap :om_004.
+:om_004 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/PickupType/{pickup_type}";
     rr:termType rr:IRI.
-:pom_6 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_6.
-:pm_6 a rr:PredicateMap.
-:pom_6 rr:predicateMap :pm_6.
-:pm_6 rr:constant gtfs:dropOffType.
-:pom_6 rr:objectMap :om_6.
-:om_6 a rr:ObjectMap;
+:pom_005 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_005.
+:pm_005 a rr:PredicateMap.
+:pom_005 rr:predicateMap :pm_005.
+:pm_005 rr:constant gtfs:dropOffType.
+:pom_005 rr:objectMap :om_005.
+:om_005 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/DropOffType/{drop_off_type}";
     rr:termType rr:IRI.
-:pom_7 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_7.
-:pm_7 a rr:PredicateMap.
-:pom_7 rr:predicateMap :pm_7.
-:pm_7 rr:constant gtfs:distanceTraveled.
-:pom_7 rr:objectMap :om_7.
-:om_7 a rr:ObjectMap;
+:pom_006 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_006.
+:pm_006 a rr:PredicateMap.
+:pom_006 rr:predicateMap :pm_006.
+:pm_006 rr:constant gtfs:distanceTraveled.
+:pom_006 rr:objectMap :om_006.
+:om_006 a rr:ObjectMap;
     rr:column "shape_dist_traveled";
     rr:termType rr:Literal.
-:pom_8 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_8.
-:pm_8 a rr:PredicateMap.
-:pom_8 rr:predicateMap :pm_8.
-:pm_8 rr:constant gtfs:trip.
-:pom_8 rr:objectMap :om_8.
-:pom_9 a rr:PredicateObjectMap.
-:map_stoptimes_0 rr:predicateObjectMap :pom_9.
-:pm_9 a rr:PredicateMap.
-:pom_9 rr:predicateMap :pm_9.
-:pm_9 rr:constant gtfs:stop.
-:pom_9 rr:objectMap :om_9.
-:map_trips_0 rr:logicalTable :source_1.
-:source_1 a rr:LogicalTable;
+:pom_007 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_007.
+:pm_007 a rr:PredicateMap.
+:pom_007 rr:predicateMap :pm_007.
+:pm_007 rr:constant gtfs:trip.
+:pom_007 rr:objectMap :om_007.
+:pom_008 a rr:PredicateObjectMap.
+:map_stoptimes_000 rr:predicateObjectMap :pom_008.
+:pm_008 a rr:PredicateMap.
+:pom_008 rr:predicateMap :pm_008.
+:pm_008 rr:constant gtfs:stop.
+:pom_008 rr:objectMap :om_008.
+:rules_000 void:exampleResource :map_trips_000.
+:map_trips_000 rr:logicalTable :source_001.
+:source_001 a rr:LogicalTable;
     rr:tableName "TRIPS".
-:map_trips_0 a rr:TriplesMap;
+:map_trips_000 a rr:TriplesMap;
     rdfs:label "trips".
-:s_1 a rr:SubjectMap.
-:map_trips_0 rr:subjectMap :s_1.
-:s_1 rr:template "http://transport.linkeddata.es/madrid/metro/trips/{trip_id}".
-:pom_10 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_10.
-:pm_10 a rr:PredicateMap.
-:pom_10 rr:predicateMap :pm_10.
-:pm_10 rr:constant rdf:type.
-:pom_10 rr:objectMap :om_10.
-:om_10 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Trip";
-    rr:termType rr:IRI.
-:pom_11 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_11.
-:pm_11 a rr:PredicateMap.
-:pom_11 rr:predicateMap :pm_11.
-:pm_11 rr:constant gtfs:headsign.
-:pom_11 rr:objectMap :om_11.
-:om_11 a rr:ObjectMap;
+:s_001 a rr:SubjectMap.
+:map_trips_000 rr:subjectMap :s_001.
+:s_001 rr:template "http://transport.linkeddata.es/madrid/metro/trips/{trip_id}";
+    rr:class gtfs:Trip.
+:pom_009 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_009.
+:pm_009 a rr:PredicateMap.
+:pom_009 rr:predicateMap :pm_009.
+:pm_009 rr:constant gtfs:headsign.
+:pom_009 rr:objectMap :om_009.
+:om_009 a rr:ObjectMap;
     rr:column "trip_headsign";
     rr:termType rr:Literal.
-:pom_12 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_12.
-:pm_12 a rr:PredicateMap.
-:pom_12 rr:predicateMap :pm_12.
-:pm_12 rr:constant gtfs:shortName.
-:pom_12 rr:objectMap :om_12.
-:om_12 a rr:ObjectMap;
+:pom_010 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_010.
+:pm_010 a rr:PredicateMap.
+:pom_010 rr:predicateMap :pm_010.
+:pm_010 rr:constant gtfs:shortName.
+:pom_010 rr:objectMap :om_010.
+:om_010 a rr:ObjectMap;
     rr:column "trip_short_name";
     rr:termType rr:Literal.
-:pom_13 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_13.
-:pm_13 a rr:PredicateMap.
-:pom_13 rr:predicateMap :pm_13.
-:pm_13 rr:constant gtfs:direction.
-:pom_13 rr:objectMap :om_13.
-:om_13 a rr:ObjectMap;
+:pom_011 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_011.
+:pm_011 a rr:PredicateMap.
+:pom_011 rr:predicateMap :pm_011.
+:pm_011 rr:constant gtfs:direction.
+:pom_011 rr:objectMap :om_011.
+:om_011 a rr:ObjectMap;
     rr:column "direction_id";
     rr:termType rr:Literal.
-:pom_14 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_14.
-:pm_14 a rr:PredicateMap.
-:pom_14 rr:predicateMap :pm_14.
-:pm_14 rr:constant gtfs:block.
-:pom_14 rr:objectMap :om_14.
-:om_14 a rr:ObjectMap;
+:pom_012 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_012.
+:pm_012 a rr:PredicateMap.
+:pom_012 rr:predicateMap :pm_012.
+:pm_012 rr:constant gtfs:block.
+:pom_012 rr:objectMap :om_012.
+:om_012 a rr:ObjectMap;
     rr:column "block_id";
     rr:termType rr:Literal.
-:pom_15 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_15.
-:pm_15 a rr:PredicateMap.
-:pom_15 rr:predicateMap :pm_15.
-:pm_15 rr:constant gtfs:wheelchairAccessible.
-:pom_15 rr:objectMap :om_15.
-:om_15 a rr:ObjectMap;
+:pom_013 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_013.
+:pm_013 a rr:PredicateMap.
+:pom_013 rr:predicateMap :pm_013.
+:pm_013 rr:constant gtfs:wheelchairAccessible.
+:pom_013 rr:objectMap :om_013.
+:om_013 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_accessible}";
     rr:termType rr:IRI.
-:pom_16 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_16.
-:pm_16 a rr:PredicateMap.
-:pom_16 rr:predicateMap :pm_16.
-:pm_16 rr:constant gtfs:service.
-:pom_16 rr:objectMap :om_16, :om_17.
-:pom_17 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_17.
-:pm_17 a rr:PredicateMap.
-:pom_17 rr:predicateMap :pm_17.
-:pm_17 rr:constant gtfs:route.
-:pom_17 rr:objectMap :om_18.
-:pom_18 a rr:PredicateObjectMap.
-:map_trips_0 rr:predicateObjectMap :pom_18.
-:pm_18 a rr:PredicateMap.
-:pom_18 rr:predicateMap :pm_18.
-:pm_18 rr:constant gtfs:shape.
-:pom_18 rr:objectMap :om_19.
-:map_routes_0 rr:logicalTable :source_2.
-:source_2 a rr:LogicalTable;
+:pom_014 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_014.
+:pm_014 a rr:PredicateMap.
+:pom_014 rr:predicateMap :pm_014.
+:pm_014 rr:constant gtfs:service.
+:pom_014 rr:objectMap :om_014, :om_015.
+:pom_015 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_015.
+:pm_015 a rr:PredicateMap.
+:pom_015 rr:predicateMap :pm_015.
+:pm_015 rr:constant gtfs:route.
+:pom_015 rr:objectMap :om_016.
+:pom_016 a rr:PredicateObjectMap.
+:map_trips_000 rr:predicateObjectMap :pom_016.
+:pm_016 a rr:PredicateMap.
+:pom_016 rr:predicateMap :pm_016.
+:pm_016 rr:constant gtfs:shape.
+:pom_016 rr:objectMap :om_017.
+:rules_000 void:exampleResource :map_routes_000.
+:map_routes_000 rr:logicalTable :source_002.
+:source_002 a rr:LogicalTable;
     rr:tableName "ROUTES".
-:map_routes_0 a rr:TriplesMap;
+:map_routes_000 a rr:TriplesMap;
     rdfs:label "routes".
-:s_2 a rr:SubjectMap.
-:map_routes_0 rr:subjectMap :s_2.
-:s_2 rr:template "http://transport.linkeddata.es/madrid/metro/routes/{route_id}".
-:pom_19 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_19.
-:pm_19 a rr:PredicateMap.
-:pom_19 rr:predicateMap :pm_19.
-:pm_19 rr:constant rdf:type.
-:pom_19 rr:objectMap :om_20.
-:om_20 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Route";
-    rr:termType rr:IRI.
-:pom_20 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_20.
-:pm_20 a rr:PredicateMap.
-:pom_20 rr:predicateMap :pm_20.
-:pm_20 rr:constant gtfs:shortName.
-:pom_20 rr:objectMap :om_21.
-:om_21 a rr:ObjectMap;
+:s_002 a rr:SubjectMap.
+:map_routes_000 rr:subjectMap :s_002.
+:s_002 rr:template "http://transport.linkeddata.es/madrid/metro/routes/{route_id}";
+    rr:class gtfs:Route.
+:pom_017 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_017.
+:pm_017 a rr:PredicateMap.
+:pom_017 rr:predicateMap :pm_017.
+:pm_017 rr:constant gtfs:shortName.
+:pom_017 rr:objectMap :om_018.
+:om_018 a rr:ObjectMap;
     rr:column "route_short_name";
     rr:termType rr:Literal.
-:pom_21 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_21.
-:pm_21 a rr:PredicateMap.
-:pom_21 rr:predicateMap :pm_21.
-:pm_21 rr:constant gtfs:longName.
-:pom_21 rr:objectMap :om_22.
-:om_22 a rr:ObjectMap;
+:pom_018 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_018.
+:pm_018 a rr:PredicateMap.
+:pom_018 rr:predicateMap :pm_018.
+:pm_018 rr:constant gtfs:longName.
+:pom_018 rr:objectMap :om_019.
+:om_019 a rr:ObjectMap;
     rr:column "route_long_name";
     rr:termType rr:Literal.
-:pom_22 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_22.
-:pm_22 a rr:PredicateMap.
-:pom_22 rr:predicateMap :pm_22.
-:pm_22 rr:constant dct:description.
-:pom_22 rr:objectMap :om_23.
-:om_23 a rr:ObjectMap;
+:pom_019 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_019.
+:pm_019 a rr:PredicateMap.
+:pom_019 rr:predicateMap :pm_019.
+:pm_019 rr:constant dct:description.
+:pom_019 rr:objectMap :om_020.
+:om_020 a rr:ObjectMap;
     rr:column "route_desc";
     rr:termType rr:Literal.
-:pom_23 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_23.
-:pm_23 a rr:PredicateMap.
-:pom_23 rr:predicateMap :pm_23.
-:pm_23 rr:constant gtfs:routeType.
-:pom_23 rr:objectMap :om_24.
-:om_24 a rr:ObjectMap;
+:pom_020 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_020.
+:pm_020 a rr:PredicateMap.
+:pom_020 rr:predicateMap :pm_020.
+:pm_020 rr:constant gtfs:routeType.
+:pom_020 rr:objectMap :om_021.
+:om_021 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/RouteType/{route_type}";
     rr:termType rr:IRI.
-:pom_24 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_24.
-:pm_24 a rr:PredicateMap.
-:pom_24 rr:predicateMap :pm_24.
-:pm_24 rr:constant gtfs:routeUrl.
-:pom_24 rr:objectMap :om_25.
-:om_25 a rr:ObjectMap;
+:pom_021 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_021.
+:pm_021 a rr:PredicateMap.
+:pom_021 rr:predicateMap :pm_021.
+:pm_021 rr:constant gtfs:routeUrl.
+:pom_021 rr:objectMap :om_022.
+:om_022 a rr:ObjectMap;
     rr:column "route_url";
     rr:termType rr:IRI.
-:pom_25 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_25.
-:pm_25 a rr:PredicateMap.
-:pom_25 rr:predicateMap :pm_25.
-:pm_25 rr:constant gtfs:color.
-:pom_25 rr:objectMap :om_26.
-:om_26 a rr:ObjectMap;
+:pom_022 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_022.
+:pm_022 a rr:PredicateMap.
+:pom_022 rr:predicateMap :pm_022.
+:pm_022 rr:constant gtfs:color.
+:pom_022 rr:objectMap :om_023.
+:om_023 a rr:ObjectMap;
     rr:column "route_color";
     rr:termType rr:Literal.
-:pom_26 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_26.
-:pm_26 a rr:PredicateMap.
-:pom_26 rr:predicateMap :pm_26.
-:pm_26 rr:constant gtfs:textColor.
-:pom_26 rr:objectMap :om_27.
-:om_27 a rr:ObjectMap;
+:pom_023 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_023.
+:pm_023 a rr:PredicateMap.
+:pom_023 rr:predicateMap :pm_023.
+:pm_023 rr:constant gtfs:textColor.
+:pom_023 rr:objectMap :om_024.
+:om_024 a rr:ObjectMap;
     rr:column "route_text_color";
     rr:termType rr:Literal.
-:pom_27 a rr:PredicateObjectMap.
-:map_routes_0 rr:predicateObjectMap :pom_27.
-:pm_27 a rr:PredicateMap.
-:pom_27 rr:predicateMap :pm_27.
-:pm_27 rr:constant gtfs:agency.
-:pom_27 rr:objectMap :om_28.
-:map_agency_0 rr:logicalTable :source_3.
-:source_3 a rr:LogicalTable;
+:pom_024 a rr:PredicateObjectMap.
+:map_routes_000 rr:predicateObjectMap :pom_024.
+:pm_024 a rr:PredicateMap.
+:pom_024 rr:predicateMap :pm_024.
+:pm_024 rr:constant gtfs:agency.
+:pom_024 rr:objectMap :om_025.
+:rules_000 void:exampleResource :map_agency_000.
+:map_agency_000 rr:logicalTable :source_003.
+:source_003 a rr:LogicalTable;
     rr:tableName "AGENCY".
-:map_agency_0 a rr:TriplesMap;
+:map_agency_000 a rr:TriplesMap;
     rdfs:label "agency".
-:s_3 a rr:SubjectMap.
-:map_agency_0 rr:subjectMap :s_3.
-:s_3 rr:template "http://transport.linkeddata.es/madrid/agency/{agency_id}".
-:pom_28 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_28.
-:pm_28 a rr:PredicateMap.
-:pom_28 rr:predicateMap :pm_28.
-:pm_28 rr:constant rdf:type.
-:pom_28 rr:objectMap :om_29.
-:om_29 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Agency";
-    rr:termType rr:IRI.
-:pom_29 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_29.
-:pm_29 a rr:PredicateMap.
-:pom_29 rr:predicateMap :pm_29.
-:pm_29 rr:constant foaf:page.
-:pom_29 rr:objectMap :om_30.
-:om_30 a rr:ObjectMap;
+:s_003 a rr:SubjectMap.
+:map_agency_000 rr:subjectMap :s_003.
+:s_003 rr:template "http://transport.linkeddata.es/madrid/agency/{agency_id}";
+    rr:class gtfs:Agency.
+:pom_025 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_025.
+:pm_025 a rr:PredicateMap.
+:pom_025 rr:predicateMap :pm_025.
+:pm_025 rr:constant foaf:page.
+:pom_025 rr:objectMap :om_026.
+:om_026 a rr:ObjectMap;
     rr:column "agency_url";
     rr:termType rr:IRI.
-:pom_30 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_30.
-:pm_30 a rr:PredicateMap.
-:pom_30 rr:predicateMap :pm_30.
-:pm_30 rr:constant foaf:name.
-:pom_30 rr:objectMap :om_31.
-:om_31 a rr:ObjectMap;
+:pom_026 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_026.
+:pm_026 a rr:PredicateMap.
+:pom_026 rr:predicateMap :pm_026.
+:pm_026 rr:constant foaf:name.
+:pom_026 rr:objectMap :om_027.
+:om_027 a rr:ObjectMap;
     rr:column "agency_name";
     rr:termType rr:Literal.
-:pom_31 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_31.
-:pm_31 a rr:PredicateMap.
-:pom_31 rr:predicateMap :pm_31.
-:pm_31 rr:constant gtfs:timeZone.
-:pom_31 rr:objectMap :om_32.
-:om_32 a rr:ObjectMap;
+:pom_027 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_027.
+:pm_027 a rr:PredicateMap.
+:pom_027 rr:predicateMap :pm_027.
+:pm_027 rr:constant gtfs:timeZone.
+:pom_027 rr:objectMap :om_028.
+:om_028 a rr:ObjectMap;
     rr:column "agency_timezone";
     rr:termType rr:Literal.
-:pom_32 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_32.
-:pm_32 a rr:PredicateMap.
-:pom_32 rr:predicateMap :pm_32.
-:pm_32 rr:constant dct:language.
-:pom_32 rr:objectMap :om_33.
-:om_33 a rr:ObjectMap;
+:pom_028 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_028.
+:pm_028 a rr:PredicateMap.
+:pom_028 rr:predicateMap :pm_028.
+:pm_028 rr:constant dct:language.
+:pom_028 rr:objectMap :om_029.
+:om_029 a rr:ObjectMap;
     rr:column "agency_lang";
     rr:termType rr:Literal.
-:pom_33 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_33.
-:pm_33 a rr:PredicateMap.
-:pom_33 rr:predicateMap :pm_33.
-:pm_33 rr:constant foaf:phone.
-:pom_33 rr:objectMap :om_34.
-:om_34 a rr:ObjectMap;
+:pom_029 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_029.
+:pm_029 a rr:PredicateMap.
+:pom_029 rr:predicateMap :pm_029.
+:pm_029 rr:constant foaf:phone.
+:pom_029 rr:objectMap :om_030.
+:om_030 a rr:ObjectMap;
     rr:column "agency_phone";
     rr:termType rr:Literal.
-:pom_34 a rr:PredicateObjectMap.
-:map_agency_0 rr:predicateObjectMap :pom_34.
-:pm_34 a rr:PredicateMap.
-:pom_34 rr:predicateMap :pm_34.
-:pm_34 rr:constant gtfs:fareUrl.
-:pom_34 rr:objectMap :om_35.
-:om_35 a rr:ObjectMap;
+:pom_030 a rr:PredicateObjectMap.
+:map_agency_000 rr:predicateObjectMap :pom_030.
+:pm_030 a rr:PredicateMap.
+:pom_030 rr:predicateMap :pm_030.
+:pm_030 rr:constant gtfs:fareUrl.
+:pom_030 rr:objectMap :om_031.
+:om_031 a rr:ObjectMap;
     rr:column "agency_fare_url";
     rr:termType rr:IRI.
-:map_stops_0 rr:logicalTable :source_4.
-:source_4 a rr:LogicalTable;
+:rules_000 void:exampleResource :map_stops_000.
+:map_stops_000 rr:logicalTable :source_004.
+:source_004 a rr:LogicalTable;
     rr:tableName "STOPS".
-:map_stops_0 a rr:TriplesMap;
+:map_stops_000 a rr:TriplesMap;
     rdfs:label "stops".
-:s_4 a rr:SubjectMap.
-:map_stops_0 rr:subjectMap :s_4.
-:s_4 rr:template "http://transport.linkeddata.es/madrid/metro/stops/{stop_id}".
-:pom_35 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_35.
-:pm_35 a rr:PredicateMap.
-:pom_35 rr:predicateMap :pm_35.
-:pm_35 rr:constant rdf:type.
-:pom_35 rr:objectMap :om_36.
-:om_36 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Stop";
-    rr:termType rr:IRI.
-:pom_36 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_36.
-:pm_36 a rr:PredicateMap.
-:pom_36 rr:predicateMap :pm_36.
-:pm_36 rr:constant gtfs:code.
-:pom_36 rr:objectMap :om_37.
-:om_37 a rr:ObjectMap;
+:s_004 a rr:SubjectMap.
+:map_stops_000 rr:subjectMap :s_004.
+:s_004 rr:template "http://transport.linkeddata.es/madrid/metro/stops/{stop_id}";
+    rr:class gtfs:Stop.
+:pom_031 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_031.
+:pm_031 a rr:PredicateMap.
+:pom_031 rr:predicateMap :pm_031.
+:pm_031 rr:constant gtfs:code.
+:pom_031 rr:objectMap :om_032.
+:om_032 a rr:ObjectMap;
     rr:column "stop_code";
     rr:termType rr:Literal.
-:pom_37 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_37.
-:pm_37 a rr:PredicateMap.
-:pom_37 rr:predicateMap :pm_37.
-:pm_37 rr:constant dct:identifier.
-:pom_37 rr:objectMap :om_38.
-:om_38 a rr:ObjectMap;
+:pom_032 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_032.
+:pm_032 a rr:PredicateMap.
+:pom_032 rr:predicateMap :pm_032.
+:pm_032 rr:constant dct:identifier.
+:pom_032 rr:objectMap :om_033.
+:om_033 a rr:ObjectMap;
     rr:column "stop_id";
     rr:termType rr:Literal.
-:pom_38 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_38.
-:pm_38 a rr:PredicateMap.
-:pom_38 rr:predicateMap :pm_38.
-:pm_38 rr:constant foaf:name.
-:pom_38 rr:objectMap :om_39.
-:om_39 a rr:ObjectMap;
+:pom_033 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_033.
+:pm_033 a rr:PredicateMap.
+:pom_033 rr:predicateMap :pm_033.
+:pm_033 rr:constant foaf:name.
+:pom_033 rr:objectMap :om_034.
+:om_034 a rr:ObjectMap;
     rr:column "stop_name";
     rr:termType rr:Literal.
-:pom_39 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_39.
-:pm_39 a rr:PredicateMap.
-:pom_39 rr:predicateMap :pm_39.
-:pm_39 rr:constant dct:description.
-:pom_39 rr:objectMap :om_40.
-:om_40 a rr:ObjectMap;
+:pom_034 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_034.
+:pm_034 a rr:PredicateMap.
+:pom_034 rr:predicateMap :pm_034.
+:pm_034 rr:constant dct:description.
+:pom_034 rr:objectMap :om_035.
+:om_035 a rr:ObjectMap;
     rr:column "stop_desc";
     rr:termType rr:Literal.
-:pom_40 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_40.
-:pm_40 a rr:PredicateMap.
-:pom_40 rr:predicateMap :pm_40.
-:pm_40 rr:constant geo:lat.
-:pom_40 rr:objectMap :om_41.
-:om_41 a rr:ObjectMap;
+:pom_035 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_035.
+:pm_035 a rr:PredicateMap.
+:pom_035 rr:predicateMap :pm_035.
+:pm_035 rr:constant geo:lat.
+:pom_035 rr:objectMap :om_036.
+:om_036 a rr:ObjectMap;
     rr:column "stop_lat";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_41 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_41.
-:pm_41 a rr:PredicateMap.
-:pom_41 rr:predicateMap :pm_41.
-:pm_41 rr:constant geo:long.
-:pom_41 rr:objectMap :om_42.
-:om_42 a rr:ObjectMap;
+:pom_036 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_036.
+:pm_036 a rr:PredicateMap.
+:pom_036 rr:predicateMap :pm_036.
+:pm_036 rr:constant geo:long.
+:pom_036 rr:objectMap :om_037.
+:om_037 a rr:ObjectMap;
     rr:column "stop_lon";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_42 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_42.
-:pm_42 a rr:PredicateMap.
-:pom_42 rr:predicateMap :pm_42.
-:pm_42 rr:constant gtfs:zone.
-:pom_42 rr:objectMap :om_43.
-:om_43 a rr:ObjectMap;
+:pom_037 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_037.
+:pm_037 a rr:PredicateMap.
+:pom_037 rr:predicateMap :pm_037.
+:pm_037 rr:constant gtfs:zone.
+:pom_037 rr:objectMap :om_038.
+:om_038 a rr:ObjectMap;
     rr:column "zone_id";
     rr:termType rr:Literal.
-:pom_43 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_43.
-:pm_43 a rr:PredicateMap.
-:pom_43 rr:predicateMap :pm_43.
-:pm_43 rr:constant foaf:page.
-:pom_43 rr:objectMap :om_44.
-:om_44 a rr:ObjectMap;
+:pom_038 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_038.
+:pm_038 a rr:PredicateMap.
+:pom_038 rr:predicateMap :pm_038.
+:pm_038 rr:constant foaf:page.
+:pom_038 rr:objectMap :om_039.
+:om_039 a rr:ObjectMap;
     rr:column "stop_url";
     rr:termType rr:IRI.
-:pom_44 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_44.
-:pm_44 a rr:PredicateMap.
-:pom_44 rr:predicateMap :pm_44.
-:pm_44 rr:constant gtfs:locationType.
-:pom_44 rr:objectMap :om_45.
-:om_45 a rr:ObjectMap;
+:pom_039 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_039.
+:pm_039 a rr:PredicateMap.
+:pom_039 rr:predicateMap :pm_039.
+:pm_039 rr:constant gtfs:locationType.
+:pom_039 rr:objectMap :om_040.
+:om_040 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/LocationType/{location_type}";
     rr:termType rr:IRI.
-:pom_45 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_45.
-:pm_45 a rr:PredicateMap.
-:pom_45 rr:predicateMap :pm_45.
-:pm_45 rr:constant gtfs:timeZone.
-:pom_45 rr:objectMap :om_46.
-:om_46 a rr:ObjectMap;
+:pom_040 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_040.
+:pm_040 a rr:PredicateMap.
+:pom_040 rr:predicateMap :pm_040.
+:pm_040 rr:constant gtfs:timeZone.
+:pom_040 rr:objectMap :om_041.
+:om_041 a rr:ObjectMap;
     rr:column "stop_timezone";
     rr:termType rr:Literal.
-:pom_46 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_46.
-:pm_46 a rr:PredicateMap.
-:pom_46 rr:predicateMap :pm_46.
-:pm_46 rr:constant gtfs:wheelchairAccessible.
-:pom_46 rr:objectMap :om_47.
-:om_47 a rr:ObjectMap;
+:pom_041 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_041.
+:pm_041 a rr:PredicateMap.
+:pom_041 rr:predicateMap :pm_041.
+:pm_041 rr:constant gtfs:wheelchairAccessible.
+:pom_041 rr:objectMap :om_042.
+:om_042 a rr:ObjectMap;
     rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}";
     rr:termType rr:IRI.
-:pom_47 a rr:PredicateObjectMap.
-:map_stops_0 rr:predicateObjectMap :pom_47.
-:pm_47 a rr:PredicateMap.
-:pom_47 rr:predicateMap :pm_47.
-:pm_47 rr:constant gtfs:parentStation.
-:pom_47 rr:objectMap :om_48.
-:map_services1_0 rr:logicalTable :source_5.
-:source_5 a rr:LogicalTable;
+:pom_042 a rr:PredicateObjectMap.
+:map_stops_000 rr:predicateObjectMap :pom_042.
+:pm_042 a rr:PredicateMap.
+:pom_042 rr:predicateMap :pm_042.
+:pm_042 rr:constant gtfs:parentStation.
+:pom_042 rr:objectMap :om_043.
+:rules_000 void:exampleResource :map_services1_000.
+:map_services1_000 rr:logicalTable :source_005.
+:source_005 a rr:LogicalTable;
     rr:tableName "CALENDAR".
-:map_services1_0 a rr:TriplesMap;
+:map_services1_000 a rr:TriplesMap;
     rdfs:label "services1".
-:s_5 a rr:SubjectMap.
-:map_services1_0 rr:subjectMap :s_5.
-:s_5 rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}".
-:pom_48 a rr:PredicateObjectMap.
-:map_services1_0 rr:predicateObjectMap :pom_48.
-:pm_48 a rr:PredicateMap.
-:pom_48 rr:predicateMap :pm_48.
-:pm_48 rr:constant rdf:type.
-:pom_48 rr:objectMap :om_49.
-:om_49 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Service";
-    rr:termType rr:IRI.
-:pom_49 a rr:PredicateObjectMap.
-:map_services1_0 rr:predicateObjectMap :pom_49.
-:pm_49 a rr:PredicateMap.
-:pom_49 rr:predicateMap :pm_49.
-:pm_49 rr:constant gtfs:serviceRule.
-:pom_49 rr:objectMap :om_50.
-:map_services2_0 rr:logicalTable :source_6.
-:source_6 a rr:LogicalTable;
+:s_005 a rr:SubjectMap.
+:map_services1_000 rr:subjectMap :s_005.
+:s_005 rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}";
+    rr:class gtfs:Service.
+:pom_043 a rr:PredicateObjectMap.
+:map_services1_000 rr:predicateObjectMap :pom_043.
+:pm_043 a rr:PredicateMap.
+:pom_043 rr:predicateMap :pm_043.
+:pm_043 rr:constant gtfs:serviceRule.
+:pom_043 rr:objectMap :om_044.
+:rules_000 void:exampleResource :map_services2_000.
+:map_services2_000 rr:logicalTable :source_006.
+:source_006 a rr:LogicalTable;
     rr:tableName "CALENDAR_DATES".
-:map_services2_0 a rr:TriplesMap;
+:map_services2_000 a rr:TriplesMap;
     rdfs:label "services2".
-:s_6 a rr:SubjectMap.
-:map_services2_0 rr:subjectMap :s_6.
-:s_6 rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}".
-:pom_50 a rr:PredicateObjectMap.
-:map_services2_0 rr:predicateObjectMap :pom_50.
-:pm_50 a rr:PredicateMap.
-:pom_50 rr:predicateMap :pm_50.
-:pm_50 rr:constant rdf:type.
-:pom_50 rr:objectMap :om_51.
-:om_51 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Service";
-    rr:termType rr:IRI.
-:pom_51 a rr:PredicateObjectMap.
-:map_services2_0 rr:predicateObjectMap :pom_51.
-:pm_51 a rr:PredicateMap.
-:pom_51 rr:predicateMap :pm_51.
-:pm_51 rr:constant gtfs:serviceRule.
-:pom_51 rr:objectMap :om_52.
-:map_calendar_date_rules_0 rr:logicalTable :source_7.
-:source_7 a rr:LogicalTable;
+:s_006 a rr:SubjectMap.
+:map_services2_000 rr:subjectMap :s_006.
+:s_006 rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}";
+    rr:class gtfs:Service.
+:pom_044 a rr:PredicateObjectMap.
+:map_services2_000 rr:predicateObjectMap :pom_044.
+:pm_044 a rr:PredicateMap.
+:pom_044 rr:predicateMap :pm_044.
+:pm_044 rr:constant gtfs:serviceRule.
+:pom_044 rr:objectMap :om_045.
+:rules_000 void:exampleResource :map_calendar_date_rules_000.
+:map_calendar_date_rules_000 rr:logicalTable :source_007.
+:source_007 a rr:LogicalTable;
     rr:tableName "CALENDAR_DATES".
-:map_calendar_date_rules_0 a rr:TriplesMap;
+:map_calendar_date_rules_000 a rr:TriplesMap;
     rdfs:label "calendar_date_rules".
-:s_7 a rr:SubjectMap.
-:map_calendar_date_rules_0 rr:subjectMap :s_7.
-:s_7 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}-{date}".
-:pom_52 a rr:PredicateObjectMap.
-:map_calendar_date_rules_0 rr:predicateObjectMap :pom_52.
-:pm_52 a rr:PredicateMap.
-:pom_52 rr:predicateMap :pm_52.
-:pm_52 rr:constant rdf:type.
-:pom_52 rr:objectMap :om_53.
-:om_53 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#CalendarDateRule";
-    rr:termType rr:IRI.
-:pom_53 a rr:PredicateObjectMap.
-:map_calendar_date_rules_0 rr:predicateObjectMap :pom_53.
-:pm_53 a rr:PredicateMap.
-:pom_53 rr:predicateMap :pm_53.
-:pm_53 rr:constant dct:date.
-:pom_53 rr:objectMap :om_54.
-:om_54 a rr:ObjectMap;
+:s_007 a rr:SubjectMap.
+:map_calendar_date_rules_000 rr:subjectMap :s_007.
+:s_007 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}-{date}";
+    rr:class gtfs:CalendarDateRule.
+:pom_045 a rr:PredicateObjectMap.
+:map_calendar_date_rules_000 rr:predicateObjectMap :pom_045.
+:pm_045 a rr:PredicateMap.
+:pom_045 rr:predicateMap :pm_045.
+:pm_045 rr:constant dct:date.
+:pom_045 rr:objectMap :om_046.
+:om_046 a rr:ObjectMap;
     rr:column "date";
     rr:termType rr:Literal;
     rr:datatype xsd:date.
-:pom_54 a rr:PredicateObjectMap.
-:map_calendar_date_rules_0 rr:predicateObjectMap :pom_54.
-:pm_54 a rr:PredicateMap.
-:pom_54 rr:predicateMap :pm_54.
-:pm_54 rr:constant gtfs:dateAddition.
-:pom_54 rr:objectMap :om_55.
-:om_55 a rr:ObjectMap;
+:pom_046 a rr:PredicateObjectMap.
+:map_calendar_date_rules_000 rr:predicateObjectMap :pom_046.
+:pm_046 a rr:PredicateMap.
+:pom_046 rr:predicateMap :pm_046.
+:pm_046 rr:constant gtfs:dateAddition.
+:pom_046 rr:objectMap :om_047.
+:om_047 a rr:ObjectMap;
     rr:column "exception_type";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:map_calendar_rules_0 rr:logicalTable :source_8.
-:source_8 a rr:LogicalTable;
+:rules_000 void:exampleResource :map_calendar_rules_000.
+:map_calendar_rules_000 rr:logicalTable :source_008.
+:source_008 a rr:LogicalTable;
     rr:tableName "CALENDAR".
-:map_calendar_rules_0 a rr:TriplesMap;
+:map_calendar_rules_000 a rr:TriplesMap;
     rdfs:label "calendar_rules".
-:s_8 a rr:SubjectMap.
-:map_calendar_rules_0 rr:subjectMap :s_8.
-:s_8 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}".
-:pom_55 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_55.
-:pm_55 a rr:PredicateMap.
-:pom_55 rr:predicateMap :pm_55.
-:pm_55 rr:constant rdf:type.
-:pom_55 rr:objectMap :om_56.
-:om_56 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#CalendarRule";
-    rr:termType rr:IRI.
-:pom_56 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_56.
-:pm_56 a rr:PredicateMap.
-:pom_56 rr:predicateMap :pm_56.
-:pm_56 rr:constant gtfs:monday.
-:pom_56 rr:objectMap :om_57.
-:om_57 a rr:ObjectMap;
+:s_008 a rr:SubjectMap.
+:map_calendar_rules_000 rr:subjectMap :s_008.
+:s_008 rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}";
+    rr:class gtfs:CalendarRule.
+:pom_047 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_047.
+:pm_047 a rr:PredicateMap.
+:pom_047 rr:predicateMap :pm_047.
+:pm_047 rr:constant gtfs:monday.
+:pom_047 rr:objectMap :om_048.
+:om_048 a rr:ObjectMap;
     rr:column "monday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_57 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_57.
-:pm_57 a rr:PredicateMap.
-:pom_57 rr:predicateMap :pm_57.
-:pm_57 rr:constant gtfs:tuesday.
-:pom_57 rr:objectMap :om_58.
-:om_58 a rr:ObjectMap;
+:pom_048 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_048.
+:pm_048 a rr:PredicateMap.
+:pom_048 rr:predicateMap :pm_048.
+:pm_048 rr:constant gtfs:tuesday.
+:pom_048 rr:objectMap :om_049.
+:om_049 a rr:ObjectMap;
     rr:column "tuesday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_58 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_58.
-:pm_58 a rr:PredicateMap.
-:pom_58 rr:predicateMap :pm_58.
-:pm_58 rr:constant gtfs:wednesday.
-:pom_58 rr:objectMap :om_59.
-:om_59 a rr:ObjectMap;
+:pom_049 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_049.
+:pm_049 a rr:PredicateMap.
+:pom_049 rr:predicateMap :pm_049.
+:pm_049 rr:constant gtfs:wednesday.
+:pom_049 rr:objectMap :om_050.
+:om_050 a rr:ObjectMap;
     rr:column "wednesday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_59 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_59.
-:pm_59 a rr:PredicateMap.
-:pom_59 rr:predicateMap :pm_59.
-:pm_59 rr:constant gtfs:thursday.
-:pom_59 rr:objectMap :om_60.
-:om_60 a rr:ObjectMap;
+:pom_050 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_050.
+:pm_050 a rr:PredicateMap.
+:pom_050 rr:predicateMap :pm_050.
+:pm_050 rr:constant gtfs:thursday.
+:pom_050 rr:objectMap :om_051.
+:om_051 a rr:ObjectMap;
     rr:column "thursday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_60 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_60.
-:pm_60 a rr:PredicateMap.
-:pom_60 rr:predicateMap :pm_60.
-:pm_60 rr:constant gtfs:friday.
-:pom_60 rr:objectMap :om_61.
-:om_61 a rr:ObjectMap;
+:pom_051 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_051.
+:pm_051 a rr:PredicateMap.
+:pom_051 rr:predicateMap :pm_051.
+:pm_051 rr:constant gtfs:friday.
+:pom_051 rr:objectMap :om_052.
+:om_052 a rr:ObjectMap;
     rr:column "friday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_61 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_61.
-:pm_61 a rr:PredicateMap.
-:pom_61 rr:predicateMap :pm_61.
-:pm_61 rr:constant gtfs:saturday.
-:pom_61 rr:objectMap :om_62.
-:om_62 a rr:ObjectMap;
+:pom_052 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_052.
+:pm_052 a rr:PredicateMap.
+:pom_052 rr:predicateMap :pm_052.
+:pm_052 rr:constant gtfs:saturday.
+:pom_052 rr:objectMap :om_053.
+:om_053 a rr:ObjectMap;
     rr:column "saturday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_62 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_62.
-:pm_62 a rr:PredicateMap.
-:pom_62 rr:predicateMap :pm_62.
-:pm_62 rr:constant gtfs:sunday.
-:pom_62 rr:objectMap :om_63.
-:om_63 a rr:ObjectMap;
+:pom_053 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_053.
+:pm_053 a rr:PredicateMap.
+:pom_053 rr:predicateMap :pm_053.
+:pm_053 rr:constant gtfs:sunday.
+:pom_053 rr:objectMap :om_054.
+:om_054 a rr:ObjectMap;
     rr:column "sunday";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_63 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_63.
-:pm_63 a rr:PredicateMap.
-:pom_63 rr:predicateMap :pm_63.
-:pm_63 rr:constant schema:startDate.
-:pom_63 rr:objectMap :om_64.
-:om_64 a rr:ObjectMap;
+:pom_054 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_054.
+:pm_054 a rr:PredicateMap.
+:pom_054 rr:predicateMap :pm_054.
+:pm_054 rr:constant schema:startDate.
+:pom_054 rr:objectMap :om_055.
+:om_055 a rr:ObjectMap;
     rr:column "start_date";
     rr:termType rr:Literal;
     rr:datatype xsd:date.
-:pom_64 a rr:PredicateObjectMap.
-:map_calendar_rules_0 rr:predicateObjectMap :pom_64.
-:pm_64 a rr:PredicateMap.
-:pom_64 rr:predicateMap :pm_64.
-:pm_64 rr:constant schema:endDate.
-:pom_64 rr:objectMap :om_65.
-:om_65 a rr:ObjectMap;
+:pom_055 a rr:PredicateObjectMap.
+:map_calendar_rules_000 rr:predicateObjectMap :pom_055.
+:pm_055 a rr:PredicateMap.
+:pom_055 rr:predicateMap :pm_055.
+:pm_055 rr:constant schema:endDate.
+:pom_055 rr:objectMap :om_056.
+:om_056 a rr:ObjectMap;
     rr:column "end_date";
     rr:termType rr:Literal;
     rr:datatype xsd:date.
-:map_feed_0 rr:logicalTable :source_9.
-:source_9 a rr:LogicalTable;
+:rules_000 void:exampleResource :map_feed_000.
+:map_feed_000 rr:logicalTable :source_009.
+:source_009 a rr:LogicalTable;
     rr:tableName "FEED_INFO".
-:map_feed_0 a rr:TriplesMap;
+:map_feed_000 a rr:TriplesMap;
     rdfs:label "feed".
-:s_9 a rr:SubjectMap.
-:map_feed_0 rr:subjectMap :s_9.
-:s_9 rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}".
-:pom_65 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_65.
-:pm_65 a rr:PredicateMap.
-:pom_65 rr:predicateMap :pm_65.
-:pm_65 rr:constant rdf:type.
-:pom_65 rr:objectMap :om_66.
-:om_66 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Feed";
-    rr:termType rr:IRI.
-:pom_66 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_66.
-:pm_66 a rr:PredicateMap.
-:pom_66 rr:predicateMap :pm_66.
-:pm_66 rr:constant dct:publisher.
-:pom_66 rr:objectMap :om_67.
-:om_67 a rr:ObjectMap;
+:s_009 a rr:SubjectMap.
+:map_feed_000 rr:subjectMap :s_009.
+:s_009 rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}";
+    rr:class gtfs:Feed.
+:pom_056 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_056.
+:pm_056 a rr:PredicateMap.
+:pom_056 rr:predicateMap :pm_056.
+:pm_056 rr:constant dct:publisher.
+:pom_056 rr:objectMap :om_057.
+:om_057 a rr:ObjectMap;
     rr:column "feed_publisher_name";
     rr:termType rr:Literal.
-:pom_67 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_67.
-:pm_67 a rr:PredicateMap.
-:pom_67 rr:predicateMap :pm_67.
-:pm_67 rr:constant foaf:page.
-:pom_67 rr:objectMap :om_68.
-:om_68 a rr:ObjectMap;
+:pom_057 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_057.
+:pm_057 a rr:PredicateMap.
+:pom_057 rr:predicateMap :pm_057.
+:pm_057 rr:constant foaf:page.
+:pom_057 rr:objectMap :om_058.
+:om_058 a rr:ObjectMap;
     rr:column "feed_publisher_url";
     rr:termType rr:IRI.
-:pom_68 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_68.
-:pm_68 a rr:PredicateMap.
-:pom_68 rr:predicateMap :pm_68.
-:pm_68 rr:constant dct:language.
-:pom_68 rr:objectMap :om_69.
-:om_69 a rr:ObjectMap;
+:pom_058 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_058.
+:pm_058 a rr:PredicateMap.
+:pom_058 rr:predicateMap :pm_058.
+:pm_058 rr:constant dct:language.
+:pom_058 rr:objectMap :om_059.
+:om_059 a rr:ObjectMap;
     rr:column "feed_lang";
     rr:termType rr:Literal.
-:pom_69 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_69.
-:pm_69 a rr:PredicateMap.
-:pom_69 rr:predicateMap :pm_69.
-:pm_69 rr:constant schema:startDate.
-:pom_69 rr:objectMap :om_70.
-:om_70 a rr:ObjectMap;
+:pom_059 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_059.
+:pm_059 a rr:PredicateMap.
+:pom_059 rr:predicateMap :pm_059.
+:pm_059 rr:constant schema:startDate.
+:pom_059 rr:objectMap :om_060.
+:om_060 a rr:ObjectMap;
     rr:column "feed_start_date";
     rr:termType rr:Literal;
     rr:datatype xsd:date.
-:pom_70 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_70.
-:pm_70 a rr:PredicateMap.
-:pom_70 rr:predicateMap :pm_70.
-:pm_70 rr:constant schema:endDate.
-:pom_70 rr:objectMap :om_71.
-:om_71 a rr:ObjectMap;
+:pom_060 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_060.
+:pm_060 a rr:PredicateMap.
+:pom_060 rr:predicateMap :pm_060.
+:pm_060 rr:constant schema:endDate.
+:pom_060 rr:objectMap :om_061.
+:om_061 a rr:ObjectMap;
     rr:column "feed_end_date";
     rr:termType rr:Literal;
     rr:datatype xsd:date.
-:pom_71 a rr:PredicateObjectMap.
-:map_feed_0 rr:predicateObjectMap :pom_71.
-:pm_71 a rr:PredicateMap.
-:pom_71 rr:predicateMap :pm_71.
-:pm_71 rr:constant schema:version.
-:pom_71 rr:objectMap :om_72.
-:om_72 a rr:ObjectMap;
+:pom_061 a rr:PredicateObjectMap.
+:map_feed_000 rr:predicateObjectMap :pom_061.
+:pm_061 a rr:PredicateMap.
+:pom_061 rr:predicateMap :pm_061.
+:pm_061 rr:constant schema:version.
+:pom_061 rr:objectMap :om_062.
+:om_062 a rr:ObjectMap;
     rr:column "feed_version";
     rr:termType rr:Literal.
-:map_shapes_0 rr:logicalTable :source_10.
-:source_10 a rr:LogicalTable;
+:rules_000 void:exampleResource :map_shapes_000.
+:map_shapes_000 rr:logicalTable :source_010.
+:source_010 a rr:LogicalTable;
     rr:tableName "SHAPES".
-:map_shapes_0 a rr:TriplesMap;
+:map_shapes_000 a rr:TriplesMap;
     rdfs:label "shapes".
-:s_10 a rr:SubjectMap.
-:map_shapes_0 rr:subjectMap :s_10.
-:s_10 rr:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}".
-:pom_72 a rr:PredicateObjectMap.
-:map_shapes_0 rr:predicateObjectMap :pom_72.
-:pm_72 a rr:PredicateMap.
-:pom_72 rr:predicateMap :pm_72.
-:pm_72 rr:constant rdf:type.
-:pom_72 rr:objectMap :om_73.
-:om_73 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Shape";
-    rr:termType rr:IRI.
-:pom_73 a rr:PredicateObjectMap.
-:map_shapes_0 rr:predicateObjectMap :pom_73.
-:pm_73 a rr:PredicateMap.
-:pom_73 rr:predicateMap :pm_73.
-:pm_73 rr:constant gtfs:shapePoint.
-:pom_73 rr:objectMap :om_74.
-:map_shapePoints_0 rr:logicalTable :source_11.
-:source_11 a rr:LogicalTable;
+:s_010 a rr:SubjectMap.
+:map_shapes_000 rr:subjectMap :s_010.
+:s_010 rr:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}";
+    rr:class gtfs:Shape.
+:pom_062 a rr:PredicateObjectMap.
+:map_shapes_000 rr:predicateObjectMap :pom_062.
+:pm_062 a rr:PredicateMap.
+:pom_062 rr:predicateMap :pm_062.
+:pm_062 rr:constant gtfs:shapePoint.
+:pom_062 rr:objectMap :om_063.
+:rules_000 void:exampleResource :map_shapePoints_000.
+:map_shapePoints_000 rr:logicalTable :source_011.
+:source_011 a rr:LogicalTable;
     rr:tableName "SHAPES".
-:map_shapePoints_0 a rr:TriplesMap;
+:map_shapePoints_000 a rr:TriplesMap;
     rdfs:label "shapePoints".
-:s_11 a rr:SubjectMap.
-:map_shapePoints_0 rr:subjectMap :s_11.
-:s_11 rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}".
-:pom_74 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_74.
-:pm_74 a rr:PredicateMap.
-:pom_74 rr:predicateMap :pm_74.
-:pm_74 rr:constant rdf:type.
-:pom_74 rr:objectMap :om_75.
-:om_75 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#ShapePoint";
-    rr:termType rr:IRI.
-:pom_75 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_75.
-:pm_75 a rr:PredicateMap.
-:pom_75 rr:predicateMap :pm_75.
-:pm_75 rr:constant geo:lat.
-:pom_75 rr:objectMap :om_76.
-:om_76 a rr:ObjectMap;
+:s_011 a rr:SubjectMap.
+:map_shapePoints_000 rr:subjectMap :s_011.
+:s_011 rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}";
+    rr:class gtfs:ShapePoint.
+:pom_063 a rr:PredicateObjectMap.
+:map_shapePoints_000 rr:predicateObjectMap :pom_063.
+:pm_063 a rr:PredicateMap.
+:pom_063 rr:predicateMap :pm_063.
+:pm_063 rr:constant geo:lat.
+:pom_063 rr:objectMap :om_064.
+:om_064 a rr:ObjectMap;
     rr:column "shape_pt_lat";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_76 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_76.
-:pm_76 a rr:PredicateMap.
-:pom_76 rr:predicateMap :pm_76.
-:pm_76 rr:constant geo:long.
-:pom_76 rr:objectMap :om_77.
-:om_77 a rr:ObjectMap;
+:pom_064 a rr:PredicateObjectMap.
+:map_shapePoints_000 rr:predicateObjectMap :pom_064.
+:pm_064 a rr:PredicateMap.
+:pom_064 rr:predicateMap :pm_064.
+:pm_064 rr:constant geo:long.
+:pom_064 rr:objectMap :om_065.
+:om_065 a rr:ObjectMap;
     rr:column "shape_pt_lon";
     rr:termType rr:Literal;
     rr:datatype xsd:double.
-:pom_77 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_77.
-:pm_77 a rr:PredicateMap.
-:pom_77 rr:predicateMap :pm_77.
-:pm_77 rr:constant gtfs:pointSequence.
-:pom_77 rr:objectMap :om_78.
-:om_78 a rr:ObjectMap;
+:pom_065 a rr:PredicateObjectMap.
+:map_shapePoints_000 rr:predicateObjectMap :pom_065.
+:pm_065 a rr:PredicateMap.
+:pom_065 rr:predicateMap :pm_065.
+:pm_065 rr:constant gtfs:pointSequence.
+:pom_065 rr:objectMap :om_066.
+:om_066 a rr:ObjectMap;
     rr:column "shape_pt_sequence";
     rr:termType rr:Literal.
-:pom_78 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_78.
-:pm_78 a rr:PredicateMap.
-:pom_78 rr:predicateMap :pm_78.
-:pm_78 rr:constant gtfs:distanceTraveled.
-:pom_78 rr:objectMap :om_79.
-:om_79 a rr:ObjectMap;
+:pom_066 a rr:PredicateObjectMap.
+:map_shapePoints_000 rr:predicateObjectMap :pom_066.
+:pm_066 a rr:PredicateMap.
+:pom_066 rr:predicateMap :pm_066.
+:pm_066 rr:constant gtfs:distanceTraveled.
+:pom_066 rr:objectMap :om_067.
+:om_067 a rr:ObjectMap;
     rr:column "shape_dist_traveled";
     rr:termType rr:Literal.
-:map_frequencies_0 rr:logicalTable :source_12.
-:source_12 a rr:LogicalTable;
+:rules_000 void:exampleResource :map_frequencies_000.
+:map_frequencies_000 rr:logicalTable :source_012.
+:source_012 a rr:LogicalTable;
     rr:tableName "FREQUENCIES".
-:map_frequencies_0 a rr:TriplesMap;
+:map_frequencies_000 a rr:TriplesMap;
     rdfs:label "frequencies".
-:s_12 a rr:SubjectMap.
-:map_frequencies_0 rr:subjectMap :s_12.
-:s_12 rr:template "http://transport.linkeddata.es/madrid/metro/frequency/{trip_id}-{start_time}".
-:pom_79 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_79.
-:pm_79 a rr:PredicateMap.
-:pom_79 rr:predicateMap :pm_79.
-:pm_79 rr:constant rdf:type.
-:pom_79 rr:objectMap :om_80.
-:om_80 a rr:ObjectMap;
-    rr:constant "http://vocab.gtfs.org/terms#Frequency";
-    rr:termType rr:IRI.
-:pom_80 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_80.
-:pm_80 a rr:PredicateMap.
-:pom_80 rr:predicateMap :pm_80.
-:pm_80 rr:constant gtfs:startTime.
-:pom_80 rr:objectMap :om_81.
-:om_81 a rr:ObjectMap;
+:s_012 a rr:SubjectMap.
+:map_frequencies_000 rr:subjectMap :s_012.
+:s_012 rr:template "http://transport.linkeddata.es/madrid/metro/frequency/{trip_id}-{start_time}";
+    rr:class gtfs:Frequency.
+:pom_067 a rr:PredicateObjectMap.
+:map_frequencies_000 rr:predicateObjectMap :pom_067.
+:pm_067 a rr:PredicateMap.
+:pom_067 rr:predicateMap :pm_067.
+:pm_067 rr:constant gtfs:startTime.
+:pom_067 rr:objectMap :om_068.
+:om_068 a rr:ObjectMap;
     rr:column "start_time";
     rr:termType rr:Literal.
-:pom_81 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_81.
-:pm_81 a rr:PredicateMap.
-:pom_81 rr:predicateMap :pm_81.
-:pm_81 rr:constant gtfs:endTime.
-:pom_81 rr:objectMap :om_82.
-:om_82 a rr:ObjectMap;
+:pom_068 a rr:PredicateObjectMap.
+:map_frequencies_000 rr:predicateObjectMap :pom_068.
+:pm_068 a rr:PredicateMap.
+:pom_068 rr:predicateMap :pm_068.
+:pm_068 rr:constant gtfs:endTime.
+:pom_068 rr:objectMap :om_069.
+:om_069 a rr:ObjectMap;
     rr:column "end_time";
     rr:termType rr:Literal.
-:pom_82 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_82.
-:pm_82 a rr:PredicateMap.
-:pom_82 rr:predicateMap :pm_82.
-:pm_82 rr:constant gtfs:headwaySeconds.
-:pom_82 rr:objectMap :om_83.
-:om_83 a rr:ObjectMap;
+:pom_069 a rr:PredicateObjectMap.
+:map_frequencies_000 rr:predicateObjectMap :pom_069.
+:pm_069 a rr:PredicateMap.
+:pom_069 rr:predicateMap :pm_069.
+:pm_069 rr:constant gtfs:headwaySeconds.
+:pom_069 rr:objectMap :om_070.
+:om_070 a rr:ObjectMap;
     rr:column "headway_secs";
     rr:termType rr:Literal;
     rr:datatype xsd:integer.
-:pom_83 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_83.
-:pm_83 a rr:PredicateMap.
-:pom_83 rr:predicateMap :pm_83.
-:pm_83 rr:constant gtfs:exactTimes.
-:pom_83 rr:objectMap :om_84.
-:om_84 a rr:ObjectMap;
+:pom_070 a rr:PredicateObjectMap.
+:map_frequencies_000 rr:predicateObjectMap :pom_070.
+:pm_070 a rr:PredicateMap.
+:pom_070 rr:predicateMap :pm_070.
+:pm_070 rr:constant gtfs:exactTimes.
+:pom_070 rr:objectMap :om_071.
+:om_071 a rr:ObjectMap;
     rr:column "exact_times";
     rr:termType rr:Literal;
     rr:datatype xsd:boolean.
-:pom_84 a rr:PredicateObjectMap.
-:map_frequencies_0 rr:predicateObjectMap :pom_84.
-:pm_84 a rr:PredicateMap.
-:pom_84 rr:predicateMap :pm_84.
-:pm_84 rr:constant gtfs:trip.
-:pom_84 rr:objectMap :om_85.
-:om_8 a rr:ObjectMap;
-    rr:parentTriplesMap :map_trips_0;
-    rr:joinCondition :jc_0.
-:jc_0 rr:child "trip_id";
+:pom_071 a rr:PredicateObjectMap.
+:map_frequencies_000 rr:predicateObjectMap :pom_071.
+:pm_071 a rr:PredicateMap.
+:pom_071 rr:predicateMap :pm_071.
+:pm_071 rr:constant gtfs:trip.
+:pom_071 rr:objectMap :om_072.
+:om_007 a rr:ObjectMap;
+    rr:parentTriplesMap :map_trips_000;
+    rr:joinCondition :jc_000.
+:jc_000 rr:child "trip_id";
     rr:parent "trip_id".
-:om_9 a rr:ObjectMap;
-    rr:parentTriplesMap :map_stops_0;
-    rr:joinCondition :jc_1.
-:jc_1 rr:child "stop_id";
+:om_008 a rr:ObjectMap;
+    rr:parentTriplesMap :map_stops_000;
+    rr:joinCondition :jc_001.
+:jc_001 rr:child "stop_id";
     rr:parent "stop_id".
-:om_16 a rr:ObjectMap;
-    rr:parentTriplesMap :map_services1_0;
-    rr:joinCondition :jc_2.
-:jc_2 rr:child "service_id";
+:om_014 a rr:ObjectMap;
+    rr:parentTriplesMap :map_services1_000;
+    rr:joinCondition :jc_002.
+:jc_002 rr:child "service_id";
     rr:parent "service_id".
-:om_17 a rr:ObjectMap;
-    rr:parentTriplesMap :map_services2_0;
-    rr:joinCondition :jc_3.
-:jc_3 rr:child "service_id";
+:om_015 a rr:ObjectMap;
+    rr:parentTriplesMap :map_services2_000;
+    rr:joinCondition :jc_003.
+:jc_003 rr:child "service_id";
     rr:parent "service_id".
-:om_18 a rr:ObjectMap;
-    rr:parentTriplesMap :map_routes_0;
-    rr:joinCondition :jc_4.
-:jc_4 rr:child "route_id";
+:om_016 a rr:ObjectMap;
+    rr:parentTriplesMap :map_routes_000;
+    rr:joinCondition :jc_004.
+:jc_004 rr:child "route_id";
     rr:parent "route_id".
-:om_19 a rr:ObjectMap;
-    rr:parentTriplesMap :map_shapes_0;
-    rr:joinCondition :jc_5.
-:jc_5 rr:child "shape_id";
+:om_017 a rr:ObjectMap;
+    rr:parentTriplesMap :map_shapes_000;
+    rr:joinCondition :jc_005.
+:jc_005 rr:child "shape_id";
     rr:parent "shape_id".
-:om_28 a rr:ObjectMap;
-    rr:parentTriplesMap :map_agency_0;
-    rr:joinCondition :jc_6.
-:jc_6 rr:child "agency_id";
+:om_025 a rr:ObjectMap;
+    rr:parentTriplesMap :map_agency_000;
+    rr:joinCondition :jc_006.
+:jc_006 rr:child "agency_id";
     rr:parent "agency_id".
-:om_48 a rr:ObjectMap;
-    rr:parentTriplesMap :map_stops_0;
-    rr:joinCondition :jc_7.
-:jc_7 rr:child "parent_station";
+:om_043 a rr:ObjectMap;
+    rr:parentTriplesMap :map_stops_000;
+    rr:joinCondition :jc_007.
+:jc_007 rr:child "parent_station";
     rr:parent "stop_id".
-:om_50 a rr:ObjectMap;
-    rr:parentTriplesMap :map_calendar_rules_0;
-    rr:joinCondition :jc_8.
-:jc_8 rr:child "service_id";
+:om_044 a rr:ObjectMap;
+    rr:parentTriplesMap :map_calendar_rules_000;
+    rr:joinCondition :jc_008.
+:jc_008 rr:child "service_id";
     rr:parent "service_id".
-:om_52 a rr:ObjectMap;
-    rr:parentTriplesMap :map_calendar_date_rules_0;
-    rr:joinCondition :jc_9.
-:jc_9 rr:child "service_id";
+:om_045 a rr:ObjectMap;
+    rr:parentTriplesMap :map_calendar_date_rules_000;
+    rr:joinCondition :jc_009.
+:jc_009 rr:child "service_id";
     rr:parent "service_id".
-:om_74 a rr:ObjectMap;
-    rr:parentTriplesMap :map_shapePoints_0;
-    rr:joinCondition :jc_10.
-:jc_10 rr:child "shape_id";
+:om_063 a rr:ObjectMap;
+    rr:parentTriplesMap :map_shapePoints_000;
+    rr:joinCondition :jc_010.
+:jc_010 rr:child "shape_id";
     rr:parent "shape_id".
-:om_85 a rr:ObjectMap;
-    rr:parentTriplesMap :map_trips_0;
-    rr:joinCondition :jc_11.
-:jc_11 rr:child "trip_id";
+:om_072 a rr:ObjectMap;
+    rr:parentTriplesMap :map_trips_000;
+    rr:joinCondition :jc_011.
+:jc_011 rr:child "trip_id";
     rr:parent "trip_id".
