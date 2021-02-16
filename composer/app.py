@@ -245,7 +245,7 @@ def generate_sql_schema(distribution, size):
 
 				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR.csv'
 				INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
-					SET end_date = IF(end_date = '', NULL, end_date);
+					SET end_date = IF(end_date = NULL, NULL, end_date);
 
 			'''
 
