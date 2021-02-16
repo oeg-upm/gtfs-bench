@@ -1,24 +1,32 @@
 # The GTFS-Madrid-Bench
 
-We present GTFS-Madrid-Bench, **a benchmark to evaluate declarative KG construction engines** that can be used for the provision of access mechanisms to (virtual) knowledge graphs. Our proposal introduces several scenarios that aim at measuring performance and scalability as well as the query capabilities of all this kind of engines, considering their heterogeneity. The datasources used in our benchmark are derived from the [GTFS](https://developers.google.com/transit/gtfs) data files of the subway network of Madrid. They can be transformed into several formats (CSV, JSON, SQL and XML) and scaled up. The query set aims at addressing a representative number of SPARQL 1.1 features while covering usual queries that data consumers may be interested in.
+We present GTFS-Madrid-Bench, **a benchmark to evaluate declarative KG construction engines** that can be used for the provision of access mechanisms to (virtual) knowledge graphs. Our proposal introduces several scenarios that aim at measuring performance and scalability as well as the query capabilities of all this kind of engines, considering their heterogeneity. The data sources used in our benchmark are derived from the [GTFS](https://developers.google.com/transit/gtfs) data files of the subway network of Madrid. They can be transformed into several formats (CSV, JSON, SQL and XML) and scaled up. The query set aims at addressing a representative number of SPARQL 1.1 features while covering usual queries that data consumers may be interested in.
 
 ### Main Publication:
 David Chaves-Fraga, Freddy Priyatna, Andrea Cimmino, Jhon Toledo, Edna Ruckhaus, & Oscar Corcho (2020). GTFS-Madrid-Bench: A benchmark for virtual knowledge graph access in the transport domain. Journal of Web Semantics, 65. [Online](https://doi.org/10.1016/j.websem.2020.100596)
+
+The results shown in the paper can be reproduced through the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
 
 
 ## Requirements for the use:
 
 To have locally installed [docker](https://docs.docker.com/engine/install/).
 
+Decide the distributions to be used for your testing. They can be:
+- Standard distributions: data sources are represented in one format (e.g., GTFS-CSV, GTFS-JSON or GTFS-SQL).
+- Custom distributions: each data source is represented in the format selected by the user (e.g., SHAPES in JSON, CALENDAR in CSV, etc.)
+
 
 ## Using Madrid-GTFS-Bench:
 
-1. Run `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
-2. Choose data scales and formats to obtain the distributions you want to test. Example:
+1. Download and run the docker image (run it always to ensure you are using the last version of the docker image).
+* Docker v20.10 or later: `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench` 
+* Previous versions: `docker pull oegdataintegration/gtfs-bench` and then `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
+2. Choose data scales and formats to obtain the distributions you want to test. You have to provide: first the data scales (in one line, separated by a comma), then, select the standard distributions (from none to all) and if is needed, the configuration for one custom distribution. If you want to generate several custom distributions, you will have to run the generator several times. Example:
 
 ![Demo GIF](misc/gtfs-demo.gif)
 
-3. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. See the following example:
+3. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. **Consider that for not repeating resources at scale level, the mappings and SQL paths to the data are define at distribution level (e.g, "data/AGENCY.csv") and their management for performing a correct evaluation has to be done by the user (with an script, for example)**. You can visit the [utils](https://github.com/oeg-upm/gtfs-bench/tree/master/utils) folder where we provide some ideas on how to manage it. See the following example:
 
 ```
 .
@@ -128,6 +136,7 @@ To have locally installed [docker](https://docs.docker.com/engine/install/).
 │       │   ├── STOP_TIMES.csv
 │       │   └── TRIPS.csv
 │       └── mapping.sql.nt
+│       └── schema.sql
 └── queries
     ├── q10.rq
     ├── q11.rq
@@ -155,7 +164,7 @@ To have locally installed [docker](https://docs.docker.com/engine/install/).
 Additionally to the generator engine, that provides the data at desirable scales and distributions, together with corresponding mappings and queries, there are also common resources openly available to be modified or used by any practicioner or developer:
 
 - Folder [mappings](https://github.com/oeg-upm/gtfs-bench/tree/master/mappings) contains RML mappings for CSV, XML, JSON and RDB distributions of the input GTFS dataset, R2RML mapping for RDB and xR2RML mapping for MongoDB. It also includes CSVW annotations for the CSV distributions.
-- Folder [queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries) includes 18 queries with different levels of complexity including a representative set of SPARQL 1.1. operators. Additionally, the folder contains [11 simple queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries/simple) that will help to test the basic capabilities of virutal KG construction engines (i.e., to understand if the engine is able to translate correctly the SPARQL operators over different GTFS distributions before starting to test performance and scalability).
+- Folder [queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries) includes 18 queries with different levels of complexity including a representative set of SPARQL 1.1. operators. Additionally, the folder contains [11 simple queries](https://github.com/oeg-upm/gtfs-bench/tree/master/queries/simple) that will help to test the basic capabilities of virtual KG construction engines (i.e., to understand if the engine is able to translate correctly the SPARQL operators over different GTFS distributions before starting to test performance and scalability).
 
 ## Utils
 
@@ -166,6 +175,7 @@ Our experiences testing (virtual) knowledge graph engines have revealed the diff
 We highly recommend that (virutalizers or materializers) KG construction engines tested with this benchmark provide (at least) the following metris:
 - Total execution time
 - Number of answers	
+- Memory consumption
 - Initial delay	
 - Dief@k (only for continuous/streaming behavior)*	
 - Dief@t (only for continuous/streaming behavior)*
@@ -200,4 +210,4 @@ We know that there are variables and dimensions that we did not take into accoun
 - Andrea Cimmino
 - Oscar Corcho
 
-Ontology Engineering Group, October 2019
+Ontology Engineering Group, October 2019 - Present

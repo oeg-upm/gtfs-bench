@@ -36,6 +36,7 @@ tm_to_entity = {
 	'FREQUENCIES': 'FREQUENCIES',
 	'ROUTES': 'ROUTES',
 	'SHAPES': 'SHAPES',
+	'SHAPE_POINTS': 'SHAPES',
 	'STOPS': 'STOPS',
 	'STOPTIMES': 'STOP_TIMES',
 	'TRIPS': 'TRIPS'
@@ -244,7 +245,7 @@ def generate_sql_schema(distribution, size):
 
 				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR.csv'
 				INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
-					SET end_date = IF(end_date = '', NULL, end_date);
+					SET end_date = IF(end_date = NULL, NULL, end_date);
 
 			'''
 
@@ -337,7 +338,7 @@ def generate_sql_schema(distribution, size):
 				`shape_pt_lat` DECIMAL(18,15),
 				`shape_pt_lon` DECIMAL(18,15),
 				`shape_pt_sequence` INT,
-				`shape_dist` DECIMAL(18,15),
+				`shape_dist_traveled` DECIMAL(18,15),
 				PRIMARY KEY (shape_id,shape_pt_sequence));
 
 				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/SHAPES.csv'
@@ -571,7 +572,7 @@ def custom_distribution():
 
 	for tm in tm_list:
 
-		q[0]['message'] = '[ Custom distribution ] Select output format for {} TM:'.format(tm)
+		q[0]['message'] = '[ Custom distribution ] Select output format for {} data source:'.format(tm)
 
 		q_a = prompt(q)['q']
 
