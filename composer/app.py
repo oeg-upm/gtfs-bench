@@ -338,7 +338,7 @@ def generate_sql_schema(distribution, size):
 				`shape_pt_lat` DECIMAL(18,15),
 				`shape_pt_lon` DECIMAL(18,15),
 				`shape_pt_sequence` INT,
-				`shape_dist` DECIMAL(18,15),
+				`shape_dist_traveled` DECIMAL(18,15),
 				PRIMARY KEY (shape_id,shape_pt_sequence));
 
 				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/SHAPES.csv'
