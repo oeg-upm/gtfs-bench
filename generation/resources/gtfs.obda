@@ -49,8 +49,7 @@ target		<http://linkedgtfs.com/CITY/stops/{STOP_ID}> a gtfs:Stop ; dct:descripti
 source		SELECT * FROM "STOPS"
 
 mappingId	urn:mapping--251641790
-target		<http://linkedgtfs.com/CITY/shape/{SHAPE_ID}{SHAPE_PT_SEQUENCE}> gtfs:distanceTraveled {
-_TRAVELED} ; gtfs:pointSequence {SHAPE_PT_SEQUENCE} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {SHAPE_PT_LAT} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {SHAPE_PT_LON} . 
+target		<http://linkedgtfs.com/CITY/shape/{SHAPE_ID}{SHAPE_PT_SEQUENCE}> gtfs:distanceTraveled {SHAPE_DIST_TRAVELED} ; gtfs:pointSequence {SHAPE_PT_SEQUENCE} ; <http://www.w3.org/2003/01/geo/wgs84_pos#lat> {SHAPE_PT_LAT} ; <http://www.w3.org/2003/01/geo/wgs84_pos#long> {SHAPE_PT_LON} . 
 source		SELECT * FROM "SHAPES"
 
 mappingId	urn:mapping-1340462681
