@@ -287,7 +287,6 @@ def generate_sql_schema(distribution, size):
 
 				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FREQUENCIES.csv'
 				INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
-					SET exact_times = IF(exact_times='',NULL,exact_times);
 
 			'''
 
