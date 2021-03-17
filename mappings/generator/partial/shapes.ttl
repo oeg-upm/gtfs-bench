@@ -35,5 +35,3 @@
 :pom_73 rr:predicateMap :pm_73.
 :pm_73 rr:constant gtfs:shapePoint.
 :pom_73 rr:objectMap :om_74.
-:map_shapePoints_0 rml:logicalSource :source_11.
-
