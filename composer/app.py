@@ -6,6 +6,7 @@ import subprocess
 import json
 import signal
 import sys
+import copy
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 from PyInquirer import Validator, ValidationError
