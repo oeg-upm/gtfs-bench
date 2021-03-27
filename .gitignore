@@ -1,4 +1,6 @@
 .DS_Store
+generation/resources/csvs/*.csv
+mappings/generator/*.json
 engines/morph-csv/morph-csv-morph-csv-1.0.0
 engines/ontop/copyright
 engines/ontop/lib

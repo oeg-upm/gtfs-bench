@@ -604,10 +604,10 @@ def generate_mapping(distribution):
 		elif f == 'xml':
 			t['source'] = {'type': 'xml', 'file': e+'.xml'}
 		elif f == 'mongo':
-			t['source'] = default_mongo
+			t['source'] = copy.deepcopy(default_mongo)
 			t['source']['table'] = 'gtfs.'+e
 		elif f == 'sql':
-			t['source'] = default_mysql
+			t['source'] = copy.deepcopy(default_mysql)
 			t['source']['table'] = 'gtfs.'+e
 		else:
 			print("Format", f, "not implemented")
