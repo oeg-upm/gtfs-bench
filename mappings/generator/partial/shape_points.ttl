@@ -15,13 +15,13 @@
 @prefix schema: <http://schema.org/>.
 @prefix dct: <http://purl.org/dc/terms/>.
 
-:map_shapePoints_0 a rr:TriplesMap;
+:map_shape_points_0 a rr:TriplesMap;
     rdfs:label "shape_points".
 :s_11 a rr:SubjectMap.
-:map_shapePoints_0 rr:subjectMap :s_11.
+:map_shape_points_0 rr:subjectMap :s_11.
 :s_11 rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}".
 :pom_74 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_74.
+:map_shape_points_0 rr:predicateObjectMap :pom_74.
 :pm_74 a rr:PredicateMap.
 :pom_74 rr:predicateMap :pm_74.
 :pm_74 rr:constant rdf:type.
@@ -30,7 +30,7 @@
     rr:constant "http://vocab.gtfs.org/terms#ShapePoint";
     rr:termType rr:IRI.
 :pom_75 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_75.
+:map_shape_points_0 rr:predicateObjectMap :pom_75.
 :pm_75 a rr:PredicateMap.
 :pom_75 rr:predicateMap :pm_75.
 :pm_75 rr:constant geo:lat.
