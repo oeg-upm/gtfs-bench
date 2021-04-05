@@ -36,5 +36,7 @@
 :pm_73 rr:constant gtfs:shapePoint.
 :pom_73 rr:objectMap :om_74.
 :om_74 a rr:ObjectMap;
-    rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}";
-    rr:termType rr:Literal.
+    rr:parentTriplesMap :map_shape_points_0;
+    rr:joinCondition :jc_10.
+:jc_10 rr:child "shape_id";
+    rr:parent "shape_id".
