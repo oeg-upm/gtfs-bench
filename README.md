@@ -24,8 +24,8 @@ David Chaves-Fraga, Freddy Priyatna, Andrea Cimmino, Jhon Toledo, Edna Ruckhaus,
 ```
 
 ### Results
-Virtual KGC results can be reproduced through the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
-Materialized KGC results  through the resources provided in [this repo](https://github.com/oeg-upm/kgc-eval)
+- Virtual KGC results can be reproduced through the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
+- Materialized KGC results  through the resources provided in [this repo](https://github.com/oeg-upm/kgc-eval)
 
 ## Requirements for the use:
 
