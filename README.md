@@ -5,8 +5,27 @@ We present GTFS-Madrid-Bench, **a benchmark to evaluate declarative KG construct
 ### Main Publication:
 David Chaves-Fraga, Freddy Priyatna, Andrea Cimmino, Jhon Toledo, Edna Ruckhaus, & Oscar Corcho (2020). GTFS-Madrid-Bench: A benchmark for virtual knowledge graph access in the transport domain. Journal of Web Semantics, 65. [Online](https://doi.org/10.1016/j.websem.2020.100596)
 
-The results shown in the paper can be reproduced through the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
 
+
+**Citing GTFS-Madrid-Bench**: If you used GTFS-Madrid-Bench in your work, please cite as:
+
+```bib
+@article{chaves2020gtfs,
+  title={GTFS-Madrid-Bench: A benchmark for virtual knowledge graph access in the transport domain},
+  author={Chaves-Fraga, David and Priyatna, Freddy and Cimmino, Andrea and Toledo, Jhon and Ruckhaus, Edna and Corcho, Oscar},
+  journal={Journal of Web Semantics},
+  volume={65},
+  pages={100596},
+  year={2020},
+  doi={https://doi.org/10.1016/j.websem.2020.100596},
+  publisher={Elsevier}
+
+}
+```
+
+### Results
+Virtual KGC results can be reproduced through the resources provided in [this branch](https://github.com/oeg-upm/gtfs-bench/tree/evaluation-jows2020)
+Materialized KGC results  through the resources provided in [this repo](https://github.com/oeg-upm/kgc-eval)
 
 ## Requirements for the use:
 
