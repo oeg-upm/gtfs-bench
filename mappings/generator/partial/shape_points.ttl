@@ -40,7 +40,7 @@
     rr:termType rr:Literal;
     rr:datatype xsd:double.
 :pom_76 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_76.
+:map_shape_points_0 rr:predicateObjectMap :pom_76.
 :pm_76 a rr:PredicateMap.
 :pom_76 rr:predicateMap :pm_76.
 :pm_76 rr:constant geo:long.
@@ -50,7 +50,7 @@
     rr:termType rr:Literal;
     rr:datatype xsd:double.
 :pom_77 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_77.
+:map_shape_points_0 rr:predicateObjectMap :pom_77.
 :pm_77 a rr:PredicateMap.
 :pom_77 rr:predicateMap :pm_77.
 :pm_77 rr:constant gtfs:pointSequence.
@@ -59,7 +59,7 @@
     rml:reference "shape_pt_sequence";
     rr:termType rr:Literal.
 :pom_78 a rr:PredicateObjectMap.
-:map_shapePoints_0 rr:predicateObjectMap :pom_78.
+:map_shape_points_0 rr:predicateObjectMap :pom_78.
 :pm_78 a rr:PredicateMap.
 :pom_78 rr:predicateMap :pm_78.
 :pm_78 rr:constant gtfs:distanceTraveled.
