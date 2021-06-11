@@ -1,0 +1,33 @@
+version: "2.3"
+services:
+  engine_name:
+    container_name: engine_name
+    image: engine_name:1.0
+    volumes:
+      - ./gtfs-data:/data
+      - ./results/engine_name:/results
+      - ./mappings:/mappings
+      - ./configs/engine_name:/configs
+    depends_on:
+      - mysql
+  # MYSQL
+  mysql:
+    container_name: gtfs-mysql
+    image: mysql:8.0
+    restart: always
+    volumes:
+     - /data/volumes:/var/lib/mysql
+     - /data:/data    
+    environment:
+      MYSQL_ROOT_PASSWORD: gtfs
+      MYSQL_USER: gtfs
+      MYSQL_PASSWORD: gtfs
+    ports:
+      - "3306:3306"
+    command: --sql_mode="ANSI_QUOTES,ALLOW_INVALID_DATES" 
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+
+networks:
+  gtfs_eval:
+    driver: bridge    

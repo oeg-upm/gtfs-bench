@@ -1,0 +1,5 @@
+{
+    "rounds":5,
+    "cmd":"command to run your engine",
+    "output_path":"/results/gtfs-queryX-sizeY.csv"
+}
