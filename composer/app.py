@@ -759,7 +759,7 @@ print("Compressing output: result.tar.xz...", end="", flush=True)
 os.system("cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/")
 os.chdir("/tmp/output/")
 os.system("rm -f /output/result.tar.xz")
-os.system("tar Oc . | pxz -D 12 -cv - > /output/result.tar.xz")
+os.system("tar Oc . | pxz -1 -cv - > /output/result.tar.xz")
 
 print("Done!")
 
