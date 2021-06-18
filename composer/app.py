@@ -754,10 +754,17 @@ for d in distributions:
 
 #Move
 
+print("Compressing output: result.tar.xz...", end="", flush=True)
+
 os.system("cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/")
 os.chdir("/tmp/output/")
-os.system("rm -f /output/result.zip")
-os.system("zip  -9 -r /output/result.zip . > /dev/null")
+os.system("rm -f /output/result.tar.xz")
+os.system("tar Oc . | pxz -1 -cv - > /output/result.tar.xz")
+
+print("Done!")
+
+#os.system("rm -f /output/result.zip")
+#os.system("zip  -9 -r /output/result.zip . > /dev/null")
 
 '''#Deploy
 

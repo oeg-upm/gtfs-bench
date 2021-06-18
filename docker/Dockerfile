@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-RUN apt-get install locales vim apt-utils pv mysql-server python3 python3-pip default-jre git zip -y
+RUN apt-get install locales vim apt-utils pv mysql-server python3 python3-pip default-jre git zip pxz -y
 
 VOLUME /output
 
