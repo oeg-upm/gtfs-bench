@@ -763,9 +763,6 @@ os.system("tar Oc . | pxz -1 -cv - > /output/result.tar.xz")
 
 print("Done!")
 
-#os.system("rm -f /output/result.zip")
-#os.system("zip  -9 -r /output/result.zip . > /dev/null")
-
 '''#Deploy
 
 q5 = [
@@ -786,7 +783,7 @@ if q5_a == 'yes':
 	deploy(distributions, sizes)
 '''
 
-print(colored("The generated data is in the result.zip file at the current path.", 'blue'))
+print(colored("The generated data is in the result.tar.xz file at the current path.", 'blue'))
 
 
 print('Press Ctrl+C to exit')
