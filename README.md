@@ -42,7 +42,7 @@ Decide the distributions to be used for your testing. They can be:
 - Custom distributions: each data source is represented in the format selected by the user (e.g., SHAPES in JSON, CALENDAR in CSV, etc.)
 
 
-## Using Madrid-GTFS-Bench:
+## Using GTFS-Madrid-Bench:
 
 1. Download and run the docker image (run it always to ensure you are using the last version of the docker image).
 * Docker v20.10 or later: `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench` 
@@ -227,7 +227,7 @@ We know that there are variables and dimensions that we did not take into accoun
 
 ## Authors
 
-- David Chaves-Fraga - [dchaves@fi.upm.es](mailto:dchaves@fi.upm.es)
+- David Chaves-Fraga - [dchaves@fi.upm.es](mailto:david.chaves@upm.es)
 - Freddy Priyatna
 - Jhon Toledo
 - Daniel Doña
