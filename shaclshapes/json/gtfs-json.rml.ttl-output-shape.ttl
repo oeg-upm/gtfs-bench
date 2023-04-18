@@ -1,0 +1,250 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mapping.example.com/map_feed_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/feed/.*" ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:path dct:language ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path schema:startDate ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path schema:endDate ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path dct:publisher ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path foaf:page ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path schema:version ] ;
+    sh:targetClass gtfs:Feed .
+
+<http://mapping.example.com/map_frequencies_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/frequency/.*-.*" ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:startTime ],
+        [ sh:node <http://mapping.example.com/map_trips_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:trip ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:headwaySeconds ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:exactTimes ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:endTime ] ;
+    sh:targetClass gtfs:Frequency .
+
+<http://mapping.example.com/map_services2_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/services/.*" ;
+    sh:property [ sh:node <http://mapping.example.com/map_calendar_date_rules_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:serviceRule ] ;
+    sh:targetClass gtfs:Service .
+
+<http://mapping.example.com/map_stoptimes_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/stoptimes/.*-.*-.*" ;
+    sh:property [ sh:datatype xsd:duration ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:arrivalTime ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:distanceTraveled ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:pickupType ],
+        [ sh:node <http://mapping.example.com/map_trips_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:trip ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:stopSequence ],
+        [ sh:node <http://mapping.example.com/map_stops_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:stop ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:dropOffType ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:headsign ],
+        [ sh:datatype xsd:duration ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:departureTime ] ;
+    sh:targetClass gtfs:StopTime .
+
+<http://mapping.example.com/map_agency_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/agency/.*" ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:path dct:language ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path foaf:phone ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path foaf:page ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:timeZone ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path foaf:name ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:fareUrl ] ;
+    sh:targetClass gtfs:Agency .
+
+<http://mapping.example.com/map_calendar_date_rules_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/.*-.*" ;
+    sh:property [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path dct:date ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:dateAddition ] ;
+    sh:targetClass gtfs:CalendarDateRule .
+
+<http://mapping.example.com/map_calendar_rules_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_rules/.*" ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:saturday ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:tuesday ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path schema:endDate ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:thursday ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:monday ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path schema:startDate ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:sunday ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:friday ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path gtfs:wednesday ] ;
+    sh:targetClass gtfs:CalendarRule .
+
+<http://mapping.example.com/map_routes_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/routes/.*" ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:shortName ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:color ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:routeType ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:textColor ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:longName ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path dct:description ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:routeUrl ],
+        [ sh:node <http://mapping.example.com/map_agency_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:agency ] ;
+    sh:targetClass gtfs:Route .
+
+<http://mapping.example.com/map_services1_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/services/.*" ;
+    sh:property [ sh:node <http://mapping.example.com/map_calendar_rules_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:serviceRule ] ;
+    sh:targetClass gtfs:Service .
+
+<http://mapping.example.com/map_shapePoints_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/shape_point/.*-.*" ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:distanceTraveled ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:pointSequence ],
+        [ sh:datatype xsd:double ;
+            sh:nodeKind sh:Literal ;
+            sh:path geo:lat ],
+        [ sh:datatype xsd:double ;
+            sh:nodeKind sh:Literal ;
+            sh:path geo:long ] ;
+    sh:targetClass gtfs:ShapePoint .
+
+<http://mapping.example.com/map_shapes_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/shape/.*" ;
+    sh:property [ sh:node <http://mapping.example.com/map_shapePoints_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:shapePoint ] ;
+    sh:targetClass gtfs:Shape .
+
+<http://mapping.example.com/map_stops_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/stops/.*" ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path foaf:page ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:zone ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:wheelchairAccessible ],
+        [ sh:datatype xsd:double ;
+            sh:nodeKind sh:Literal ;
+            sh:path geo:long ],
+        [ sh:datatype xsd:double ;
+            sh:nodeKind sh:Literal ;
+            sh:path geo:lat ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path dct:identifier ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path dct:description ],
+        [ sh:node <http://mapping.example.com/map_stops_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:parentStation ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:locationType ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path foaf:name ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:timeZone ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:code ] ;
+    sh:targetClass gtfs:Stop .
+
+<http://mapping.example.com/map_trips_0/shape> a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "http://transport.linkeddata.es/madrid/metro/trips/.*" ;
+    sh:property [ sh:node <http://mapping.example.com/map_shapes_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:shape ],
+        [ sh:node <http://mapping.example.com/map_services1_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:service ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:block ],
+        [ sh:node <http://mapping.example.com/map_routes_0/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path gtfs:route ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:direction ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:shortName ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path gtfs:wheelchairAccessible ],
+        [ sh:nodeKind sh:Literal ;
+            sh:path gtfs:headsign ] ;
+    sh:targetClass gtfs:Trip .
+
