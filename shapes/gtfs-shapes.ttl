@@ -5,8 +5,9 @@
 @prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gtfs_shape: <http://vocab.gtfs.org/shapes#> .
 
-<http://mapping.example.com/map_feed_0/shape> a sh:NodeShape ;
+gtfs_shape:Feed a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/feed/.*" ;
     sh:property [ 
@@ -33,7 +34,7 @@
     ] ;
     sh:targetClass gtfs:Feed .
 
-<http://mapping.example.com/map_frequencies_0/shape> a sh:NodeShape ;
+gtfs_shape:Frequency a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/frequency/.*-.*" ;
     sh:property [ 
@@ -46,7 +47,7 @@
         sh:nodeKind sh:Literal ;
         sh:path gtfs:headwaySeconds 
     ],
-    [   sh:node <http://mapping.example.com/map_trips_0/shape> ;
+    [   sh:node gtfs_shape:Trip ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:trip 
     ],
@@ -61,17 +62,17 @@
     ] ;
     sh:targetClass gtfs:Frequency .
 
-<http://mapping.example.com/map_services2_0/shape> a sh:NodeShape ;
+gtfs_shape:Service a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/services/.*" ;
     sh:property [ 
-        sh:node <http://mapping.example.com/map_calendar_date_rules_0/shape> ;
+        sh:node gtfs_shape:CalendarDateRule ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:serviceRule 
     ] ;
     sh:targetClass gtfs:Service .
 
-<http://mapping.example.com/map_stoptimes_0/shape> a sh:NodeShape ;
+gtfs_shape:StopTime a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/stoptimes/.*-.*-.*" ;
     sh:property [ 
@@ -80,7 +81,7 @@
         sh:lessThan gtfs:arrivalTime;
         sh:path gtfs:departureTime 
     ],
-    [   sh:node <http://mapping.example.com/map_trips_0/shape> ;
+    [   sh:node gtfs_shape:Trip ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:trip 
     ],
@@ -88,19 +89,33 @@
         sh:nodeKind sh:Literal ;
         sh:path gtfs:arrivalTime 
     ],
-    [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:pickupType 
+    [
+        sh:nodeKind sh:IRI ;
+        sh:path gtfs:pickupType;
+        sh:or (            
+            gtfs_shape:NotAvailable
+            gtfs_shape:MustPhone
+            gtfs_shape:Regular
+            gtfs_shape:MustCoordinateWithDriver
+        )
     ],
-    [   sh:node <http://mapping.example.com/map_stops_0/shape> ;
+    [   
+        sh:nodeKind sh:IRI ;
+        sh:path gtfs:dropOffType;
+        sh:or (            
+            gtfs_shape:NotAvailable
+            gtfs_shape:MustPhone
+            gtfs_shape:Regular
+            gtfs_shape:MustCoordinateWithDriver
+        )
+    ],
+    [   sh:node gtfs_shape:Stop ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:stop 
     ],
     [   
         sh:nodeKind sh:Literal ; # I think this is a float
         sh:path gtfs:distanceTraveled 
-    ],
-    [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:dropOffType 
     ],
     [   sh:nodeKind sh:Literal ;
         sh:path gtfs:headsign 
@@ -111,7 +126,7 @@
     ] ;
     sh:targetClass gtfs:StopTime .
 
-<http://mapping.example.com/map_agency_0/shape> a sh:NodeShape ;
+gtfs_shape:Agency a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/agency/.*" ;
     sh:property [ 
@@ -135,7 +150,7 @@
     ] ;
     sh:targetClass gtfs:Agency .
 
-<http://mapping.example.com/map_calendar_date_rules_0/shape> a sh:NodeShape ;
+gtfs_shape:CalendarDateRule a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/.*-.*" ;
     sh:property [ 
@@ -149,7 +164,7 @@
     ] ;
     sh:targetClass gtfs:CalendarDateRule .
 
-<http://mapping.example.com/map_calendar_rules_0/shape> a sh:NodeShape ;
+gtfs_shape:CalendarRule a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_rules/.*" ;
     sh:property [ 
@@ -192,7 +207,7 @@
     ] ;
     sh:targetClass gtfs:CalendarRule .
 
-<http://mapping.example.com/map_routes_0/shape> a sh:NodeShape ;
+gtfs_shape:Route a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/routes/.*" ;
     sh:property [ 
@@ -205,7 +220,7 @@
     [   sh:nodeKind sh:Literal ;
         sh:path gtfs:textColor 
     ],
-    [   sh:node <http://mapping.example.com/map_agency_0/shape> ;
+    [   sh:node gtfs_shape:Agency ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:agency 
     ],
@@ -216,24 +231,25 @@
         sh:path gtfs:routeUrl 
     ],
     [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:routeType 
+        sh:path gtfs:routeType;
+        sh:or (
+            gtfs_shape:LightRail
+            gtfs_shape:Subway
+            gtfs_shape:Rail
+            gtfs_shape:Bus
+            gtfs_shape:Ferry
+            gtfs_shape:CableCar
+            gtfs_shape:Gondola
+            gtfs_shape:Funicular
+        )
     ],
     [   sh:nodeKind sh:Literal ;
         sh:path dct:description 
     ] ;
     sh:targetClass gtfs:Route .
 
-<http://mapping.example.com/map_services1_0/shape> a sh:NodeShape ;
-    sh:nodeKind sh:IRI ;
-    sh:pattern "http://transport.linkeddata.es/madrid/metro/services/.*" ;
-    sh:property [ 
-        sh:node <http://mapping.example.com/map_calendar_rules_0/shape> ;
-        sh:nodeKind sh:IRI ;
-        sh:path gtfs:serviceRule 
-    ] ;
-    sh:targetClass gtfs:Service .
 
-<http://mapping.example.com/map_shapePoints_0/shape> a sh:NodeShape ;
+gtfs_shape:ShapePoint a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/shape_point/.*-.*" ;
     sh:property [ 
@@ -257,17 +273,17 @@
     ] ;
     sh:targetClass gtfs:ShapePoint .
 
-<http://mapping.example.com/map_shapes_0/shape> a sh:NodeShape ;
+gtfs_shape:Shape a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/shape/.*" ;
     sh:property [ 
-        sh:node <http://mapping.example.com/map_shapePoints_0/shape> ;
+        sh:node gtfs_shape:ShapePoint ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:shapePoint 
     ] ;
     sh:targetClass gtfs:Shape .
 
-<http://mapping.example.com/map_stops_0/shape> a sh:NodeShape ;
+gtfs_shape:Stop a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/stops/.*" ;
     sh:property [ 
@@ -290,7 +306,14 @@
         sh:path gtfs:timeZone 
     ],
     [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:locationType 
+        sh:path gtfs:locationType;
+        sh:or (
+            gtfs_shape:StopOrPlatform
+            gtfs_shape:Station
+            gtfs_shape:EntranceOrExit
+            gtfs_shape:GenericNode
+            gtfs_shape:BoardingArea
+        )
     ],
     [   sh:nodeKind sh:Literal ;
         sh:path dct:description 
@@ -302,9 +325,13 @@
         sh:path dct:identifier 
     ],
     [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:wheelchairAccessible 
+        sh:path gtfs:wheelchairAccessible;
+        sh:or (
+            gtfs_shape:NotWheelchairAccessible
+            gtfs_shape:WheelchairAccessible
+        )
     ],
-    [   sh:node <http://mapping.example.com/map_stops_0/shape> ;
+    [   sh:node gtfs_shape:Stop ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:parentStation 
     ],
@@ -316,7 +343,7 @@
     ] ;
     sh:targetClass gtfs:Stop .
 
-<http://mapping.example.com/map_trips_0/shape> a sh:NodeShape ;
+gtfs_shape:Trip a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/trips/.*" ;
     sh:property [ 
@@ -326,7 +353,7 @@
     [   sh:nodeKind sh:Literal ;
         sh:path gtfs:block 
     ],
-    [   sh:node <http://mapping.example.com/map_routes_0/shape> ;
+    [   sh:node gtfs_shape:Route ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:route 
     ],
@@ -334,18 +361,152 @@
         sh:path gtfs:shortName 
     ],
     [   sh:nodeKind sh:IRI ;
-        sh:path gtfs:wheelchairAccessible 
+        sh:path gtfs:wheelchairAccessible;
+        sh:or (
+            gtfs_shape:NotWheelchairAccessible
+            gtfs_shape:WheelchairAccessible
+        )
     ],
     [   sh:nodeKind sh:Literal ;
         sh:path gtfs:direction 
     ],
-    [   sh:node <http://mapping.example.com/map_shapes_0/shape> ;
+    [   sh:node gtfs_shape:Shape ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:shape 
     ],
-    [   sh:node <http://mapping.example.com/map_services1_0/shape> ;
+    [   sh:node gtfs_shape:Service ;
         sh:nodeKind sh:IRI ;
         sh:path gtfs:service 
     ] ;
     sh:targetClass gtfs:Trip .
 
+
+#SKOS
+
+
+# DropOffType and PickupType for StopTimes
+
+gtfs_shape:Regular a sh:NodeShape;
+    sh:targetNode gtfs:Regular;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:StopTimeScheme .
+
+gtfs_shape:MustCoordinateWithDriver a sh:NodeShape;
+    sh:targetNode gtfs:MustCoordinateWithDriver;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:StopTimeScheme .
+
+gtfs_shape:NotAvailable a sh:NodeShape;
+    sh:targetNode gtfs:NotAvailable;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:StopTimeScheme .
+
+gtfs_shape:MustPhone a sh:NodeShape;
+    sh:targetNode gtfs:MustPhone;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:StopTimeScheme .
+
+gtfs_shape:StopTimeScheme a sh:PropertyShape;
+    sh:path skos:inScheme; 
+    sh:or ( [sh:hasValue gtfs:PickupType] [sh:hasValue gtfs:DropOffType] ).
+
+
+# WheelchairBoardingStatus for Stops and Trips
+
+gtfs_shape:WheelchairAccessible a sh:NodeShape;
+    sh:targetNode gtfs:WheelchairAccessible;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:WheelchairBoardingStatusScheme .
+
+gtfs_shape:NotWheelchairAccessible a sh:NodeShape;
+    sh:targetNode gtfs:NotWheelchairAccessible;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:WheelchairBoardingStatusScheme .
+
+gtfs_shape:WheelchairBoardingStatusScheme a sh:PropertyShape;
+    sh:path skos:inScheme; 
+    sh:hasValue gtfs:WheelchairBoardingStatus .
+
+
+# LocationType for Stops
+
+gtfs_shape:StopOrPlatform a sh:NodeShape;
+    sh:targetNode gtfs:StopOrPlatform;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:LocationTypeScheme .
+
+gtfs_shape:Station a sh:NodeShape;
+    sh:targetNode gtfs:Station;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:LocationTypeScheme .
+
+gtfs_shape:EntranceOrExit a sh:NodeShape;
+    sh:targetNode gtfs:EntranceOrExit;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:LocationTypeScheme .
+
+gtfs_shape:GenericNode a sh:NodeShape;
+    sh:targetNode gtfs:GenericNode;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:LocationTypeScheme .
+
+gtfs_shape:BoardingArea a sh:NodeShape;
+    sh:targetNode gtfs:BoardingArea;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:LocationTypeScheme .
+
+gtfs_shape:LocationTypeScheme a sh:PropertyShape;
+    sh:path skos:inScheme; 
+    sh:hasValue gtfs:LocationType .
+
+# RouteType for Routes
+
+gtfs_shape:LightRail a sh:NodeShape;
+    sh:targetNode gtfs:LightRail ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+gtfs_shape:Subway a sh:NodeShape;
+    sh:targetNode gtfs:Subway ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:Rail a sh:NodeShape;
+    sh:targetNode gtfs:Rail ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:Bus a sh:NodeShape;
+    sh:targetNode gtfs:Bus ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:Ferry a sh:NodeShape;
+    sh:targetNode gtfs:Ferry ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+gtfs_shape:CableCar a sh:NodeShape;
+    sh:targetNode gtfs:CableCar ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:Gondola a sh:NodeShape;
+    sh:targetNode gtfs:Gondola ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:Funicular a sh:NodeShape;
+    sh:targetNode gtfs:Funicular ;
+    sh:class skos:Concept; 
+    sh:property gtfs_shape:RouteTypeScheme .
+
+
+gtfs_shape:RouteTypeScheme a sh:PropertyShape;
+    sh:path skos:inScheme; 
+    sh:hasValue gtfs:RouteType .
