@@ -24,7 +24,8 @@ gtfs_shape:Feed a sh:NodeShape ;
         sh:path schema:endDate 
     ],
     [   sh:nodeKind sh:Literal ;
-        sh:path dct:language 
+        sh:path dct:language
+        #sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" # conformant with ISO 639-2?  Not sure, it should be IETF BCP 47
     ],
     [   sh:nodeKind sh:Literal ;
         sh:path dct:publisher 
@@ -43,7 +44,7 @@ gtfs_shape:Frequency a sh:NodeShape ;
         sh:lessThan gtfs:endTime ; 
         #sh:datatype xsd:time ; #should be time in terms of hh:mm:ss
     ],
-    [   sh:datatype xsd:integer ;
+    [   sh:datatype xsd:nonNegativeInteger ;
         sh:nodeKind sh:Literal ;
         sh:path gtfs:headwaySeconds 
     ],
@@ -114,7 +115,9 @@ gtfs_shape:StopTime a sh:NodeShape ;
         sh:path gtfs:stop 
     ],
     [   
-        sh:nodeKind sh:Literal ; # I think this is a float
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:float;
+        sh:minInclusive 0;
         sh:path gtfs:distanceTraveled 
     ],
     [   sh:nodeKind sh:Literal ;
@@ -154,7 +157,7 @@ gtfs_shape:CalendarDateRule a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/.*-.*" ;
     sh:property [ 
-        sh:datatype xsd:boolean ;
+        sh:datatype xsd:boolean ; # The semantics is not a boolean, we can leave it for now as it's but will need to change to an Enum
         sh:nodeKind sh:Literal ;
         sh:path gtfs:dateAddition 
     ],
@@ -168,7 +171,7 @@ gtfs_shape:CalendarRule a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "http://transport.linkeddata.es/madrid/metro/calendar_rules/.*" ;
     sh:property [ 
-        sh:datatype xsd:boolean ;
+        sh:datatype xsd:boolean ; # The semantics is not a boolean, we can leave it for now as it's but will need to change to an Enum
         sh:nodeKind sh:Literal ;
         sh:path gtfs:sunday 
     ],
@@ -225,7 +228,8 @@ gtfs_shape:Route a sh:NodeShape ;
         sh:path gtfs:agency 
     ],
     [   sh:nodeKind sh:Literal ;
-        sh:path gtfs:color 
+        sh:path gtfs:color;
+        sh:pattern "^[0-9A-Fa-f]{6}$"
     ],
     [   sh:nodeKind sh:IRI ;
         sh:path gtfs:routeUrl 
@@ -259,8 +263,9 @@ gtfs_shape:ShapePoint a sh:NodeShape ;
         sh:maxInclusive 90 ;
         sh:path geo:lat 
     ],
-    [   sh:nodeKind sh:Literal ; # I think thi is datatype integer 
-        sh:path gtfs:pointSequence 
+    [   sh:nodeKind sh:Literal ;  
+        sh:path gtfs:pointSequence;
+        sh:datatype xsd:nonNegativeInteger
     ],
     [   sh:datatype xsd:double ;
         sh:nodeKind sh:Literal ;
@@ -367,7 +372,8 @@ gtfs_shape:Trip a sh:NodeShape ;
             gtfs_shape:WheelchairAccessible
         )
     ],
-    [   sh:nodeKind sh:Literal ;
+    [   sh:nodeKind sh:Literal ; # this should be moved to Enum
+        sh:datetype xsd:nonNegativeInteger;
         sh:path gtfs:direction 
     ],
     [   sh:node gtfs_shape:Shape ;
