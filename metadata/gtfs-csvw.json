@@ -1,0 +1,617 @@
+// 20230808134942
+// https://raw.githubusercontent.com/oeg-upm/morph-csv/evaluation/swj2020-si-webofdata/resources/gtfs/gtfs.csvw.json
+
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw"
+  ],
+  "tables": [
+    {
+      "url": "/data/AGENCY.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "agency_id",
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_url"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_name"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_timezone"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_lang"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_phone"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_fare_url"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/CALENDAR.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "service_id",
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "service_id"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "monday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "tuesday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "wednesday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "thursday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "friday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "saturday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|0"
+            },
+            "titles": "sunday"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "date",
+              "format": "yyyyMMdd"
+            },
+            "titles": "start_date"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "date",
+              "format": "yyyyMMdd"
+            },
+            "titles": "end_date"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/CALENDAR_DATES.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "service_id,date",
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "service_id"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "date",
+              "format": "yyyyMMdd"
+            },
+            "titles": "date"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "boolean",
+              "format": "1|2"
+            },
+            "titles": "exception_type"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/FEED_INFO.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "feed_publisher_name",
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "feed_publisher_name"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "feed_publisher_url"
+          },
+          {
+            "datatype": {
+              "base": "date",
+              "null": "",
+              "format": "yyyyMMdd"
+            },
+            "titles": "feed_start_date"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "date",
+              "format": "yyyyMMdd"
+            },
+            "titles": "feed_end_date"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "feed_lang"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "feed_version"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/FREQUENCIES.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "trip_id,start_time",
+        "foreignKey": [
+          {
+            "columnReference": "trip_id",
+            "reference": {
+              "resource": "/data/TRIPS.csv",
+              "columnReference": "trip_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "trip_id"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "time",
+              "format": "HH:MM:SS"
+            },
+            "titles": "start_time"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "time",
+              "format": "HH:MM:SS"
+            },
+            "titles": "end_time"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "headway_secs"
+          },
+          {
+            "datatype": "boolean",
+            "null": "",
+            "format": "1|0",
+            "titles": "exact_times"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/ROUTES.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "route_id",
+        "foreignKey": [
+          {
+            "columnReference": "agency_id",
+            "reference": {
+              "resource": "/data/AGENCY.csv",
+              "columnReference": "agency_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "agency_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_short_name"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_long_name"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_desc"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_color"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "route_type"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_url"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_text_color"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/SHAPES.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "shape_id,shape_pt_sequence",
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "shape_id"
+          },
+          {
+            "datatype": "decimal",
+            "null": "",
+            "titles": "shape_pt_lat"
+          },
+          {
+            "datatype": "decimal",
+            "null": "",
+            "titles": "shape_pt_lon"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "shape_pt_sequence"
+          },
+          {
+            "datatype": "decimal",
+            "null": "",
+            "titles": "shape_dist"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/STOP_TIMES.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "trip_id,stop_id,arrival_time",
+        "foreignKey": [
+          {
+            "columnReference": "trip_id",
+            "reference": {
+              "resource": "/data/TRIPS.csv",
+              "columnReference": "trip_id"
+            }
+          },
+          {
+            "columnReference": "stop_id",
+            "reference": {
+              "resource": "/data/STOPS.csv",
+              "columnReference": "stop_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "trip_id"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "time",
+              "format": "HH:MM:SS"
+            },
+            "titles": "arrival_time"
+          },
+          {
+            "datatype": {
+              "null": "",
+              "base": "time",
+              "format": "HH:MM:SS"
+            },
+            "titles": "departure_time"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_id"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "stop_sequence"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "pickup_type"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "drop_off_type"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": [
+              "stop_headsign"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/STOPS.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "stop_id",
+        "foreignKey": [
+          {
+            "columnReference": "parent_station",
+            "reference": {
+              "resource": "/data/STOPS.csv",
+              "columnReference": "stop_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_name"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_code"
+          },
+          {
+            "datatype": "decimal",
+            "null": "",
+            "titles": "stop_lat"
+          },
+          {
+            "datatype": "decimal",
+            "null": "",
+            "titles": "stop_lon"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_url"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "wheelchair_boarding"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "parent_station"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "location_type"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_desc"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "zone_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "stop_timezone"
+          }
+        ]
+      }
+    },
+    {
+      "url": "/data/TRIPS.csv",
+      "dialect": {
+        "header": true
+      },
+      "tableSchema": {
+        "primaryKey": "trip_id",
+        "foreignKey": [
+          {
+            "columnReference": "route_id",
+            "reference": {
+              "resource": "/data/ROUTES.csv",
+              "columnReference": "route_id"
+            }
+          },
+          {
+            "columnReference": "shape_id",
+            "reference": {
+              "resource": "/data/SHAPES.csv",
+              "columnReference": "shape_id"
+            }
+          },
+          {
+            "columnReference": "service_id",
+            "reference": {
+              "resource": "/data/CALENDAR.csv",
+              "columnReference": "service_id"
+            }
+          },
+          {
+            "columnReference": "service_id",
+            "reference": {
+              "resource": "/data/CALENDAR_DATES.csv",
+              "columnReference": "service_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "route_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "trip_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "service_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "trip_short_name"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "direction_id"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "shape_id"
+          },
+          {
+            "datatype": "integer",
+            "null": "",
+            "titles": "wheelchair_accessible"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "trip_headsign"
+          },
+          {
+            "datatype": "string",
+            "null": "",
+            "titles": "block_id"
+          }
+        ]
+      }
+    }
+  ]
+}
