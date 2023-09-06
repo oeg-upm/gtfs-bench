@@ -2,19 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import os
-import subprocess
 import json
 import signal
 import sys
 import copy
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
-from PyInquirer import Validator, ValidationError
 
 custom_style_3 = style_from_dict({
     Token.Separator: '#6C6C6C',
     Token.QuestionMark: '#FF9D00 bold',
-    #Token.Selected: '',  # default
     Token.Selected: '#5F819D',
     Token.Pointer: '#FF9D00 bold',
     Token.Instruction: '',  # default
@@ -24,615 +21,555 @@ custom_style_3 = style_from_dict({
 
 base_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
 
-path_gen = base_path+"/generation/"
-path_mapp = base_path+"/mappings/generator/"
+path_gen = os.path.join(base_path, '/generation/')
+path_mapp = os.path.join(base_path, '/mappings/generator/')
 
 tm_to_entity = {
-	'AGENCY': 'AGENCY',
-	'SERVICES2': 'CALENDAR_DATES',
-	'CALENDAR_DATE_RULES': 'CALENDAR_DATES',
-	'SERVICES1': 'CALENDAR',
-	'CALENDAR_RULES': 'CALENDAR',
-	'FEED': 'FEED_INFO',
-	'FREQUENCIES': 'FREQUENCIES',
-	'ROUTES': 'ROUTES',
-	'SHAPES': 'SHAPES',
-	'SHAPE_POINTS': 'SHAPES',
-	'STOPS': 'STOPS',
-	'STOPTIMES': 'STOP_TIMES',
-	'TRIPS': 'TRIPS'
+    'AGENCY': 'AGENCY',
+    'SERVICES2': 'CALENDAR_DATES',
+    'CALENDAR_DATE_RULES': 'CALENDAR_DATES',
+    'SERVICES1': 'CALENDAR',
+    'CALENDAR_RULES': 'CALENDAR',
+    'FEED': 'FEED_INFO',
+    'FREQUENCIES': 'FREQUENCIES',
+    'ROUTES': 'ROUTES',
+    'SHAPES': 'SHAPES',
+    'SHAPE_POINTS': 'SHAPES',
+    'STOPS': 'STOPS',
+    'STOPTIMES': 'STOP_TIMES',
+    'TRIPS': 'TRIPS'
 }
 
-csv_distribution = {'name': 'csv',
-		'formats': { 'AGENCY': 'csv',
-				'CALENDAR': 'csv',
-				'CALENDAR_DATES': 'csv',
-				'FEED_INFO': 'csv',
-				'FREQUENCIES': 'csv',
-				'ROUTES': 'csv',
-				'SHAPES': 'csv',
-				'STOPS': 'csv',
-				'STOP_TIMES': 'csv',
-				'TRIPS': 'csv'
-			}
-		}
+csv_distribution = {
+    'name': 'csv',
+    'formats': {
+        'AGENCY': 'csv',
+        'CALENDAR': 'csv',
+        'CALENDAR_DATES': 'csv',
+        'FEED_INFO': 'csv',
+        'FREQUENCIES': 'csv',
+        'ROUTES': 'csv',
+        'SHAPES': 'csv',
+        'STOPS': 'csv',
+        'STOP_TIMES': 'csv',
+        'TRIPS': 'csv'
+    }
+}
 
-sql_distribution = {'name': 'sql',
-		'formats': { 'AGENCY': 'sql',
-				'CALENDAR': 'sql',
-				'CALENDAR_DATES': 'sql',
-				'FEED_INFO': 'sql',
-				'FREQUENCIES': 'sql',
-				'ROUTES': 'sql',
-				'SHAPES': 'sql',
-				'STOPS': 'sql',
-				'STOP_TIMES': 'sql',
-				'TRIPS': 'sql'
-			}
-		}
+sql_distribution = {
+    'name': 'sql',
+    'formats': {
+        'AGENCY': 'sql',
+        'CALENDAR': 'sql',
+        'CALENDAR_DATES': 'sql',
+        'FEED_INFO': 'sql',
+        'FREQUENCIES': 'sql',
+        'ROUTES': 'sql',
+        'SHAPES': 'sql',
+        'STOPS': 'sql',
+        'STOP_TIMES': 'sql',
+        'TRIPS': 'sql'
+    }
+}
 
-json_distribution = {'name': 'json',
-		'formats': { 'AGENCY': 'json',
-				'CALENDAR': 'json',
-				'CALENDAR_DATES': 'json',
-				'FEED_INFO': 'json',
-				'FREQUENCIES': 'json',
-				'ROUTES': 'json',
-				'SHAPES': 'json',
-				'STOPS': 'json',
-				'STOP_TIMES': 'json',
-				'TRIPS': 'json'
-			}
-		}
+json_distribution = {
+    'name': 'json',
+    'formats': {
+        'AGENCY': 'json',
+        'CALENDAR': 'json',
+        'CALENDAR_DATES': 'json',
+        'FEED_INFO': 'json',
+        'FREQUENCIES': 'json',
+        'ROUTES': 'json',
+        'SHAPES': 'json',
+        'STOPS': 'json',
+        'STOP_TIMES': 'json',
+        'TRIPS': 'json'
+    }
+}
 
-mongo_distribution = {'name': 'mongo',
-		'formats': { 'AGENCY': 'mongo',
-				'CALENDAR': 'mongo',
-				'CALENDAR_DATES': 'mongo',
-				'FEED_INFO': 'mongo',
-				'FREQUENCIES': 'mongo',
-				'ROUTES': 'mongo',
-				'SHAPES': 'mongo',
-				'STOPS': 'mongo',
-				'STOP_TIMES': 'mongo',
-				'TRIPS': 'mongo'
-			}
-		}
+mongo_distribution = {
+    'name': 'mongo',
+    'formats': {
+        'AGENCY': 'mongo',
+        'CALENDAR': 'mongo',
+        'CALENDAR_DATES': 'mongo',
+        'FEED_INFO': 'mongo',
+        'FREQUENCIES': 'mongo',
+        'ROUTES': 'mongo',
+        'SHAPES': 'mongo',
+        'STOPS': 'mongo',
+        'STOP_TIMES': 'mongo',
+        'TRIPS': 'mongo'
+    }
+}
 
-xml_distribution = {'name': 'xml',
-		'formats': { 'AGENCY': 'xml',
-				'CALENDAR': 'xml',
-				'CALENDAR_DATES': 'xml',
-				'FEED_INFO': 'xml',
-				'FREQUENCIES': 'xml',
-				'ROUTES': 'xml',
-				'SHAPES': 'xml',
-				'STOPS': 'xml',
-				'STOP_TIMES': 'xml',
-				'TRIPS': 'xml'
-			}
-		}
+xml_distribution = {
+    'name': 'xml',
+    'formats': {
+        'AGENCY': 'xml',
+        'CALENDAR': 'xml',
+        'CALENDAR_DATES': 'xml',
+        'FEED_INFO': 'xml',
+        'FREQUENCIES': 'xml',
+        'ROUTES': 'xml',
+        'SHAPES': 'xml',
+        'STOPS': 'xml',
+        'STOP_TIMES': 'xml',
+        'TRIPS': 'xml'
+    }
+}
 
 static_distributions = {
-	'csv': csv_distribution,
-	'json': json_distribution,
-	'xml': xml_distribution,
-	'sql': sql_distribution,
-	'mongo': mongo_distribution
-	}
+    'csv': csv_distribution,
+    'json': json_distribution,
+    'xml': xml_distribution,
+    'sql': sql_distribution,
+    'mongo': mongo_distribution
+}
 
 default_mysql = {
-
-		"type": "mysql",
-		"connection": {
-			"user": "oeg",
-			"pass": "oeg",
-			"dsn": "jdbc:mysql://localhost:3306/gtfs",
-			"driver": "com.mysql.cj.jdbc.Driver"
-		}
-	}
+    'type': 'mysql',
+    'connection': {
+        'user': 'oeg',
+        'pass': 'oeg',
+        'dsn': 'jdbc:mysql://localhost:3306/gtfs',
+        'driver': 'com.mysql.cj.jdbc.Driver'
+    }
+}
 
 default_mongo = {
+    'type': 'mongo',
+    'connection': {
+        'user': 'oeg',
+        'pass': 'oeg',
+        'dsn': 'jdbc:mongo://localhost:27017',
+    }
+}
 
-		"type": "mongo",
-		"connection": {
-			"user": "oeg",
-			"pass": "oeg",
-			"dsn": "jdbc:mongo://localhost:27017",
-		}
-	}
-	
+
 def create_file_structure(sizes, distributions):
-	
-	for d in distributions:
-		os.mkdir("/tmp/output/datasets/"+str(d['name'])+"/")
-		for s in sizes:
-			os.mkdir("/tmp/output/datasets/"+str(d['name'])+"/"+str(s)+"/")
+    for d in distributions:
+        os.mkdir(os.path.join('/tmp/output/datasets/', d['name']))
+        for s in sizes:
+            os.mkdir(os.path.join('/tmp/output/datasets/', d['name']), s)
+
 
 def generate_dataset(size):
+    print(f'Running VIG with scale {size}')
+    os.chdir(path_gen)
+    os.system('java -jar bin/vig-1.8.1.jar --res=resources '
+              f'--scale={size} > /dev/null')
+    os.chdir(os.path.join(path_gen, '/resources/csvs/'))
+    os.system('./clean.sh > /dev/null')
+    os.system('./headers.sh > /dev/null')
 
-	os.chdir(path_gen)
 
-	print("Running VIG with scale", size)
-
-	os.system("java -jar bin/vig-1.8.1.jar --res=resources --scale="+str(size)+" > /dev/null")
-
-	os.chdir(path_gen+'/resources/csvs/')
-
-	os.system("./clean.sh > /dev/null")
-
-	os.system("./headers.sh > /dev/null")
-	
 def has_mysql(distribution):
+    for tm in distribution['formats']:
+        if distribution['formats'][tm] == 'sql':
+            return True
 
-	has = False
-
-	for tm in distribution['formats']:
-
-		if distribution['formats'][tm] == 'sql':
-
-			has = True
-
-			break
-
-	return has
 
 def generate_sql_schema(distribution, size):
-	
-	if has_mysql(distribution):
+    if has_mysql(distribution):
+
+        schema = '''
+            DROP DATABASE IF EXISTS `gtfs-{0}`;
+            SET GLOBAL local_infile = 1;
+            CREATE DATABASE IF NOT EXISTS `gtfs-{0}`;
+            USE `gtfs-{0}`;'''
+
+        schema_post = ''
+
+        if distribution['formats']['AGENCY'] == 'sql':
+            schema += '''
+                DROP TABLE IF EXISTS AGENCY;
+
+                CREATE TABLE AGENCY (`agency_id` VARCHAR(200),
+                `agency_name` VARCHAR(200),
+                `agency_url` VARCHAR(200),
+                `agency_timezone` VARCHAR(200),
+                `agency_lang` VARCHAR(200),
+                `agency_phone` VARCHAR(200) DEFAULT NULL,
+                `agency_fare_url` VARCHAR(200) DEFAULT NULL,
+                PRIMARY KEY (agency_id));
+
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/AGENCY.csv'
+                INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                    SET agency_phone = IF(agency_phone = '', NULL, agency_phone),
+                    agency_fare_url = IF(agency_fare_url = '', NULL, agency_fare_url);
+
+                '''
+
+        if distribution['formats']['CALENDAR_DATES'] == 'sql':
+            schema += '''
+
+                DROP TABLE IF EXISTS CALENDAR_DATES;
+                CREATE TABLE CALENDAR_DATES (`service_id` VARCHAR(200),
+                `date` DATE,
+                `exception_type` INT,
+                PRIMARY KEY (service_id,date));
+
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR_DATES.csv'
+                INTO TABLE CALENDAR_DATES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                    SET exception_type = IF(exception_type=2,0,exception_type);
+
+            '''
+
+        if distribution['formats']['CALENDAR'] == 'sql':
+            schema += '''
+
+                DROP TABLE IF EXISTS CALENDAR;
+                CREATE TABLE CALENDAR (`service_id` VARCHAR(200),
+                `monday` INT,
+                `tuesday` INT,
+                `wednesday` INT,
+                `thursday` INT,
+                `friday` INT,
+                `saturday` INT,
+                `sunday` INT,
+                `start_date` DATE,
+                `end_date` DATE DEFAULT NULL,
+                PRIMARY KEY (service_id));
 
-		schema = '''
-			DROP DATABASE IF EXISTS `gtfs-{0}`;
-			SET GLOBAL local_infile = 1;
-			CREATE DATABASE IF NOT EXISTS `gtfs-{0}`;
-			USE `gtfs-{0}`;'''
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR.csv'
+                INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                    SET end_date = IF(end_date = NULL, NULL, end_date);
+
+            '''
+
+        if distribution['formats']['FEED_INFO'] == 'sql':
+            schema += '''
+
+                DROP TABLE IF EXISTS FEED_INFO;
+                CREATE TABLE FEED_INFO (`feed_publisher_name` VARCHAR(200),
+                `feed_publisher_url` VARCHAR(200),
+                `feed_lang` VARCHAR(200),
+                `feed_start_date` DATE DEFAULT NULL,
+                `feed_end_date` DATE DEFAULT NULL,
+                `feed_version` VARCHAR(200),
+                PRIMARY KEY (feed_publisher_name));
+
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FEED_INFO.csv'
+                INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                   SET feed_start_date = IF(feed_start_date = '', NULL, feed_start_date),
+                   feed_end_date = IF(feed_end_date = '', NULL, feed_end_date);
+
+                UPDATE FEED_INFO set feed_start_date = NULL where feed_start_date=0000-00-00;
+                UPDATE FEED_INFO set feed_end_date = NULL where feed_end_date=0000-00-00;
+
+            '''
+
+        if distribution['formats']['FREQUENCIES'] == 'sql':
+            schema += '''
+
+                DROP TABLE IF EXISTS FREQUENCIES;
+                CREATE TABLE FREQUENCIES (`trip_id` VARCHAR(200),
+                `start_time` VARCHAR(200),
+                `end_time` VARCHAR(200),
+                `headway_secs` INT,
+                `exact_times` INT DEFAULT 0,
+                PRIMARY KEY (trip_id,start_time));
+
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FREQUENCIES.csv'
+                INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;
+
+            '''
 
-		schema_post = ""
+            if distribution['formats']['TRIPS'] == 'sql':
+                schema_post += '''
+
+                    ALTER TABLE  FREQUENCIES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
+
+                '''
+
+        if distribution['formats']['ROUTES'] == 'sql':
+            schema += '''
+                DROP TABLE IF EXISTS ROUTES;
+                CREATE TABLE ROUTES (`route_id` VARCHAR(200),
+                `agency_id` VARCHAR(200),
+                `route_short_name` VARCHAR(200),
+                `route_long_name` VARCHAR(200),
+                `route_desc` VARCHAR(200) DEFAULT NULL,
+                `route_type` INT,
+                `route_url` VARCHAR(200),
+                `route_color` VARCHAR(200),
+                `route_text_color` VARCHAR(200),
+                PRIMARY KEY (route_id));
 
-		if distribution['formats']['AGENCY'] == 'sql':
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/ROUTES.csv'
+                INTO TABLE ROUTES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                    SET route_desc = IF(route_desc = '', NULL, route_desc);
 
-			schema += '''
-				DROP TABLE IF EXISTS AGENCY;
+            '''
 
-				CREATE TABLE AGENCY (`agency_id` VARCHAR(200),
-				`agency_name` VARCHAR(200),
-				`agency_url` VARCHAR(200),
-				`agency_timezone` VARCHAR(200),
-				`agency_lang` VARCHAR(200),
-				`agency_phone` VARCHAR(200) DEFAULT NULL,
-				`agency_fare_url` VARCHAR(200) DEFAULT NULL,
-				PRIMARY KEY (agency_id));
+            if distribution['formats']['AGENCY'] == 'sql':
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/AGENCY.csv'
-				INTO TABLE AGENCY FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-					SET agency_phone = IF(agency_phone = '', NULL, agency_phone),
-					agency_fare_url = IF(agency_fare_url = '', NULL, agency_fare_url);
+                schema_post += '''
 
-				'''
+                    ALTER TABLE  ROUTES  ADD FOREIGN  KEY (agency_id) REFERENCES AGENCY (agency_id);
+
+                '''
+
+        if distribution['formats']['SHAPES'] == 'sql':
+            schema += '''
+
+                DROP TABLE IF EXISTS SHAPES;
+                CREATE TABLE SHAPES (`shape_id` VARCHAR(200),
+                `shape_pt_lat` DECIMAL(18,15),
+                `shape_pt_lon` DECIMAL(18,15),
+                `shape_pt_sequence` INT,
+                `shape_dist_traveled` DECIMAL(18,15),
+                PRIMARY KEY (shape_id,shape_pt_sequence));
 
-		if distribution['formats']['CALENDAR_DATES'] == 'sql':
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/SHAPES.csv'
+                INTO TABLE SHAPES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;
 
-			schema += '''
 
-				DROP TABLE IF EXISTS CALENDAR_DATES;
-				CREATE TABLE CALENDAR_DATES (`service_id` VARCHAR(200),
-				`date` DATE,
-				`exception_type` INT,
-				PRIMARY KEY (service_id,date));
+            '''
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR_DATES.csv'
-				INTO TABLE CALENDAR_DATES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-					SET exception_type = IF(exception_type=2,0,exception_type);
+        if distribution['formats']['STOPS'] == 'sql':
+            schema += '''
 
-			'''
+                DROP TABLE IF EXISTS STOPS;
+                CREATE TABLE STOPS (`stop_id` VARCHAR(200),
+                `stop_code` VARCHAR(200),
+                `stop_name` VARCHAR(200),
+                `stop_desc` VARCHAR(200),
+                `stop_lat` DECIMAL(18,15),
+                `stop_lon` DECIMAL(18,15),
+                `zone_id` VARCHAR(200),
+                `stop_url` VARCHAR(200),
+                `location_type` INT,
+                `parent_station` VARCHAR(200),
+                `stop_timezone` VARCHAR(200) DEFAULT NULL,
+                `wheelchair_boarding` INT,
+                PRIMARY KEY (stop_id));
 
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOPS.csv'
+                INTO TABLE STOPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                   SET zone_id = IF(zone_id = '', NULL, zone_id),
+                   stop_timezone = IF(stop_timezone = '', NULL, stop_timezone),
+                   parent_station = IF(parent_station = '', NULL, parent_station);
 
-		if distribution['formats']['CALENDAR'] == 'sql':
+                ALTER TABLE  STOPS ADD FOREIGN KEY (parent_station) REFERENCES STOPS (stop_id);
 
-			schema += '''
 
-				DROP TABLE IF EXISTS CALENDAR;
-				CREATE TABLE CALENDAR (`service_id` VARCHAR(200),
-				`monday` INT,
-				`tuesday` INT,
-				`wednesday` INT,
-				`thursday` INT,
-				`friday` INT,
-				`saturday` INT,
-				`sunday` INT,
-				`start_date` DATE,
-				`end_date` DATE DEFAULT NULL,
-				PRIMARY KEY (service_id));
+            '''
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/CALENDAR.csv'
-				INTO TABLE CALENDAR FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-					SET end_date = IF(end_date = NULL, NULL, end_date);
+        if distribution['formats']['STOP_TIMES'] == 'sql':
+            schema += '''
 
-			'''
+                DROP TABLE IF EXISTS STOP_TIMES;
+                CREATE TABLE STOP_TIMES (`trip_id` VARCHAR(200),
+                `arrival_time` VARCHAR(200),
+                `departure_time` VARCHAR(200),
+                `stop_id` VARCHAR(200),
+                `stop_sequence` INT,
+                `stop_headsign` VARCHAR(200),
+                `pickup_type` INT DEFAULT 0,
+                `drop_off_type` INT DEFAULT 0,
+                `shape_dist_traveled` DECIMAL(18,15),
+                PRIMARY KEY (trip_id,stop_id,arrival_time));
 
-		if distribution['formats']['FEED_INFO'] == 'sql':
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
 
-			schema += '''
+                   SET trip_id = IF(trip_id = '', NULL, trip_id),
+                       arrival_time = IF(arrival_time = '', NULL, arrival_time),
+                       departure_time = IF(departure_time = '', NULL, departure_time),
+                       stop_id = IF(stop_id = '', NULL, stop_id),
+                       stop_sequence = IF(stop_sequence = '', NULL, stop_sequence),
+                       stop_headsign = IF(stop_headsign = '', NULL, stop_headsign),
+                       shape_dist_traveled = IF(shape_dist_traveled = '', NULL, shape_dist_traveled);
+            '''
 
-				DROP TABLE IF EXISTS FEED_INFO;
-				CREATE TABLE FEED_INFO (`feed_publisher_name` VARCHAR(200),
-				`feed_publisher_url` VARCHAR(200),
-				`feed_lang` VARCHAR(200),
-				`feed_start_date` DATE DEFAULT NULL,
-				`feed_end_date` DATE DEFAULT NULL,
-				`feed_version` VARCHAR(200),
-				PRIMARY KEY (feed_publisher_name));
+            if distribution['formats']['STOPS'] == 'sql':
+                schema_post += '''
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FEED_INFO.csv'
-				INTO TABLE FEED_INFO FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-				   SET feed_start_date = IF(feed_start_date = '', NULL, feed_start_date),
-				   feed_end_date = IF(feed_end_date = '', NULL, feed_end_date);
+                    ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (stop_id) REFERENCES STOPS (stop_id);
 
-				UPDATE FEED_INFO set feed_start_date = NULL where feed_start_date=0000-00-00;
-				UPDATE FEED_INFO set feed_end_date = NULL where feed_end_date=0000-00-00;
+                '''
 
-			'''
+            if distribution['formats']['TRIPS'] == 'sql':
+                schema_post += '''
 
+                    ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
 
-		if distribution['formats']['FREQUENCIES'] == 'sql':
+                '''
 
-			schema += '''
+        if distribution['formats']['TRIPS'] == 'sql':
+            schema += '''
 
-				DROP TABLE IF EXISTS FREQUENCIES;
-				CREATE TABLE FREQUENCIES (`trip_id` VARCHAR(200),
-				`start_time` VARCHAR(200),
-				`end_time` VARCHAR(200),
-				`headway_secs` INT,
-				`exact_times` INT DEFAULT 0,
-				PRIMARY KEY (trip_id,start_time));
+                DROP TABLE IF EXISTS TRIPS;
+                CREATE TABLE TRIPS (`route_id` VARCHAR(200),
+                `service_id` VARCHAR(200),
+                `trip_id` VARCHAR(200),
+                `trip_headsign` VARCHAR(200),
+                `trip_short_name` VARCHAR(200),
+                `direction_id` INT,
+                `block_id` VARCHAR(200) DEFAULT NULL,
+                `shape_id` VARCHAR(200),
+                `wheelchair_accessible` INT,
+                PRIMARY KEY (trip_id));
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/FREQUENCIES.csv'
-				INTO TABLE FREQUENCIES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;
+                LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/TRIPS.csv'
+                INTO TABLE TRIPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
+                    SET block_id = IF(block_id = '', NULL, block_id);
 
-			'''
 
-			if distribution['formats']['TRIPS'] == 'sql':
+            '''
 
-				schema_post += '''
+            if distribution['formats']['SHAPES'] == 'sql':
+                schema_post += '''
 
-					ALTER TABLE  FREQUENCIES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
+                    ALTER TABLE  TRIPS  ADD FOREIGN  KEY (shape_id) REFERENCES SHAPES (shape_id);
 
-				'''
+                '''
 
+            if distribution['formats']['ROUTES'] == 'sql':
+                schema_post += '''
 
-		if distribution['formats']['ROUTES'] == 'sql':
+                    ALTER TABLE  TRIPS  ADD FOREIGN  KEY (route_id) REFERENCES ROUTES (route_id);
 
-			schema += '''
-				DROP TABLE IF EXISTS ROUTES;
-				CREATE TABLE ROUTES (`route_id` VARCHAR(200),
-				`agency_id` VARCHAR(200),
-				`route_short_name` VARCHAR(200),
-				`route_long_name` VARCHAR(200),
-				`route_desc` VARCHAR(200) DEFAULT NULL,
-				`route_type` INT,
-				`route_url` VARCHAR(200),
-				`route_color` VARCHAR(200),
-				`route_text_color` VARCHAR(200),
-				PRIMARY KEY (route_id));
+                '''
 
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/ROUTES.csv'
-				INTO TABLE ROUTES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-					SET route_desc = IF(route_desc = '', NULL, route_desc);
+            if distribution['formats']['CALENDAR'] == 'sql':
+                schema_post += '''
 
-			'''
+                    ALTER TABLE  TRIPS  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_id);
 
-			if distribution['formats']['AGENCY'] == 'sql':
+                '''
 
-				schema_post += '''
+            if distribution['formats']['CALENDAR_DATES'] == 'sql':
+                schema_post += '''
 
-					ALTER TABLE  ROUTES  ADD FOREIGN  KEY (agency_id) REFERENCES AGENCY (agency_id);
+                    ALTER TABLE  TRIPS  ADD FOREIGN KEY (service_id) REFERENCES CALENDAR_DATES (service_id);
 
-				'''
+                '''
 
-		if distribution['formats']['SHAPES'] == 'sql':
+        schema += schema_post
+        data = schema.format(distribution['name'], size, './')
+        p = os.path.join('/tmp/output/datasets/', distribution['name'],
+                         size, '/mysql_schema.sql')
+        with open(p, 'w') as f:
+            f.write(data)
+        return True
 
-			schema += '''
+    return False
 
-				DROP TABLE IF EXISTS SHAPES;
-				CREATE TABLE SHAPES (`shape_id` VARCHAR(200),
-				`shape_pt_lat` DECIMAL(18,15),
-				`shape_pt_lon` DECIMAL(18,15),
-				`shape_pt_sequence` INT,
-				`shape_dist_traveled` DECIMAL(18,15),
-				PRIMARY KEY (shape_id,shape_pt_sequence));
-
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/SHAPES.csv'
-				INTO TABLE SHAPES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;
-
-
-			'''
-
-		if distribution['formats']['STOPS'] == 'sql':
-
-			schema += '''
-
-				DROP TABLE IF EXISTS STOPS;
-				CREATE TABLE STOPS (`stop_id` VARCHAR(200),
-				`stop_code` VARCHAR(200),
-				`stop_name` VARCHAR(200),
-				`stop_desc` VARCHAR(200),
-				`stop_lat` DECIMAL(18,15),
-				`stop_lon` DECIMAL(18,15),
-				`zone_id` VARCHAR(200),
-				`stop_url` VARCHAR(200),
-				`location_type` INT,
-				`parent_station` VARCHAR(200),
-				`stop_timezone` VARCHAR(200) DEFAULT NULL,
-				`wheelchair_boarding` INT,
-				PRIMARY KEY (stop_id));
-
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOPS.csv'
-				INTO TABLE STOPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-				   SET zone_id = IF(zone_id = '', NULL, zone_id),
-				   stop_timezone = IF(stop_timezone = '', NULL, stop_timezone),
-				   parent_station = IF(parent_station = '', NULL, parent_station);
-
-				ALTER TABLE  STOPS ADD FOREIGN KEY (parent_station) REFERENCES STOPS (stop_id);
-
-
-			'''
-
-		if distribution['formats']['STOP_TIMES'] == 'sql':
-
-			schema += '''
-
-				DROP TABLE IF EXISTS STOP_TIMES;
-				CREATE TABLE STOP_TIMES (`trip_id` VARCHAR(200),
-				`arrival_time` VARCHAR(200),
-				`departure_time` VARCHAR(200),
-				`stop_id` VARCHAR(200),
-				`stop_sequence` INT,
-				`stop_headsign` VARCHAR(200),
-				`pickup_type` INT DEFAULT 0,
-				`drop_off_type` INT DEFAULT 0,
-				`shape_dist_traveled` DECIMAL(18,15),
-				PRIMARY KEY (trip_id,stop_id,arrival_time));
-
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/STOP_TIMES.csv' INTO TABLE STOP_TIMES FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-				
-				   SET trip_id = IF(trip_id = '', NULL, trip_id),
-					   arrival_time = IF(arrival_time = '', NULL, arrival_time),
-					   departure_time = IF(departure_time = '', NULL, departure_time),
-					   stop_id = IF(stop_id = '', NULL, stop_id),
-					   stop_sequence = IF(stop_sequence = '', NULL, stop_sequence),
-					   stop_headsign = IF(stop_headsign = '', NULL, stop_headsign),
-					   shape_dist_traveled = IF(shape_dist_traveled = '', NULL, shape_dist_traveled);
-			'''
-
-			if distribution['formats']['STOPS'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (stop_id) REFERENCES STOPS (stop_id);
-
-				'''
-
-			if distribution['formats']['TRIPS'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  STOP_TIMES  ADD FOREIGN  KEY (trip_id) REFERENCES TRIPS (trip_id);
-
-				'''
-
-		if distribution['formats']['TRIPS'] == 'sql':
-
-			schema += '''
-
-				DROP TABLE IF EXISTS TRIPS;
-				CREATE TABLE TRIPS (`route_id` VARCHAR(200),
-				`service_id` VARCHAR(200),
-				`trip_id` VARCHAR(200),
-				`trip_headsign` VARCHAR(200),
-				`trip_short_name` VARCHAR(200),
-				`direction_id` INT,
-				`block_id` VARCHAR(200) DEFAULT NULL,
-				`shape_id` VARCHAR(200),
-				`wheelchair_accessible` INT,
-				PRIMARY KEY (trip_id));
-
-				LOAD DATA LOCAL INFILE '{2}datasets/{0}/{1}/TRIPS.csv'
-				INTO TABLE TRIPS FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS
-					SET block_id = IF(block_id = '', NULL, block_id);
-
-
-			'''
-
-			if distribution['formats']['SHAPES'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (shape_id) REFERENCES SHAPES (shape_id);
-
-				'''
-
-			if distribution['formats']['ROUTES'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (route_id) REFERENCES ROUTES (route_id);
-
-				'''
-
-			if distribution['formats']['CALENDAR'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  TRIPS  ADD FOREIGN  KEY (service_id) REFERENCES CALENDAR (service_id);
-
-				'''
-
-			if distribution['formats']['CALENDAR_DATES'] == 'sql':
-
-				schema_post += '''
-
-					ALTER TABLE  TRIPS  ADD FOREIGN KEY (service_id) REFERENCES CALENDAR_DATES (service_id);
-
-				'''
-
-		schema += schema_post
-
-		data = schema.format(distribution['name'], size, './')
-
-		with open('/tmp/output/datasets/{0}/{1}/mysql_schema.sql'.format(distribution['name'], size), 'w') as f:
-
-			f.write(data)
-
-		return True
-
-
-	else:
-
-		return False
 
 def generate_distribution(size, distribution):
+    size = str(size)
 
-	size = str(size)
+    try:
+        os.mkdir(os.path.join('./dist/', distribution['name']))
+    except Exception:
+        pass
 
-	try:
-		os.mkdir('./dist/'+distribution['name'])
-	except:
-		pass
+    print('\tPreparing distribution: {distribution["name"]}')
 
-	print("\tPreparing distribution:", distribution['name'])
+    for tm in distribution['formats']:
+        f = distribution['formats'][tm]
+        if f == 'csv' or f == 'sql':  # We import CSV files to MySQL instance
+            p = os.path.join('/tmp/output/datasets/', distribution['name'],
+                             size, f'{tm}.csv')
+            os.system(f'cp {tm}.csv {p}')
+        elif f == 'json' or f == 'mongo':  # Mongo format is JSON
+            p = os.path.join('/tmp/output/datasets/', distribution['name'],
+                             size, f'{tm}.json')
+            os.system(f'python3 -m csv2all -f json -i {tm}.csv -o {p}')
+        elif f == 'xml':
+            p = os.path.join('/tmp/output/datasets/', distribution['name'],
+                             size, f'{tm}.xml')
+            os.system(f'./di-csv2xml Category -i {tm}.csv -o {p} > /dev/null')
 
-	for tm in distribution['formats']:
-
-		f = distribution['formats'][tm]
-
-		if f == 'csv' or f == 'sql': # We import CSV files to MySQL instance
-			os.system("cp "+tm+".csv /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".csv")
-		elif f == 'json' or f == 'mongo': # Mongo format is JSON
-			os.system("python3 -m csv2all -f json -i "+tm+".csv -o /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".json")
-		elif f == 'xml':
-			os.system("./di-csv2xml Category -i "+tm+".csv -o /tmp/output/datasets/"+distribution['name']+"/"+size+"/"+tm+".xml > /dev/null")
 
 def custom_distribution():
+    tm_list = list(dict.fromkeys(list(tm_to_entity.values())).keys())
+    formats = dict()
 
-	tm_list = list(dict.fromkeys(list(tm_to_entity.values())).keys())
-
-	options = [{
-                'name': 'JSON',
-                'value': 'json'
-            },
+    q = [
             {
-                'name': 'XML',
-				'value': 'xml'
-            },
-            {
-                'name': 'CSV',
-				'value': 'csv'
-            },
-            {
-                'name': 'MongoDB',
-                'value': 'mongo',
-            },
-            {
-                'name': 'MySQL',
-                'value': 'mysql',
-            }]
+                'type': 'list',
+                'name': 'q',
+                'message': '',
+                'choices': [
+                    {
+                        'name': 'JSON',
+                        'value': 'json',
+                        'checked': True
+                    },
+                    {
+                        'name': 'XML',
+                        'value': 'xml'
+                    },
+                    {
+                        'name': 'CSV',
+                        'value': 'csv'
+                    },
+                    {
+                        'name': 'MongoDB',
+                        'value': 'mongo',
+                    },
+                    {
+                        'name': 'MySQL',
+                        'value': 'sql',
+                    }
 
-	formats = dict()
+                ]
+            }
+        ]
 
-	q = [
-			{
-				'type': 'list',
-				'name': 'q',
-				'message': '',
-				'choices': [
-					{
-						'name': 'JSON',
-						'value': 'json',
-						'checked': True
-					},
-					{
-						'name': 'XML',
-						'value': 'xml'
-					},
-					{
-						'name': 'CSV',
-						'value': 'csv'
-					},
-					{
-						'name': 'MongoDB',
-						'value': 'mongo',
-					},
-					{
-						'name': 'MySQL',
-						'value': 'sql',
-					}
+    for tm in tm_list:
+        q[0]['message'] = '[ Custom distribution ] Select output format ' + \
+            f'for {tm} data source:'
+        q_a = prompt(q)['q']
+        formats[tm] = q_a
 
-				]
-			}
-		]
+    distrib = {'name': 'custom', 'formats': formats}
+    return distrib
 
-	for tm in tm_list:
-
-		q[0]['message'] = '[ Custom distribution ] Select output format for {} data source:'.format(tm)
-
-		q_a = prompt(q)['q']
-
-		formats[tm] = q_a
-
-	distrib = {'name': 'custom',
-		'formats': formats}
-
-	return distrib
 
 def generate_mapping(distribution):
+    tms = []
+    for tm in tm_to_entity:
+        e = tm_to_entity[tm]
+        f = distribution['formats'][e]
+        t = {'name': tm, 'map': 'partial/' + tm.lower() + '.ttl'}
 
-	tms = []
+        if f == 'csv':
+            t['source'] = {'type': 'csv', 'file': e+'.csv'}
+        elif f == 'json':
+            t['source'] = {'type': 'json', 'file': e+'.json'}
+        elif f == 'xml':
+            t['source'] = {'type': 'xml', 'file': e+'.xml'}
+        elif f == 'mongo':
+            t['source'] = copy.deepcopy(default_mongo)
+            t['source']['table'] = 'gtfs.'+e
+        elif f == 'sql':
+            t['source'] = copy.deepcopy(default_mysql)
+            t['source']['table'] = 'gtfs.'+e
+        else:
+            print(f'Format {f} not implemented')
 
-	for tm in tm_to_entity:
+        tms.append(t)
 
-		e = tm_to_entity[tm]
+    config = {'entities': tms}
+    os.chdir(path_mapp)
+    with open(f'config_{distribution["name"]}.json', 'w') as outfile:
+        json.dump(config, outfile)
 
-		f = distribution['formats'][e]
-
-		t = {
-			'name': tm,
-			'map': 'partial/'+tm.lower()+'.ttl'
-		}
-
-		if f == 'csv':
-			t['source'] = {'type': 'csv', 'file': e+'.csv'}
-		elif f == 'json':
-			t['source'] = {'type': 'json', 'file': e+'.json'}
-		elif f == 'xml':
-			t['source'] = {'type': 'xml', 'file': e+'.xml'}
-		elif f == 'mongo':
-			t['source'] = copy.deepcopy(default_mongo)
-			t['source']['table'] = 'gtfs.'+e
-		elif f == 'sql':
-			t['source'] = copy.deepcopy(default_mysql)
-			t['source']['table'] = 'gtfs.'+e
-		else:
-			print("Format", f, "not implemented")
-
-		tms.append(t)
-
-
-	config = {
-				"entities": tms
-			}
-
-	os.chdir(path_mapp)
-
-	with open("config_"+distribution['name']+".json", 'w') as outfile:
-		json.dump(config, outfile)
-
-	os.system("python3 app.py -c config_"+distribution['name']+".json -o /tmp/output/datasets/"+distribution['name']+"/mapping."+distribution['name']+".nt -f nt > /dev/null")
-
+    p = os.path.join('/tmp/output/datasets/', distribution['name'],
+                     f'mapping.{distribution["name"]}.nt')
+    os.system(f'python3 app.py -c config_{distribution["name"]}.json '
+              f'-o {p} > /dev/null')
 
 
 def signal_handler(sig, frame):
     print('\nBye! ')
     sys.exit(0)
+
 
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -669,11 +606,11 @@ q3 = [
             },
             {
                 'name': 'XML',
-				'value': 'xml'
+                'value': 'xml'
             },
             {
                 'name': 'CSV',
-				'value': 'csv'
+                'value': 'csv'
             },
             {
                 'name': 'MongoDB',
@@ -694,98 +631,55 @@ q3 = [
     }
 ]
 
-sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)["q"].split(","))]
-
+sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)['q'].split(','))]
 
 while True:
-
-	q3_a = prompt(q3)["q"]
-
-	if len(q3_a) > 0:
-
-		break
-
-	else:
-
-		print("Select at least one distribution format!")
+    q3_a = prompt(q3)['q']
+    if len(q3_a) > 0:
+        break
+    else:
+        print('Select at least one distribution format!')
 
 distributions = list()
 
 for a in q3_a:
-	if a == 'custom':
-		distributions.append(custom_distribution())
-	else:
-		distributions.append(static_distributions[a])
+    if a == 'custom':
+        distributions.append(custom_distribution())
+    else:
+        distributions.append(static_distributions[a])
 
-
-#Data
-
+# Data
 create_file_structure(sizes, distributions)
 
 for s in sizes:
+    print('Generating dataset at scale: {s}')
+    os.system(f'{path_gen}./generate.sh {s} {path_gen}')
+    os.chdir(os.path.join(path_gen, '/resources/csvs/'))
+    os.system('mkdir ./dist/')
 
-	print("Generating dataset at scale: "+str(s))
+    for d in distributions:
+        generate_distribution(s, d)
+        generate_sql_schema(d, s)
 
-	os.system(path_gen+"./generate.sh "+str(s)+" "+path_gen)
-
-	os.chdir(path_gen+'/resources/csvs/')
-
-	os.system("mkdir ./dist/")
-
-	for d in distributions:
-
-		generate_distribution(s, d)
-		generate_sql_schema(d, s)
-
-	os.system("rm  -r ./dist/")
-	#os.system("mv ./dist/ /tmp/output/datasets/"+str(s)+"/")
+    os.system('rm  -r ./dist/')
 
 # Cleanup
+os.system('echo \'DROP DATABASE `gtfs`\' | mysql -u root')
 
-os.system("echo 'DROP DATABASE `gtfs`' | mysql -u root")
-
-
-#Mapping
-
+# Mapping
 for d in distributions:
+    generate_mapping(d)
 
-	generate_mapping(d)
+# Move
+print('Compressing output: result.tar.xz...', end='', flush=True)
 
+os.system('cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/')
+os.chdir('/tmp/output/')
+os.system('rm -f /output/result.tar.xz')
+os.system('tar Oc . | pxz -1 -cv - > /output/result.tar.xz')
 
-#Move
-
-print("Compressing output: result.tar.xz...", end="", flush=True)
-
-os.system("cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/")
-os.chdir("/tmp/output/")
-os.system("rm -f /output/result.tar.xz")
-os.system("tar Oc . | pxz -1 -cv - > /output/result.tar.xz")
-
-print("Done!")
-
-'''#Deploy
-
-q5 = [
-    {
-        'type': 'list',
-        'name': 'q',
-        'message': 'Do you want to start a MySQL and MongoDB server with the generated data?',
-        'choices': [
-			{'name':'Yes', 'value': 'yes'},
-			{'name':'No', 'value': 'no'}
-		],
-    }
-]
-
-q5_a = prompt(q5)['q']
-
-if q5_a == 'yes':
-	deploy(distributions, sizes)
-'''
-
-print(colored("The generated data is in the result.tar.xz file at the current path.", 'blue'))
-
-
+print('Done!')
+print(colored('The generated data is in the result.tar.xz file '
+              'at the current path.', 'blue'))
 print('Press Ctrl+C to exit')
 signal.pause()
-
