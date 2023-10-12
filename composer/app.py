@@ -2,10 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import os
+import csv
 import json
 import signal
 import sys
 import copy
+import random
+import shutil
 from termcolor import colored
 from PyInquirer import style_from_dict, Token, prompt
 
@@ -20,9 +23,8 @@ custom_style_3 = style_from_dict({
 })
 
 base_path = os.sep.join(os.path.realpath(__file__).split(os.sep)[:-2])
-
-path_gen = os.path.join(base_path, '/generation/')
-path_mapp = os.path.join(base_path, '/mappings/generator/')
+path_gen = os.path.join(base_path, 'generation/')
+path_mapp = os.path.join(base_path, 'mappings/generator/')
 
 tm_to_entity = {
     'AGENCY': 'AGENCY',
@@ -150,19 +152,11 @@ default_mongo = {
 
 def create_file_structure(sizes, distributions):
     for d in distributions:
-        os.mkdir(os.path.join('/tmp/output/datasets/', d['name']))
+        os.makedirs(os.path.join('/tmp/output/datasets/', d['name']),
+                    exist_ok=True)
         for s in sizes:
-            os.mkdir(os.path.join('/tmp/output/datasets/', d['name']), s)
-
-
-def generate_dataset(size):
-    print(f'Running VIG with scale {size}')
-    os.chdir(path_gen)
-    os.system('java -jar bin/vig-1.8.1.jar --res=resources '
-              f'--scale={size} > /dev/null')
-    os.chdir(os.path.join(path_gen, '/resources/csvs/'))
-    os.system('./clean.sh > /dev/null')
-    os.system('./headers.sh > /dev/null')
+            os.makedirs(os.path.join('/tmp/output/datasets/', d['name'],
+                                     str(s)), exist_ok=True)
 
 
 def has_mysql(distribution):
@@ -173,7 +167,6 @@ def has_mysql(distribution):
 
 def generate_sql_schema(distribution, size):
     if has_mysql(distribution):
-
         schema = '''
             DROP DATABASE IF EXISTS `gtfs-{0}`;
             SET GLOBAL local_infile = 1;
@@ -460,28 +453,26 @@ def generate_sql_schema(distribution, size):
 
 
 def generate_distribution(size, distribution):
-    size = str(size)
-
     try:
         os.mkdir(os.path.join('./dist/', distribution['name']))
     except Exception:
         pass
 
-    print('\tPreparing distribution: {distribution["name"]}')
+    print(f'\tPreparing distribution: {distribution["name"]}')
 
     for tm in distribution['formats']:
         f = distribution['formats'][tm]
         if f == 'csv' or f == 'sql':  # We import CSV files to MySQL instance
             p = os.path.join('/tmp/output/datasets/', distribution['name'],
-                             size, f'{tm}.csv')
+                             str(size), f'{tm}.csv')
             os.system(f'cp {tm}.csv {p}')
         elif f == 'json' or f == 'mongo':  # Mongo format is JSON
             p = os.path.join('/tmp/output/datasets/', distribution['name'],
-                             size, f'{tm}.json')
+                             str(size), f'{tm}.json')
             os.system(f'python3 -m csv2all -f json -i {tm}.csv -o {p}')
         elif f == 'xml':
             p = os.path.join('/tmp/output/datasets/', distribution['name'],
-                             size, f'{tm}.xml')
+                             str(size), f'{tm}.xml')
             os.system(f'./di-csv2xml Category -i {tm}.csv -o {p} > /dev/null')
 
 
@@ -536,20 +527,20 @@ def generate_mapping(distribution):
     for tm in tm_to_entity:
         e = tm_to_entity[tm]
         f = distribution['formats'][e]
-        t = {'name': tm, 'map': 'partial/' + tm.lower() + '.ttl'}
+        t = {'name': tm, 'map': f'partial/{tm.lower()}.ttl'}
 
         if f == 'csv':
-            t['source'] = {'type': 'csv', 'file': e+'.csv'}
+            t['source'] = {'type': 'csv', 'file': f'{e}.csv'}
         elif f == 'json':
-            t['source'] = {'type': 'json', 'file': e+'.json'}
+            t['source'] = {'type': 'json', 'file': f'{e}.json'}
         elif f == 'xml':
-            t['source'] = {'type': 'xml', 'file': e+'.xml'}
+            t['source'] = {'type': 'xml', 'file': f'{e}.xml'}
         elif f == 'mongo':
             t['source'] = copy.deepcopy(default_mongo)
-            t['source']['table'] = 'gtfs.'+e
+            t['source']['table'] = f'gtfs.{e}'
         elif f == 'sql':
             t['source'] = copy.deepcopy(default_mysql)
-            t['source']['table'] = 'gtfs.'+e
+            t['source']['table'] = f'gtfs.{e}'
         else:
             print(f'Format {f} not implemented')
 
@@ -569,6 +560,235 @@ def generate_mapping(distribution):
 def signal_handler(sig, frame):
     print('\nBye! ')
     sys.exit(0)
+
+
+def apply_updates(size, seed, additions, modifications, deletions):
+    print(f'Applying updates on size {size} with seed {seed}')
+
+    try:
+        seed = abs(int(seed))
+        random.seed(seed)
+    except Exception:
+        print('\tRandom seed must be an integer, skipping updates')
+        return
+
+    trip_id_counter = 0
+    route_id_counter = 0
+    shape_id_counter = 0
+    service_id_counter = 0
+    stop_id_counter = 0
+    routes2_fd = open('ROUTES-CHANGE.csv', 'w')
+    routes_writer = csv.writer(routes2_fd)
+    trips2_fd = open('TRIPS-CHANGE.csv', 'w')
+    trips_writer = csv.writer(trips2_fd)
+    shapes2_fd = open('SHAPES-CHANGE.csv', 'w')
+    shapes_writer = csv.writer(shapes2_fd)
+    service2_fd = open('CALENDAR-CHANGE.csv', 'w')
+    service_writer = csv.writer(service2_fd)
+    stoptimes2_fd = open('STOP_TIMES-CHANGE.csv', 'w')
+    stoptimes_writer = csv.writer(stoptimes2_fd)
+    stops2_fd = open('STOPS-CHANGE.csv', 'w')
+    stops_writer = csv.writer(stops2_fd)
+
+    # Copy stoptimes, stops, and shapes as they are only appended
+    with open('SHAPES.csv', 'r') as shapes_fd:
+        reader = csv.reader(shapes_fd)
+        for row in reader:
+            shapes_writer.writerow(row)
+
+    with open('STOP_TIMES.csv', 'r') as stoptimes_fd:
+        reader = csv.reader(stoptimes_fd)
+        for row in reader:
+            stoptimes_writer.writerow(row)
+
+    with open('STOPS.csv', 'r') as stops_fd:
+        reader = csv.reader(stops_fd)
+        for row in reader:
+            stops_writer.writerow(row)
+
+    # Deletions
+    # Delete a route and all associated trips with it.
+    print(f'\tDeletions: {deletions}')
+    route_ids = []
+    # Pick random route
+    with open('ROUTES.csv', 'r') as routes_fd:
+        reader = csv.reader(routes_fd)
+        next(reader)  # header
+        rows = []
+
+        for r in reader:
+            rows.append(r)
+
+        for i in range(deletions):
+            while (True):
+                picked = random.choice(rows)[0]
+                if picked not in route_ids:
+                    route_ids.append(picked)
+                    break
+
+    # Delete all trips for this route
+    with open('TRIPS.csv', 'r') as trips_fd:
+        reader = csv.reader(trips_fd)
+        for row in reader:
+            if row[0] not in route_ids:
+                trips_writer.writerow(row)
+
+    # Delete route
+    with open('ROUTES.csv', 'r') as routes_fd:
+        reader = csv.reader(routes_fd)
+        for row in reader:
+            if row[0] not in route_ids:
+                routes_writer.writerow(row)
+
+    # Modifications
+    # Modify service for a trip
+    service_ids = []
+    print(f'\tModifications: {modifications}')
+    with open('CALENDAR.csv', 'r') as services_fd:
+        reader = csv.reader(services_fd)
+        row = next(reader)  # header
+        service_writer.writerow(row)
+
+        # Pick random service IDs
+        rows = []
+        for r in reader:
+            rows.append(r)
+
+        for i in range(modifications):
+            while (True):
+                picked = random.choice(rows)[0]
+                if picked not in service_ids:
+                    service_ids.append(picked)
+                    break
+
+    # Modify each picked service by generating random values for days and dates
+    # Services which are not picked are left unmodified
+    with open('CALENDAR.csv', 'r') as services_fd:
+        reader = csv.reader(services_fd)
+        next(reader)  # header
+        for row in reader:
+            if row[0] in service_ids:
+                monday = random.randint(0, 1)
+                tuesday = random.randint(0, 1)
+                wednesday = random.randint(0, 1)
+                thursday = random.randint(0, 1)
+                friday = random.randint(0, 1)
+                saturday = random.randint(0, 1)
+                sunday = random.randint(0, 1)
+                year = random.randint(2017, 2023)
+                start_date = f'{year}-{random.randint(1, 12):02d}-' + \
+                    f'{random.randint(1, 31):02d}'
+                end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
+                    f'{random.randint(1, 31):02d}'
+                service_writer.writerow([row[0], monday, tuesday, wednesday,
+                                         thursday, friday, saturday, sunday,
+                                         start_date, end_date])
+            else:
+                service_writer.writerow(row)
+
+    # Additions
+    # Add several new routes and let several trips depend on it.
+    print(f'\tAdditions: {additions}')
+    for i in range(additions):
+        # Route
+        route_id = f'ROUTE{seed}{route_id_counter}'
+        route_id_counter += 1
+        route_short_name = f'add{i}'
+        route_long_name = f'addition{i}'
+        route_url = 'http://www.crtm.es/tu-transporte-publico/metro' + \
+                    f'/lineas/addition{i}.aspx'
+        route_color = str(random.randint(1, 10))
+        route_text_color = str(random.randint(1, 10))
+        agency_id = 1
+        route_desc = route_id
+        route_type = 1
+        routes_writer.writerow([route_id, agency_id, route_short_name,
+                                route_long_name, route_desc, route_type,
+                                route_url, route_color, route_text_color])
+
+        # Add shape for route
+        shape_id = f'SHAPE{seed}{shape_id_counter}'
+        shape_id_counter += 1
+        shape_pt_lat = random.randint(1, 100000)
+        shape_pt_lon = random.randint(1, 100000)
+        shape_pt_sequence = random.randint(1, 100000)
+        shape_dist_traveled = random.randint(1, 100000)
+        shapes_writer.writerow([shape_id, shape_pt_lat, shape_pt_lon,
+                                shape_pt_sequence, shape_dist_traveled])
+
+        # Add service calendar for route
+        service_id = f'SERVICE{seed}{service_id_counter}'
+        service_id_counter += 1
+        year = random.randint(2017, 2023)
+        start_date = f'{year}-{random.randint(1, 12):02d}-' + \
+            f'{random.randint(1, 31):02d}'
+        end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
+            f'{random.randint(1, 31):02d}'
+        service_writer.writerow([service_id, 1, 1, 1, 1, 1, 1, 1, start_date,
+                                 end_date])
+
+        # Add trips for route with their corresponding stop times
+        for j in range(random.randrange(seed+1, seed+15)):
+            trip_id = f'TRIP{seed}{trip_id_counter}'
+            trip_id_counter += 1
+            trip_headsign = 'addition'
+            trip_short_name = 'add'
+            direction_id = '0'
+            block_id = str(random.randint(0, 100))
+            wheelchair_accessible = '1'
+            trips_writer.writerow([route_id, service_id, trip_id,
+                                   trip_headsign, trip_short_name,
+                                   direction_id, block_id, shape_id,
+                                   wheelchair_accessible])
+
+            for k in range(random.randrange(seed+1, seed+10)):
+                # Stop
+                stop_id = f'STOP{seed}{stop_id_counter}'
+                stop_id_counter += 1
+                stop_code = f'code{stop_id}'
+                stop_name = f'name_{stop_id}'
+                stop_desc = f'desc_{stop_id}'
+                stop_lat = random.randint(0, 10000)
+                stop_lon = random.randint(0, 10000)
+                zone_id = ''
+                stop_url = 'http://www.crtm.es'
+                location_type = random.randint(0, 3)
+                parent_station = ''
+                stop_timezone = ''
+                wheelchair_boarding = random.randint(0, 3)
+                stops_writer.writerow([stop_id, stop_code, stop_name,
+                                       stop_desc, stop_lat, stop_lon, zone_id,
+                                       stop_url, location_type, parent_station,
+                                       stop_timezone, wheelchair_boarding])
+
+                # Stop times
+                arrival_time = random.randint(0, 1000)
+                departure_time = arrival_time + random.randint(0, 1000)
+                stop_sequence = ''
+                stop_headsign = f'headsign{seed}-{j}-{k}'
+                pickup_type = 0
+                drop_off_type = 0
+                shape_dist_traveled = random.randint(0, 10000)
+                stoptimes_writer.writerow([trip_id, arrival_time,
+                                           departure_time, stop_id,
+                                           stop_sequence, stop_headsign,
+                                           pickup_type, drop_off_type,
+                                           shape_dist_traveled])
+
+    routes2_fd.close()
+    trips2_fd.close()
+    shapes2_fd.close()
+    service2_fd.close()
+    stoptimes2_fd.close()
+    stops2_fd.close()
+
+    # Replace original files with updated files
+    shutil.move('ROUTES-CHANGE.csv', 'ROUTES.csv')
+    shutil.move('TRIPS-CHANGE.csv', 'TRIPS.csv')
+    shutil.move('SHAPES-CHANGE.csv', 'SHAPES.csv')
+    shutil.move('CALENDAR-CHANGE.csv', 'CALENDAR.csv')
+    shutil.move('STOP_TIMES-CHANGE.csv', 'STOP_TIMES.csv')
+    shutil.move('STOPS-CHANGE.csv', 'STOPS.csv')
 
 
 signal.signal(signal.SIGINT, signal_handler)
@@ -631,6 +851,14 @@ q3 = [
     }
 ]
 
+q4 = [
+    {
+        'type': 'input',
+        'name': 'q',
+        'message': 'Updates seed, number of additions, number of modifications, and number of deletions, separated by commas. Leave empty to skip:',
+    }
+]
+
 sizes = [int(x) for x in map(int, prompt(q2, style=custom_style_3)['q'].split(','))]
 
 while True:
@@ -652,16 +880,29 @@ for a in q3_a:
 create_file_structure(sizes, distributions)
 
 for s in sizes:
-    print('Generating dataset at scale: {s}')
+    print(f'Generating dataset at scale: {s}')
     os.system(f'{path_gen}./generate.sh {s} {path_gen}')
-    os.chdir(os.path.join(path_gen, '/resources/csvs/'))
-    os.system('mkdir ./dist/')
+    os.chdir(os.path.join(path_gen, 'resources/csvs/'))
+    os.makedirs('dist', exist_ok=True)
+    updates = []
+
+    try:
+        updates = [int(x) for x in map(int, prompt(q4, style=custom_style_3)['q'].split(','))]
+        seed = updates[0]
+        additions = updates[1]
+        modifications = updates[2]
+        deletions = updates[3]
+    except Exception:
+        print('Failed to parse updates input, skipping updates')
+
+    if updates:
+        apply_updates(s, seed, additions, modifications, deletions)
 
     for d in distributions:
         generate_distribution(s, d)
         generate_sql_schema(d, s)
 
-    os.system('rm  -r ./dist/')
+    shutil.rmtree('dist')
 
 # Cleanup
 os.system('echo \'DROP DATABASE `gtfs`\' | mysql -u root')
@@ -673,7 +914,8 @@ for d in distributions:
 # Move
 print('Compressing output: result.tar.xz...', end='', flush=True)
 
-os.system('cp /repository/gtfs-bench/queries/vig/*.rq /tmp/output/queries/')
+os.chdir(base_path)
+os.system('cp ./queries/vig/*.rq /tmp/output/queries/')
 os.chdir('/tmp/output/')
 os.system('rm -f /output/result.tar.xz')
 os.system('tar Oc . | pxz -1 -cv - > /output/result.tar.xz')
