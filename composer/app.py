@@ -857,7 +857,8 @@ q4 = [
     {
         'type': 'input',
         'name': 'q',
-        'message': 'Updates seed, number of additions, number of modifications, and number of deletions, separated by commas. Leave empty to skip:',
+        'message': 'Updates seed, percentage of additions, percentage of
+        modifications, and percentage of deletions, separated by commas. Leave empty to skip:',
     }
 ]
 
