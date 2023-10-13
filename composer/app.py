@@ -890,7 +890,7 @@ for s in sizes:
     has_updates = False
 
     try:
-        updates = [int(x) for x in map(int, prompt(q4, style=custom_style_3)['q'].split(','))]
+        updates = [float(x) for x in map(float, prompt(q4, style=custom_style_3)['q'].split(','))]
         seed = updates[0]
         additions = updates[1]
         modifications = updates[2]
