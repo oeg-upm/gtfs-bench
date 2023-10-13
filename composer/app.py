@@ -857,8 +857,7 @@ q4 = [
     {
         'type': 'input',
         'name': 'q',
-        'message': 'Updates seed, percentage of additions, percentage of
-        modifications, and percentage of deletions, separated by commas. Leave empty to skip:',
+        'message': 'Updates seed, percentage of additions, percentage of modifications, and percentage of deletions, separated by commas. Leave empty to skip:',
     }
 ]
 
@@ -897,11 +896,11 @@ for s in sizes:
         modifications = updates[2]
         deletions = updates[3]
 
-        if additions not in range(0, 100+1):
+        if additions > 100.0 or additions < 0.0:
             raise ValueError('Additions must be a percentage [0, 100]%')
-        elif modifications not in range(0, 100+1):
+        elif modifications > 100.0 or modifications < 0.0:
             raise ValueError('Modifications must be a percentage [0, 100]%')
-        elif deletions not in range(0, 100+1):
+        elif deletions > 100.0 or deletions < 0.0:
             raise ValueError('Deletions must be a percentage [0, 100]%')
 
         has_updates = True
