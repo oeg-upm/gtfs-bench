@@ -589,6 +589,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
     stoptimes_writer = csv.writer(stoptimes2_fd)
     stops2_fd = open('STOPS-CHANGE.csv', 'w')
     stops_writer = csv.writer(stops2_fd)
+    number_of_routes = 0
 
     # Copy stoptimes, stops, and shapes as they are only appended
     with open('SHAPES.csv', 'r') as shapes_fd:
@@ -606,11 +607,10 @@ def apply_updates(size, seed, additions, modifications, deletions):
         for row in reader:
             stops_writer.writerow(row)
 
-    # Deletions
-    # Delete a route and all associated trips with it.
-    print(f'\tDeletions: {deletions}')
+    # Deletions: delete routes and associated data with it
+    print(f'\tDeletions: {deletions}%')
     route_ids = []
-    # Pick random route
+    # Pick randomly X% of the routes to delete
     with open('ROUTES.csv', 'r') as routes_fd:
         reader = csv.reader(routes_fd)
         next(reader)  # header
@@ -618,13 +618,15 @@ def apply_updates(size, seed, additions, modifications, deletions):
 
         for r in reader:
             rows.append(r)
+        number_of_routes = len(rows)
 
-        for i in range(deletions):
-            while (True):
-                picked = random.choice(rows)[0]
-                if picked not in route_ids:
-                    route_ids.append(picked)
-                    break
+        if deletions > 0:
+            for i in range(0, int(((deletions/100) * number_of_routes) + 1)):
+                while (True):
+                    picked = random.choice(rows)[0]
+                    if picked not in route_ids:
+                        route_ids.append(picked)
+                        break
 
     # Delete all trips for this route
     with open('TRIPS.csv', 'r') as trips_fd:
@@ -640,140 +642,140 @@ def apply_updates(size, seed, additions, modifications, deletions):
             if row[0] not in route_ids:
                 routes_writer.writerow(row)
 
-    # Modifications
-    # Modify service for a trip
+    # Modifications: modify a service of a trip
     service_ids = []
-    print(f'\tModifications: {modifications}')
-    with open('CALENDAR.csv', 'r') as services_fd:
-        reader = csv.reader(services_fd)
-        row = next(reader)  # header
-        service_writer.writerow(row)
+    print(f'\tModifications: {modifications}%')
+    if modifications > 0:
+        with open('CALENDAR.csv', 'r') as services_fd:
+            reader = csv.reader(services_fd)
+            row = next(reader)  # header
+            service_writer.writerow(row)
 
-        # Pick random service IDs
-        rows = []
-        for r in reader:
-            rows.append(r)
+            # Pick random service IDs
+            rows = []
+            for r in reader:
+                rows.append(r)
 
-        for i in range(modifications):
-            while (True):
-                picked = random.choice(rows)[0]
-                if picked not in service_ids:
-                    service_ids.append(picked)
-                    break
+            for i in range(0, int(((modifications/100) * len(rows)) + 1)):
+                while (True):
+                    picked = random.choice(rows)[0]
+                    if picked not in service_ids:
+                        service_ids.append(picked)
+                        break
 
-    # Modify each picked service by generating random values for days and dates
-    # Services which are not picked are left unmodified
-    with open('CALENDAR.csv', 'r') as services_fd:
-        reader = csv.reader(services_fd)
-        next(reader)  # header
-        for row in reader:
-            if row[0] in service_ids:
-                monday = random.randint(0, 1)
-                tuesday = random.randint(0, 1)
-                wednesday = random.randint(0, 1)
-                thursday = random.randint(0, 1)
-                friday = random.randint(0, 1)
-                saturday = random.randint(0, 1)
-                sunday = random.randint(0, 1)
-                year = random.randint(2017, 2023)
-                start_date = f'{year}-{random.randint(1, 12):02d}-' + \
-                    f'{random.randint(1, 31):02d}'
-                end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
-                    f'{random.randint(1, 31):02d}'
-                service_writer.writerow([row[0], monday, tuesday, wednesday,
-                                         thursday, friday, saturday, sunday,
-                                         start_date, end_date])
-            else:
-                service_writer.writerow(row)
+        # Modify each picked service by generating random values for days and dates
+        # Services which are not picked are left unmodified
+        with open('CALENDAR.csv', 'r') as services_fd:
+            reader = csv.reader(services_fd)
+            next(reader)  # header
+            for row in reader:
+                if row[0] in service_ids:
+                    monday = random.randint(0, 1)
+                    tuesday = random.randint(0, 1)
+                    wednesday = random.randint(0, 1)
+                    thursday = random.randint(0, 1)
+                    friday = random.randint(0, 1)
+                    saturday = random.randint(0, 1)
+                    sunday = random.randint(0, 1)
+                    year = random.randint(2017, 2023)
+                    start_date = f'{year}-{random.randint(1, 12):02d}-' + \
+                        f'{random.randint(1, 31):02d}'
+                    end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
+                        f'{random.randint(1, 31):02d}'
+                    service_writer.writerow([row[0], monday, tuesday, wednesday,
+                                             thursday, friday, saturday, sunday,
+                                             start_date, end_date])
+                else:
+                    service_writer.writerow(row)
 
-    # Additions
-    # Add several new routes and let several trips depend on it.
-    print(f'\tAdditions: {additions}')
-    for i in range(additions):
-        # Route
-        route_id = f'ROUTE{seed}{route_id_counter}'
-        route_id_counter += 1
-        route_short_name = f'add{i}'
-        route_long_name = f'addition{i}'
-        route_url = 'http://www.crtm.es/tu-transporte-publico/metro' + \
-                    f'/lineas/addition{i}.aspx'
-        route_color = str(random.randint(1, 10))
-        route_text_color = str(random.randint(1, 10))
-        agency_id = 1
-        route_desc = route_id
-        route_type = 1
-        routes_writer.writerow([route_id, agency_id, route_short_name,
-                                route_long_name, route_desc, route_type,
-                                route_url, route_color, route_text_color])
+    # Additions: add route and associated data with it.
+    print(f'\tAdditions: {additions}%')
+    if additions > 0:
+        for i in range(0, int(((additions/100) * number_of_routes) + 1)):
+            # Route
+            route_id = f'ROUTE{seed}{route_id_counter}'
+            route_id_counter += 1
+            route_short_name = f'add{i}'
+            route_long_name = f'addition{i}'
+            route_url = 'http://www.crtm.es/tu-transporte-publico/metro' + \
+                        f'/lineas/addition{i}.aspx'
+            route_color = str(random.randint(1, 10))
+            route_text_color = str(random.randint(1, 10))
+            agency_id = 1
+            route_desc = route_id
+            route_type = 1
+            routes_writer.writerow([route_id, agency_id, route_short_name,
+                                    route_long_name, route_desc, route_type,
+                                    route_url, route_color, route_text_color])
 
-        # Add shape for route
-        shape_id = f'SHAPE{seed}{shape_id_counter}'
-        shape_id_counter += 1
-        shape_pt_lat = random.randint(1, 100000)
-        shape_pt_lon = random.randint(1, 100000)
-        shape_pt_sequence = random.randint(1, 100000)
-        shape_dist_traveled = random.randint(1, 100000)
-        shapes_writer.writerow([shape_id, shape_pt_lat, shape_pt_lon,
-                                shape_pt_sequence, shape_dist_traveled])
+            # Add shape for route
+            shape_id = f'SHAPE{seed}{shape_id_counter}'
+            shape_id_counter += 1
+            shape_pt_lat = random.randint(1, 100000)
+            shape_pt_lon = random.randint(1, 100000)
+            shape_pt_sequence = random.randint(1, 100000)
+            shape_dist_traveled = random.randint(1, 100000)
+            shapes_writer.writerow([shape_id, shape_pt_lat, shape_pt_lon,
+                                    shape_pt_sequence, shape_dist_traveled])
 
-        # Add service calendar for route
-        service_id = f'SERVICE{seed}{service_id_counter}'
-        service_id_counter += 1
-        year = random.randint(2017, 2023)
-        start_date = f'{year}-{random.randint(1, 12):02d}-' + \
-            f'{random.randint(1, 31):02d}'
-        end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
-            f'{random.randint(1, 31):02d}'
-        service_writer.writerow([service_id, 1, 1, 1, 1, 1, 1, 1, start_date,
-                                 end_date])
+            # Add service calendar for route
+            service_id = f'SERVICE{seed}{service_id_counter}'
+            service_id_counter += 1
+            year = random.randint(2017, 2023)
+            start_date = f'{year}-{random.randint(1, 12):02d}-' + \
+                f'{random.randint(1, 31):02d}'
+            end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
+                f'{random.randint(1, 31):02d}'
+            service_writer.writerow([service_id, 1, 1, 1, 1, 1, 1, 1, start_date,
+                                     end_date])
 
-        # Add trips for route with their corresponding stop times
-        for j in range(random.randrange(seed+1, seed+15)):
-            trip_id = f'TRIP{seed}{trip_id_counter}'
-            trip_id_counter += 1
-            trip_headsign = 'addition'
-            trip_short_name = 'add'
-            direction_id = '0'
-            block_id = str(random.randint(0, 100))
-            wheelchair_accessible = '1'
-            trips_writer.writerow([route_id, service_id, trip_id,
-                                   trip_headsign, trip_short_name,
-                                   direction_id, block_id, shape_id,
-                                   wheelchair_accessible])
+            # Add trips for route with their corresponding stop times
+            for j in range(random.randrange(seed+1, seed+15)):
+                trip_id = f'TRIP{seed}{trip_id_counter}'
+                trip_id_counter += 1
+                trip_headsign = 'addition'
+                trip_short_name = 'add'
+                direction_id = '0'
+                block_id = str(random.randint(0, 100))
+                wheelchair_accessible = '1'
+                trips_writer.writerow([route_id, service_id, trip_id,
+                                       trip_headsign, trip_short_name,
+                                       direction_id, block_id, shape_id,
+                                       wheelchair_accessible])
 
-            for k in range(random.randrange(seed+1, seed+10)):
-                # Stop
-                stop_id = f'STOP{seed}{stop_id_counter}'
-                stop_id_counter += 1
-                stop_code = f'code{stop_id}'
-                stop_name = f'name_{stop_id}'
-                stop_desc = f'desc_{stop_id}'
-                stop_lat = random.randint(0, 10000)
-                stop_lon = random.randint(0, 10000)
-                zone_id = ''
-                stop_url = 'http://www.crtm.es'
-                location_type = random.randint(0, 3)
-                parent_station = ''
-                stop_timezone = ''
-                wheelchair_boarding = random.randint(0, 3)
-                stops_writer.writerow([stop_id, stop_code, stop_name,
-                                       stop_desc, stop_lat, stop_lon, zone_id,
-                                       stop_url, location_type, parent_station,
-                                       stop_timezone, wheelchair_boarding])
+                for k in range(random.randrange(seed+1, seed+10)):
+                    # Stop
+                    stop_id = f'STOP{seed}{stop_id_counter}'
+                    stop_id_counter += 1
+                    stop_code = f'code{stop_id}'
+                    stop_name = f'name_{stop_id}'
+                    stop_desc = f'desc_{stop_id}'
+                    stop_lat = random.randint(0, 10000)
+                    stop_lon = random.randint(0, 10000)
+                    zone_id = ''
+                    stop_url = 'http://www.crtm.es'
+                    location_type = random.randint(0, 3)
+                    parent_station = ''
+                    stop_timezone = ''
+                    wheelchair_boarding = random.randint(0, 3)
+                    stops_writer.writerow([stop_id, stop_code, stop_name,
+                                           stop_desc, stop_lat, stop_lon, zone_id,
+                                           stop_url, location_type, parent_station,
+                                           stop_timezone, wheelchair_boarding])
 
-                # Stop times
-                arrival_time = random.randint(0, 1000)
-                departure_time = arrival_time + random.randint(0, 1000)
-                stop_sequence = ''
-                stop_headsign = f'headsign{seed}-{j}-{k}'
-                pickup_type = 0
-                drop_off_type = 0
-                shape_dist_traveled = random.randint(0, 10000)
-                stoptimes_writer.writerow([trip_id, arrival_time,
-                                           departure_time, stop_id,
-                                           stop_sequence, stop_headsign,
-                                           pickup_type, drop_off_type,
-                                           shape_dist_traveled])
+                    # Stop times
+                    arrival_time = random.randint(0, 1000)
+                    departure_time = arrival_time + random.randint(0, 1000)
+                    stop_sequence = ''
+                    stop_headsign = f'headsign{seed}-{j}-{k}'
+                    pickup_type = 0
+                    drop_off_type = 0
+                    shape_dist_traveled = random.randint(0, 10000)
+                    stoptimes_writer.writerow([trip_id, arrival_time,
+                                               departure_time, stop_id,
+                                               stop_sequence, stop_headsign,
+                                               pickup_type, drop_off_type,
+                                               shape_dist_traveled])
 
     routes2_fd.close()
     trips2_fd.close()
@@ -885,6 +887,7 @@ for s in sizes:
     os.chdir(os.path.join(path_gen, 'resources/csvs/'))
     os.makedirs('dist', exist_ok=True)
     updates = []
+    has_updates = False
 
     try:
         updates = [int(x) for x in map(int, prompt(q4, style=custom_style_3)['q'].split(','))]
@@ -892,11 +895,26 @@ for s in sizes:
         additions = updates[1]
         modifications = updates[2]
         deletions = updates[3]
-    except Exception:
-        print('Failed to parse updates input, skipping updates')
 
-    if updates:
+        if additions not in range(0, 100+1):
+            raise ValueError('Additions must be a percentage [0, 100]%')
+        elif modifications not in range(0, 100+1):
+            raise ValueError('Modifications must be a percentage [0, 100]%')
+        elif deletions not in range(0, 100+1):
+            raise ValueError('Deletions must be a percentage [0, 100]%')
+
+        has_updates = True
+    except ValueError as e:
+        print(e)
+        sys.exit(1)
+    except Exception:
+        has_updates = False
+
+    if has_updates:
+        print('Applying updates')
         apply_updates(s, seed, additions, modifications, deletions)
+    else:
+        print('Skipping updates')
 
     for d in distributions:
         generate_distribution(s, d)
