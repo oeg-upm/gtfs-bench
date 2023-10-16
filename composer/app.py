@@ -730,7 +730,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                      end_date])
 
             # Add trips for route with their corresponding stop times
-            for j in range(random.randrange(seed+1, seed+15)):
+            for j in range(random.randrange(1, 15)):
                 trip_id = f'TRIP{seed}{trip_id_counter}'
                 trip_id_counter += 1
                 trip_headsign = 'addition'
@@ -743,7 +743,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                        direction_id, block_id, shape_id,
                                        wheelchair_accessible])
 
-                for k in range(random.randrange(seed+1, seed+10)):
+                for k in range(random.randrange(1, 10)):
                     # Stop
                     stop_id = f'STOP{seed}{stop_id_counter}'
                     stop_id_counter += 1
