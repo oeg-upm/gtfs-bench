@@ -904,14 +904,10 @@ for s in sizes:
             raise ValueError('Deletions must be a percentage [0, 100]%')
 
         has_updates = True
-    except ValueError as e:
-        print(e)
-        sys.exit(1)
     except Exception:
         has_updates = False
 
     if has_updates:
-        print('Applying updates')
         apply_updates(s, seed, additions, modifications, deletions)
     else:
         print('Skipping updates')
