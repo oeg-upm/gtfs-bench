@@ -648,8 +648,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
     if modifications > 0:
         with open('CALENDAR.csv', 'r') as services_fd:
             reader = csv.reader(services_fd)
-            row = next(reader)  # header
-            service_writer.writerow(row)
+            next(reader)  # skip header
 
             # Pick random service IDs
             rows = []
@@ -663,30 +662,32 @@ def apply_updates(size, seed, additions, modifications, deletions):
                         service_ids.append(picked)
                         break
 
-        # Modify each picked service by generating random values for days and dates
-        # Services which are not picked are left unmodified
-        with open('CALENDAR.csv', 'r') as services_fd:
-            reader = csv.reader(services_fd)
-            next(reader)  # header
-            for row in reader:
-                if row[0] in service_ids:
-                    monday = random.randint(0, 1)
-                    tuesday = random.randint(0, 1)
-                    wednesday = random.randint(0, 1)
-                    thursday = random.randint(0, 1)
-                    friday = random.randint(0, 1)
-                    saturday = random.randint(0, 1)
-                    sunday = random.randint(0, 1)
-                    year = random.randint(2017, 2023)
-                    start_date = f'{year}-{random.randint(1, 12):02d}-' + \
-                        f'{random.randint(1, 31):02d}'
-                    end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
-                        f'{random.randint(1, 31):02d}'
-                    service_writer.writerow([row[0], monday, tuesday, wednesday,
-                                             thursday, friday, saturday, sunday,
-                                             start_date, end_date])
-                else:
-                    service_writer.writerow(row)
+    # Modify each picked service by generating random values for days and dates
+    # Services which are not picked are left unmodified
+    with open('CALENDAR.csv', 'r') as services_fd:
+        reader = csv.reader(services_fd)
+        row = next(reader)  # write header
+        service_writer.writerow(row)
+
+        for row in reader:
+            if row[0] in service_ids:
+                monday = random.randint(0, 1)
+                tuesday = random.randint(0, 1)
+                wednesday = random.randint(0, 1)
+                thursday = random.randint(0, 1)
+                friday = random.randint(0, 1)
+                saturday = random.randint(0, 1)
+                sunday = random.randint(0, 1)
+                year = random.randint(2017, 2023)
+                start_date = f'{year}-{random.randint(1, 12):02d}-' + \
+                    f'{random.randint(1, 31):02d}'
+                end_date = f'{year + 1}-{random.randint(1, 12):02d}-' + \
+                    f'{random.randint(1, 31):02d}'
+                service_writer.writerow([row[0], monday, tuesday, wednesday,
+                                         thursday, friday, saturday, sunday,
+                                         start_date, end_date])
+            else:
+                service_writer.writerow(row)
 
     # Additions: add route and associated data with it.
     print(f'\tAdditions: {additions}%')
@@ -777,6 +778,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                                pickup_type, drop_off_type,
                                                shape_dist_traveled])
 
+    os.sync()
     routes2_fd.close()
     trips2_fd.close()
     shapes2_fd.close()
@@ -784,13 +786,13 @@ def apply_updates(size, seed, additions, modifications, deletions):
     stoptimes2_fd.close()
     stops2_fd.close()
 
-    # Replace original files with updated files
+    # Replace original files with updated files if they are updated
     shutil.move('ROUTES-CHANGE.csv', 'ROUTES.csv')
     shutil.move('TRIPS-CHANGE.csv', 'TRIPS.csv')
     shutil.move('SHAPES-CHANGE.csv', 'SHAPES.csv')
-    shutil.move('CALENDAR-CHANGE.csv', 'CALENDAR.csv')
     shutil.move('STOP_TIMES-CHANGE.csv', 'STOP_TIMES.csv')
     shutil.move('STOPS-CHANGE.csv', 'STOPS.csv')
+    shutil.move('CALENDAR-CHANGE.csv', 'CALENDAR.csv')
 
 
 signal.signal(signal.SIGINT, signal_handler)
