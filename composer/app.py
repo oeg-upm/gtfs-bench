@@ -596,16 +596,19 @@ def apply_updates(size, seed, additions, modifications, deletions):
         reader = csv.reader(shapes_fd)
         for row in reader:
             shapes_writer.writerow(row)
+            shapes2_fd.flush()
 
     with open('STOP_TIMES.csv', 'r') as stoptimes_fd:
         reader = csv.reader(stoptimes_fd)
         for row in reader:
             stoptimes_writer.writerow(row)
+            stoptimes2_fd.flush()
 
     with open('STOPS.csv', 'r') as stops_fd:
         reader = csv.reader(stops_fd)
         for row in reader:
             stops_writer.writerow(row)
+            stops2_fd.flush()
 
     # Deletions: delete routes and associated data with it
     print(f'\tDeletions: {deletions}%')
@@ -634,6 +637,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
         for row in reader:
             if row[0] not in route_ids:
                 trips_writer.writerow(row)
+                trips2_fd.flush()
 
     # Delete route
     with open('ROUTES.csv', 'r') as routes_fd:
@@ -641,6 +645,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
         for row in reader:
             if row[0] not in route_ids:
                 routes_writer.writerow(row)
+                routes2_fd.flush()
 
     # Modifications: modify a service of a trip
     service_ids = []
@@ -668,6 +673,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
         reader = csv.reader(services_fd)
         row = next(reader)  # write header
         service_writer.writerow(row)
+        service2_fd.flush()
 
         for row in reader:
             if row[0] in service_ids:
@@ -688,6 +694,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                          start_date, end_date])
             else:
                 service_writer.writerow(row)
+            service2_fd.flush()
 
     # Additions: add route and associated data with it.
     print(f'\tAdditions: {additions}%')
@@ -708,6 +715,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
             routes_writer.writerow([route_id, agency_id, route_short_name,
                                     route_long_name, route_desc, route_type,
                                     route_url, route_color, route_text_color])
+            routes2_fd.flush()
 
             # Add shape for route
             shape_id = f'SHAPE{seed}{shape_id_counter}'
@@ -718,6 +726,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
             shape_dist_traveled = random.randint(1, 100000)
             shapes_writer.writerow([shape_id, shape_pt_lat, shape_pt_lon,
                                     shape_pt_sequence, shape_dist_traveled])
+            shapes2_fd.flush()
 
             # Add service calendar for route
             service_id = f'SERVICE{seed}{service_id_counter}'
@@ -729,6 +738,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                 f'{random.randint(1, 31):02d}'
             service_writer.writerow([service_id, 1, 1, 1, 1, 1, 1, 1, start_date,
                                      end_date])
+            service2_fd.flush()
 
             # Add trips for route with their corresponding stop times
             for j in range(random.randrange(1, 15)):
@@ -743,6 +753,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                        trip_headsign, trip_short_name,
                                        direction_id, block_id, shape_id,
                                        wheelchair_accessible])
+                trips2_fd.flush()
 
                 for k in range(random.randrange(1, 10)):
                     # Stop
@@ -760,9 +771,11 @@ def apply_updates(size, seed, additions, modifications, deletions):
                     stop_timezone = ''
                     wheelchair_boarding = random.randint(0, 3)
                     stops_writer.writerow([stop_id, stop_code, stop_name,
-                                           stop_desc, stop_lat, stop_lon, zone_id,
-                                           stop_url, location_type, parent_station,
-                                           stop_timezone, wheelchair_boarding])
+                                           stop_desc, stop_lat, stop_lon,
+                                           zone_id, stop_url, location_type,
+                                           parent_station, stop_timezone,
+                                           wheelchair_boarding])
+                    stops2_fd.flush()
 
                     # Stop times
                     arrival_time = random.randint(0, 1000)
@@ -777,6 +790,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
                                                stop_sequence, stop_headsign,
                                                pickup_type, drop_off_type,
                                                shape_dist_traveled])
+                    stoptimes2_fd.flush()
 
     os.sync()
     routes2_fd.close()
@@ -793,7 +807,7 @@ def apply_updates(size, seed, additions, modifications, deletions):
     shutil.move('STOP_TIMES-CHANGE.csv', 'STOP_TIMES.csv')
     shutil.move('STOPS-CHANGE.csv', 'STOPS.csv')
     shutil.move('CALENDAR-CHANGE.csv', 'CALENDAR.csv')
-
+    os.sync()
 
 signal.signal(signal.SIGINT, signal_handler)
 
