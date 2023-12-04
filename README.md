@@ -47,11 +47,16 @@ Decide the distributions to be used for your testing. They can be:
 1. Download and run the docker image (run it always to ensure you are using the last version of the docker image).
 * Docker v20.10 or later: `docker run --pull always -itv "$(pwd)":/output oegdataintegration/gtfs-bench` 
 * Previous versions: `docker pull oegdataintegration/gtfs-bench` and then `docker run -itv "$(pwd)":/output oegdataintegration/gtfs-bench`
-2. Choose data scales and formats to obtain the distributions you want to test. You have to provide: first the data scales (in one line, separated by a comma), then, select the standard distributions (from none to all) and if is needed, the configuration for one custom distribution. If you want to generate several custom distributions, you will have to run the generator several times. Example:
+2. Choose data scales and formats to obtain the distributions you want to test. You have to provide: first the data scales (in one line, separated by a comma), then, select the standard distributions (from none to all) and if is needed, the configuration for one custom distribution. If you want to generate several custom distributions, you will have to run the generator several times.
+3. Optionally, you can apply a percentage of changes to the original data. A `seed` value can be provided to generate different changes to simulate multiple changed dumps. The following changes can be generated:
+    - **Additions**: Routes and their associated trips, stops, stoptimes, services are added to the data. Example: 25% additions will provide additional new routes, 25% of the number of routes of the original data.
+    - **Modifications**: Service entries for trips are modified. Example: 50% modifications will modify 50% of the service entries in the calendar.
+    - **Deletions**: Routes and their associated trips and services are removed from the data. Example: 10% deletions will remove 10% of the routes in the original data together with the associated data.
 
-![Demo GIF](misc/gtfs-demo.gif)
+**Demo usage:**
+![Demo GIF](misc/gtfs-demo-updates.gif)
 
-3. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. **Consider that for not repeating resources at scale level, the mappings and SQL paths to the data are define at distribution level (e.g, "data/AGENCY.csv") and their management for performing a correct evaluation has to be done by the user (with an script, for example)**. You can visit the [utils](https://github.com/oeg-upm/gtfs-bench/tree/master/utils) folder where we provide some ideas on how to manage it. See the following example:
+4. Result will be available as `result.zip` in the current working directory. The folders structure are: one folder for datasets and other for the queries (for virtual KG). Inside the datasets folder will be one folder for each distribution (e.g., csv, sql, custom), and in each distribution folder we provide the required sizes (each size in one folder), the corresponding mapping associated to the distribution, and the SQL schemes if they are needed. **Consider that for not repeating resources at scale level, the mappings and SQL paths to the data are define at distribution level (e.g, "data/AGENCY.csv") and their management for performing a correct evaluation has to be done by the user (with an script, for example)**. You can visit the [utils](https://github.com/oeg-upm/gtfs-bench/tree/master/utils) folder where we provide some ideas on how to manage it. See the following example:
 
 ```
 .
