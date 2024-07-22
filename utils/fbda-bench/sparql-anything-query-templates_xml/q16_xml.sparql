@@ -1,0 +1,29 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?trip ?service ?route ?serviceRule ?servDate WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+      ?tripContainer rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+      ?tripContainer rdfs:member [ a xyz:service_id ; rdfs:member ?service_id ] .
+      ?tripContainer  rdfs:member [ a xyz:route_id ; rdfs:member ?route_id ] .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/routes/", ?route_id ) AS ?route ) .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service_id_iri ) .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+    }
+
+    # service2, calendar_date_rules
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR_DATES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+      ?calendarDatesContainer rdfs:member [ a xyz:service_id ; rdfs:member ?service_id ] .
+      ?calendarDatesContainer rdfs:member [ a xyz:date ; rdfs:member ?date ]  .
+      ?calendarDatesContainer  rdfs:member [ a xyz:exception_type ; rdfs:member "true" ] .
+      BIND( xsd:date( ?date ) AS ?servDate )
+      FILTER (?servDate >= '2017-03-01'^^xsd:date) .
+    	FILTER (?servDate <= '2017-03-31'^^xsd:date) .
+      BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_date_rule/", ?service_id, "-", ?date ) AS ?serviceRule ) .
+    }
+
+}

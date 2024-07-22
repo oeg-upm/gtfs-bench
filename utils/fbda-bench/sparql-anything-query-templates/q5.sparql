@@ -1,0 +1,20 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+
+SELECT ?service ?serviceRule ?date WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR_DATES.%format,%param,slice=%slice,strategy=%strategy> {
+
+      [] xyz:service_id ?service_id ;
+        xyz:date ?dateex ;
+        xyz:exception_type ?exception_type .
+
+      BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_date_rule/", ?service_id, "-", ?date ) AS ?serviceRule ) .
+      BIND( fx:entity( "http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service ) .
+      BIND( xsd:date( ?dateex ) AS ?date ) .
+      BIND( xsd:boolean( ?exception_type ) AS ?exception_type_lt ) .
+      FILTER( ?date > "2016-06-01"^^xsd:date )
+      FILTER( ?exception_type_lt=true )
+    }
+}

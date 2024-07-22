@@ -1,0 +1,33 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+
+SELECT DISTINCT ?stopTime ?trip ?stop ?sequence ?route ?stopName WHERE {
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stoptime xyz:trip_id ?trip_id .
+    ?stoptime xyz:stop_id ?stop_id .
+    ?stoptime xyz:arrival_time ?arrival_time  .
+    ?stoptime xyz:stop_sequence ?sequence .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stoptimes/",?trip_id,"-",?stop_id,"-",?arrival_time) AS ?stopTime ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?stop_id ) AS ?stop ) .
+
+  }
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?t xyz:route_id ?route_id .
+    ?t xyz:trip_id ?trip_id .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/routes/", ?route_id ) AS ?route ) .
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stopContainer xyz:stop_id ?stop_id .
+    OPTIONAL {?stopContainer xyz:stop_name ?stopName}
+	}
+
+}
+ORDER BY ?sequence

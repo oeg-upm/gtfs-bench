@@ -1,0 +1,22 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?stop ?parStation ?accName ?name WHERE {
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stopContainer xyz:stop_id ?stop_id .
+    ?stopContainer xyz:parent_station ?parent_station .
+
+    OPTIONAL {?stopContainer xyz:stop_name ?accName} .
+
+    ?stopContainer xyz:location_type "2" .
+
+    ?stopContainerParStation xyz:stop_name ?name .
+    ?stopContainerParStation  xyz:stop_id ?parent_station .
+
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?stop_id ) AS ?stop ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?parent_station ) AS ?parStation ) .
+	}
+
+}

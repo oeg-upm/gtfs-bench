@@ -1,0 +1,44 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?routeShortName ?routeDescription ?tripShortName ?stopDescription ?stopLat ?stopLong   WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?r rdf:_1 ?route_id .
+    OPTIONAL { ?r rdf:_3 ?routeShortName . }
+    OPTIONAL { ?r rdf:_5 ?routeDescription . }
+	}
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?t rdf:_1 ?route_id .
+    ?t rdf:_3 ?trip_id .
+    OPTIONAL { ?t rdf:_5 ?tripShortName . }
+    ?t rdf:_2 ?service_id .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stoptime rdf:_1 ?trip_id .
+    ?stoptime rdf:_4 ?stop_id .
+
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stop rdf:_1 ?stop_id .
+    ?stop rdf:_12 "1" .
+    OPTIONAL { ?stop rdf:_4 ?stopDescription . }
+    OPTIONAL {
+      ?stop rdf:_5 ?stopLat .
+      ?stop rdf:_6 ?stopLong .
+      BIND ( xsd:double ( ?stop_lat ) AS ?stop_lat_lt ) .
+  		BIND ( xsd:double ( ?stop_lon ) AS ?stop_lon_lt ) .
+    }
+	}
+
+  FILTER (?route_id="0000000000000000000c")
+
+}

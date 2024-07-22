@@ -1,0 +1,25 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+
+SELECT ?stop ?stopDescription ?wheelchairAccesible ?stopLat ?stopLon  WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+
+		?stopsContainer xyz:stop_id ?stop_id .
+		OPTIONAL { ?stopsContainer xyz:stop_desc ?stopDescription . }
+		OPTIONAL {
+			?stopsContainer xyz:wheelchair_boarding ?wheelchair_boarding
+			BIND ( fx:entity ( "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/", ?wheelchair_boarding ) AS ?wheelchairAccesible )
+		}
+		BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?stop_id ) AS ?stop_id_iri ) .
+		?stopsContainer 	xyz:stop_lat ?stop_lat .
+		?stopsContainer		xyz:stop_lon ?stop_lon .
+
+		BIND ( xsd:double ( ?stop_lat ) AS ?stopLat ) .
+		BIND ( xsd:double ( ?stop_lon ) AS ?stopLon ) .
+
+		FILTER (?stopLat > 518) .
+
+	}
+}

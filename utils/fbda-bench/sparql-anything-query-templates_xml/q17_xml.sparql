@@ -1,0 +1,30 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?routeName ?routeType ?trip ?startTime ?endTime WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+      ?tripContainer  rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+      ?tripContainer  rdfs:member [ a xyz:route_id ; rdfs:member ?route_id ].
+    }
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+      ?routeContainer  rdfs:member [ a xyz:route_id ; rdfs:member ?route_id  ] .
+      ?routeContainer  rdfs:member [ a xyz:route_short_name ; rdfs:member ?routeName ] .
+      ?routeContainer rdfs:member [ a xyz:route_type ; rdfs:member ?route_type ] .
+      BIND ( fx:entity( "http://transport.linkeddata.es/resource/RouteType/",?route_type) AS ?routeType )
+    }
+
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/FREQUENCIES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+      ?frequenciesContainer  rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+      ?frequenciesContainer rdfs:member [ a xyz:start_time ; rdfs:member ?startTime ] .
+      ?frequenciesContainer rdfs:member [ a xyz:end_time ; rdfs:member ?endTime ] .
+    }
+
+
+}

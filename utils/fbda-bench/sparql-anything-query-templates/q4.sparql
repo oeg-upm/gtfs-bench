@@ -1,0 +1,22 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?route ?routeShortName ?routeLongName ?routeDescription ?agency ?agencyName ?agencyPhone WHERE {
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?r xyz:route_url ?route_url .
+	  BIND ( fx:entity( ?route_url ) AS ?route ) .
+    OPTIONAL { ?r xyz:route_short_name ?routeShortName  . }
+    OPTIONAL { ?r xyz:route_long_name ?routeLongName  . }
+    OPTIONAL { ?r xyz:route_desc ?routeDescription  . }
+    ?r xyz:agency_id ?agency_id .
+	}
+
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/AGENCY.%format,%param,slice=%slice,strategy=%strategy> {
+    ?a xyz:agency_id ?agency_id ;
+      xyz:agency_url ?agency_url ;
+      xyz:agency_name ?agencyName ;
+      OPTIONAL { ?a xyz:agency_phone ?agencyPhone . }
+    BIND (fx:entity (?agency_url) AS ?agency ) .
+  }
+
+}

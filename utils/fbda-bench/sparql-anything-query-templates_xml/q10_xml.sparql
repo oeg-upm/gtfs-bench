@@ -1,0 +1,23 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (count(distinct ?trip) as ?count)  WHERE {
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?tripContainer rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id  ] .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?stoptime rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id  ] .
+    ?stoptime rdfs:member [ a xyz:departure_time ;  rdfs:member ?departure_time ] .
+    BIND ( fx:literal( ?departure_time, xsd:duration) AS ?departureTime ) .
+    FILTER (?departureTime >= "00:30:00"^^xsd:duration) .
+  }
+
+}
