@@ -200,6 +200,8 @@ Additionally to the generator engine, that provides the data at desirable scales
 
 Our experiences testing (virtual) knowledge graph engines have revealed the difficulties for setting up an infrastructure where many variables and resources are involved: databases, raw data, mappings, queries, data paths, mapping paths, databases connections, etc. For that reason, and in order to facilitate the use of the benchmark to any developer or practitioner, we provide a set of [utils](https://github.com/oeg-upm/gtfs-bench/tree/master/utils) such as docker-compose templates or evaluation bash scripts that, in our opinion, can reduce the time for preparing the testing set up.
 
+Moreover, the utils folder contains a series of scripts for evaluating Façade-based data access engines (e.g. [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything)) [more details](utils/fbda-bench/README.md).
+
 ## Desirable Metrics:
 
 We highly recommend that (virutalizers or materializers) KG construction engines tested with this benchmark provide (at least) the following metris:
