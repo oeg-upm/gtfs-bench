@@ -1,0 +1,30 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?longName (count( ?name) as ?count) WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?routeContainer xyz:route_id ?route_id .
+    ?routeContainer xyz:route_long_name ?longName  .
+	}
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?t xyz:route_id ?route_id .
+    ?t xyz:trip_id ?trip_id .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stoptime xyz:trip_id ?trip_id .
+    ?stoptime xyz:stop_id ?stop_id .
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stop xyz:stop_id ?stop_id .
+    ?stop xyz:stop_name ?name .
+    ?stop xyz:wheelchair_boarding "1" .
+	}
+
+} GROUP BY ?longName

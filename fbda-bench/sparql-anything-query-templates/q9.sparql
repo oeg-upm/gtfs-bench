@@ -1,0 +1,29 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?trip ?tripShortName ?service ?route ?shape ?shapePoint ?lat WHERE {
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?tripContainer xyz:trip_id ?trip_id .
+    ?tripContainer xyz:service_id ?service_id .
+    ?tripContainer xyz:route_id ?route_id .
+    ?tripContainer xyz:shape_id ?shape_id .
+    OPTIONAL { ?tripContainer xyz:trip_short_name ?tripShortName . }
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/routes/", ?route_id ) AS ?route ) .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/shape/", ?shape_id ) AS ?shape ) .
+  }
+
+  # shapes, shapes_points
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/SHAPES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?shapeContainer xyz:shape_id ?shape_id .
+    ?shapeContainer xyz:shape_pt_sequence ?shape_pt_sequence .
+    ?shapeContainer xyz:shape_pt_lat ?shape_pt_lat .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/shape_point/", ?shape_id ,"-", ?shape_pt_sequence ) AS ?shapePoint )
+    BIND ( xsd:double(?shape_pt_lat) AS ?lat ) .
+    FILTER (?lat > 17514)
+	}
+
+}

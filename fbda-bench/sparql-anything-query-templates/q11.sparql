@@ -1,0 +1,33 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT DISTINCT ?service ?calendarRule ?trip ?startDate ?endDate WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+      ?tripContainer xyz:trip_id ?trip_id .
+      ?tripContainer xyz:service_id ?service_id .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+    }
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR.%format,%param,slice=%slice,strategy=%strategy> {
+      ?calendareDatesContainer xyz:service_id ?service_id .
+        ?calendareDatesContainer xyz:start_date ?startDate .
+        ?calendareDatesContainer xyz:end_date ?endDate .
+        BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_rules/", ?service_id ) AS ?calendarRule ) .
+        BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service ) .
+
+        FILTER (xsd:date(?startDate) < "2017-07-02"^^xsd:date) .
+        FILTER (xsd:date(?endDate) > "2017-07-02"^^xsd:date) .
+      }
+
+      # service2, calendar_date_rules
+      SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR_DATES.%format,%param,slice=%slice,strategy=%strategy> {
+        ?calendarDatesContainer xyz:service_id ?service_id .
+        FILTER NOT EXISTS {
+            ?calendarDatesContainer xyz:date "2017-07-02" .
+            ?calendarDatesContainer xyz:exception_type "false" .
+        }
+      }
+
+
+}

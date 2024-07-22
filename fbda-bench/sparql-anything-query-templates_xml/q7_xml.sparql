@@ -1,0 +1,44 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?routeShortName ?routeDescription ?tripShortName ?stopDescription ?stopLat ?stopLong   WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?r rdfs:member [ a xyz:route_id ; rdfs:member ?route_id ] .
+    OPTIONAL { ?r rdfs:member [ a xyz:route_short_name ; rdfs:member ?routeShortName ] . }
+    OPTIONAL { ?r rdfs:member [ a xyz:route_desc  ; rdfs:member ?routeDescription ] . }
+	}
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?t rdfs:member [ a xyz:route_id ; rdfs:member ?route_id  ] .
+    ?t rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+    OPTIONAL { ?t rdfs:member [ a xyz:trip_short_name ; rdfs:member ?tripShortName ] . }
+    ?t rdfs:member [ a xyz:service_id ; rdfs:member ?service_id ] .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?stoptime rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+    ?stoptime rdfs:member [ a xyz:stop_id ; rdfs:member ?stop_id ] .
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?stop rdfs:member [ a xyz:stop_id ; rdfs:member ?stop_id  ] .
+    ?stop rdfs:member [ a xyz:wheelchair_boarding ; rdfs:member  "1"  ] .
+    OPTIONAL { ?stop rdfs:member [ a  xyz:stop_desc ; rdfs:member ?stopDescription  ] . }
+    OPTIONAL {
+      ?stop rdfs:member [ a xyz:stop_lat ; rdfs:member ?stopLat  ] .
+      ?stop rdfs:member [ a xyz:stop_lon ; rdfs:member ?stopLong  ] .
+      BIND ( xsd:double ( ?stop_lat ) AS ?stop_lat_lt ) .
+  		BIND ( xsd:double ( ?stop_lon ) AS ?stop_lon_lt ) .
+    }
+	}
+
+  FILTER (?route_id="0000000000000000000c")
+
+}

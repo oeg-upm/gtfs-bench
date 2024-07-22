@@ -1,0 +1,52 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX gtfs: <http://vocab.gtfs.org/terms#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?stop ?p ?str WHERE {
+
+  # stops
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+
+        ?stopContainer rdfs:member [ a ?key ; rdfs:member ?str  ] .
+        ?stopContainer rdfs:member [ a xyz:stop_id ; rdfs:member ?stop_id  ] .
+
+        BIND (
+            IF (?key=xyz:stop_code, gtfs:code,
+              IF (?key=xyz:stop_id, dct:identifier,
+                IF (?key=xyz:stop_name, foaf:name,
+                  IF (?key=xyz:stop_desc, dct:description,
+                    IF (?key=xyz:stop_lat, geo:lat,
+                      IF (?key=xyz:stop_lon, geo:long,
+                        IF (?key=xyz:zone_id, gtfs:zone,
+                          IF (?key=xyz:stop_url, foaf:page,
+                            IF (?key=xyz:location_type, gtfs:locationType,
+                              IF (?key=xyz:stop_timezone, gtfs:timeZone,
+                                IF (?key=xyz:wheelchair_boarding, gtfs:wheelchairAccessible,
+                                  IF (?key=xyz:parent_station, gtfs:parentStation,
+                                      "ERROR"
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ) AS ?p
+        )
+
+        FILTER regex (?str, '000000000000000002')
+
+        BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?stop_id ) AS ?stop ) .
+      }
+
+} ORDER BY ?stop

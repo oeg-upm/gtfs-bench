@@ -1,0 +1,24 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?stop ?stopDescription ?wheelchairAccesible ?stopLat ?stopLon ?location  WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+
+		?s rdfs:member [ a xyz:stop_code ; rdfs:member ?stop_url ] .
+		OPTIONAL { ?s rdfs:member [ a xyz:stop_desc ; rdfs:member ?stopDescription  ]. }
+		OPTIONAL { ?s rdfs:member [ a xyz:wheelchair_boarding ; rdfs:member ?wheelchair_boarding ] .
+							BIND ( fx:entity ( "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/", ?wheelchair_boarding ) AS ?wheelchairAccesible ) }
+		OPTIONAL {
+                ?s rdfs:member [ a xyz:stop_lat ; rdfs:member ?stopLat ] .
+    		        ?s rdfs:member [ a xyz:stop_lon ; rdfs:member ?stopLon ] .
+    }
+		BIND ( fx:entity ( ?stop_url ) AS ?stop ) .
+    ?s rdfs:member [ a xyz:location_type ; rdfs:member ?location_type  ] .
+		BIND ( fx:entity ( "http://transport.linkeddata.es/resource/LocationType/", ?location_type ) AS ?location ) .
+    FILTER (?location=<http://transport.linkeddata.es/resource/LocationType/2>)
+	}
+}

@@ -1,0 +1,25 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?route ?routeShortName ?routeLongName ?routeDescription ?agency ?agencyName ?agencyPhone WHERE {
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?r rdfs:member [ a xyz:route_url ;  rdfs:member ?route_url  ] .
+	  BIND ( fx:entity( ?route_url ) AS ?route ) .
+    OPTIONAL { ?r rdfs:member [ a xyz:route_short_name ; rdfs:member ?routeShortName  ] }
+    OPTIONAL { ?r rdfs:member [ a xyz:route_long_name ; rdfs:member ?routeLongName  ] }
+    OPTIONAL { ?r rdfs:member [ a xyz:route_desc ; rdfs:member ?routeDescription  ] }
+    ?r rdfs:member [ a xyz:agency_id ; rdfs:member ?agency_id  ]
+	}
+
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/AGENCY.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?a rdfs:member [ a  xyz:agency_id ; rdfs:member ?agency_id ] ;
+      rdfs:member [ a xyz:agency_url ; rdfs:member ?agency_url ] ;
+      rdfs:member [ a xyz:agency_name ; rdfs:member ?agencyName  ] .
+      OPTIONAL { ?a rdfs:member [ a xyz:agency_phone ; rdfs:member ?agencyPhone  ] }
+    BIND (fx:entity (?agency_url) AS ?agency ) .
+  }
+
+}

@@ -1,0 +1,12 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?shape ?shapePoint ?shape_pt_lat ?shape_pt_lon ?shape_pt_sequence WHERE {
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/SHAPES.%format,%param,slice=%slice,strategy=%strategy> {
+		[] xyz:shape_id ?shape_id ; xyz:shape_pt_sequence ?shape_pt_sequence ; xyz:shape_pt_lat ?shape_pt_lat_in ; xyz:shape_pt_lon ?shape_pt_lon_in .
+		BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/shape/", ?shape_id ) AS ?shape ) .
+		BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/shape_point/", ?shape_id ,"-", ?shape_pt_sequence ) AS ?shapePoint )
+		BIND ( xsd:double(?shape_pt_lat_in) AS ?shape_pt_lat ) .
+		BIND ( xsd:double(?shape_pt_lon_in) AS ?shape_pt_lon ) .
+	}
+}

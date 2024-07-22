@@ -1,0 +1,33 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?longName (count( ?name) as ?count) WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?routeContainer rdfs:member [ a xyz:route_id ; rdfs:member ?route_id  ] .
+    ?routeContainer rdfs:member [ a xyz:route_long_name ; rdfs:member ?longName  ] .
+	}
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?t rdfs:member [ a xyz:route_id ; rdfs:member ?route_id ] .
+    ?t rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?stoptime rdfs:member [ a xyz:trip_id ; rdfs:member ?trip_id ] .
+    ?stoptime rdfs:member [ a xyz:stop_id ; rdfs:member ?stop_id ] .
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+    ?stop rdfs:member [ a xyz:stop_id ; rdfs:member ?stop_id ] .
+    ?stop rdfs:member [ a xyz:stop_name ; rdfs:member ?name ] .
+    ?stop rdfs:member [ a xyz:wheelchair_boarding ; rdfs:member "1" ] .
+	}
+
+} GROUP BY ?longName

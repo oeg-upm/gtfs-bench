@@ -1,0 +1,28 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+
+SELECT ?routeName ?routeType ?trip ?startTime ?endTime WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+      ?tripContainer xyz:trip_id ?trip_id .
+      BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+      ?tripContainer xyz:route_id ?route_id .
+    }
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy> {
+      ?routeContainer xyz:route_id ?route_id .
+      ?routeContainer xyz:route_short_name ?routeName  .
+      ?routeContainer xyz:route_type ?route_type .
+      BIND ( fx:entity( "http://transport.linkeddata.es/resource/RouteType/",?route_type) AS ?routeType )
+    }
+
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/FREQUENCIES.%format,%param,slice=%slice,strategy=%strategy> {
+      ?frequenciesContainer xyz:trip_id ?trip_id .
+      ?frequenciesContainer xyz:start_time ?startTime .
+      ?frequenciesContainer xyz:end_time ?endTime .
+    }
+
+
+}

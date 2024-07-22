@@ -1,0 +1,55 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+SELECT ?route ?routeShortName ?routeDescription ?trip ?tripShortName ?service ?stopTime ?stop ?stopDescription ?serviceRule  WHERE {
+
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/ROUTES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?routeContainer xyz:route_id ?route_id .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/routes/", ?route_id ) AS ?route ) .
+    OPTIONAL { ?routeContainer xyz:route_short_name ?routeShortName . }
+    OPTIONAL { ?routeContainer xyz:route_desc ?routeDescription . }
+	}
+
+  # trips
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/TRIPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?t xyz:route_id ?route_id .
+    ?t xyz:trip_id ?trip_id .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/trips/", ?trip_id ) AS ?trip ) .
+    OPTIONAL { ?t xyz:trip_short_name ?tripShortName . }
+    ?t xyz:service_id ?service_id .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service ) .
+  }
+
+  # stoptimes
+  SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOP_TIMES.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stoptime xyz:trip_id ?trip_id .
+    ?stoptime xyz:stop_id ?stop_id .
+    ?stoptime  xyz:arrival_time ?arrival_time .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stoptimes/",?trip_id,"-",?stop_id,"-",?arrival_time) AS ?stopTime )
+  }
+
+  # stops
+	SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/STOPS.%format,%param,slice=%slice,strategy=%strategy> {
+    ?stopContainer xyz:stop_id ?stop_id .
+    BIND ( fx:entity( "http://transport.linkeddata.es/madrid/metro/stops/", ?stop_id ) AS ?stop )
+    OPTIONAL { ?stopContainer xyz:stop_desc ?stopDescription . }
+	}
+
+  {
+    # services1, calendar_rules
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR.%format,%param,slice=%slice,strategy=%strategy> {
+      [] xyz:service_id ?service_id .
+      BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_rules/", ?service_id ) AS ?serviceRule ) .
+    }
+  } UNION {
+    # service2, calendar_date_rules
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR_DATES.%format,%param,slice=%slice,strategy=%strategy> {
+      [] xyz:service_id ?service_id ; xyz:date ?date .
+      BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_date_rule/", ?service_id, "-", ?date ) AS ?serviceRule ) .
+    }
+  }
+
+
+
+
+}

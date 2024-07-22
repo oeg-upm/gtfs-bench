@@ -1,0 +1,16 @@
+Query	InputSize	Strategy	Slice	Ondisk	MemoryLimit	Run	Time	Unit	Status	STDErr
+q1	1	strategy1	no_slice	True	32768	RUN1	239	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	32768	RUN2	235	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	32768	RUN3	229	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	16384	RUN1	235	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	16384	RUN2	243	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	16384	RUN3	232	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	8192	RUN1	245	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	8192	RUN2	237	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	8192	RUN3	240	ms	Error	Error: Unable to access jarfile sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	32768	RUN1	243	ms	Error	Error: Unable to access jarfile ./sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	32768	RUN2	240	ms	Error	Error: Unable to access jarfile ./sparql-anything-0.8.3.jar
+q1	1	strategy1	no_slice	True	32768	RUN1	4853	ms	OK	[main] INFO com.github.sparqlanything.cli.SPARQLAnything - SPARQL anything
+q1	1	strategy1	no_slice	True	32768	RUN2	4057	ms	OK	[main] INFO com.github.sparqlanything.cli.SPARQLAnything - SPARQL anything
+q1	1	strategy1	no_slice	True	32768	RUN3	3849	ms	OK	[main] INFO com.github.sparqlanything.cli.SPARQLAnything - SPARQL anything
+q1	1	strategy1	no_slice	True	16384	RUN1	3869	ms	OK	[main] INFO com.github.sparqlanything.cli.SPARQLAnything - SPARQL anything

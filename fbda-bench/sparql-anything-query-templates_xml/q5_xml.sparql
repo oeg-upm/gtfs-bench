@@ -1,0 +1,22 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?service ?serviceRule ?date WHERE {
+
+    SERVICE <x-sparql-anything:location=../result/datasets/%format/%size/CALENDAR_DATES.%format,%param,slice=%slice,strategy=%strategy,use-rdfs-member=true> {
+
+      ?calendarDatesContainer rdfs:member [ a xyz:service_id ; rdfs:member ?service_id ] ;
+        rdfs:member [ a xyz:date ; rdfs:member ?dateex ] ;
+        rdfs:member [ a xyz:exception_type ; rdfs:member ?exception_type ] .
+
+      BIND( fx:entity("http://transport.linkeddata.es/madrid/metro/calendar_date_rule/", ?service_id, "-", ?date ) AS ?serviceRule ) .
+      BIND( fx:entity( "http://transport.linkeddata.es/madrid/metro/services/", ?service_id ) AS ?service ) .
+      BIND( xsd:date( ?dateex ) AS ?date ) .
+      BIND( xsd:boolean( ?exception_type ) AS ?exception_type_lt ) .
+      FILTER( ?date > "2016-06-01"^^xsd:date )
+      FILTER( ?exception_type_lt=true )
+    }
+}
