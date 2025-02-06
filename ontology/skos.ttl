@@ -1,0 +1,319 @@
+@prefix : <http://vocab.gtfs.org/terms#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix schema: <http://schema.org/> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix transit: <http://vocab.org/transit/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@base <http://vocab.gtfs.org/terms#> .
+
+#Wheelchair Accesibility
+
+<http://transport.linkeddata.es/kos/wheelchair-accesible> a skos:ConceptScheme;
+	skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/no-information> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/accesible> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/inaccesible> ;
+    skos:prefLabel "Wheelchair Accesible"@en ;
+    dc:title "Types of wheelchair accesibility. No information, accesible or inaccesible."@en .
+
+<http://transport.linkeddata.es/kos/wheelchair-accesible/no-information>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/wheelchair-accesible> ;
+  skos:notation "No information" ;
+  skos:prefLabel "No information"@en .
+
+<http://transport.linkeddata.es/kos/wheelchair-accesible/accesible>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/wheelchair-accesible> ;
+  skos:notation "Accesible" ;
+  skos:prefLabel "Accesible"@en .
+
+<http://transport.linkeddata.es/kos/wheelchair-accesible/inaccesible> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/wheelchair-accesible> ;
+  skos:notation "Inaccesible" ;
+  skos:prefLabel "Inaccesible"@en .  
+
+#Location Type
+
+<http://transport.linkeddata.es/kos/location-type> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/location-type/stop> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/location-type/station> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/location-type/entrance-exit> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/location-type/generic-node> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/location-type/boarding-area> ;
+    skos:prefLabel "Location Type"@en ;
+    dc:title "Types of locations. Stop, station, entrance/exit, generic node and boarding area."@en .
+
+<http://transport.linkeddata.es/kos/location-type/stop>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/location-type> ;
+  skos:notation "Stop" ;
+  skos:prefLabel "Stop"@en .
+
+<http://transport.linkeddata.es/kos/location-type/station>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/location-type> ;
+  skos:notation "Station" ;
+  skos:prefLabel "Station"@en .
+
+<http://transport.linkeddata.es/kos/location-type/entrance-exit> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/location-type> ;
+  skos:notation "Entrance/Exit" ;
+  skos:prefLabel "Entrance/Exit"@en .  
+
+<http://transport.linkeddata.es/kos/location-type/generic-node>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/location-type> ;
+  skos:notation "Generic Node" ;
+  skos:prefLabel "Generic Node"@en .
+
+<http://transport.linkeddata.es/kos/location-type/boarding-area> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/location-type> ;
+  skos:notation "Boarding Area" ;
+  skos:prefLabel "Boarding Area"@en .  
+
+#Route Type
+
+<http://transport.linkeddata.es/kos/route-type> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/tram> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/subway> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/rail> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/bus> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/ferry> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/cable-tram> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/aerial-lift> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/funicular> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/trolleybus> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/route-type/monorail> ;
+    skos:prefLabel "Route Type"@en ;
+    dc:title "Type of transportation used on a route. Tram, subway, rail, bus, ferry, cable tram, aerial lift, funicular, trolleybus and monorail."@en .
+
+<http://transport.linkeddata.es/kos/route-type/tram>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Tram" ;
+  skos:prefLabel "Tram"@en .
+
+<http://transport.linkeddata.es/kos/route-type/subway>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Subway" ;
+  skos:prefLabel "Subway"@en .
+
+<http://transport.linkeddata.es/kos/route-type/rail>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Rail" ;
+  skos:prefLabel "Rail"@en .
+
+<http://transport.linkeddata.es/kos/route-type/bus>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Bus" ;
+  skos:prefLabel "Bus"@en .
+
+<http://transport.linkeddata.es/kos/route-type/ferry>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Ferry" ;
+  skos:prefLabel "Ferry"@en .
+
+<http://transport.linkeddata.es/kos/route-type/cable-tram>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Cable Tram" ;
+  skos:prefLabel "Cable Tram"@en .
+
+<http://transport.linkeddata.es/kos/route-type/aerial-lift>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Aerial Lift" ;
+  skos:prefLabel "Aerial Lift"@en .
+
+<http://transport.linkeddata.es/kos/route-type/funicular>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Funicular" ;
+  skos:prefLabel "Funicular"@en .
+
+<http://transport.linkeddata.es/kos/route-type/trolleybus>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Trolleybus" ;
+  skos:prefLabel "Trolleybus"@en .  
+
+<http://transport.linkeddata.es/kos/route-type/monorail>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/route-type> ;
+  skos:notation "Monorail" ;
+  skos:prefLabel "Monorail"@en .
+
+#Pickup
+
+<http://transport.linkeddata.es/kos/pickup> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/pickup/available> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/pickup/not-continuous> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/pickup/must-phone> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/pickup/coordinate-with-driver> ;
+    skos:prefLabel "Pickup"@en ;
+    dc:title "Options for a rider to board the transit vehicle at any point along the vehicle’s travel path as described by shapes.txt, on every trip of the route. Avaliable, not avaliable, must phone or driver coordinate with driver."@en .
+
+<http://transport.linkeddata.es/kos/pickup/available>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/pickup> ;
+  skos:notation "Available" ;
+  skos:prefLabel "Available"@en .
+
+<http://transport.linkeddata.es/kos/pickup/not-available>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/pickup> ;
+  skos:notation "Not Available" ;
+  skos:prefLabel "Not Available"@en .
+
+<http://transport.linkeddata.es/kos/pickup/must-phone>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/pickup> ;
+  skos:notation "Must Phone" ;
+  skos:prefLabel "Must Phone"@en .
+
+<http://transport.linkeddata.es/kos/pickup/coordinate-with-driver>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/pickup> ;
+  skos:notation "Coordinate With Driver" ;
+  skos:prefLabel "Coordinate With Driver"@en .
+
+#Drop Off
+
+<http://transport.linkeddata.es/kos/drop-off> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/drop-off/available> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/drop-off/not-available> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/drop-off/must-phone> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/drop-off/coordinate-with-driver> ;
+    skos:prefLabel "Drop Off"@en ;
+    dc:title "Options for a rider to alight the transit vehicle at any point along the vehicle’s travel path as described by shapes.txt, on every trip of the route. Avaliable, not avaliable, must phone or driver coordinate with driver."@en .
+
+<http://transport.linkeddata.es/kos/drop-off/available>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/drop-off> ;
+  skos:notation "Available" ;
+  skos:prefLabel "Available"@en .
+
+<http://transport.linkeddata.es/kos/drop-off/not-available>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/drop-off> ;
+  skos:notation "Not Available" ;
+  skos:prefLabel "Not Available"@en .
+
+<http://transport.linkeddata.es/kos/drop-off/must-phone>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/drop-off> ;
+  skos:notation "Must Phone" ;
+  skos:prefLabel "Must Phone"@en .
+
+<http://transport.linkeddata.es/kos/drop-off/coordinate-with-driver>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/drop-off> ;
+  skos:notation "Coordinate With Driver" ;
+  skos:prefLabel "Coordinate With Driver"@en .
+
+#Direction ID  
+
+<http://transport.linkeddata.es/kos/direction> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/direction/one-direction> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/direction/opposite-direction> ;
+    skos:prefLabel "Direction"@en ;
+    dc:title "Direction of travel for a trip. One direction or oppostite direction."@en .
+
+<http://transport.linkeddata.es/kos/direction/one-direction>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/direction> ;
+  skos:notation "One Direction" ;
+  skos:prefLabel "One Direction"@en .
+
+<http://transport.linkeddata.es/kos/direction/opposite-direction> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/direction> ;
+  skos:notation "Opposite Direction" ;
+  skos:prefLabel "Opposite Direction"@en .  
+
+#Bikes Allowed
+
+<http://transport.linkeddata.es/kos/bikes-allowed> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/no-information> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/accesible> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/wheelchair-accesible/inaccesible> ;
+    skos:prefLabel "Bikes Allowed"@en ;
+    dc:title "Indicates whether bikes are allowed. No information, allowed, not allowed."@en .
+
+<http://transport.linkeddata.es/kos/bikes-allowed/no-information>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/bikes-allowed> ;
+  skos:notation "No information" ;
+  skos:prefLabel "No information"@en .
+
+<http://transport.linkeddata.es/kos/bikes-allowed/allowed>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/bikes-allowed> ;
+  skos:notation "Allowed" ;
+  skos:prefLabel "Allowed"@en .
+
+<http://transport.linkeddata.es/kos/bikes-allowed/not-allowed> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/bikes-allowed> ;
+  skos:notation "Not Allowed" ;
+  skos:prefLabel "Not Allowed"@en .  
+
+#Timepoint
+
+<http://transport.linkeddata.es/kos/timepoint> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/timepoint/approximated> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/timepoint/exact> ;
+    skos:prefLabel "Direction ID"@en ;
+    dc:title "Indicates if arrival and departure times for a stop are strictly adhered to by the vehicle or if they are instead approximate and/or interpolated times. Approximated or exact."@en .
+
+<http://transport.linkeddata.es/kos/timepoint/approximated>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/timepoint> ;
+  skos:notation "Approximated" ;
+  skos:prefLabel "Approximated"@en .
+
+<http://transport.linkeddata.es/kos/timepoint/exact> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/timepoint> ;
+  skos:notation "Exact" ;
+  skos:prefLabel "Exact"@en . 
+
+#Service Avaliability 
+
+<http://transport.linkeddata.es/kos/day> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/day/available> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/day/not-available> ;
+    skos:prefLabel "Service Avaliability"@en ;
+    dc:title "Indicates whether the service operates on days in the date range specified by the start_date and end_date fields. Available or not available."@en .
+
+<http://transport.linkeddata.es/kos/day/available>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/day> ;
+  skos:notation "Available" ;
+  skos:prefLabel "Available"@en .
+
+<http://transport.linkeddata.es/kos/day/not-available> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/day> ;
+  skos:notation "Not Available" ;
+  skos:prefLabel "Not Available"@en .  
+
+#Exception Type
+
+<http://transport.linkeddata.es/kos/exception-type> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/exception-type/added> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/exception-type/removed> ;
+    skos:prefLabel "Exception Type"@en ;
+    dc:title "Indicates whether service is available on the date specified in the date field. Added or removed."@en .
+
+<http://transport.linkeddata.es/kos/exception-type/added>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/exception-type> ;
+  skos:notation "Added" ;
+  skos:prefLabel "Added"@en .
+
+<http://transport.linkeddata.es/kos/exception-type/removed> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/exception-type> ;
+  skos:notation "Removed" ;
+  skos:prefLabel "Removed"@en .
+
+#Exact Times
+
+<http://transport.linkeddata.es/kos/exact-times> a skos:ConceptScheme;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/exact-times/frequency> ;
+    skos:hasTopConcept <http://transport.linkeddata.es/kos/exact-times/schedule> ;
+    skos:prefLabel "Exact Times"@en ;
+    dc:title "Type of service for a trip. Frequency or schedule based."@en .
+
+<http://transport.linkeddata.es/kos/exact-times/frequency>  a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/exact-times> ;
+  skos:notation "Frequency" ;
+  skos:prefLabel "Frequency"@en .
+
+<http://transport.linkeddata.es/kos/exact-times/schedule> a skos:Concept ;
+  skos:inScheme <http://transport.linkeddata.es/kos/exact-times> ;
+  skos:notation "Schedule" ;
+  skos:prefLabel "Schedule"@en .

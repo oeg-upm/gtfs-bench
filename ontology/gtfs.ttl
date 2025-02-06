@@ -15,6 +15,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix transit: <http://vocab.org/transit/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @base <http://vocab.gtfs.org/terms#> .
 
 <http://vocab.gtfs.org/terms#> rdf:type owl:Ontology ;
@@ -86,58 +87,6 @@ gtfs:comment rdfs:comment "A comment on the relation between the RDFS ontology a
              rdf:type owl:AnnotationProperty ;
              rdfs:subPropertyOf rdfs:comment .
 
-
-###  http://vocab.gtfs.org/terms#fareUrl
-gtfs:fareUrl rdfs:comment "La URL de una página web que permite a un usuario comprar online billetes u otros productos de transporte de esa empresa"@es ,
-                          "The URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online"@en ;
-             rdfs:label "URL de tarifas"@es ,
-                        "fare URL"@en ;
-             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#agency_fields> ;
-             status:term_status "inestable"@es ,
-                                "unstable"@en ;
-             rdf:type owl:AnnotationProperty ;
-             rdfs:subPropertyOf foaf:page ;
-             rdfs:domain gtfs:Agency .
-
-
-###  http://vocab.gtfs.org/terms#longName
-gtfs:longName rdfs:comment "Long name given to a route. This name is generally more descriptive than the gtfs:shortName and often includes the route's destination or stop."@en ,
-                           "Nombre completo de una ruta"@es ;
-              rdfs:label "Long name"@en ,
-                         "nombre completo"@es ;
-              rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteLongName> ;
-              status:term_status "inestable"@es ,
-                                 "unstable"@en ;
-              rdf:type owl:AnnotationProperty ;
-              rdfs:subPropertyOf dct:title ;
-              rdfs:domain gtfs:Route .
-
-
-###  http://vocab.gtfs.org/terms#serviceRule
-gtfs:serviceRule rdfs:comment "Reglas de servicio que definen un conjunto de fechas"@es ,
-                              "Service rules which define together a set of dates"@en ;
-                 rdfs:label "Service rule"@en ,
-                            "regla de servicio"@es ;
-                 status:term_status "inestable"@es ,
-                                    "unstable"@en ;
-                 rdf:type owl:AnnotationProperty ;
-                 rdfs:domain gtfs:Service .
-
-
-###  http://vocab.gtfs.org/terms#shortName
-gtfs:shortName rdfs:comment "Nombre corto dado a una ruta o viaje"@es ,
-                            "Short name given to a route or a trip"@en ;
-               rdfs:label "Short name"@en ,
-                          "nombre corto"@es ;
-               rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteShortName> ;
-               status:term_status "inestable"@es ,
-                                  "unstable"@en ;
-               rdf:type owl:AnnotationProperty ;
-               rdfs:subPropertyOf dct:title ;
-               rdfs:domain gtfs:Route ,
-                           gtfs:Trip .
-
-
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
 status:term_status rdf:type owl:AnnotationProperty .
 
@@ -184,6 +133,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  http://vocab.gtfs.org/terms#agency
 gtfs:agency rdf:type owl:ObjectProperty ;
+            rdfs:domain gtfs:Route ;
             rdfs:range gtfs:Agency ;
             rdfs:comment "Enlaza a una agencia de la que este concepto es parte."@es ,
                          "links to an agency that this is part of."@en ;
@@ -250,13 +200,35 @@ gtfs:destinationStop rdf:type owl:ObjectProperty ;
 
 ###  http://vocab.gtfs.org/terms#dropOffType
 gtfs:dropOffType rdf:type owl:ObjectProperty ;
-                 rdfs:range gtfs:SingleDropOff ;
+                 rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                    owl:hasValue <http://transport.linkeddata.es/kos/drop-off> ;
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                            ] ;
                  rdfs:comment "Indica si los pasajeros se bajan en una parada como parte del horario normal o si no pueden bajar en esa parada."@es ,
                               "Indicates drop off method."@en ;
                  rdfs:label "Drop off type"@en ,
                             "tipo de bajada"@es ;
                  status:term_status "inestable"@es ,
                                     "unstable"@en .
+
+
+gtfs:continuousDropOff rdf:type owl:ObjectProperty ;
+                       rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                          owl:hasValue <http://transport.linkeddata.es/kos/drop-off> ;
+                                                        ]
+                                                     ) ;
+                                    rdf:type owl:Class
+                                ] ;
+                       rdfs:comment "Indica si se bajan los pasajeros en cualquier punto del trayecto del vehículo."@es ,
+                                    "Indicates that the rider can alight the transit vehicle at any point along the vehicle’s travel path."@en ;
+                       rdfs:label "Continuous Drop Off"@en ,
+                                  "Bajada continua"@es.
 
 
 ###  http://vocab.gtfs.org/terms#fare
@@ -311,13 +283,16 @@ gtfs:parentStation rdf:type owl:ObjectProperty ;
 ###  http://vocab.gtfs.org/terms#pathwayMode
 gtfs:pathwayMode rdf:type owl:ObjectProperty ;
                  rdfs:domain gtfs:Pathway ;
-                 rdfs:range gtfs:Elevator ,
-                            gtfs:Escalator ,
-                            gtfs:ExitGate ,
-                            gtfs:FareGate ,
-                            gtfs:MovingSidewalk ,
-                            gtfs:Stairs ,
-                            gtfs:Walkway ;
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( gtfs:Elevator 
+                                            gtfs:Escalator
+                                            gtfs:ExitGate
+                                            gtfs:FareGate
+                                            gtfs:MovingSidewalk
+                                            gtfs:Stairs
+                                            gtfs:Walkway 
+                                          )
+                            ] ;
                  rdfs:comment "Type of pathway between the specified gtfs:originStop and gtfs:destinationStop pair."@en ;
                  rdfs:label "Pathway Mode"@en .
 
@@ -338,7 +313,14 @@ gtfs:paymentMethod rdf:type owl:ObjectProperty ;
 
 ###  http://vocab.gtfs.org/terms#pickupType
 gtfs:pickupType rdf:type owl:ObjectProperty ;
-                rdfs:range gtfs:SinglePickup ;
+                rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                    owl:hasValue <http://transport.linkeddata.es/kos/pickup> ;
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                            ] ;
                 rdfs:comment "Indica si se recogen los pasajeros en una parada como parte del horario normal o si su recogida en dicha parada no se encuentra disponible."@es ,
                              "Indicates pickup method."@en ;
                 rdfs:label "Pickup type"@en ,
@@ -347,11 +329,29 @@ gtfs:pickupType rdf:type owl:ObjectProperty ;
                                    "unstable"@en .
 
 
+gtfs:continuousPickup rdf:type owl:ObjectProperty ;
+                      rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                          owl:hasValue <http://transport.linkeddata.es/kos/pickup> ;
+                                                        ]
+                                                     ) ;
+                                    rdf:type owl:Class
+                                ] ;
+                      rdfs:comment "Indica si se recogen los pasajeros en cualquier punto del trayecto del vehículo."@es ,
+                                   "Indicates that the rider can board the transit vehicle at any point along the vehicle’s travel path."@en ;
+                      rdfs:label "Continuous Pickup"@en ,
+                                 "Recogida continua"@es.
+
+
 ###  http://vocab.gtfs.org/terms#route
 gtfs:route rdf:type owl:ObjectProperty ;
            rdfs:domain gtfs:Trip ;
-           rdfs:range gtfs:FareRule ,
-                      gtfs:Route ;
+           rdfs:range [ rdf:type owl:Class ;
+                        owl:unionOf ( gtfs:FareRule
+                                      gtfs:Route
+                                    )
+                      ] ;
            rdfs:comment "Este viaje forma parte de esta gtfs:Route"@es ,
                         "This thing is applicable to this gtfs:Route"@en ;
            rdfs:label "Route"@en ,
@@ -363,7 +363,14 @@ gtfs:route rdf:type owl:ObjectProperty ;
 ###  http://vocab.gtfs.org/terms#routeType
 gtfs:routeType rdf:type owl:ObjectProperty ;
                rdfs:domain gtfs:Route ;
-               rdfs:range gtfs:RouteType ;
+               rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                   owl:hasValue <http://transport.linkeddata.es/kos/route-type> ;
+                                                  ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
                rdfs:comment "Enlaza al tipo de vehículo que opera en esta ruta"@es ,
                             "Indicates the type of transportation used on a route."@en ;
                rdfs:label "Route type"@en ,
@@ -384,8 +391,21 @@ gtfs:service rdf:type owl:ObjectProperty ;
                                 "unstable"@en .
 
 
+###  http://vocab.gtfs.org/terms#serviceRule
+gtfs:serviceRule rdfs:comment "Reglas de servicio que definen un conjunto de fechas"@es ,
+                              "Service rules which define together a set of dates"@en ;
+                 rdfs:label "Service rule"@en ,
+                            "regla de servicio"@es ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en ;
+                 rdf:type owl:ObjectProperty ;
+                 rdfs:domain gtfs:Service ;
+                 rdfs:range gtfs:ServiceRule .
+
+
 ###  http://vocab.gtfs.org/terms#shape
 gtfs:shape rdf:type owl:ObjectProperty ;
+           rdfs:domain gtfs:Trip ;
            rdfs:range gtfs:Shape ;
            rdfs:comment "Identifies a geospatial shape that describes the vehicle travel path for a trip."@en ,
                         "Un enlace al recorrido que sigue el viaje."@es ;
@@ -409,6 +429,7 @@ gtfs:shapePoint rdf:type owl:ObjectProperty ;
 
 ###  http://vocab.gtfs.org/terms#stop
 gtfs:stop rdf:type owl:ObjectProperty ;
+          rdfs:domain gtfs:StopTime ;
           rdfs:range gtfs:Stop ;
           rdfs:comment "Indica que este concepto tiene cierta parada."@es ,
                        "Indicates that this has a certain stop."@en ;
@@ -445,6 +466,11 @@ gtfs:transfers rdf:type owl:ObjectProperty ;
 
 ###  http://vocab.gtfs.org/terms#trip
 gtfs:trip rdf:type owl:ObjectProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( gtfs:StopTime 
+                                      gtfs:Frequency 
+                                    )
+                      ] ;
           rdfs:range gtfs:Trip ;
           rdfs:comment "Indica que este concepto es parte de cierto gtfs:Trip"@es ,
                        "Indicates that this is part of a certain gtfs:Trip"@en ;
@@ -452,21 +478,6 @@ gtfs:trip rdf:type owl:ObjectProperty ;
                      "viaje"@es ;
           status:term_status "inestable"@es ,
                              "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#wheelchairAccessible
-gtfs:wheelchairAccessible rdf:type owl:ObjectProperty ;
-                          rdfs:domain gtfs:Station ,
-                                      gtfs:Stop ;
-                          rdfs:range gtfs:WheelchairBoardingStatus ;
-                          gtfs:comment "Si wheelchair_accessible es 0, mapee a gtfs:CheckParentStation; si es 1, mapee a gtfs:WheelchairAccessible; si es 2, mapee a gtfs:NotWheelchairAccessible."@es ,
-                                       "When wheelchair_accessible is 0, map to gtfs:CheckParentStation; if 1 map to gtfs:WheelchairAccessible; if 2 map to gtfs:NotWheelchairAccessible."@en ;
-                          rdfs:comment "La parada o estación específica es accesible para silla de ruedas. Si esta parada es parte de una estación, hay también una ruta accesible desde el exterior de la estación hasta la parada."@es ,
-                                       "Wheelchair boardings are possible from the specified stop or station. If this stop is part of a station, there is also a wheelchair accessible path from outside the station towards the stop."@en ;
-                          rdfs:label "accesible para silla de ruedas"@es ,
-                                     "wheelchair boarding"@en ;
-                          status:term_status "inestable"@es ,
-                                             "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#zone
@@ -482,42 +493,396 @@ gtfs:zone rdf:type owl:ObjectProperty ;
                              "unstable"@en .
 
 
-#################################################################
-#    Data properties
-#################################################################
+###  http://vocab.gtfs.org/terms#monday
+gtfs:monday rdf:type owl:ObjectProperty ;
+            rdfs:domain gtfs:CalendarRule ;
+            rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+            rdfs:comment "Service is available on all Mondays in the duration of the service calendar."@en ,
+                         "Servicio disponible los lunes"@es ;
+            rdfs:label "Monday"@en ,
+                       "lunes"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
 
-###  http://vocab.gtfs.org/terms#arrivalTime
-gtfs:arrivalTime rdf:type owl:DatatypeProperty ;
-                 rdfs:domain gtfs:StopTime ;
-                 rdfs:range xsd:duration ;
-                 rdfs:comment "Check the original specification for special cases"@en ,
-                              "Compruebe la especificación original para casos especiales"@es ;
-                 rdfs:label "Arrival time"@en ,
-                            "hora de llegada"@es ;
-                 rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stop_times_fields> ;
-                 status:term_status "inestable"@es ,
-                                    "unstable"@en .
+
+###  http://vocab.gtfs.org/terms#tuesday
+gtfs:tuesday rdf:type owl:ObjectProperty ;
+             rdfs:domain gtfs:CalendarRule ;
+             rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+             rdfs:comment "Service is available on all Tuesdays in the duration of the service calendar."@en ,
+                          "Servicio disponible los martes"@es ;
+             rdfs:label "Tuesday"@en ,
+                        "martes"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#bidirectional
-gtfs:bidirectional rdf:type owl:DatatypeProperty ;
-                   rdfs:domain gtfs:Pathway ;
-                   rdfs:range xsd:boolean ;
-                   rdfs:comment "Indicates in which direction the pathway can be used: [0: Unidirectional pathway, it can only be used from gtfs:originStop to gtfs:destinationStop,  1: Bidirectional pathway, it can be used in the two directions]"@en ;
-                   rdfs:label "Index"@en .
+###  http://vocab.gtfs.org/terms#wednesday
+gtfs:wednesday rdf:type owl:ObjectProperty ;
+               rdfs:domain gtfs:CalendarRule ;
+               rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+               rdfs:comment "Service is available on all Wednesdays in the duration of the service calendar."@en ,
+                            "Servicio disponible los miércoles"@es ;
+               rdfs:label "Wednesday"@en ,
+                          "miércoles"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#thursday
+gtfs:thursday rdf:type owl:ObjectProperty ;
+              rdfs:domain gtfs:CalendarRule ;
+              rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+              rdfs:comment "Service is available on all Thursdays in the duration of the service calendar."@en ,
+                           "Servicio disponible los jueves"@es ;
+              rdfs:label "Thursday"@en ,
+                         "jueves"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#friday
+gtfs:friday rdf:type owl:ObjectProperty ;
+            rdfs:domain gtfs:CalendarRule ;
+            rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+            rdfs:comment "Service is available on all Fridays in the duration of the service calendar."@en ,
+                         "Servicio disponible los viernes"@es ;
+            rdfs:label "Friday"@en ,
+                       "viernes"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#saturday
+gtfs:saturday rdf:type owl:ObjectProperty ;
+              rdfs:domain gtfs:CalendarRule ;
+              rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+              rdfs:comment "Service is available on all Saturdays in the duration of the service calendar."@en ,
+                           "Servicio disponible los sábados"@es ;
+              rdfs:label "Saturday"@en ,
+                         "sábado"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#sunday
+gtfs:sunday rdf:type owl:ObjectProperty ;
+            rdfs:domain gtfs:CalendarRule ;
+            rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/day> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+            rdfs:comment "Service is available on all Sundays in the duration of the service calendar."@en ,
+                         "Servicio disponible los domingos"@es ;
+            rdfs:label "Sunday"@en ,
+                       "domingos"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+gtfs:exceptionType rdf:type owl:ObjectProperty ;
+                   rdfs:domain gtfs:CalendarDateRule ;
+                   rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                        owl:hasValue <http://transport.linkeddata.es/kos/exception-type> ;
+                                                      ]
+                                                    ) ;
+                                rdf:type owl:Class
+                              ] ;
+                   rdfs:comment "Indicates whether service is available on the date specified in the date field. Valid options are: 1 - Service has been added for the specified date. 2 - Service has been removed for the specified date."@en ;
+                   rdfs:label "Exception Type"@en .
+
+
+###  http://vocab.gtfs.org/terms#usesExactTimes
+gtfs:usesExactTimes rdf:type owl:ObjectProperty ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                owl:hasValue <http://transport.linkeddata.es/kos/exact-times> ;
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                        ] ;
+                    gtfs:comment "Determina si los viajes basados en frecuencias deben estar programados de manera exacta según la información especificada de tiempo entre viajes. Falso cuando exact_times es 0 (o vacío), verdadero cuando es uno 1"@es ,
+                                 "Indicates the type of service for a trip. [0 or empty - Frequency-based trips. - Frequency-based service (exact_times=0) in which service does not follow a fixed schedule throughout the day. Instead, operators attempt to strictly maintain predetermined headways for trips., 1 - Schedule-based trips with the exact same headway throughout the day. has the exact same headway for trips over specified time period(s). In schedule-based service operators try to strictly adhere to a schedule.]"@en ;
+                    rdfs:label "Frequency uses exact times"@en ,
+                               "Viajes basados en frecuencias programados de manera exacta"@es ;
+                    status:term_status "inestable"@es ,
+                                       "unstable"@en .
+
+
+gtfs:locationType rdf:type owl:ObjectProperty ;
+                  rdfs:domain gtfs:Location ;
+                  rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                      owl:hasValue <http://transport.linkeddata.es/kos/location-type> ;
+                                                    ]
+                                                  ) ;
+                                rdf:type owl:Class
+                              ] ;
+                  rdfs:comment "  Location type. 0 (or empty) - Stop. 1 - Station. 2 - Entrance/Exit. 3 - Generic Node. 4 - Boarding Area."@en ;
+                  rdfs:label "LocationType"@en .
+
+
+###  http://vocab.gtfs.org/terms#wheelchairAccessible
+gtfs:wheelchairAccessible rdf:type owl:ObjectProperty ;
+                          rdfs:domain [rdf:type owl:Class; 
+                                       owl:unionOf (gtfs:Station
+                                                    gtfs:Trip
+                                                    gtfs:Stop
+                                                   )
+                                      ];
+                          rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                          owl:hasValue <http://transport.linkeddata.es/kos/wheelchair-accesible> ;
+                                        ]
+                                        ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                          gtfs:comment "Si wheelchair_accessible es 0, mapee a gtfs:CheckParentStation; si es 1, mapee a gtfs:WheelchairAccessible; si es 2, mapee a gtfs:NotWheelchairAccessible."@es ,
+                                       "When wheelchair_accessible is 0, map to gtfs:CheckParentStation; if 1 map to gtfs:WheelchairAccessible; if 2 map to gtfs:NotWheelchairAccessible."@en ;
+                          rdfs:comment "La parada o estación específica es accesible para silla de ruedas. Si esta parada es parte de una estación, hay también una ruta accesible desde el exterior de la estación hasta la parada."@es ,
+                                       "Wheelchair boardings are possible from the specified stop or station. If this stop is part of a station, there is also a wheelchair accessible path from outside the station towards the stop."@en ;
+                          rdfs:label "accesible para silla de ruedas"@es ,
+                                     "wheelchair boarding"@en ;
+                          status:term_status "inestable"@es ,
+                                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#timepoint
+gtfs:timepoint rdf:type owl:ObjectProperty ;
+               rdfs:domain gtfs:StopTime ;
+               rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                    owl:hasValue <http://transport.linkeddata.es/kos/timepoint> ;
+                                                  ]
+                                                ) ;
+                            rdf:type owl:Class
+                          ] ;
+               rdfs:comment "Indicates if arrival and departure times for a stop are strictly adhered to by the vehicle or if they are instead approximate and/or interpolated times. This field allows a GTFS producer to provide interpolated stop-times, while indicating that the times are approximate. [0 - Times are considered approximate, 1 or empty - Times are considered exact.]"@en ;
+               rdfs:label "Timepoint"@en .
+
+
+###  http://vocab.gtfs.org/terms#direction
+gtfs:direction rdf:type owl:ObjectProperty ;
+               rdfs:domain gtfs:Trip ;
+               rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                           owl:hasValue <http://transport.linkeddata.es/kos/direction>;
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+               rdfs:comment "A binary property to indicate the direction the trip is going (outbound/inbound)"@en ,
+                            "Apunta a un valor binario que indica la dirección del viaje (ida/vuelta)"@es ;
+               rdfs:label "Direction"@en ,
+                          "dirección"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#bikesAllowed
-gtfs:bikesAllowed rdf:type owl:DatatypeProperty ;
-                  rdfs:range xsd:boolean ;
+gtfs:bikesAllowed rdf:type owl:ObjectProperty ;
+                  rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                           owl:hasValue <http://transport.linkeddata.es/kos/bikes-allowed>;
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
                   rdfs:label "Bikes allowed"@en ,
                              "bicicletas permitidas"@es ;
                   status:term_status "inestable"@es ,
                                      "unstable"@en .
 
 
+#################################################################
+#    Data properties
+#################################################################
+
+#gtfs:Agency
+
+gtfs:id rdf:type owl:DatatypeProperty ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( gtfs:Agency
+                                    gtfs:Route
+                                    gtfs:Shape
+                                    gtfs:Service
+                                    gtfs:Location
+                                    gtfs:Trip
+                                  )
+                    ] ;
+        rdfs:range dct:identifier ;
+        rdfs:comment "Identifies a transit agency, a route, a shape, a set of dates when service is available, a location, a trip or a zone for a stop."@en ;
+        rdfs:label "ID"@en .
+
+
+gtfs:name rdf:type owl:DatatypeProperty ;
+          rdfs:domain [rdf:type owl:Class ;
+                       owl:unionOf (gtfs:Agency
+                                    gtfs:Location
+                                   )
+                       ];
+          rdfs:range foaf:name ;
+          rdfs:comment "Full name of the transit agency or the location."@en ;
+          rdfs:label "Name"@en .
+
+ 
+gtfs:url rdf:type owl:DatatypeProperty ;
+         rdfs:domain [rdf:type owl:Class ;
+                      owl:unionOf (gtfs:Agency
+                                   gtfs:Route
+                                   gtfs:Location
+                                   gtfs:Feed
+                                  )
+                      ];
+         rdfs:range foaf:page ;
+         rdfs:comment "URL of the transit agency, a particular route, a location, a publisher of a feed or a contact information URL."@en ;
+         rdfs:label "URL"@en .
+
+
+###  http://vocab.gtfs.org/terms#timezone
+gtfs:timezone rdf:type owl:DatatypeProperty ;
+              rdfs:domain [rdf:type owl:Class ; 
+                           owl:unionOf (gtfs:Agency
+                                        gtfs:Location
+                                      )
+                           ];
+              rdfs:range xsd:string ;
+              rdfs:comment "Timezone of the agency or the location."@en ;
+              rdfs:label "Timezone"@en .
+
+
+gtfs:language rdf:type owl:DatatypeProperty ;
+              rdfs:domain [rdf:type owl:Class; 
+                           owl:unionOf (gtfs:Agency
+                                        gtfs:Feed
+                                       )
+                           ];
+              rdfs:range dct:language ;
+              rdfs:comment "Language used by a transit agency, used for the text in the GTFS dataset or default language used when the data consumer doesn’t know the language of the rider."@en ;
+              rdfs:label "Language"@en .
+
+
+gtfs:phoneNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:domain gtfs:Agency ;
+                 rdfs:range foaf:phone ;
+                 rdfs:comment "A voice telephone number for the specified agency."@en ;
+                 rdfs:label "PhoneNumber"@en .
+
+
+###  http://vocab.gtfs.org/terms#fareUrl
+gtfs:fareUrl rdfs:comment "La URL de una página web que permite a un usuario comprar online billetes u otros productos de transporte de esa empresa"@es ,
+                          "The URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online"@en ;
+             rdfs:label "URL de tarifas"@es ,
+                        "fare URL"@en ;
+             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#agency_fields> ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en ;
+             rdf:type owl:DatatypeProperty ;
+             rdfs:range foaf:page ;
+             rdfs:domain gtfs:Agency .
+
+
+#gtfs:Route
+
+###  http://vocab.gtfs.org/terms#longName
+gtfs:longName rdfs:comment "Long name given to a route. This name is generally more descriptive than the gtfs:shortName and often includes the route's destination or stop."@en ,
+                           "Nombre completo de una ruta"@es ;
+              rdfs:label "Long name"@en ,
+                         "nombre completo"@es ;
+              rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteLongName> ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en ;
+              rdf:type owl:DatatypeProperty ;
+              rdfs:range dct:title ;
+              rdfs:domain gtfs:Route .
+
+
+###  http://vocab.gtfs.org/terms#shortName
+gtfs:shortName rdfs:comment "Nombre corto dado a una ruta o viaje"@es ,
+                            "Short name given to a route or a trip"@en ;
+               rdfs:label "Short name"@en ,
+                          "nombre corto"@es ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteShortName> ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en ;
+               rdf:type owl:DatatypeProperty ;
+               rdfs:range dct:title ;
+               rdfs:domain [rdf:type owl:Class; 
+                            owl:unionOf (gtfs:Route
+                                         gtfs:Trip
+                                        )
+                           ].
+
+
+gtfs:desc rdf:type owl:DatatypeProperty ;
+          rdfs:domain [rdf:type owl:Class; 
+                            owl:unionOf (gtfs:Route
+                                         gtfs:Location
+                                        )
+                           ];
+          rdfs:range dct:description ;
+          rdfs:comment "Description of a route or a location that provides useful, quality information."@en ;
+          rdfs:label "RouteDesc"@en .
+
+
 ###  http://vocab.gtfs.org/terms#color
 gtfs:color rdf:type owl:DatatypeProperty ;
+           rdfs:domain gtfs:Route ;
            rdfs:range xsd:string ;
            rdfs:comment "A 6 character hexidecimal color (without #) that matches the route color in public facing material"@en ,
                         "Un color expresado con 6 caracteres hexadecimales (sin #)"@es ;
@@ -527,40 +892,184 @@ gtfs:color rdf:type owl:DatatypeProperty ;
                               "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#contactUrl
-gtfs:contactUrl rdf:type owl:DatatypeProperty ;
-                rdfs:domain gtfs:Feed ;
-                rdfs:range xsd:string ;
-                rdfs:comment "URL for contact information, a web-form, support desk, or other tools for communication regarding the GTFS dataset and data publishing practices. This is a technical contact for GTFS-consuming applications and not a customer service contact."@en ;
-                rdfs:label "Contact URL"@en .
+###  http://vocab.gtfs.org/terms#textColor
+gtfs:textColor rdf:type owl:DatatypeProperty ;
+               rdfs:domain gtfs:Route ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A 6 character hexidecimal color (without #) asigned to a text label that is legible when written on top of a background of gtfs:color."@en ,
+                            "Un color expresado con 6 caracteres hexadecimales (sin #) asignado a una etiqueta de texto."@es ;
+               rdfs:label "Text color"@en ,
+                          "color de texto"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#dateAddition
-gtfs:dateAddition rdf:type owl:DatatypeProperty ;
-                  rdfs:domain gtfs:CalendarDateRule ;
-                  rdfs:range xsd:boolean ;
-                  gtfs:comment "El campo exception_type en calendar_dates.txt - 1 es cierto, 2 es falso."@es ,
-                               "The exception_type field in calendar_dates.txt - 1 is true, 2 is false."@en ;
-                  rdfs:comment "A boolean whether to add (true) or remove (false) a date"@en ,
-                               "Booleano que indica si el servicio se ha agregado (cierto) o suprimido (falso) en la fecha especificada"@es ;
-                  rdfs:label "Date Addition"@en ,
-                             "incorporación de fecha"@es ;
-                  status:term_status "inestable"@es ,
-                                     "unstable"@en .
+###  http://vocab.gtfs.org/terms#sortOrder
+gtfs:sortOrder rdf:type owl:DatatypeProperty ;
+               rdfs:domain gtfs:Route ;
+               rdfs:range xsd:nonNegativeInteger ;
+               rdfs:comment "Orders the routes in a way which is ideal for presentation to customers."@en ;
+               rdfs:label "Sort Order"@en .
 
 
-###  http://vocab.gtfs.org/terms#defaultLanguage
-gtfs:defaultLanguage rdf:type owl:DatatypeProperty ;
-                     rdfs:domain gtfs:Feed ;
-                     rdfs:range xsd:string ;
-                     rdfs:comment "Defines the language used when the data consumer doesn’t know the language of the rider. It's often defined as en, English."@en ;
-                     rdfs:label "Default Language"@en .
+#gtfs:Shape,gtfs:ShapePoint
+
+gtfs:nonNegativeFloat a rdfs:Datatype ;
+                        rdfs:subClassOf xsd:float ;
+                        owl:onDatatype xsd:float ;
+                        owl:withRestrictions (
+                                                [ xsd:minInclusive "0.0"^^xsd:float ]
+                                              ) .
+
+###  http://vocab.gtfs.org/terms#distanceTraveled
+gtfs:distanceTraveled rdf:type owl:DatatypeProperty ;
+                      rdfs:domain [rdf:type owl:Class; 
+                           owl:unionOf (gtfs:Shape
+                                        gtfs:StopTime
+                                       )
+                           ];
+                      rdfs:range gtfs:nonNegativeFloat ;
+                      rdfs:comment "Indica la distancia a una parada desde el primer punto del recorrido. Representa una distancia de viaje real durante la ruta en unidades expresadas como pies o kilómetros. Esta información permite que quien planifica el viaje determine la porción de la forma que se debe trazar al mostrar parte de un viaje en el mapa. Los valores utilizados para gtfs:distanceTraveled se deben incrementar junto con los de gtfs:stopSequence, es decir, no se pueden usar para mostrar el recorrido inverso a lo largo de una ruta."@es ,
+                                   "Positions a stop as a distance from the first shape point. It represents a real distance traveled along the route in units such as feet or kilometers. This information allows the trip planner to determine how much of the shape to draw when showing part of a trip on the map. The values used for gtfs:distanceTraveled must increase along with gtfs:stopSequence: they cannot be used to show reverse travel along a route."@en ;
+                      rdfs:label "Distance Traveled"@en ,
+                                 "distancia recorrida"@es ;
+                      status:term_status "inestable"@es ,
+                                         "unstable"@en .
+
+
+gtfs:latitude rdf:type owl:DatatypeProperty ;
+              rdfs:domain [rdf:type owl:Class; 
+                           owl:unionOf (gtfs:ShapePoint
+                                        gtfs:Stop
+                                       )
+                           ];
+              rdfs:range geo:lat ;
+              rdfs:comment "Latitude of a shape point or a stop."@en ;
+              rdfs:label "Latitude"@en .
+
+
+gtfs:longitude rdf:type owl:DatatypeProperty ;
+               rdfs:domain [rdf:type owl:Class; 
+                            owl:unionOf (gtfs:ShapePoint
+                                         gtfs:Stop
+                                        )
+                           ];
+               rdfs:range geo:long ;
+               rdfs:comment "Longitude of a shape point or a stop."@en ;
+               rdfs:label "Longitude"@en .
+
+
+###  http://vocab.gtfs.org/terms#pointSequence
+gtfs:pointSequence rdf:type owl:DatatypeProperty ;
+                   rdfs:domain gtfs:ShapePoint ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "El campo gtfs:pointSequence asocia la latitud y longitud de un punto de recorrido con su orden de secuencia en el recorrido. Los valores para gtfs:pointSequence deben ser números enteros positivos y crecientes conforme avanza el viaje."@es ,
+                                "The gtfs:pointSequence field associates the latitude and longitude of a shape point with its sequence order along the shape. The values for gtfs:pointSequence must be non-negative integers, and they must increase along the trip."@en ;
+                   rdfs:label "Point Sequence"@en ,
+                              "secuencia de puntos"@es ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+#gtfs:Service,gtfs:ServiceRule,gtfs:CalendarRule,gtfs:CalendarDateRule
+
+gtfs:startDate rdf:type owl:DatatypeProperty ;
+               rdfs:domain [rdf:type owl:Class; 
+                            owl:unionOf (gtfs:CalendarRule
+                                         gtfs:Feed
+                                        )
+                           ];
+               rdfs:range schema:startDate ;
+               rdfs:comment "Start service day for the service interval or start date for which the GTFS data is valid."@en ;
+               rdfs:label "StartDate"@en .
+
+
+gtfs:endDate rdf:type owl:DatatypeProperty ;
+             rdfs:domain [rdf:type owl:Class; 
+                          owl:unionOf (gtfs:CalendarRule
+                                       gtfs:Feed
+                                      )
+                           ];
+             rdfs:range schema:endDate ;
+             rdfs:comment "End service day for the service interval or end date for which the GTFS data is valid."@en ;
+             rdfs:label "EndDate"@en .
+
+
+gtfs:date rdf:type owl:DatatypeProperty ;
+          rdfs:domain gtfs:CalendarDateRule ;
+          rdfs:range dct:date ;
+          rdfs:comment "Date when service exception occurs."@en ;
+          rdfs:label "Date"@en .
+
+
+#gtfs:Frequency 
+
+###  http://vocab.gtfs.org/terms#startTime
+gtfs:startTime rdf:type owl:DatatypeProperty ;
+               rdfs:domain gtfs:Frequency ;
+               rdfs:range schema:startTime ;
+               rdfs:comment "Define la hora a la que empieza el servicio con la frecuencia especificada"@es ,
+                            "Specifies the time at which service begins with the specified frequency"@en ;
+               rdfs:label "Start Time"@en ,
+                          "hora de inicio"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#endTime
+gtfs:endTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain gtfs:Frequency ;
+             rdfs:range schema:endTime ;
+             rdfs:comment "Define la hora a la que el servicio cambia de frecuencia (o bien finaliza) en la primera parada del viaje."@es ,
+                          "Indicates the time at which service changes to a different frequency (or ceases) at the first stop in the trip."@en ;
+             rdfs:label "End Time"@en ,
+                        "hora final"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#headwaySeconds
+gtfs:headwaySeconds rdf:type owl:DatatypeProperty ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range xsd:positiveInteger ;
+                    rdfs:comment "Indica el período de tiempo (en segundos) entre salidas desde la misma parada (tiempo entre viajes) para este tipo de viaje, durante el intervalo de tiempo especificado mediante start_time y end_time."@es ,
+                                 "Indicates the time between departures from the same stop (headway) for this trip type, during the time interval specified by gtfs:startTime and gtfs:endTime."@en ;
+                    rdfs:label "Headway Seconds"@en ,
+                               "tiempo entre viajes"@es ;
+                    status:term_status "inestable"@es ,
+                                       "unstable"@en .
+
+
+#gtfs:Location,gtfs:Stop,gtfs:Station
+
+gtfs:code rdf:type owl:DatatypeProperty ;
+          rdfs:domain gtfs:Location ;
+          rdfs:range xsd:string ;
+          status:term_status "unstable"@en ;
+          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;         
+          rdfs:comment "Short text or a number that identifies the location for riders. These codes are often used in phone-based transit information systems or printed on signage to make it easier for riders to get information for a particular location. This field should be left empty for locations without a code presented to riders."@en ;
+          rdfs:label "Location Code"@en .
+
+
+#gtfs:StopTime
+
+###  http://vocab.gtfs.org/terms#arrivalTime
+gtfs:arrivalTime rdf:type owl:DatatypeProperty ;
+                 rdfs:domain gtfs:StopTime ;
+                 rdfs:range schema:Time ;
+                 rdfs:comment "Check the original specification for special cases"@en ,
+                              "Compruebe la especificación original para casos especiales"@es ;
+                 rdfs:label "Arrival time"@en ,
+                            "hora de llegada"@es ;
+                 rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stop_times_fields> ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#departureTime
 gtfs:departureTime rdf:type owl:DatatypeProperty ;
                    rdfs:domain gtfs:StopTime ;
-                   rdfs:range xsd:duration ;
+                   rdfs:range schema:Time ;
                    rdfs:comment "Check the original specification for special cases"@en ,
                                 "Compruebe la especificación original para casos especiales"@es ;
                    rdfs:label "Departure time"@en ,
@@ -570,55 +1079,25 @@ gtfs:departureTime rdf:type owl:DatatypeProperty ;
                                       "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#direction
-gtfs:direction rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:boolean ;
-               rdfs:comment "A binary property to indicate the direction the trip is going (outbound/inbound)"@en ,
-                            "Apunta a un valor binario que indica la dirección del viaje (ida/vuelta)"@es ;
-               rdfs:label "Direction"@en ,
-                          "dirección"@es ;
-               status:term_status "inestable"@es ,
-                                  "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#distanceTraveled
-gtfs:distanceTraveled rdf:type owl:DatatypeProperty ;
-                      rdfs:domain gtfs:Shape ,
-                                  gtfs:StopTime ;
-                      rdfs:range xsd:nonNegativeInteger ;
-                      rdfs:comment "Indica la distancia a una parada desde el primer punto del recorrido. Representa una distancia de viaje real durante la ruta en unidades expresadas como pies o kilómetros. Esta información permite que quien planifica el viaje determine la porción de la forma que se debe trazar al mostrar parte de un viaje en el mapa. Los valores utilizados para gtfs:distanceTraveled se deben incrementar junto con los de gtfs:stopSequence, es decir, no se pueden usar para mostrar el recorrido inverso a lo largo de una ruta."@es ,
-                                   "Positions a stop as a distance from the first shape point. It represents a real distance traveled along the route in units such as feet or kilometers. This information allows the trip planner to determine how much of the shape to draw when showing part of a trip on the map. The values used for gtfs:distanceTraveled must increase along with gtfs:stopSequence: they cannot be used to show reverse travel along a route."@en ;
-                      rdfs:label "Distance Traveled"@en ,
-                                 "distancia recorrida"@es ;
-                      status:term_status "inestable"@es ,
-                                         "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#endTime
-gtfs:endTime rdf:type owl:DatatypeProperty ;
-             rdfs:domain gtfs:Frequency ;
-             rdfs:range xsd:string ;
-             rdfs:comment "Define la hora a la que el servicio cambia de frecuencia (o bien finaliza) en la primera parada del viaje."@es ,
-                          "Indicates the time at which service changes to a different frequency (or ceases) at the first stop in the trip."@en ;
-             rdfs:label "End Time"@en ,
-                        "hora final"@es ;
-             status:term_status "inestable"@es ,
-                                "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#friday
-gtfs:friday rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:boolean ;
-            rdfs:comment "Service is available on all Fridays in the duration of the service calendar."@en ,
-                         "Servicio disponible los viernes"@es ;
-            rdfs:label "Friday"@en ,
-                       "viernes"@es ;
-            status:term_status "inestable"@es ,
-                               "unstable"@en .
+###  http://vocab.gtfs.org/terms#stopSequence
+gtfs:stopSequence rdf:type owl:DatatypeProperty ;
+                  rdfs:domain gtfs:StopTime ;
+                  rdfs:range xsd:nonNegativeInteger ;
+                  rdfs:comment "Indica el orden de paradas para un viaje concreto. Los valores de gtfs:stopSequence deben ser enteros no negativos, deben aumentar durante el viaje referenciado por la propiedad gtfs:trip."@es ,
+                               "The stopSequence property identifies the order of the stops for a particular trip. The values must increase along the gtfs:Trip referenced in the gtfs:trip property."@en ;
+                  rdfs:label "Stop sequence"@en ,
+                             "secuencia de paradas"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#headsign
 gtfs:headsign rdf:type owl:DatatypeProperty ;
+              rdfs:domain [rdf:type owl:Class; 
+                           owl:unionOf (gtfs:StopTime
+                                        gtfs:Trip
+                                       )
+                           ];
               rdfs:range xsd:string ;
               rdfs:comment "Esta propiedad apunta al texto que indica el destino del viaje a los pasajeros."@es ,
                            "The gtfs:headsign property contains the text that appears on a sign that identifies the trip's destination to passengers."@en ;
@@ -629,16 +1108,42 @@ gtfs:headsign rdf:type owl:DatatypeProperty ;
                                  "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#headwaySeconds
-gtfs:headwaySeconds rdf:type owl:DatatypeProperty ;
-                    rdfs:domain gtfs:Frequency ;
-                    rdfs:range xsd:nonNegativeInteger ;
-                    rdfs:comment "Indica el período de tiempo (en segundos) entre salidas desde la misma parada (tiempo entre viajes) para este tipo de viaje, durante el intervalo de tiempo especificado mediante start_time y end_time."@es ,
-                                 "Indicates the time between departures from the same stop (headway) for this trip type, during the time interval specified by gtfs:startTime and gtfs:endTime."@en ;
-                    rdfs:label "Headway Seconds"@en ,
-                               "tiempo entre viajes"@es ;
-                    status:term_status "inestable"@es ,
-                                       "unstable"@en .
+#gtfs:Trip
+
+###  http://vocab.gtfs.org/terms#block
+gtfs:block rdf:type owl:DatatypeProperty ;
+           rdfs:domain gtfs:Trip ;
+           rdfs:range dct:identifier;
+           rdfs:comment "Identifies the block to which the trip within this feed belongs. A block consists of two or more sequential trips made using the same vehicle, where a passenger can transfer from one trip to the next just by staying in the vehicle."@en ,
+                        "Identifica el bloque al que pertenece el viaje. Un bloque consta de dos o más viajes secuenciales realizados en el mismo vehículo, en los que un pasajero puede cambiar de viaje si simplemente permanece en el vehículo."@es ;
+           rdfs:label "Block"@en ,
+                      "Bloque"@es ;
+           status:term_status "unstable"@en ,
+                              "inestable"@es .
+
+
+#gtfs:Feed
+
+gtfs:publisher rdf:type owl:DatatypeProperty ;
+               rdfs:domain gtfs:Feed ;
+               rdfs:range dct:publisher ;
+               rdfs:comment "Full name of the organization that publishes the dataset."@en ;
+               rdfs:label "Publisher"@en .
+
+
+gtfs:version rdf:type owl:DatatypeProperty ;
+             rdfs:domain gtfs:Feed ;
+             rdfs:range schema:version ;
+             rdfs:comment "String that indicates the current version of their GTFS dataset."@en ;
+             rdfs:label "Version"@en .
+
+      
+###  http://vocab.gtfs.org/terms#bidirectional
+gtfs:bidirectional rdf:type owl:DatatypeProperty ;
+                   rdfs:domain gtfs:Pathway ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:comment "Indicates in which direction the pathway can be used: [0: Unidirectional pathway, it can only be used from gtfs:originStop to gtfs:destinationStop,  1: Bidirectional pathway, it can be used in the two directions]"@en ;
+                   rdfs:label "Index"@en .
 
 
 ###  http://vocab.gtfs.org/terms#index
@@ -681,14 +1186,6 @@ gtfs:length rdf:type owl:DatatypeProperty ;
             rdfs:label "Length"@en .
 
 
-###  http://vocab.gtfs.org/terms#locationCode
-gtfs:locationCode rdf:type owl:DatatypeProperty ;
-                  rdfs:domain gtfs:Location ;
-                  rdfs:range xsd:string ;
-                  rdfs:comment "Short text or a number that identifies the location for riders. These codes are often used in phone-based transit information systems or printed on signage to make it easier for riders to get information for a particular location. This field should be left empty for locations without a code presented to riders."@en ;
-                  rdfs:label "Location Code"@en .
-
-
 ###  http://vocab.gtfs.org/terms#maxSlope
 gtfs:maxSlope rdf:type owl:DatatypeProperty ;
               rdfs:domain gtfs:Pathway ;
@@ -717,35 +1214,12 @@ gtfs:minimumTransferTime rdf:type owl:DatatypeProperty ;
                                             "unstable"@en .
 
 
-###  http://vocab.gtfs.org/terms#monday
-gtfs:monday rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:boolean ;
-            rdfs:comment "Service is available on all Mondays in the duration of the service calendar."@en ,
-                         "Servicio disponible los lunes"@es ;
-            rdfs:label "Monday"@en ,
-                       "lunes"@es ;
-            status:term_status "inestable"@es ,
-                               "unstable"@en .
-
-
 ###  http://vocab.gtfs.org/terms#platformCode
 gtfs:platformCode rdf:type owl:DatatypeProperty ;
                   rdfs:domain gtfs:Platform ;
                   rdfs:range xsd:string ;
                   rdfs:comment "Platform identifier for a platform stop (a stop belonging to a station). This should be just the platform identifier (eg. G or 3). Words like platform or track (or the feed’s language-specific equivalent) should not be included. This allows feed consumers to more easily internationalize and localize the platform identifier into other languages."@en ;
                   rdfs:label "Platform Code"@en .
-
-
-###  http://vocab.gtfs.org/terms#pointSequence
-gtfs:pointSequence rdf:type owl:DatatypeProperty ;
-                   rdfs:domain gtfs:ShapePoint ;
-                   rdfs:range xsd:nonNegativeInteger ;
-                   rdfs:comment "El campo gtfs:pointSequence asocia la latitud y longitud de un punto de recorrido con su orden de secuencia en el recorrido. Los valores para gtfs:pointSequence deben ser números enteros positivos y crecientes conforme avanza el viaje."@es ,
-                                "The gtfs:pointSequence field associates the latitude and longitude of a shape point with its sequence order along the shape. The values for gtfs:pointSequence must be non-negative integers, and they must increase along the trip."@en ;
-                   rdfs:label "Point Sequence"@en ,
-                              "secuencia de puntos"@es ;
-                   status:term_status "inestable"@es ,
-                                      "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#reversedSignpostedAs
@@ -756,17 +1230,6 @@ gtfs:reversedSignpostedAs rdf:type owl:DatatypeProperty ;
                           rdfs:label "Reversed Signposted As"@en .
 
 
-###  http://vocab.gtfs.org/terms#saturday
-gtfs:saturday rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:boolean ;
-              rdfs:comment "Service is available on all Saturdays in the duration of the service calendar."@en ,
-                           "Servicio disponible los sábados"@es ;
-              rdfs:label "Saturday"@en ,
-                         "sábado"@es ;
-              status:term_status "inestable"@es ,
-                                 "unstable"@en .
-
-
 ###  http://vocab.gtfs.org/terms#signpostedAs
 gtfs:signpostedAs rdf:type owl:DatatypeProperty ;
                   rdfs:domain gtfs:Pathway ;
@@ -775,94 +1238,12 @@ gtfs:signpostedAs rdf:type owl:DatatypeProperty ;
                   rdfs:label "Signposted As"@en .
 
 
-###  http://vocab.gtfs.org/terms#sortOrder
-gtfs:sortOrder rdf:type owl:DatatypeProperty ;
-               rdfs:domain gtfs:Route ;
-               rdfs:range xsd:nonNegativeInteger ;
-               rdfs:comment "Orders the routes in a way which is ideal for presentation to customers."@en ;
-               rdfs:label "Sort Order"@en .
-
-
 ###  http://vocab.gtfs.org/terms#stairCount
 gtfs:stairCount rdf:type owl:DatatypeProperty ;
                 rdfs:domain gtfs:Pathway ;
                 rdfs:range xsd:integer ;
                 rdfs:comment "Number of stairs of the pathway. Best Practices: one could use the approximation of 1 floor = 15 stairs to generate approximative values."@en ;
                 rdfs:label "Stair Count"@en .
-
-
-###  http://vocab.gtfs.org/terms#startTime
-gtfs:startTime rdf:type owl:DatatypeProperty ;
-               rdfs:domain gtfs:Frequency ;
-               rdfs:range xsd:string ;
-               rdfs:comment "Define la hora a la que empieza el servicio con la frecuencia especificada"@es ,
-                            "Specifies the time at which service begins with the specified frequency"@en ;
-               rdfs:label "Start Time"@en ,
-                          "hora de inicio"@es ;
-               status:term_status "inestable"@es ,
-                                  "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#stopSequence
-gtfs:stopSequence rdf:type owl:DatatypeProperty ;
-                  rdfs:domain gtfs:StopTime ;
-                  rdfs:range xsd:nonNegativeInteger ;
-                  rdfs:comment "Indica el orden de paradas para un viaje concreto. Los valores de gtfs:stopSequence deben ser enteros no negativos, deben aumentar durante el viaje referenciado por la propiedad gtfs:trip."@es ,
-                               "The stopSequence property identifies the order of the stops for a particular trip. The values must increase along the gtfs:Trip referenced in the gtfs:trip property."@en ;
-                  rdfs:label "Stop sequence"@en ,
-                             "secuencia de paradas"@es ;
-                  status:term_status "inestable"@es ,
-                                     "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#sunday
-gtfs:sunday rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:boolean ;
-            rdfs:comment "Service is available on all Sundays in the duration of the service calendar."@en ,
-                         "Servicio disponible los domingos"@es ;
-            rdfs:label "Sunday"@en ,
-                       "domingos"@es ;
-            status:term_status "inestable"@es ,
-                               "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#textColor
-gtfs:textColor rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:string ;
-               rdfs:comment "A 6 character hexidecimal color (without #) asigned to a text label that is legible when written on top of a background of gtfs:color."@en ,
-                            "Un color expresado con 6 caracteres hexadecimales (sin #) asignado a una etiqueta de texto."@es ;
-               rdfs:label "Text color"@en ,
-                          "color de texto"@es ;
-               status:term_status "inestable"@es ,
-                                  "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#thursday
-gtfs:thursday rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:boolean ;
-              rdfs:comment "Service is available on all Thursdays in the duration of the service calendar."@en ,
-                           "Servicio disponible los jueves"@es ;
-              rdfs:label "Thursday"@en ,
-                         "jueves"@es ;
-              status:term_status "inestable"@es ,
-                                 "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#timepoint
-gtfs:timepoint rdf:type owl:DatatypeProperty ;
-               rdfs:domain gtfs:StopTime ;
-               rdfs:range xsd:integer ;
-               rdfs:comment "Indicates if arrival and departure times for a stop are strictly adhered to by the vehicle or if they are instead approximate and/or interpolated times. This field allows a GTFS producer to provide interpolated stop-times, while indicating that the times are approximate. [0 - Times are considered approximate, 1 or empty - Times are considered exact.]"@en ;
-               rdfs:label "Timepoint"@en .
-
-
-###  http://vocab.gtfs.org/terms#timezone
-gtfs:timezone rdf:type owl:DatatypeProperty ;
-              rdfs:domain gtfs:Agency ,
-                          gtfs:Location ;
-              rdfs:range xsd:string ;
-              rdfs:comment "Timezone of the agency or the location."@en ;
-              rdfs:label "Timezone"@en .
 
 
 ###  http://vocab.gtfs.org/terms#transferDuration
@@ -879,40 +1260,6 @@ gtfs:traversalTime rdf:type owl:DatatypeProperty ;
                    rdfs:range xsd:positiveInteger ;
                    rdfs:comment "Average time in seconds needed to walk through the pathway from the gtfs:originStop to the gtfs:destinationStop."@en ;
                    rdfs:label "Traversal Time"@en .
-
-
-###  http://vocab.gtfs.org/terms#tuesday
-gtfs:tuesday rdf:type owl:DatatypeProperty ;
-             rdfs:range xsd:boolean ;
-             rdfs:comment "Service is available on all Tuesdays in the duration of the service calendar."@en ,
-                          "Servicio disponible los martes"@es ;
-             rdfs:label "Tuesday"@en ,
-                        "martes"@es ;
-             status:term_status "inestable"@es ,
-                                "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#usesExactTimes
-gtfs:usesExactTimes rdf:type owl:DatatypeProperty ;
-                    rdfs:domain gtfs:Frequency ;
-                    rdfs:range xsd:boolean ;
-                    gtfs:comment "Determina si los viajes basados en frecuencias deben estar programados de manera exacta según la información especificada de tiempo entre viajes. Falso cuando exact_times es 0 (o vacío), verdadero cuando es uno 1"@es ,
-                                 "Indicates the type of service for a trip. [0 or empty - Frequency-based trips. - Frequency-based service (exact_times=0) in which service does not follow a fixed schedule throughout the day. Instead, operators attempt to strictly maintain predetermined headways for trips., 1 - Schedule-based trips with the exact same headway throughout the day. has the exact same headway for trips over specified time period(s). In schedule-based service operators try to strictly adhere to a schedule.]"@en ;
-                    rdfs:label "Frequency uses exact times"@en ,
-                               "Viajes basados en frecuencias programados de manera exacta"@es ;
-                    status:term_status "inestable"@es ,
-                                       "unstable"@en .
-
-
-###  http://vocab.gtfs.org/terms#wednesday
-gtfs:wednesday rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:boolean ;
-               rdfs:comment "Service is available on all Wednesdays in the duration of the service calendar."@en ,
-                            "Servicio disponible los miércoles"@es ;
-               rdfs:label "Wednesday"@en ,
-                          "miércoles"@es ;
-               status:term_status "inestable"@es ,
-                                  "unstable"@en .
 
 
 #################################################################
@@ -952,6 +1299,19 @@ gtfs:BoardingArea rdf:type owl:Class ;
                   rdfs:subClassOf gtfs:Location ;
                   rdfs:comment "A specific location on a platform, where passengers can board and/or alight vehicles."@en ;
                   rdfs:label "Boarding Area"@en .
+
+
+###  http://vocab.gtfs.org/terms#CalendarRule
+gtfs:CalendarRule rdf:type owl:Class ;
+                  rdfs:subClassOf gtfs:ServiceRule ;
+                  gtfs:comment "a row from calendar.txt"@en ,
+                               "una línea de calendar.txt"@es ;
+                  rdfs:comment "Defines on which days of the week for a certain period the service is available."@en ,
+                               "Define en qué días de la semana el servicio está disponible para un periodo concreto."@es ;
+                  rdfs:label "Calendar rule"@en ,
+                             "Regla de calendario"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
 
 
 ###  http://vocab.gtfs.org/terms#CalendarDateRule
@@ -1126,6 +1486,7 @@ gtfs:Route rdf:type owl:Class ;
 
 ###  http://vocab.gtfs.org/terms#RouteType
 gtfs:RouteType rdf:type owl:Class ;
+               rdfs:domain gtfs:Route ;
                rdfs:comment "Describe el tipo de transporte usado en una ruta"@es ,
                             "Describes the type of transportation used on a route"@en ;
                rdfs:label "Route type"@en ,
@@ -1146,6 +1507,16 @@ gtfs:Service rdf:type owl:Class ;
                           <https://developers.google.com/transit/gtfs/reference#calendar_fields> ;
              status:term_status "inestable"@es ,
                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#ServiceRule
+gtfs:ServiceRule rdf:type owl:Class ;
+                 rdfs:comment "One or more service rules define a set of dates"@en ,
+                              "Una o más reglas de servicio definen un conjunto de fechas"@es ;
+                 rdfs:label "Service rule"@en ,
+                            "Regla de servicio"@es ;
+                 status:term_status "unstable"@en ,
+                                    "inestable"@es .                                
 
 
 ###  http://vocab.gtfs.org/terms#Shape
@@ -1742,13 +2113,6 @@ gtfs:Stairs rdfs:label "Stairs"@en .
 gtfs:Walkway rdfs:label "Walkway"@en .
 
 
-gtfs:code rdfs:comment "A gtfs:code predicate defines the stop code for a stop."@en ;
-          status:term_status "unstable"@en ;
-          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
-          gtfs:comment "This is the stop_code field"@en ;
-          rdfs:label "Stop Code"@en .
-
-
 gtfs:destinationZone rdfs:label "Destination Zone"@en ;
                      status:term_status "unstable"@en ;
                      rdfs:comment "La zona de destino donde una clase tarifaria se aplica"@en ;
@@ -1763,15 +2127,6 @@ gtfs:originZone rdfs:label "zona de origen"@es ;
                 status:term_status "unstable"@en ;
                 rdfs:comment "La zona de origen donde una clase tarifaria se aplica"@es ,
                              "The origin zone where this applies"@en .
-
-
-gtfs:timeZone rdfs:seeAlso <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones> ;
-              rdfs:label "Time zone"@en ;
-              rdfs:comment "The timezone where a person or organisation is located."@en ;
-              rdfs:label "zona horaria"@es ;
-              rdfs:comment "La zona horaria donde una persona u organización está situada."@es ;
-              status:term_status "prueba"@es ,
-                                 "testing"@en .
 
 
 gtfs:transferExpiryTime rdfs:label "Transfer Expiry Time"@en ;
