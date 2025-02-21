@@ -112,6 +112,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rr:column "shape_dist_traveled";
+			rr:datatype xsd:double
 		];
 	];
 	rr:predicateObjectMap [
@@ -1039,6 +1040,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rr:column "shape_dist_traveled";
+			rr:datatype xsd:double
 		];
 	].
 

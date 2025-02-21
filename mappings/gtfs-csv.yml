@@ -26,7 +26,7 @@ mappings:
       - [gtfs:headsign, $(stop_headsign)]
       - [gtfs:pickupType, http://transport.linkeddata.es/resource/PickupType/$(pickup_type)~iri]
       - [gtfs:dropOffType, http://transport.linkeddata.es/resource/DropOffType/$(drop_off_type)~iri]
-      - [gtfs:distanceTraveled, $(shape_dist_traveled)]
+      - [gtfs:distanceTraveled, $(shape_dist_traveled), xsd:double]
       - p: gtfs:trip
         o:
           - mapping: trips
@@ -228,7 +228,7 @@ mappings:
       - [geo:lat,$(shape_pt_lat),xsd:double]
       - [geo:long,$(shape_pt_lon),xsd:double]
       - [gtfs:pointSequence,$(shape_pt_sequence)]
-      - [gtfs:distanceTraveled,$(shape_dist_traveled)]  
+      - [gtfs:distanceTraveled,$(shape_dist_traveled), xsd:double]  
 
   frequencies:
     sources:
