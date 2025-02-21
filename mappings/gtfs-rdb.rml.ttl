@@ -20,79 +20,7 @@
 @base <http://example.com/ns#>.
 
 
-<DataSource_stoptimes> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_trips> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_routes> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_agency> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_stops> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_services1> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_services2> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_calendar_date_rules> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_calendar_rules> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_feed> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_shapes> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_shapePoints> a d2rq:Database;
-	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
-	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
-	d2rq:username "root";
-	d2rq:password "oeg".
-
-<DataSource_frequencies> a d2rq:Database;
+<database> a d2rq:Database;
 	d2rq:jdbcDSN "jdbc:mysql://localhost:3306/gtfs";
 	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
 	d2rq:username "root";
@@ -102,7 +30,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_stoptimes>;
+		rml:source <database>;
 		rml:query "SELECT * FROM STOP_TIMES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -229,7 +157,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_trips>;
+		rml:source <database>;
 		rml:query "SELECT * FROM TRIPS";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -354,7 +282,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_routes>;
+		rml:source <database>;
 		rml:query "SELECT * FROM ROUTES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -464,7 +392,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_agency>;
+		rml:source <database>;
 		rml:query "SELECT * FROM AGENCY";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -550,7 +478,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_stops>;
+		rml:source <database>;
 		rml:query "SELECT * FROM STOPS";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -703,7 +631,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_services1>;
+		rml:source <database>;
 		rml:query "SELECT * FROM CALENDAR";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -741,7 +669,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_services2>;
+		rml:source <database>;
 		rml:query "SELECT * FROM CALENDAR_DATES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -779,7 +707,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_calendar_date_rules>;
+		rml:source <database>;
 		rml:query "SELECT * FROM CALENDAR_DATES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -825,7 +753,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_calendar_rules>;
+		rml:source <database>;
 		rml:query "SELECT * FROM CALENDAR";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -948,7 +876,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_feed>;
+		rml:source <database>;
 		rml:query "SELECT * FROM FEED_INFO";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -1035,7 +963,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_shapes>;
+		rml:source <database>;
 		rml:query "SELECT * FROM SHAPES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -1073,7 +1001,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_shapePoints>;
+		rml:source <database>;
 		rml:query "SELECT * FROM SHAPES";
 		rr:sqlVersion rr:SQL2008
 	];
@@ -1139,7 +1067,7 @@
 
 	rml:logicalSource [
 		a rml:LogicalSource;
-		rml:source <DataSource_frequencies>;
+		rml:source <database>;
 		rml:query "SELECT * FROM FREQUENCIES";
 		rr:sqlVersion rr:SQL2008
 	];
