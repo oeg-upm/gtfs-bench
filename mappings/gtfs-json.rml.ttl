@@ -50,7 +50,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "arrival_time";
-			rr:datatype xsd:duration
 		];
 	];
 	rr:predicateObjectMap [
@@ -61,7 +60,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "departure_time";
-			rr:datatype xsd:duration
 		];
 	];
 	rr:predicateObjectMap [
