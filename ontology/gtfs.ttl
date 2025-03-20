@@ -765,7 +765,8 @@ gtfs:id rdf:type owl:DatatypeProperty ;
                                     gtfs:Trip
                                   )
                     ] ;
-        rdfs:range dct:identifier ;
+        rdfs:range xsd:string ;
+        rdfs:subPropertyOf dct:identifier ;
         rdfs:comment "Identifies a transit agency, a route, a shape, a set of dates when service is available, a location, a trip or a zone for a stop."@en ;
         rdfs:label "ID"@en .
 
@@ -812,7 +813,8 @@ gtfs:language rdf:type owl:DatatypeProperty ;
                                         gtfs:Feed
                                        )
                            ];
-              rdfs:range dct:language ;
+              rdfs:range xsd:string ; 
+              rdfs:subPropertyOf dct:language ;
               rdfs:comment "Language used by a transit agency, used for the text in the GTFS dataset or default language used when the data consumer doesn’t know the language of the rider."@en ;
               rdfs:label "Language"@en .
 
@@ -848,7 +850,8 @@ gtfs:longName rdfs:comment "Long name given to a route. This name is generally m
               status:term_status "inestable"@es ,
                                  "unstable"@en ;
               rdf:type owl:DatatypeProperty ;
-              rdfs:range dct:title ;
+              rdfs:range xsd:string ;
+              rdfs:subPropertyOf dct:title ;
               rdfs:domain gtfs:Route .
 
 
@@ -860,8 +863,9 @@ gtfs:shortName rdfs:comment "Nombre corto dado a una ruta o viaje"@es ,
                rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteShortName> ;
                status:term_status "inestable"@es ,
                                   "unstable"@en ;
+               rdfs:range xsd:string ;
                rdf:type owl:DatatypeProperty ;
-               rdfs:range dct:title ;
+               rdfs:subPropertyOf dct:title ;
                rdfs:domain [rdf:type owl:Class; 
                             owl:unionOf (gtfs:Route
                                          gtfs:Trip
@@ -875,7 +879,8 @@ gtfs:desc rdf:type owl:DatatypeProperty ;
                                          gtfs:Location
                                         )
                            ];
-          rdfs:range dct:description ;
+          rdfs:range xsd:string ;
+          rdfs:subPropertyOf dct:description ;
           rdfs:comment "Description of a route or a location that provides useful, quality information."@en ;
           rdfs:label "RouteDesc"@en .
 
@@ -997,7 +1002,8 @@ gtfs:endDate rdf:type owl:DatatypeProperty ;
 
 gtfs:date rdf:type owl:DatatypeProperty ;
           rdfs:domain gtfs:CalendarDateRule ;
-          rdfs:range dct:date ;
+          rdfs:range xsd:date ;
+          rdfs:subPropertyOf dct:date ;
           rdfs:comment "Date when service exception occurs."@en ;
           rdfs:label "Date"@en .
 
@@ -1113,7 +1119,8 @@ gtfs:headsign rdf:type owl:DatatypeProperty ;
 ###  http://vocab.gtfs.org/terms#block
 gtfs:block rdf:type owl:DatatypeProperty ;
            rdfs:domain gtfs:Trip ;
-           rdfs:range dct:identifier;
+           rdfs:range xsd:string ;
+           rdfs:subPropertyOf dct:identifier;
            rdfs:comment "Identifies the block to which the trip within this feed belongs. A block consists of two or more sequential trips made using the same vehicle, where a passenger can transfer from one trip to the next just by staying in the vehicle."@en ,
                         "Identifica el bloque al que pertenece el viaje. Un bloque consta de dos o más viajes secuenciales realizados en el mismo vehículo, en los que un pasajero puede cambiar de viaje si simplemente permanece en el vehículo."@es ;
            rdfs:label "Block"@en ,
@@ -1126,7 +1133,8 @@ gtfs:block rdf:type owl:DatatypeProperty ;
 
 gtfs:publisher rdf:type owl:DatatypeProperty ;
                rdfs:domain gtfs:Feed ;
-               rdfs:range dct:publisher ;
+               rdfs:range xsd:string ;
+               rdfs:subPropertyOf dct:publisher ;
                rdfs:comment "Full name of the organization that publishes the dataset."@en ;
                rdfs:label "Publisher"@en .
 
